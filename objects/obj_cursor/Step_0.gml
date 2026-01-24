@@ -14,8 +14,11 @@ if mouse_check_button_pressed(mb_left)
 
 					with(obj_goon){
 						if gooning{
-							goto_x=mouse_x+irandom_range(-15,15)
-							goto_y=mouse_y+irandom_range(-15,15)
+							var distance=point_distance(x,y,mouse_x,mouse_y)
+							var bad_prec=min(distance*0.2,15)
+							
+							goto_x=mouse_x+irandom_range(-bad_prec,bad_prec)
+							goto_y=mouse_y+irandom_range(-bad_prec,bad_prec)
 							gooning=false
 						}
 					}
