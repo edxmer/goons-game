@@ -15,3 +15,5 @@ if goto_x!=x && goto_y!=y{
 		goto_y=y
 	}
 }
+
+
