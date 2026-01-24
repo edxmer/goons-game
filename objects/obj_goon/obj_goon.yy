@@ -1,11 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"global_variables",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"obj_goon",
+  "eventList":[],
   "managed":true,
-  "name":"global_variables",
+  "name":"obj_goon",
   "overriddenProperties":[],
   "parent":{
     "name":"OBJECTS",
@@ -29,7 +27,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_goon",
+    "path":"sprites/spr_goon/spr_goon.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }
