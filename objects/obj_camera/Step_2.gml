@@ -45,8 +45,28 @@ var cam_y_size=camera_get_view_height(cam)
 
 var move_y=keyboard_check(ord("S"))-keyboard_check(ord("W"))
 var move_x=keyboard_check(ord("D"))-keyboard_check(ord("A"))
-x+=move_x*camera_speed
-y+=move_y*camera_speed
+
+var width=camera_get_view_width(cam)
+var height=camera_get_view_height(cam)
+
+if move_y==0 && move_x==0{
+	if abs(x-mouse_x)<width*mouse_go_percent{
+		move_x=-1
+	}
+	else if abs(x+width-mouse_x)<width*mouse_go_percent{
+		move_x=1
+	}
+
+	if abs(y-mouse_y)<height*mouse_go_percent{
+		move_y=-1
+	}
+	else if abs(y+height-mouse_y)<height*mouse_go_percent{
+		move_y=1
+	}
+}
+
+x+=move_x*camera_speed*camera_size
+y+=move_y*camera_speed*camera_size
 
 x=clamp(x,0,room_width-cam_x_size)
 y=clamp(y,0,room_height-cam_y_size)
