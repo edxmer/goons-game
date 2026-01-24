@@ -32,6 +32,7 @@
     {"id":{"name":"obj_cursor","path":"objects/obj_cursor/obj_cursor.yy",},},
     {"id":{"name":"obj_goon","path":"objects/obj_goon/obj_goon.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"id":{"name":"spr_goo","path":"sprites/spr_goo/spr_goo.yy",},},
     {"id":{"name":"spr_goon","path":"sprites/spr_goon/spr_goon.yy",},},
   ],
   "resourceType":"GMProject",
