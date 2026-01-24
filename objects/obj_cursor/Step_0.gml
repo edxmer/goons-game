@@ -11,17 +11,15 @@ if mouse_check_button_pressed(mb_left)
 	}
 	else{
 		global.select_mode=false
-		if mouse_check_button_released(mb_left)
-			{
+
 					with(obj_goon){
 						if gooning{
-							goto_x=mouse_x
-							goto_y=mouse_y
+							goto_x=mouse_x+irandom_range(-15,15)
+							goto_y=mouse_y+irandom_range(-15,15)
 							gooning=false
 						}
 					}
-			}
-
+			
 
 	}
 
