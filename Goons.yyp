@@ -11,9 +11,9 @@
   "defaultScriptType":0,
   "Folders":[
     {"$GMFolder":"","%Name":"group1","folderPath":"folders/group1.yy","name":"group1","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"SPRITES","folderPath":"folders/SPRITES.yy","name":"SPRITES","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"OBJECTS","folderPath":"folders/OBJECTS.yy","name":"OBJECTS","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"SCRIPTS","folderPath":"folders/SCRIPTS.yy","name":"SCRIPTS","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"SPRITES","folderPath":"folders/SPRITES.yy","name":"SPRITES","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"szia edomer","folderPath":"folders/szia edomer.yy","name":"szia edomer","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[],
@@ -29,6 +29,7 @@
     {"id":{"name":"global_variables","path":"objects/global_variables/global_variables.yy",},},
     {"id":{"name":"obj_camera","path":"objects/obj_camera/obj_camera.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"id":{"name":"spr_goo","path":"sprites/spr_goo/spr_goo.yy",},},
     {"id":{"name":"spr_goon","path":"sprites/spr_goon/spr_goon.yy",},},
   ],
   "resourceType":"GMProject",
