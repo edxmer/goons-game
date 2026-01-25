@@ -132,7 +132,7 @@ if (speech_timer < 0) {
 			
 			case (13):
 			add_text_box(_goon_id, [
-		    txt("I had a best friend once.", name), 4000,
+		    txt("I had a best friend once.", name, 4000),
 		    txt("We called him Goon #402.", name, 4000),
 		    txt("We found a shiny pebble together.",name, 4000),
 		    txt("Then a 'Hero' came from the kingdom.", name, 4000),

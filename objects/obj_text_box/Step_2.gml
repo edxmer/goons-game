@@ -1,4 +1,11 @@
-if !instance_exists(follow_id) {instance_destroy()}
+if !instance_exists(follow_id) {
+	instance_destroy()
+	exit
+}
+
+if (array_length(data) == 0) {
+    exit;
+}
 
 
 x = follow_id.x + offset_x
@@ -9,6 +16,11 @@ top_left_y = y-box_height/2
 bot_right_x = x+box_width/2
 bot_right_y = y+box_height/2
 
+
+if (data_id >= array_length(data)) {
+    instance_destroy();
+    exit;
+}
 
 var _len = string_length(data[data_id].text)
 var _arr_len = array_length(data)
