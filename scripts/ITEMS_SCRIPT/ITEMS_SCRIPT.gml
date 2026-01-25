@@ -13,6 +13,15 @@ function assign_item(item_id){
 	else if item_id=="cigarette"{
 		item_data.texture=spr_cigarette
 	}
+	else if item_id=="rock"{
+		item_data.texture=spr_rock
+	}
+	else if item_id=="banana"{
+		item_data.texture=spr_banana
+	}
+	else if item_id=="sock"{
+		item_data.texture=spr_sock
+	}
 	
 	return item_data
 }
@@ -57,3 +66,18 @@ function item_picked_up(_id){
 	}
 	return "empty"
 }
+
+
+
+function items_scatter_start_of_game(item_pool,item_amount)
+{
+	for(var i=0;i<item_amount;i++)
+	{
+		var item_curr=item_pool[irandom_range(0,array_length(item_pool)-1)]
+		create_item(irandom_range(16,room_width-16),irandom_range(16,room_height-16),item_curr)
+	}
+
+}
+
+
+
