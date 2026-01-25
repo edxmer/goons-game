@@ -12,9 +12,9 @@ if (speech_timer < 0) {
 		    speaking = false;
 		});
 		
-		var name = "goon"
+		var name = _goon_id.name
 		
-		switch (irandom(12)) {
+		switch (irandom(14)) {
 			case (0):
 			add_text_box(_goon_id, [
 			txt("I sometimes think", name),
@@ -127,6 +127,32 @@ if (speech_timer < 0) {
 			txt("meow goon meow goon goon meow goon meow", "meow " + name),
 			txt("meowwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww", "meow " + name),
 			txt("", "" , 0, turn_speaking_off)
+			])
+			break;
+			
+			case (13):
+			add_text_box(_goon_id, [
+		    txt("I had a best friend once.", name), 4000,
+		    txt("We called him Goon #402.", name, 4000),
+		    txt("We found a shiny pebble together.",name, 4000),
+		    txt("Then a 'Hero' came from the kingdom.", name, 4000),
+			txt("One swing.§§§§§.§§§§§§.§§§§§§.", name),
+		    txt("He didn't even fight back.", name, 4000),
+		    txt("He turned into pure goon.", name, 4000),
+		    txt("I put his remains in my pocket.§§§§§§.§§§§§.§§§§§", name, 4000),
+		    txt(".§§§§§.§§§§.§§§§so I could carry him forever.", name, 6000),
+			txt("", "" , 0, turn_speaking_off)
+			])
+			break;
+			
+			case (14):
+			add_text_box(_goon_id, [
+			txt("Do you remember me?", "Sad " + name),
+			txt("You killed me five minutes ago.", "Sad " + name),
+			txt("It hurt so much.", "Sad " + name),
+			txt("But the code brings me back.", "Sad " + name),
+			txt("Please...", "Sad " + name),
+			txt("...don't make me die again.", "Sad " + name, 6000, turn_speaking_off)
 			])
 			break;
 		}
