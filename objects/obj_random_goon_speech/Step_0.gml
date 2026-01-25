@@ -12,6 +12,8 @@ if (speech_timer < 0) {
 		    speaking = false;
 		});
 		
+		var name = "goon"
+		
 		switch (irandom(9)) {
 			case (0):
 			add_text_box(_goon_id, [
