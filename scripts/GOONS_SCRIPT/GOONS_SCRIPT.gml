@@ -38,3 +38,18 @@ function goon_is_idle(_id)
 	}
 	return false
 }
+
+
+function goon_if_gooning_goto_coords(_id,xx,yy){
+	with(_id){
+		if gooning{
+			var distance=point_distance(x,y,mouse_x,mouse_y)
+			var bad_prec=min(distance*0.2,15)
+							
+			goto_x=clamp(mouse_x+irandom_range(-bad_prec,bad_prec),8,room_width-8)
+			goto_y=clamp(mouse_y+irandom_range(-bad_prec,bad_prec),8,room_height-8)
+			gooning=false
+		}
+	}
+
+}
