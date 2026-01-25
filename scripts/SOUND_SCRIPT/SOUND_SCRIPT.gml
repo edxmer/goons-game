@@ -7,7 +7,8 @@ function get_sound_all()
 		murr:[sound_goon_murr_2,sound_goon_murr_1],
 		woodwork:[sound_wood_work],
 		stonework:[sound_stone_work_1,sound_stone_work_2],
-		groundsoft:[sound_item_ground_1,sound_item_ground_2]
+		groundsoft:[sound_item_ground_1,sound_item_ground_2],
+		swoosh:[sound_whoosh]
 
 	}
 

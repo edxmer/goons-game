@@ -64,6 +64,7 @@
     {"id":{"name":"sound_pickup_item_2","path":"sounds/sound_pickup_item_2/sound_pickup_item_2.yy",},},
     {"id":{"name":"sound_stone_work_1","path":"sounds/sound_stone_work_1/sound_stone_work_1.yy",},},
     {"id":{"name":"sound_stone_work_2","path":"sounds/sound_stone_work_2/sound_stone_work_2.yy",},},
+    {"id":{"name":"sound_whoosh","path":"sounds/sound_whoosh/sound_whoosh.yy",},},
     {"id":{"name":"sound_wood_work","path":"sounds/sound_wood_work/sound_wood_work.yy",},},
     {"id":{"name":"spr_arrow_down","path":"sprites/spr_arrow_down/spr_arrow_down.yy",},},
     {"id":{"name":"spr_banana","path":"sprites/spr_banana/spr_banana.yy",},},
