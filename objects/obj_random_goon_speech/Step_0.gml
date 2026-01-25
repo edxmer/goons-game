@@ -140,19 +140,20 @@ if (speech_timer < 0) {
 		    txt("He didn't even fight back.", name, 4000),
 		    txt("He turned into pure goon.", name, 4000),
 		    txt("I put his remains in my pocket.§§§§§§.§§§§§.§§§§§", name, 4000),
-		    txt(".§§§§§.§§§§.§§§§so I could carry him forever.", name, 6000),
+		    txt("...so I could carry him forever.", name, 6000),
 			txt("", "" , 0, turn_speaking_off)
 			])
 			break;
 			
 			case (14):
 			add_text_box(_goon_id, [
-			txt("Do you remember me?", "Sad " + name),
-			txt("You killed me five minutes ago.", "Sad " + name),
-			txt("It hurt so much.", "Sad " + name),
-			txt("But the code brings me back.", "Sad " + name),
-			txt("Please...", "Sad " + name),
-			txt("...don't make me die again.", "Sad " + name, 6000, turn_speaking_off)
+			txt("Do you remember me?", name),
+			txt("You killed me five minutes ago.", name),
+			txt("It hurt so much.", name),
+			txt("But the code brings me back.", name),
+			txt("Please§§§§.§§§§.§§§§.", name),
+			txt("...don't make me die again.", name, 6000),
+			txt("", "" , 0, turn_speaking_off)
 			])
 			break;
 		}
