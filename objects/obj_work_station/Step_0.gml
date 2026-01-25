@@ -39,3 +39,13 @@ if crafting
 
 
 }
+
+if !selected && point_in_rectangle(mouse_x,mouse_y,bbox_left-10,bbox_top-10,bbox_right+10,bbox_bottom+10)
+{
+	selected=true
+
+}
+else if selected && !point_in_rectangle(mouse_x,mouse_y,bbox_left-10,bbox_top-10,bbox_right+10,bbox_bottom+10)
+{
+	selected=false
+}
