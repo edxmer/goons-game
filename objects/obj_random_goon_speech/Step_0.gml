@@ -14,7 +14,7 @@ if (speech_timer < 0) {
 		
 		var name = "goon"
 		
-		switch (irandom(9)) {
+		switch (irandom(12)) {
 			case (0):
 			add_text_box(_goon_id, [
 			txt("I sometimes think", name),
@@ -99,6 +99,33 @@ if (speech_timer < 0) {
 			add_text_box(_goon_id, [
 			txt("I think,", "Des" + name + "cartes"),
 			txt("oh wait I don't", "Des" + name + "cartes...", 5000),
+			txt("", "" , 0, turn_speaking_off)
+			])
+			break;
+			
+			case (10):
+			add_text_box(_goon_id, [
+			txt("67", "lil " + name),
+			txt("", "" , 0, turn_speaking_off)
+			])
+			break;
+			
+			case (11):
+			add_text_box(_goon_id, [
+			txt("The penguin had a goal", name + " pengu"),
+			txt("The penguin never gave up", name + " pengu"),
+			txt("The penguin left its sole home", name + " pengu"),
+			txt("to pursue his dreams§§§§.§§§§§§.§§§§§§§.", name + " pengu"),
+			txt("I dont dream§§§§§§§§\nI only goon", name + " pengu"),
+			txt("", "" , 0, turn_speaking_off)
+			])
+			break;
+			
+			case (12):
+			add_text_box(_goon_id, [
+			txt("meow meow goon meow goon goon meow", "meow " + name),
+			txt("meow goon meow goon goon meow goon meow", "meow " + name),
+			txt("meowwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww", "meow " + name),
 			txt("", "" , 0, turn_speaking_off)
 			])
 			break;
