@@ -6,7 +6,7 @@ width_base=camera_get_view_width(cam)
 height_base=camera_get_view_height(cam)
 camera_size=1.6
 x=(room_width>>1)-(width_base*0.5*camera_size)
-y=(room_height>>1)-(height_base*0.5*camera_size)
+y=(room_height>>1)-(height_base*0.5)
 camera_speed=3
 
 
