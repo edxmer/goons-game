@@ -3,6 +3,8 @@ spawning=false
 sprite_index=spr_empty
 station_id="empty"
 
+selected=false
+
 crafting_reward_pool=[]
 crafting_input_ids=[]
 
