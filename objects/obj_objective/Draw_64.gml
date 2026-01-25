@@ -9,8 +9,8 @@ shadow_offset = 2
 
 level_text_scale=0.9
 level_text_offset_x = -30
-level_text_offset_y = 90
-level_text_rotation = -2
+level_text_offset_y = 80
+level_text_rotation = -6
 level_shadow_offset = 2
 
 // Draw boxes and items

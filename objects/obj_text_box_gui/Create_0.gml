@@ -1,4 +1,4 @@
-if (global.text_box_gui_active) instance_destroy(self)
+
 global.text_box_gui_active = true
 
 data = []
