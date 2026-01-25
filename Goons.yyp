@@ -102,8 +102,8 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"Act_1_cutscene","path":"rooms/Act_1_cutscene/Act_1_cutscene.yy",},},
     {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"roomId":{"name":"Act_1_cutscene","path":"rooms/Act_1_cutscene/Act_1_cutscene.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
