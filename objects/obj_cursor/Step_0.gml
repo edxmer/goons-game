@@ -1,3 +1,9 @@
+if global.text_box_gui_active
+{
+	exit
+}
+
+
 if mouse_check_button_pressed(mb_left)
 {
 	var goons=0
