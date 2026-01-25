@@ -22,8 +22,8 @@ box_height = 15
 padding = 4
 border_size = 1
 
-self.x = 0
-self.y = 0
+x = follow_id.x + offset_x
+y = follow_id.y + offset_y
 
 top_left_x = x-box_width/2
 top_left_y = y-box_height/2
