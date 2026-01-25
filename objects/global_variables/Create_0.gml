@@ -20,3 +20,4 @@ create_item(10,30,"cigarette")
 
 create_item(100,20,"logs")
 create_item(70,40,"logs")
+
