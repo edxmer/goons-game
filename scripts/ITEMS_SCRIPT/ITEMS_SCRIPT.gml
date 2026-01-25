@@ -10,6 +10,9 @@ function assign_item(item_id){
 	if item_id=="logs"{
 		item_data.texture=spr_logs
 	}
+	else if item_id=="cigarette"{
+		item_data.texture=spr_cigarette
+	}
 	
 	return item_data
 }

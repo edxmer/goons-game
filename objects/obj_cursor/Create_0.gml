@@ -1,0 +1,1 @@
+goons_selected=0
