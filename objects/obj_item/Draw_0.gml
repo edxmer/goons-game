@@ -1,7 +1,7 @@
 depth=-bbox_bottom
 
 if useful{
-depth-=20
+depth-=70
 }
 
 image_xscale=size
