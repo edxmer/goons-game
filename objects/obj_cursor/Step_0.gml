@@ -35,6 +35,7 @@ if mouse_check_button(mb_left) && global.select_mode
 	var gooned=0
 	with(obj_goon){
 		if position_meeting(mouse_x,mouse_y,id) && !gooning{
+			sound_play_category_at("murr",id.x,id.y)
 			gooning=true
 			gooned++
 		}
@@ -50,6 +51,7 @@ if mouse_check_button_released(mb_left) && global.select_mode && goons_selected=
 	if closest_idle!=noone
 	{
 		closest_idle.gooning=true
+			sound_play_category_at("murr",closest_idle.x,closest_idle.y)
 		goon_if_gooning_goto_coords(closest_idle,mouse_x,mouse_y)
 	}
 }
