@@ -2,7 +2,7 @@ depth=-bbox_bottom
 draw_shadow()
 
 if gooning{
-	depth-=20
+	depth-=100
 	gpu_set_fog(true,c_white,0,0)
 	draw_sprite_ext(sprite_index,image_index,x+1,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 	draw_sprite_ext(sprite_index,image_index,x-1,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
