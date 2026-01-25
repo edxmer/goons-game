@@ -33,6 +33,7 @@
   "resources":[
     {"id":{"name":"fnt_body","path":"fonts/fnt_body/fnt_body.yy",},},
     {"id":{"name":"fnt_fancy","path":"fonts/fnt_fancy/fnt_fancy.yy",},},
+    {"id":{"name":"fnt_times_new_roman","path":"fonts/fnt_times_new_roman/fnt_times_new_roman.yy",},},
     {"id":{"name":"geci_object","path":"objects/geci_object/geci_object.yy",},},
     {"id":{"name":"global_variables","path":"objects/global_variables/global_variables.yy",},},
     {"id":{"name":"obj_camera","path":"objects/obj_camera/obj_camera.yy",},},
