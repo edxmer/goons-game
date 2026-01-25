@@ -37,8 +37,13 @@
     {"id":{"name":"obj_text_box_gui","path":"objects/obj_text_box_gui/obj_text_box_gui.yy",},},
     {"id":{"name":"obj_text_box","path":"objects/obj_text_box/obj_text_box.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"id":{"name":"GOONS_SCRIPT","path":"scripts/GOONS_SCRIPT/GOONS_SCRIPT.yy",},},
     {"id":{"name":"ITEMS_SCRIPT","path":"scripts/ITEMS_SCRIPT/ITEMS_SCRIPT.yy",},},
+<<<<<<< HEAD
     {"id":{"name":"TEXT_BOX_SCRIPT","path":"scripts/TEXT_BOX_SCRIPT/TEXT_BOX_SCRIPT.yy",},},
+=======
+    {"id":{"name":"spr_cigarette","path":"sprites/spr_cigarette/spr_cigarette.yy",},},
+>>>>>>> 092a590c6795fcab84a8d5bcafb2f5e4f238896b
     {"id":{"name":"spr_empty","path":"sprites/spr_empty/spr_empty.yy",},},
     {"id":{"name":"spr_goo","path":"sprites/spr_goo/spr_goo.yy",},},
     {"id":{"name":"spr_goon","path":"sprites/spr_goon/spr_goon.yy",},},

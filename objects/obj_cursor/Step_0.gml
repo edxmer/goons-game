@@ -8,6 +8,7 @@ if mouse_check_button_pressed(mb_left)
 	}
 	if goons==0{
 		global.select_mode=true
+		goons_selected=0
 	}
 	else{
 		global.select_mode=false
@@ -30,13 +31,20 @@ if mouse_check_button_pressed(mb_left)
 
 if mouse_check_button(mb_left) && global.select_mode
 {
+	var gooned=0
 	with(obj_goon){
-		if position_meeting(mouse_x,mouse_y,id){
+		if position_meeting(mouse_x,mouse_y,id) && !gooning{
 			gooning=true
+			gooned++
 		}
 	}
+	goons_selected+=gooned
 
 }
 
 
+if mouse_check_button_released(mb_left) && global.select_mode && goons_selected==0
+{
+	
 
+}
