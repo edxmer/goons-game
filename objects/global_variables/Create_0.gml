@@ -7,6 +7,8 @@ global.text_box_gui_active = false
 
 global.objective_list = []
 
+global.reward_level=1
+
 create_work_station(100,100,"trashcan")
 create_work_station(200,100,"woodcutter")
 create_work_station(room_width>>1,room_height>>1,"primordeal_goo")
