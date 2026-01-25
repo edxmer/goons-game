@@ -34,5 +34,8 @@ spawning_time=irandom_range(spawning_timer[0],spawning_timer[1])
 
 summon_item_from_pool=function(item_pool)
 {
-	
+	if !array_length(item_pool)==0
+	{
+		var item=item_pool[irandom_range(0,array_length(item_pool)-1)]
+		create_item(irandom_range(bbox_left-10,bbox_right+10),irandom_range(bbox_bottom,bbox_bottom+10),item)}
 }
