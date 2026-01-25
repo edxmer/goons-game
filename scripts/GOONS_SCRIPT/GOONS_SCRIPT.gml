@@ -1,3 +1,8 @@
+function draw_shadow()
+{
+	draw_sprite_ext(spr_shadow,0,x,bbox_bottom,image_xscale,image_yscale,0,c_white,image_alpha)
+}
+
 function goons_get_closest_idle(xx,yy){
 	var goonslist=[]
 	with(obj_goon)

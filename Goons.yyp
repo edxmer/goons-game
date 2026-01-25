@@ -47,6 +47,7 @@
     {"id":{"name":"spr_goo","path":"sprites/spr_goo/spr_goo.yy",},},
     {"id":{"name":"spr_goon","path":"sprites/spr_goon/spr_goon.yy",},},
     {"id":{"name":"spr_logs","path":"sprites/spr_logs/spr_logs.yy",},},
+    {"id":{"name":"spr_shadow","path":"sprites/spr_shadow/spr_shadow.yy",},},
     {"id":{"name":"tileset_winter","path":"sprites/tileset_winter/tileset_winter.yy",},},
     {"id":{"name":"Tileset_winter_ts","path":"tilesets/Tileset_winter_ts/Tileset_winter_ts.yy",},},
   ],
