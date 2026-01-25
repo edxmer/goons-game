@@ -1,20 +1,14 @@
-// Changeable variables
-speaker_name = "Larry"
-texts = [
-	"Hello there, I'm Larry.",
-	"Larry larry larry larry larry larry larry larry larry larry larry larry larry",
-	"Larry larry larry."
-]
+if (global.text_box_gui_active) instance_destroy(self)
+global.text_box_gui_active = true
+
+data = []
+
+data_id = 0
+text_current = ""
+speaker_current = ""
+text_at = 0
 text_speed = 15
 
-
-// yo chocolate ice cream with chicken soup
-
-
-// Private variables
-text_current = ""
-text_at = 0
-text_id = 0
 
 
 box_width = 500

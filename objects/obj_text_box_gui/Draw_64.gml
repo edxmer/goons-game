@@ -13,7 +13,7 @@ draw_set_valign(fa_top)
 
 // DRAW SPEAKER NAME
 draw_set_font(fnt_fancy)
-draw_text(top_left_x + padding*0.3, top_left_y + padding*0.3, speaker_name)
+draw_text(top_left_x + padding*0.3, top_left_y + padding*0.3, speaker_current)
 
 // DRAW BODY TEXT
 draw_set_font(fnt_body)

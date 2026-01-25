@@ -1,5 +1,5 @@
 
-var _len = string_length(texts[text_id])
+var _len = string_length(data[data_id].text)
 
 
 if (text_at != _len) {
@@ -8,4 +8,5 @@ if (text_at != _len) {
 }
 
 
-text_current = string_copy(texts[text_id], 1, floor(text_at))
+text_current = string_replace_all(string_copy(data[data_id].text, 1, floor(text_at)), "§", "")
+speaker_current = data[data_id].speaker
