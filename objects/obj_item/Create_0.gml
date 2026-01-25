@@ -9,6 +9,10 @@ assign=function(){
 	}
 	var item_data=assign_item(item_id)
 	sprite_index=item_data.texture
+	if sprite_index==spr_empty
+	{
+		instance_destroy()
+	}
 
 }
 
