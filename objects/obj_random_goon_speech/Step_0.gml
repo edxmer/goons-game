@@ -12,9 +12,7 @@ if (speech_timer < 0) {
 		    speaking = false;
 		});
 		
-		var name = "goon"
-		
-		switch (irandom(7)) {
+		switch (irandom(9)) {
 			case (0):
 			add_text_box(_goon_id, [
 			txt("I sometimes think", name),
@@ -61,9 +59,9 @@ if (speech_timer < 0) {
 			
 			case (5):
 			add_text_box(_goon_id, [
-			txt("☐☐☐☐☐ " + name + " ☐☐☐☐☐", "☐☐☐☐☐"),
-			txt("☐☐☐☐☐☐☐☐☐ " + name, "☐☐☐☐☐"),
-			txt("☐☐☐☐☐☐ " + name + "☐☐☐☐☐☐", "☐☐☐☐☐☐"),
+			txt("<div>" + name + "     <div>", name + "-tml"),
+			txt("<div>        " + name + "<div>", name + "-tml"),
+			txt("How do i center this", name + "-tml"),
 			txt("", "" , 0, turn_speaking_off)
 			])
 			break;
@@ -81,6 +79,24 @@ if (speech_timer < 0) {
 			case (7):
 			add_text_box(_goon_id, [
 			txt(name, ""),
+			txt("", "" , 0, turn_speaking_off)
+			])
+			break;
+			
+			case (8):
+			add_text_box(_goon_id, [
+			txt("Invest in GooCoin now", name + " bro"),
+			txt("IT'S GOING TO THE GOOOOON", name + " bro"),
+			txt("GOOCOIN GOOCOIN GOOCOIN GOOCOIN", name + " bro"),
+			txt("oh it went to 0§§§§§§§§§§.§§§§§.§§§§§§.§§§§§§§well there goes my life savings", name + " bro"),
+			txt("", "" , 0, turn_speaking_off)
+			])
+			break;
+			
+			case (9):
+			add_text_box(_goon_id, [
+			txt("I think,", "Des" + name + "cartes"),
+			txt("oh wait I don't", "Des" + name + "cartes...", 5000),
 			txt("", "" , 0, turn_speaking_off)
 			])
 			break;
