@@ -1,6 +1,6 @@
 
-random_min = 25
-random_max = 50
+random_min = 50
+random_max = 70
 
 speech_timer = random_range(random_min, random_max)
 
