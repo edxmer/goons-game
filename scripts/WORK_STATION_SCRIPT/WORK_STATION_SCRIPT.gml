@@ -5,11 +5,15 @@ function workstation_get_all_possible_items()
 	{
 		for(var i=0;i<array_length(spawn_item_pool);i++)
 		{
-			array_push(itemslist,spawn_item_pool[i])
+			if spawn_item_pool[i]!="goon_show" && spawn_item_pool[i]!="reward"{
+				array_push(itemslist,spawn_item_pool[i])
+			}
 		}
 		for(var i=0;i<array_length(crafting_reward_pool);i++)
 		{
-			array_push(itemslist,crafting_reward_pool[i])
+			if crafting_reward_pool[i]!="goon_show" && crafting_reward_pool[i]!="reward"{
+				array_push(itemslist,crafting_reward_pool[i])
+			}
 		}
 	
 	}
@@ -41,7 +45,7 @@ function create_work_station(_x,_y,station_id)
 
 
 function work_station_data_get(station_id){
-	var work_station_data={station_id:"empty",craft_sound:"empty",summon_sound:"empty",texture:spr_empty,spawning:false,crafting:false,craft_input_pool_tags:[],craft_reward_pool:[],spawn_item_pool:[],spawn_timer_sec:[0,0]}
+	var work_station_data={primordeal_goo:false,station_id:"empty",craft_sound:"empty",summon_sound:"empty",texture:spr_empty,spawning:false,crafting:false,craft_input_pool_tags:[],craft_reward_pool:[],spawn_item_pool:[],spawn_timer_sec:[0,0]}
 	work_station_data.station_id=station_id
 	
 	if station_id=="trashcan"
@@ -59,6 +63,23 @@ function work_station_data_get(station_id){
 		work_station_data.craft_sound="woodwork"
 		work_station_data.craft_input_pool_tags=["logs"]
 		work_station_data.craft_reward_pool=["plank"]
+	}
+	else if station_id=="primordeal_goo"
+	{
+		work_station_data.texture=spr_primordial_goo
+		work_station_data.primordeal_goo=true
+		work_station_data.crafting=true
+		work_station_data.craft_sound="eat"
+		work_station_data.craft_input_pool_tags=global.objective_list
+		work_station_data.craft_reward_pool=["reward"]
+	}
+	else if station_id=="goonificator"
+	{
+		work_station_data.texture=spr_goonificator
+		work_station_data.crafting=true
+		work_station_data.craft_sound="murr"
+		work_station_data.craft_input_pool_tags=["goo"]
+		work_station_data.craft_reward_pool=["goon_show"]
 	}
 	
 	return work_station_data

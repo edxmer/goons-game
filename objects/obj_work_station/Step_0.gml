@@ -3,6 +3,10 @@ if !assigned
 	assign()
 }
 
+if primordeal_goo{
+	crafting_input_ids=global.objective_list
+}
+
 if spawning{
 	spawning_time-=delta_time/1000000
 	if spawning_time<=0
