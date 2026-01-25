@@ -43,7 +43,7 @@ if mouse_check_button(mb_left) && global.select_mode
 }
 
 
-if mouse_check_button_released(mb_left) && global.select_mode && goons_selected==0 && global.text_box_gui_active
+if mouse_check_button_released(mb_left) && global.select_mode && goons_selected==0
 {
 	var closest_idle=goons_get_closest_idle(mouse_x,mouse_y)
 	if closest_idle!=noone
