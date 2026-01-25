@@ -13,6 +13,7 @@ if goto_x!=x && goto_y!=y{
 	if point_distance(x,y,goto_x,goto_y)<goon_speed{
 		goto_x=x
 		goto_y=y
+		interact_function()
 	}
 }
 
