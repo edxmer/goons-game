@@ -6,4 +6,4 @@ camera_speed=3
 
 camera_size=1
 
-mouse_go_percent=0.2
+mouse_go_percent=0.25

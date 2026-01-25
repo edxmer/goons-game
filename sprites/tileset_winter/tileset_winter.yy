@@ -2,7 +2,7 @@
   "$GMSprite":"v2",
   "%Name":"tileset_winter",
   "bboxMode":0,
-  "bbox_bottom":63,
+  "bbox_bottom":79,
   "bbox_left":0,
   "bbox_right":63,
   "bbox_top":0,
@@ -16,7 +16,7 @@
   ],
   "gridX":0,
   "gridY":0,
-  "height":64,
+  "height":128,
   "HTile":false,
   "layers":[
     {"$GMImageLayer":"","%Name":"651041e0-2aaa-4be2-812b-2ebc8498f6a4","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"651041e0-2aaa-4be2-812b-2ebc8498f6a4","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
