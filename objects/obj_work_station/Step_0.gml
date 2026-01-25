@@ -8,5 +8,6 @@ if spawning{
 	if spawning_time<=0
 	{
 		set_spawning_timer()
+		summon_item_from_pool(spawn_item_pool)
 	}
 }

@@ -30,7 +30,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_workstation_woodcutter",
+    "path":"sprites/spr_workstation_woodcutter/spr_workstation_woodcutter.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }
