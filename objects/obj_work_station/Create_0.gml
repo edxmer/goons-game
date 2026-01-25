@@ -10,7 +10,7 @@ items_nearby_last=0
 
 spawning_timer=[0,0]
 spawning_time=0
-spawn_item_pool=["empty"]
+spawn_item_pool=[]
 
 
 craft_sound="empty"
