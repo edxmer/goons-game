@@ -3,6 +3,9 @@ goon_speed=irandom_range(160,300) /3
 goto_x=x
 goto_y=y
 
+all_distance=0
+
+
 distance_went=0
 step_distance=goon_speed*0.3
 
@@ -84,8 +87,10 @@ workstation_nearby_accepst_my_item =function()
 
 put_down_item=function()
 {
-	create_item(irandom_range(x-5,x+5),irandom_range(y-5,bbox_bottom+3),inventory)
-	inventory="empty"
-	inventory_sprite=spr_empty
-
+	if inventory!="empty"{
+		sound_play_category_at("groundsoft",x,bbox_bottom)
+		create_item(irandom_range(x-5,x+5),irandom_range(y-5,bbox_bottom+3),inventory)
+		inventory="empty"
+		inventory_sprite=spr_empty
+	}
 }

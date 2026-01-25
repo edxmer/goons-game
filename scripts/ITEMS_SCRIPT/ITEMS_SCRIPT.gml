@@ -49,7 +49,7 @@ function pickup_item(px,py,pickup_distance=20)
 	with(obj_item)
 	{
 		var dist=point_distance(x,y,px,py)
-		if dist<=pickup_distance{
+		if dist<=pickup_distance && size>=1{
 			array_push(items,[id,dist,item_id])
 		}
 	}
