@@ -1,6 +1,6 @@
 
-var _arr_len = array_length(texts)
-var _len = string_length(texts[text_id])
+var _arr_len = array_length(data)
+var _len = string_length(data[data_id].text)
 	
 if (text_at < _len) {
 	// IN THE MIDDLE OF SPEECH
@@ -9,10 +9,15 @@ if (text_at < _len) {
 }
 else {
 	// AT END OF SPEECH
-	// skip to next
+	// skip to next, and do the action
+	
+	data[data_id].action()
 	text_current = ""
+	speaker_current = ""
 	text_at = 0
-	text_id++ 
-	if (text_id == _arr_len)
+	data_id++
+	if (data_id >= _arr_len) {
+		global.text_box_gui_active = false
 		instance_destroy(self)
+	}
 }

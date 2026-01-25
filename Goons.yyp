@@ -11,14 +11,16 @@
   "defaultScriptType":1,
   "Folders":[
     {"$GMFolder":"","%Name":"FONTS","folderPath":"folders/FONTS.yy","name":"FONTS","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"TILESET","folderPath":"folders/TILESET.yy","name":"TILESET","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"OBJECTS","folderPath":"folders/OBJECTS.yy","name":"OBJECTS","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"SCRIPTS","folderPath":"folders/SCRIPTS.yy","name":"SCRIPTS","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"SPRITES","folderPath":"folders/SPRITES.yy","name":"SPRITES","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"items","folderPath":"folders/SPRITES/items.yy","name":"items","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"szia edomer","folderPath":"folders/szia edomer.yy","name":"szia edomer","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"TILESET","folderPath":"folders/TILESET.yy","name":"TILESET","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
-  "ForcedPrefabProjectReferences":[],
+  "ForcedPrefabProjectReferences":[
+    {"link":"io.gamemaker.sdfshaders-1.0.0","name":"io.gamemaker.sdfshaders-1.0.0","path":"io.gamemaker.sdfshaders-1.0.0.yyp",},
+  ],
   "IncludedFiles":[],
   "isEcma":false,
   "LibraryEmitters":[],
