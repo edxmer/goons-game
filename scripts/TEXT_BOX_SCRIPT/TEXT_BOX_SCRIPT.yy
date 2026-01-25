@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"TEXT_BOX_SCRIPT",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"TEXT_BOX_SCRIPT",
+  "parent":{
+    "name":"SCRIPTS",
+    "path":"folders/SCRIPTS.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

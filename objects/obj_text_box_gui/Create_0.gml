@@ -20,9 +20,10 @@ text_id = 0
 box_width = 500
 box_height = 200
 padding = 30
-
-self.x = 0
-self.y = 0
+var guiW = display_get_gui_width()
+var guiH = display_get_gui_height()
+self.x = guiW/2
+self.y = guiH/4*3
 
 top_left_x = x-box_width/2
 top_left_y = y-box_height/2
