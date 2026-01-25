@@ -30,7 +30,7 @@ possible_names = [
   "Goonchad", "Sigmagoon", "Goonpilled", "Based Goon", "Cringe Goon", 
   "Sussy Goon", "Goonus", "Goongus", "Goonjak", "Goonmaxxer", 
   "Rizzgoon", "Skibidi Goon", "Gyatt Goon", "Fanum Goon", "Ohio Goon", 
-  "Mewing Goon", "Yapping Goon", "Goonwich", "Macaroon Goon", "Goonana","Goon 2","Jorjor Well"
+  "Mewing Goon", "Yapping Goon", "Goonwich", "Macaroon Goon", "Goonana","Goon 2","Jorjor Well","Goon #402"
 ]
 name = possible_names[irandom(array_length(possible_names)-1)]
 
