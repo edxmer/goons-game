@@ -1,3 +1,10 @@
+function draw_workstation(_x,_y,station_id,scale)
+{
+	var sprite=work_station_data_get(station_id).texture
+	draw_sprite_ext(sprite,0,_x,_y,scale,scale,0,c_white,1)
+
+}
+
 function workstation_get_all_possible_items()
 {
 	var itemslist=[]
