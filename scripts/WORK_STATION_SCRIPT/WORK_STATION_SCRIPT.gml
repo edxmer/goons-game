@@ -1,3 +1,37 @@
+function workstation_get_all_possible_items()
+{
+	var itemslist=[]
+	with(obj_work_station)
+	{
+		for(var i=0;i<array_length(spawn_item_pool);i++)
+		{
+			array_push(itemslist,spawn_item_pool[i])
+		}
+		for(var i=0;i<array_length(crafting_reward_pool);i++)
+		{
+			array_push(itemslist,crafting_reward_pool[i])
+		}
+	
+	}
+	return itemslist
+}
+
+
+
+function get_all_possible_items()
+{
+	var itemslist=workstation_get_all_possible_items()
+	with (obj_item)
+	{
+		array_push(itemslist,item_id)
+	}
+
+
+	return itemslist
+
+}
+
+
 function create_work_station(_x,_y,station_id)
 {
 	var station =instance_create_layer(_x,_y,layer,obj_work_station)
@@ -7,13 +41,14 @@ function create_work_station(_x,_y,station_id)
 
 
 function work_station_data_get(station_id){
-	var work_station_data={station_id:"empty",texture:spr_empty,spawning:false,crafting:false,craft_input_pool_tags:[],craft_reward_pool:[],spawn_item_pool:[],spawn_timer_sec:[0,0]}
+	var work_station_data={station_id:"empty",craft_sound:"empty",summon_sound:"empty",texture:spr_empty,spawning:false,crafting:false,craft_input_pool_tags:[],craft_reward_pool:[],spawn_item_pool:[],spawn_timer_sec:[0,0]}
 	work_station_data.station_id=station_id
 	
 	if station_id=="trashcan"
 	{
 		work_station_data.texture=spr_workstation_trashbin
 		work_station_data.spawning=true
+		work_station_data.summon_sound="groundsoft"
 		work_station_data.spawn_item_pool=["banana","sock"]
 		work_station_data.spawn_timer_sec=[10,20]
 	}
@@ -21,6 +56,7 @@ function work_station_data_get(station_id){
 	{
 		work_station_data.texture=spr_workstation_woodcutter
 		work_station_data.crafting=true
+		work_station_data.craft_sound="woodwork"
 		work_station_data.craft_input_pool_tags=["logs"]
 		work_station_data.craft_reward_pool=["plank"]
 	}

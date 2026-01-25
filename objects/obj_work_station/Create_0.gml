@@ -12,17 +12,25 @@ spawning_timer=[0,0]
 spawning_time=0
 spawn_item_pool=["empty"]
 
+
+craft_sound="empty"
+summon_sound="empty"
+	
 assigned=false
 
 assign=function()
 {
 	assigned=true
 	var station_data=work_station_data_get(station_id)
-	show_message(station_data)
+
 	sprite_index=station_data.texture
 	
 	crafting=station_data.crafting
 	spawning=station_data.spawning
+	
+	craft_sound=station_data.craft_sound
+	summon_sound=station_data.summon_sound
+	
 	spawning_timer=station_data.spawn_timer_sec
 	spawn_item_pool=station_data.spawn_item_pool
 	

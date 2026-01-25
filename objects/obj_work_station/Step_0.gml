@@ -8,6 +8,7 @@ if spawning{
 	if spawning_time<=0
 	{
 		set_spawning_timer()
+		sound_play_category_at(summon_sound,x,y)
 		summon_item_from_pool(spawn_item_pool)
 	}
 }
@@ -25,7 +26,7 @@ if crafting
 				var cur_item=crafting_input_ids[i]
 				item_destroy_nearby(cur_item)
 			}
-			
+			sound_play_category_at(craft_sound,x,y)
 			summon_item_from_pool(crafting_reward_pool)
 			
 		
