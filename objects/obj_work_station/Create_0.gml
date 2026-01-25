@@ -6,6 +6,8 @@ station_id="empty"
 crafting_reward_pool=[]
 crafting_input_ids=[]
 
+items_nearby_last=0
+
 spawning_timer=[0,0]
 spawning_time=0
 spawn_item_pool=["empty"]
@@ -16,14 +18,17 @@ assign=function()
 {
 	assigned=true
 	var station_data=work_station_data_get(station_id)
+	show_message(station_data)
+	sprite_index=station_data.texture
+	
 	crafting=station_data.crafting
 	spawning=station_data.spawning
-	spawning_timer=station_data.spawning_timer
+	spawning_timer=station_data.spawn_timer_sec
 	spawn_item_pool=station_data.spawn_item_pool
 	
 
-	crafting_reward_pool=station_data.crafting_reward_pool
-	crafting_input_ids=station_data.crafting_input_tags
+	crafting_reward_pool=station_data.craft_reward_pool
+	crafting_input_ids=station_data.craft_input_pool_tags
 
 	set_spawning_timer()
 }
@@ -44,16 +49,36 @@ summon_item_from_pool=function(item_pool)
 
 
 get_nearby_item_ids=function(){
-var x_min=bbox_left-10
-var x_max=bbox_right+10
-var y_min=bbox_top-10
-var y_max=bbox_bottom+10
-var nearby_items=[]
-with (obj_item){
-	if point_in_rectangle(x,y,x_min,y_min,x_max,y_max)
-	{
-		array_push(nearby_items,item_id)
+	var x_min=bbox_left-10
+	var x_max=bbox_right+10
+	var y_min=bbox_top-10
+	var y_max=bbox_bottom+10
+	var nearby_items=[]
+	with (obj_item){
+		if point_in_rectangle(x,y,x_min,y_min,x_max,y_max)
+		{
+			array_push(nearby_items,item_id)
+		}
 	}
+	return nearby_items
 }
-return nearby_items
+
+item_destroy_nearby=function(item_id_delete)
+{
+	var x_min=bbox_left-10
+	var x_max=bbox_right+10
+	var y_min=bbox_top-10
+	var y_max=bbox_bottom+10
+	var deleted=false
+	with (obj_item){
+		if point_in_rectangle(x,y,x_min,y_min,x_max,y_max)
+		{
+			if !deleted && item_id_delete==item_id
+			{
+				deleted=true
+				instance_destroy()
+			}
+		}
+	}
+
 }

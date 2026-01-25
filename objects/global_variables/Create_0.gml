@@ -5,6 +5,10 @@ global.goo_count = 0
 
 global.text_box_gui_active = false
 
+create_work_station(100,100,"trashcan")
+create_work_station(200,100,"woodcutter")
+
+
 items_scatter_start_of_game(["logs"],5)
 items_scatter_start_of_game(["rock"],4)
 items_scatter_start_of_game(["banana","sock","logs","logs","rock","rock","cigarette"],16)
