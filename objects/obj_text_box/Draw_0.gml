@@ -1,4 +1,4 @@
-depth=-room_width-20
+
 
 draw_set_color(c_white)
 draw_rectangle(top_left_x-border_size, top_left_y-border_size, bot_right_x+border_size, bot_right_y+border_size, false)

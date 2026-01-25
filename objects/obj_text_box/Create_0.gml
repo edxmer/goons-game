@@ -24,3 +24,8 @@ border_size = 1
 
 self.x = 0
 self.y = 0
+
+top_left_x = x-box_width/2
+top_left_y = y-box_height/2
+bot_right_x = x+box_width/2
+bot_right_y = y+box_height/2

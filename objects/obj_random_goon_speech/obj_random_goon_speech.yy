@@ -1,12 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"obj_TEST_text_box",
+  "%Name":"obj_random_goon_speech",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_TEST_text_box",
+  "name":"obj_random_goon_speech",
   "overriddenProperties":[],
   "parent":{
     "name":"OBJECTS",

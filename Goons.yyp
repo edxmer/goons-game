@@ -37,7 +37,7 @@
     {"id":{"name":"obj_cursor","path":"objects/obj_cursor/obj_cursor.yy",},},
     {"id":{"name":"obj_goon","path":"objects/obj_goon/obj_goon.yy",},},
     {"id":{"name":"obj_item","path":"objects/obj_item/obj_item.yy",},},
-    {"id":{"name":"obj_TEST_text_box","path":"objects/obj_TEST_text_box/obj_TEST_text_box.yy",},},
+    {"id":{"name":"obj_random_goon_speech","path":"objects/obj_random_goon_speech/obj_random_goon_speech.yy",},},
     {"id":{"name":"obj_text_box_gui","path":"objects/obj_text_box_gui/obj_text_box_gui.yy",},},
     {"id":{"name":"obj_text_box","path":"objects/obj_text_box/obj_text_box.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
