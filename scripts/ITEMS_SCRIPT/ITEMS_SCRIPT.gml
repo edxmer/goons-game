@@ -1,3 +1,11 @@
+function draw_item(_x,_y,item_id,scale)
+{
+	var sprite=assign_item(item_id).texture
+	draw_sprite_ext(sprite,0,_x,_y,scale,scale,0,c_white,1)
+
+}
+
+
 function create_item(_x,_y,item_id)
 {
 	var item=instance_create_layer(_x,_y,layer,obj_item)
@@ -5,22 +13,30 @@ function create_item(_x,_y,item_id)
 }
 
 function assign_item(item_id){
-	var item_data={texture:spr_empty,item_id:"empty"}
+	var item_data={texture:spr_empty,item_id:"empty",tags:[]}
 	item_data.item_id=item_id
+	array_push(item_data.tags,item_id)
 	if item_id=="logs"{
 		item_data.texture=spr_logs
+	array_push(item_data.tags,"wood")
+	}if item_id=="plank"{
+		item_data.texture=spr_plank
+	array_push(item_data.tags,"wood")
 	}
 	else if item_id=="cigarette"{
 		item_data.texture=spr_cigarette
 	}
 	else if item_id=="rock"{
 		item_data.texture=spr_rock
+		array_push(item_data.tags,"stone")
 	}
 	else if item_id=="banana"{
 		item_data.texture=spr_banana
+		array_push(item_data.tags,"trash")
 	}
 	else if item_id=="sock"{
 		item_data.texture=spr_sock
+		array_push(item_data.tags,"trash")
 	}
 	
 	return item_data

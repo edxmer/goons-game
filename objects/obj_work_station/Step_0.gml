@@ -11,3 +11,11 @@ if spawning{
 		summon_item_from_pool(spawn_item_pool)
 	}
 }
+
+if crafting
+{
+	
+
+
+
+}
