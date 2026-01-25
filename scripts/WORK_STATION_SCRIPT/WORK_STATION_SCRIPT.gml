@@ -28,38 +28,35 @@ function work_station_data_get(station_id){
 	return work_station_data
 }
 
-function list_contains_sublist(bigList, subList)
+function list_contains_sublist(bigArray, subArray)
 {
-var countMap = ds_map_create();
+    if (array_length(subArray) == 0) return true;
 
-    // Count elements in big list
-    for (var i = 0; i < ds_list_size(bigList); i++)
+    var countMap = ds_map_create();
+    var nBig = array_length(bigArray);
+    for (var i = 0; i < nBig; ++i)
     {
-        var v = ds_list_find_value(bigList, i);
-        
+        var v = bigArray[i];
         if (ds_map_exists(countMap, v))
             countMap[? v] += 1;
         else
-            countMap[? v] = 1;
+            ds_map_add(countMap, v, 1);
     }
 
-    // Subtract required elements
-    for (var j = 0; j < ds_list_size(subList); j++)
+    var nSub = array_length(subArray);
+    for (var j = 0; j < nSub; ++j)
     {
-        var v = ds_list_find_value(subList, j);
-
-        if (!ds_map_exists(countMap, v) || countMap[? v] <= 0)
+        var w = subArray[j];
+        if (!ds_map_exists(countMap, w) || countMap[? w] <= 0)
         {
             ds_map_destroy(countMap);
             return false;
         }
-
-        countMap[? v] -= 1;
+        countMap[? w] -= 1;
     }
 
     ds_map_destroy(countMap);
     return true;
 }
-
 
 

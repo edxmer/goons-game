@@ -8,7 +8,7 @@ function draw_item(_x,_y,item_id,scale)
 
 function create_item(_x,_y,item_id)
 {
-	var item=instance_create_layer(_x,_y,layer,obj_item)
+	var item=instance_create_depth(_x,_y,depth,obj_item)
 	item.item_id=item_id
 }
 

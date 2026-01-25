@@ -43,5 +43,49 @@ interact_function=function()
 			sound_play_category_at("pickup",x,y)
 		}
 	}
+	else {
+		if workstation_nearby_accepst_my_item()
+		{
+			put_down_item()
+		}
 	
+	}
+	
+}
+
+
+workstation_nearby_accepst_my_item =function()
+{
+	var _x=x
+	var _y=y
+	var item=inventory
+	with(obj_work_station)
+	{
+		var x_min=bbox_left-20
+		var x_max=bbox_right+20
+		var y_min=bbox_top-10
+		var y_max=bbox_bottom+20
+		if point_in_rectangle(_x,_y,x_min,y_min,x_max,y_max)
+		{
+			if array_contains(crafting_input_ids,item)
+			{
+				return true
+			}
+		
+		}
+	
+	}
+	return false
+
+
+
+}
+
+
+put_down_item=function()
+{
+	create_item(irandom_range(x-5,x+5),irandom_range(y-5,bbox_bottom+3),inventory)
+	inventory="empty"
+	inventory_sprite=spr_empty
+
 }
