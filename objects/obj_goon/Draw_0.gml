@@ -10,3 +10,7 @@ draw_sprite_ext(sprite_index,image_index,x,y-1,image_xscale,image_yscale,image_a
 gpu_set_fog(false,c_white,0,0)
 }
 draw_self()
+
+if inventory!="empty"{
+draw_sprite_ext(inventory_sprite,0,x,y+12,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+}
