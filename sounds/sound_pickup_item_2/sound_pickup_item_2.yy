@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"sound_footstep_snow_1",
+  "%Name":"sound_pickup_item_2",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.54126984,
+  "duration":0.36818594,
   "exportDir":"",
-  "name":"sound_footstep_snow_1",
+  "name":"sound_pickup_item_2",
   "parent":{
     "name":"SOUNDS",
     "path":"folders/SOUNDS.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sound_footstep_snow_1.mp3",
-  "volume":0.24,
+  "soundFile":"sound_pickup_item_2.mp3",
+  "volume":1.0,
 }

@@ -22,5 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"sound_footstep_snow_2.mp3",
-  "volume":0.42,
+  "volume":0.24,
 }
