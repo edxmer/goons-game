@@ -26,6 +26,6 @@ if (show_goon) {
 		goon_alpha += delta_time*0.000001
 	var _gx = gui_w/2
 	var _gy = gui_h/3
-	draw_sprite_ext(spr_goon, 0, _gx, _gy, 3, 3, 0, c_white, goon_alpha)
+	draw_sprite_ext(spr_goon, 0, _gx, _gy, 6, 6, 0, c_white, goon_alpha)
 	
 }
