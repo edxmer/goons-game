@@ -8,7 +8,8 @@ function get_sound_all()
 		woodwork:[sound_wood_work],
 		stonework:[sound_stone_work_1,sound_stone_work_2],
 		groundsoft:[sound_item_ground_1,sound_item_ground_2],
-		swoosh:[sound_whoosh]
+		swoosh:[sound_whoosh],
+		eat:[sound_eat_1,sound_eat_2]
 
 	}
 

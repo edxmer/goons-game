@@ -1,5 +1,7 @@
 crafting=false
 spawning=false
+primordeal_goo=false
+
 sprite_index=spr_empty
 station_id="empty"
 
@@ -29,6 +31,7 @@ assign=function()
 	
 	crafting=station_data.crafting
 	spawning=station_data.spawning
+	primordeal_goo=station_data.primordeal_goo
 	
 	craft_sound=station_data.craft_sound
 	summon_sound=station_data.summon_sound
