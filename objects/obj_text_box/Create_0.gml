@@ -1,30 +1,26 @@
-// Changeable variables
-speaker_name = "Larry"
-texts = [
-	"Hello there, I'm Larry.",
-	"Larry larry larry larry larry larry larry larry larry larry larry larry larry",
-	"Larry larry larry."
-]
+depth=-room_width-20
+
+data = []
+follow_id = self
+offset_x = 0
+offset_y = 0
+scale_speaker = 0.2
+scale_text = 0.12
+
+data_id = 0
+text_current = ""
+speaker_current = ""
+text_at = 0
 text_speed = 15
 
-
-// yo chocolate ice cream with chicken soup
-
-
-// Private variables
-text_current = ""
-text_at = 0
-text_id = 0
+waiting = false
+timer_start = 0
 
 
-box_width = 500
-box_height = 200
-padding = 30
+box_width = 40
+box_height = 15
+padding = 4
+border_size = 1
 
 self.x = 0
 self.y = 0
-
-top_left_x = x-box_width/2
-top_left_y = y-box_height/2
-bot_right_x = x+box_width/2
-bot_right_y = y+box_height/2

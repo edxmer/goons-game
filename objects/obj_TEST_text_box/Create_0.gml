@@ -1,5 +1,6 @@
-add_text_box_gui([
-	txtg("At first, there was nothing.", "???"),
-	txtg("Then, there was something.", "???"),
-	txtg("The Primoridal Goo", "???"),
+add_text_box(self,
+[
+	txt("At first, there was nothing.", "???"),
+	txt("Then, there was something.", "???"),
+	txt("The Primoridal Goo", "???"),
 ])
