@@ -5,6 +5,8 @@ global.goo_count = 0
 
 global.text_box_gui_active = false
 
+global.objective_list = []
+
 create_work_station(100,100,"trashcan")
 create_work_station(200,100,"woodcutter")
 
