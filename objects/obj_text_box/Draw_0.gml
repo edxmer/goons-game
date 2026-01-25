@@ -14,8 +14,8 @@ draw_set_valign(fa_top)
 
 
 // DRAW SPEAKER NAME
-draw_set_font(fnt_fancy)
-draw_text_transformed(top_left_x + padding*0.2, top_left_y + padding*0.2, speaker_current, scale_speaker, scale_speaker, 0)
+draw_set_font(fnt_times_new_roman)
+draw_text_transformed(top_left_x + padding*0.2, top_left_y, speaker_current, scale_speaker, scale_speaker, 0)
 
 
 // DRAW BODY TEXT

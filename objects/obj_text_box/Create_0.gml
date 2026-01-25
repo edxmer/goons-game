@@ -4,7 +4,7 @@ data = []
 follow_id = self
 offset_x = 0
 offset_y = 0
-scale_speaker = 0.2
+scale_speaker = 0.08
 scale_text = 0.12
 
 data_id = 0

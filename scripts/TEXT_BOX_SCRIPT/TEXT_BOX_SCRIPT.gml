@@ -19,7 +19,7 @@ function add_text_box(_id, data=[txt()], offset_x=0, offset_y=-20) {
 
 function do_nothing() {}
 
-function txt(text="Emptiness..", speaker="Void", lifetime=4000, action=do_nothing) {
+function txt(text="Emptiness..", speaker="Void", lifetime=3000, action=do_nothing) {
 	return {
 		text: text,
 		speaker: speaker,

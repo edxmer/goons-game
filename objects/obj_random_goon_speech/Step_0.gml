@@ -12,26 +12,76 @@ if (speech_timer < 0) {
 		    speaking = false;
 		});
 		
-		switch (irandom(2)) {
+		var name = "goon"
+		
+		switch (irandom(7)) {
 			case (0):
 			add_text_box(_goon_id, [
-			txt("I sometimes think", "goon"),
+			txt("I sometimes think", name),
 			txt("Then I forgor", "?"),
-			txt("But then I goon", "goon", 5000, turn_speaking_off)
+			txt("But then I goon", name, 5000),
+			txt("", "" , 0, turn_speaking_off)
 			])
 			break;
 			
 			case (1):
 			add_text_box(_goon_id, [
-			txt("Watashi wa", "goon-chan"),
-			txt("goon-chan desu", "goon-chan", 5000, turn_speaking_off)
+			txt("Watashi wa", name + "-chan"),
+			txt("goon-chan desu", name + "-chan", 5000),
+			txt("", "" , 0, turn_speaking_off)
 			])
 			break;
 			
 			case (2):
 			add_text_box(_goon_id, [
-			txt("I think,", "Desgooncartes"),
-			txt("Therefore I goon.", "Desgooncartes", 5000, turn_speaking_off)
+			txt("I think,", "Des" + name + "cartes"),
+			txt("Therefore I goon.", "Des" + name + "cartes", 5000),
+			txt("", "" , 0, turn_speaking_off)
+			])
+			break;
+			
+			case (3):
+			add_text_box(_goon_id, [
+			txt("g", name, 1000),
+			txt("o", name, 1000),
+			txt("o", name, 1000),
+			txt("n", name, 1000),
+			txt("", "" , 0, turn_speaking_off)
+			])
+			break;
+			
+			case (4):
+			add_text_box(_goon_id, [
+			txt("Rise and goon.", "Alpha " + name),
+			txt("BECAUSE WHOSE GONNA CARRY THE GOONS, SON?", "Alpha " + name),
+			txt("I'm on that Groind.", "Alpha " + name, 5000),
+			txt("", "" , 0, turn_speaking_off)
+			])
+			break;
+			
+			case (5):
+			add_text_box(_goon_id, [
+			txt("☐☐☐☐☐ " + name + " ☐☐☐☐☐", "☐☐☐☐☐"),
+			txt("☐☐☐☐☐☐☐☐☐ " + name, "☐☐☐☐☐"),
+			txt("☐☐☐☐☐☐ " + name + "☐☐☐☐☐☐", "☐☐☐☐☐☐"),
+			txt("", "" , 0, turn_speaking_off)
+			])
+			break;
+			
+			case (6):
+			add_text_box(_goon_id, [
+			txt("E equals", "Albert " + name),
+			txt("Goon-c squared", "Albert " + name),
+			txt("This is the pinnacle of science", "Albert " + name),
+			txt("The theory of goontivity.", "Albert " + name),
+			txt("", "" , 0, turn_speaking_off)
+			])
+			break;
+			
+			case (7):
+			add_text_box(_goon_id, [
+			txt(name, ""),
+			txt("", "" , 0, turn_speaking_off)
 			])
 			break;
 		}
