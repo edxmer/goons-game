@@ -3,12 +3,16 @@
   "%Name":"Tileset_winter_ts",
   "autoTileSets":[],
   "macroPageTiles":{
-    "SerialiseHeight":0,
-    "SerialiseWidth":0,
-    "TileSerialiseData":[],
+    "SerialiseHeight":15,
+    "SerialiseWidth":17,
+    "TileCompressedData":[
+      -88,0,9,15,11,0,0,15,13,11,0,0,-3,9,-5,0,9,1,2,0,0,10,3,8,0,0,-3,9,-9,0,5,1,5,2,0,0,-3,9,-73,0,-2,9,
+      -2,0,-2,9,8,10,0,8,9,9,0,5,5,-3,0,-2,9,-2,0,-2,9,8,10,0,8,9,9,0,9,9,-3,0,-2,13,-10,0,-2,9,
+    ],
+    "TileDataFormat":1,
   },
   "name":"Tileset_winter_ts",
-  "out_columns":4,
+  "out_columns":6,
   "out_tilehborder":2,
   "out_tilevborder":2,
   "parent":{
@@ -34,5 +38,5 @@
   "tileWidth":16,
   "tilexoff":0,
   "tileyoff":0,
-  "tile_count":16,
+  "tile_count":32,
 }
