@@ -9,6 +9,8 @@ global.objective_list = []
 
 global.reward_level=1
 
+global.reward_mode=false
+
 create_work_station((room_width>>1)+400,(room_height>>1)+200,"trashcan")
 create_work_station((room_width>>1)-300,(room_height>>1)-200,"woodcutter")
 create_work_station(room_width>>1,room_height>>1,"primordeal_goo")
