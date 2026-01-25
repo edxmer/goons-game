@@ -4,7 +4,7 @@ sprite_index=spr_empty
 station_id="empty"
 
 crafting_reward_pool=[]
-crafting_input_tags=[]
+crafting_input_ids=[]
 
 spawning_timer=[0,0]
 spawning_time=0
@@ -23,11 +23,8 @@ assign=function()
 	
 
 	crafting_reward_pool=station_data.crafting_reward_pool
-	crafting_input_tags=station_data.crafting_input_tags
+	crafting_input_ids=station_data.crafting_input_tags
 
-	
-	
-	
 	set_spawning_timer()
 }
 
@@ -43,4 +40,20 @@ summon_item_from_pool=function(item_pool)
 	{
 		var item=item_pool[irandom_range(0,array_length(item_pool)-1)]
 		create_item(irandom_range(bbox_left-10,bbox_right+10),irandom_range(bbox_bottom,bbox_bottom+10),item)}
+}
+
+
+get_nearby_item_ids=function(){
+var x_min=bbox_left-10
+var x_max=bbox_right+10
+var y_min=bbox_top-10
+var y_max=bbox_bottom+10
+var nearby_items=[]
+with (obj_item){
+	if point_in_rectangle(x,y,x_min,y_min,x_max,y_max)
+	{
+		array_push(nearby_items,item_id)
+	}
+}
+return nearby_items
 }
