@@ -1,6 +1,8 @@
 
 level = global.reward_level
 
+second_happened=false
+
 currently_held_items = []
 
 possible_items = []
@@ -21,6 +23,7 @@ num_of_items_to_get = function(){
 }
 
 generate_objective_items = function() {
+	possible_items = workstation_get_all_possible_items()
 	var _arr_len = num_of_items_to_get()
 	var _p_arr_len = array_length(possible_items)
 	global.objective_list = []
