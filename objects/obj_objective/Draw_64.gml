@@ -19,7 +19,7 @@ for (var i=0; i<_arr_len; i++) {
 	
 	var _sprite_x = x+_x_offset+50
 	var _sprite_y = y+58
-	draw_sprite_ext(spr_outline, 0,_sprite_x, _sprite_y, 4.5, 4.5, 0, c_white, 1)
+	draw_sprite_ext(spr_outline, 3,_sprite_x, _sprite_y, 4.5, 4.5, 0, c_white, 1)
 	/*
 	draw_set_color(c_white)
 	draw_rectangle(x+_x_offset, y, x+width+_x_offset, y+height, false)
