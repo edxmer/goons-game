@@ -84,6 +84,7 @@
     {"id":{"name":"sound_typing","path":"sounds/sound_typing/sound_typing.yy",},},
     {"id":{"name":"sound_whoosh","path":"sounds/sound_whoosh/sound_whoosh.yy",},},
     {"id":{"name":"sound_wood_work","path":"sounds/sound_wood_work/sound_wood_work.yy",},},
+    {"id":{"name":"cover","path":"sprites/cover/cover.yy",},},
     {"id":{"name":"spr_arrow_down","path":"sprites/spr_arrow_down/spr_arrow_down.yy",},},
     {"id":{"name":"spr_banana","path":"sprites/spr_banana/spr_banana.yy",},},
     {"id":{"name":"spr_button","path":"sprites/spr_button/spr_button.yy",},},

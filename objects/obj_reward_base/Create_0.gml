@@ -13,7 +13,6 @@ if global.reward_level>7
 	array_push(lootpool,["workstation","cigs"])
 	array_push(lootpool,["item","goon_blue"])
 	array_push(lootpool,["item","goo"])
-	array_push(lootpool,["item","goo"])
 }
 if global.reward_level>10
 {
