@@ -23,6 +23,9 @@ function assign_item(item_id){
 		item_data.texture=spr_plank
 	array_push(item_data.tags,"wood")
 	}
+	if item_id=="lamp"{
+		item_data.texture=spr_lamp
+	}
 	else if item_id=="cigarette"{
 		item_data.texture=spr_cigarette
 	}

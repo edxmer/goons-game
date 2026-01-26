@@ -71,6 +71,30 @@ function work_station_data_get(station_id){
 		work_station_data.craft_input_pool_tags=["logs"]
 		work_station_data.craft_reward_pool=["plank"]
 	}
+	else if station_id=="nightstand"
+	{
+		work_station_data.texture=spr_workstation_nightstand
+		work_station_data.crafting=true
+		work_station_data.craft_sound="woodwork"
+		work_station_data.craft_input_pool_tags=["logs","rock","sock"]
+		work_station_data.craft_reward_pool=["plank"]
+	}
+		else if station_id=="tree"
+	{
+		work_station_data.texture=spr_workstation_tree
+		work_station_data.spawning=true
+		work_station_data.summon_sound="groundsoft"
+		work_station_data.spawn_item_pool=["logs"]
+		work_station_data.spawn_timer_sec=[20,40]
+	}
+		else if station_id=="sign"
+	{
+		work_station_data.texture=spr_workstation_construction
+		work_station_data.spawning=true
+		work_station_data.summon_sound="groundsoft"
+		work_station_data.spawn_item_pool=["rock"]
+		work_station_data.spawn_timer_sec=[20,30]
+	}
 	else if station_id=="primordeal_goo"
 	{
 		work_station_data.texture=spr_primordial_goo

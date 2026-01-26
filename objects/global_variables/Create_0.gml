@@ -12,6 +12,8 @@ global.reward_level=1
 global.reward_mode=false
 
 create_work_station((room_width>>1)+400,(room_height>>1)+200,"trashcan")
+create_work_station((room_width>>1)+500,300,"tree")
+create_work_station((room_width>>1)-500,room_height-300,"sign")
 create_work_station((room_width>>1)-300,(room_height>>1)-200,"woodcutter")
 create_work_station(room_width>>1,room_height>>1,"primordeal_goo")
 create_work_station((room_width>>1)+200,(room_height>>1)+irandom_range(-40,40),"goonificator")
