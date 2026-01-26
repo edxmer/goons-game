@@ -62,10 +62,10 @@ summon_item_from_pool=function(item_pool)
 
 
 get_nearby_item_ids=function(){
-	var x_min=bbox_left-30
-	var x_max=bbox_right+30
-	var y_min=bbox_top-10
-	var y_max=bbox_bottom+40
+	var x_min=bbox_left-40
+	var x_max=bbox_right+40
+	var y_min=bbox_top-30
+	var y_max=bbox_bottom+50
 	var nearby_items=[]
 	with (obj_item){
 		if point_in_rectangle(x,y,x_min,y_min,x_max,y_max)
@@ -78,10 +78,10 @@ get_nearby_item_ids=function(){
 
 item_destroy_nearby=function(item_id_delete)
 {
-	var x_min=bbox_left-30
-	var x_max=bbox_right+30
-	var y_min=bbox_top-10
-	var y_max=bbox_bottom+40
+	var x_min=bbox_left-40
+	var x_max=bbox_right+40
+	var y_min=bbox_top-30
+	var y_max=bbox_bottom+50
 	var deleted=false
 	with (obj_item){
 		if point_in_rectangle(x,y,x_min,y_min,x_max,y_max)

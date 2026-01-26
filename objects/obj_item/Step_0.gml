@@ -15,3 +15,9 @@ if item_id="goon_show" && size>=0.95
 	instance_create_depth(x,y,depth,obj_goon)
 	instance_destroy()
 }
+
+if item_id="reward" && size>=0.95
+{
+	instance_create_depth(x,y,depth,obj_reward_base)
+	instance_destroy()
+}

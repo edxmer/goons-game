@@ -1,11 +1,12 @@
 function draw_item_outlined(item_id,_x,_y,outline_id,size=1){
-	draw_sprite_ext(spr_outline,outline_id,_x,_y,1.5,1.5,0,c_white,0.8)
+	draw_sprite_ext(spr_outline,outline_id,_x,_y,1.5*size,1.5*size,0,c_white,0.8)
 	draw_item(_x,_y,item_id,1.5*size)
 }
 
 function draw_workstation_outlined(work_station,_x,_y,outline_id,size=1){
+
 	draw_sprite_ext(spr_outline,outline_id,_x,_y,1.5*size,1.5*size,0,c_white,0.8)
-	draw_item(_x,_y,work_station,0.75*size)
+	draw_workstation(_x,_y,work_station,0.75*size)
 }
 
 function draw_craft_arrow(_x,_y){
