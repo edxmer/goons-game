@@ -9,11 +9,11 @@ if mouse_wheel_down(){
 	var x_zoom=clamp((mouse_x-x)/width,0,1)
 	var y_zoom=clamp((mouse_y-y)/height,0,1)
 	
-	if camera_size<=3.4{
+	if camera_size<=3{
 		x+=x_zoom*width_base*old_size-x_zoom*width_base*camera_size
 		y+=y_zoom*height_base*old_size-y_zoom*height_base*camera_size
 	}
-	camera_size=clamp(camera_size,0.4,3.4)
+	camera_size=clamp(camera_size,0.4,3)
 	camera_set_view_size(cam,width_base*camera_size,height_base*camera_size)
 }
 
@@ -31,7 +31,7 @@ else if mouse_wheel_up(){
 		x+=x_zoom*width_base*old_size-x_zoom*width_base*camera_size
 		y+=y_zoom*height_base*old_size-y_zoom*height_base*camera_size
 	}
-	camera_size=clamp(camera_size,0.5,3.4)
+	camera_size=clamp(camera_size,0.5,3)
 	camera_set_view_size(cam,width_base*camera_size,height_base*camera_size)
 }
 
