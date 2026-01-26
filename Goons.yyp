@@ -40,6 +40,9 @@
     {"id":{"name":"global_variables_small","path":"objects/global_variables_small/global_variables_small.yy",},},
     {"id":{"name":"global_variables","path":"objects/global_variables/global_variables.yy",},},
     {"id":{"name":"obj_act_1_cutscene","path":"objects/obj_act_1_cutscene/obj_act_1_cutscene.yy",},},
+    {"id":{"name":"obj_button_exit","path":"objects/obj_button_exit/obj_button_exit.yy",},},
+    {"id":{"name":"obj_button_parent","path":"objects/obj_button_parent/obj_button_parent.yy",},},
+    {"id":{"name":"obj_button_start","path":"objects/obj_button_start/obj_button_start.yy",},},
     {"id":{"name":"obj_camera","path":"objects/obj_camera/obj_camera.yy",},},
     {"id":{"name":"obj_cursor","path":"objects/obj_cursor/obj_cursor.yy",},},
     {"id":{"name":"obj_goon","path":"objects/obj_goon/obj_goon.yy",},},
@@ -53,6 +56,7 @@
     {"id":{"name":"obj_tutorial_messages","path":"objects/obj_tutorial_messages/obj_tutorial_messages.yy",},},
     {"id":{"name":"obj_work_station","path":"objects/obj_work_station/obj_work_station.yy",},},
     {"id":{"name":"Act_1_cutscene","path":"rooms/Act_1_cutscene/Act_1_cutscene.yy",},},
+    {"id":{"name":"MainMenu","path":"rooms/MainMenu/MainMenu.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"GOONS_SCRIPT","path":"scripts/GOONS_SCRIPT/GOONS_SCRIPT.yy",},},
     {"id":{"name":"ITEMS_SCRIPT","path":"scripts/ITEMS_SCRIPT/ITEMS_SCRIPT.yy",},},
@@ -79,6 +83,7 @@
     {"id":{"name":"sound_wood_work","path":"sounds/sound_wood_work/sound_wood_work.yy",},},
     {"id":{"name":"spr_arrow_down","path":"sprites/spr_arrow_down/spr_arrow_down.yy",},},
     {"id":{"name":"spr_banana","path":"sprites/spr_banana/spr_banana.yy",},},
+    {"id":{"name":"spr_button","path":"sprites/spr_button/spr_button.yy",},},
     {"id":{"name":"spr_cigarette","path":"sprites/spr_cigarette/spr_cigarette.yy",},},
     {"id":{"name":"spr_empty","path":"sprites/spr_empty/spr_empty.yy",},},
     {"id":{"name":"spr_goo_yellow","path":"sprites/spr_goo_yellow/spr_goo_yellow.yy",},},
@@ -110,6 +115,7 @@
   "RoomOrderNodes":[
     {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"roomId":{"name":"Act_1_cutscene","path":"rooms/Act_1_cutscene/Act_1_cutscene.yy",},},
+    {"roomId":{"name":"MainMenu","path":"rooms/MainMenu/MainMenu.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
