@@ -22,6 +22,7 @@
   ],
   "ForcedPrefabProjectReferences":[
     {"link":"io.gamemaker.sdfshaders-1.0.0","name":"io.gamemaker.sdfshaders-1.0.0","path":"io.gamemaker.sdfshaders-1.0.0.yyp",},
+    {"link":"io.gamemaker.gm_filter_vignette-1.0.0","name":"io.gamemaker.gm_filter_vignette-1.0.0","path":"io.gamemaker.gm_filter_vignette-1.0.0.yyp",},
   ],
   "IncludedFiles":[],
   "isEcma":false,
@@ -114,7 +115,9 @@
     {"id":{"name":"spr_workstation_tree","path":"sprites/spr_workstation_tree/spr_workstation_tree.yy",},},
     {"id":{"name":"spr_workstation_woodcutter","path":"sprites/spr_workstation_woodcutter/spr_workstation_woodcutter.yy",},},
     {"id":{"name":"Sprite17","path":"sprites/Sprite17/Sprite17.yy",},},
+    {"id":{"name":"tileset_extras","path":"sprites/tileset_extras/tileset_extras.yy",},},
     {"id":{"name":"tileset_winter","path":"sprites/tileset_winter/tileset_winter.yy",},},
+    {"id":{"name":"Tileset_extras_ts","path":"tilesets/Tileset_extras_ts/Tileset_extras_ts.yy",},},
     {"id":{"name":"Tileset_winter_ts","path":"tilesets/Tileset_winter_ts/Tileset_winter_ts.yy",},},
   ],
   "resourceType":"GMProject",
