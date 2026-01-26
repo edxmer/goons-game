@@ -4,5 +4,4 @@
 
 This game was made entirely in GameMaker.
 
-Storyboard and plan:
-https://docs.google.com/document/d/1H-eWfjTgrL_oLDaX0dJDM5UlY9-vTePr1kMkGQJKbXU/edit?usp=sharing
+Itch.io page: https://edomer.itch.io/goons
