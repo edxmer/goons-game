@@ -17,7 +17,7 @@ padding = 30
 var guiW = display_get_gui_width()
 var guiH = display_get_gui_height()
 self.x = guiW/2
-self.y = guiH/4*3
+self.y = guiH/5*4
 
 top_left_x = x-box_width/2
 top_left_y = y-box_height/2

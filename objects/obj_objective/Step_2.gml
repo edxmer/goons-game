@@ -9,6 +9,7 @@ if (!first_end_step) {
 }
 
 if (previous_level == level-1) { 
+
 switch (level) {
 
 
@@ -51,19 +52,55 @@ txtg("Give me more stuff so i can use them to scratch my itch from the inside", 
 ]) 
 break;
 
+case 6: 
+add_text_box_gui([
+
+txtg("What's brown and sticky?", "The Primordial Goo"),
+txtg("A stick", "The Primordial Goo"),
+txtg("no, it's brown goon", "goon"),
+txtg("shut up goon", "The Primordial Goo"),
+
+]) 
+break;
+
 case 7: 
 add_text_box_gui([
 
 txtg("I need a better haircut", "The Primordial Goo"),
+txtg("need more goon", "goon"),
+txtg("shut up goon", "The Primordial Goo"),
 
 ]) 
 break;
+
+case 8: 
+add_text_box_gui([
+
+txtg("Dogs can't operate on MRI machines but cat scan", "The Primordial Goo"),
+txtg("i can goon", "goon"),
+txtg("Who would've thought, goon", "The Primordial Goo"),
+
+]) 
+break;
+
+case 9: 
+add_text_box_gui([
+
+txtg("What rhymes with orange", "The Primordial Goo"),
+txtg("no it doesn't", "goon"),
+txtg("oh shut up goon", "The Primordial Goo"),
+
+]) 
+break;
+
+
 
 case 10: 
 add_text_box_gui([
 
 txtg("What??? Cigarettes???", "The Primordial Goo"),
 txtg("But I don't even smoke!", "The Primordial Goo"),
+txtg("i goon", "goone"),
 
 ]) 
 break;
@@ -83,8 +120,82 @@ case 12:
 add_text_box_gui([
 
 txtg("Cigarettes? More like lung cancer", "The Primordial Goo"),
-txtg("Drink milk guys, much better than cigarettes", "The Primordial Goo"),
+txtg("Drink milk non-goo people, much better than cigarettes", "The Primordial Goo"),
 txtg("It's good for your goon too.", "The Primordial Goo"),
+txtg("GOOOOOOOOONNN", "goon"),
+
+]) 
+break;
+
+
+case 13: 
+add_text_box_gui([
+
+txtg("FOOD FOOD FOOD", "The Primordial Goo"),
+
+]) 
+break;
+
+case 14: 
+add_text_box_gui([
+
+txtg("YEAAAHHHHH", "The Primordial Goo"),
+txtg("GOOOOOOON", "goon"),
+
+]) 
+break;
+
+
+case 15: 
+add_text_box_gui([
+
+txtg("Spam is a canned precooked meat product made by the Hormel Foods Corporation, first introduced in 1937.", "The Primordial Goo"),
+txtg("The labeled ingredients in the classic variety of Spam are chopped pork shoulder meat, with ham meat added, salt, water, modified potato starch as a binder, sugar, and sodium nitrite as a preservative.", "The Primordial Goo")
+
+]) 
+break;
+
+
+case 16: 
+add_text_box_gui([
+
+txtg("A dyslexic man walks into a bra...", "The Primordial Goo"),
+txtg("A dyslexic goon drinks some goon...", "goon"),
+txtg("That doesn't even make sense, goon", "The Primordial Goo"),
+
+]) 
+break;
+
+case 18: 
+add_text_box_gui([
+
+txtg("Who wants to learn roan numerals?", "The Primordial Goo"),
+txtg("me!", "goon"),
+txtg("that wasn't the joke goon", "The Primordial Goo"),
+txtg("I would've said 'I for one', but you ruined it", "The Primordial Goo"),
+txtg("ohhhh" , "goon"),
+txtg("yeah, go back to gooning, little goon." , "The Primordial Goo"),
+
+]) 
+break;
+
+
+case 20: 
+add_text_box_gui([
+
+txtg("Wow, level 20? Impressive", "The Primordial Goo"),
+txtg("very goony", "goon"),
+txtg("Reach level 100 to get a last secret message", "The Primordial Goo"),
+
+
+]) 
+break;
+
+case 100: 
+add_text_box_gui([
+
+txtg("goon", "The Primordial Goo"),
+
 
 ]) 
 break;
