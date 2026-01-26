@@ -45,7 +45,7 @@ function get_all_possible_items()
 
 function create_work_station(_x,_y,station_id)
 {
-	var station =instance_create_layer(_x,_y,layer,obj_work_station)
+	var station =instance_create_depth(_x,_y,depth,obj_work_station)
 	station.station_id=station_id
 
 }
