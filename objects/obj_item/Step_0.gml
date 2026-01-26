@@ -23,6 +23,7 @@ if item_id="goon_blue" && size>=0.95
 		if !changed{
 			sound_play_category_at("murr",x,y)
 			goon_speed*=3
+			sprite_index=spr_goon_blue
 			changed=true
 		}
 		
