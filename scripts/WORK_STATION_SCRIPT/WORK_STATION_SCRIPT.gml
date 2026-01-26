@@ -14,6 +14,9 @@ function workstation_get_all_possible_items()
 		{
 			if spawn_item_pool[i]!="goon_show" && spawn_item_pool[i]!="reward"{
 				array_push(itemslist,spawn_item_pool[i])
+				if onemore_chance{
+					array_push(itemslist,spawn_item_pool[i])
+				}
 			}
 		}
 		for(var i=0;i<array_length(crafting_reward_pool);i++)
@@ -21,6 +24,9 @@ function workstation_get_all_possible_items()
 			if crafting_reward_pool[i]!="goon_show" && crafting_reward_pool[i]!="reward"{
 				array_push(itemslist,crafting_reward_pool[i])
 				array_push(itemslist,crafting_reward_pool[i])
+				if onemore_chance{
+					array_push(itemslist,crafting_reward_pool[i])
+				}
 			}
 		}
 	
@@ -53,7 +59,7 @@ function create_work_station(_x,_y,station_id)
 
 
 function work_station_data_get(station_id){
-	var work_station_data={primordeal_goo:false,station_id:"empty",craft_sound:"empty",summon_sound:"empty",texture:spr_empty,spawning:false,crafting:false,craft_input_pool_tags:[],craft_reward_pool:[],spawn_item_pool:[],spawn_timer_sec:[0,0]}
+	var work_station_data={primordeal_goo:false,third:false,station_id:"empty",craft_sound:"empty",summon_sound:"empty",texture:spr_empty,spawning:false,crafting:false,craft_input_pool_tags:[],craft_reward_pool:[],spawn_item_pool:[],spawn_timer_sec:[0,0]}
 	work_station_data.station_id=station_id
 	
 	if station_id=="trashcan"
@@ -79,6 +85,7 @@ function work_station_data_get(station_id){
 		work_station_data.craft_sound="woodwork"
 		work_station_data.craft_input_pool_tags=["logs","rock","sock"]
 		work_station_data.craft_reward_pool=["lamp"]
+		work_station_data.third=true
 	}
 	else if station_id=="cigs"
 	{
@@ -87,6 +94,7 @@ function work_station_data_get(station_id){
 		work_station_data.craft_sound="woodwork"
 		work_station_data.craft_input_pool_tags=["plank","banana","banana"]
 		work_station_data.craft_reward_pool=["cigarette"]
+		work_station_data.third=true
 	}
 		else if station_id=="tree"
 	{
