@@ -125,7 +125,7 @@ if (speech_timer < 0) {
 			add_text_box(_goon_id, [
 			txt("meow meow goon meow goon goon meow", "meow " + name),
 			txt("meow goon meow goon goon meow goon meow", "meow " + name),
-			txt("meowwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww", "meow " + name),
+			txt("meowwwwwwwwww", "meow " + name),
 			txt("", "" , 0, turn_speaking_off)
 			])
 			break;
