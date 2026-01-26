@@ -22,8 +22,8 @@
         {"name":"g_TintCol","type":1,"value":"#FFFFFFF3",},
       ],"resourceType":"GMREffectLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMREffectLayer":"","%Name":"vignette","depth":100,"effectEnabled":true,"effectType":"_filter_vignette","gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"vignette","properties":[
-        {"name":"g_VignetteEdges","type":0,"value":"0.65",},
-        {"name":"g_VignetteEdges","type":0,"value":"1.3",},
+        {"name":"g_VignetteEdges","type":0,"value":"0.9",},
+        {"name":"g_VignetteEdges","type":0,"value":"1.5",},
         {"name":"g_VignetteSharpness","type":0,"value":"3.33",},
         {"name":"g_VignetteTexture","type":2,"value":"_filter_vignette_texture",},
       ],"resourceType":"GMREffectLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
