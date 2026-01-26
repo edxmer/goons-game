@@ -1,6 +1,9 @@
 
 if goto_x!=x && goto_y!=y{
 	sprite_index=spr_goon_walk
+	if goon_speed>100{
+			sprite_index=spr_goon_walk_blue
+	}
 	var look=point_direction(x,y,goto_x,goto_y)
 	var speed_real=goon_speed*min(delta_time/1000000,0.4)
 	distance_went+=speed_real
@@ -14,6 +17,9 @@ if goto_x!=x && goto_y!=y{
 
 	if point_distance(x,y,goto_x,goto_y)<speed_real{
 		sprite_index=spr_goon
+		if goon_speed>100{
+			sprite_index=spr_goon_blue
+		}
 		if distance_went>=step_distance*0.5{
 			sound_play_category_at("footstep",x,y)
 		}

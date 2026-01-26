@@ -10,6 +10,7 @@ function workstation_get_all_possible_items()
 	var itemslist=[]
 	with(obj_work_station)
 	{
+		
 		for(var i=0;i<array_length(spawn_item_pool);i++)
 		{
 			if spawn_item_pool[i]!="goon_show" && spawn_item_pool[i]!="reward"{
@@ -31,6 +32,7 @@ function workstation_get_all_possible_items()
 		}
 	
 	}
+
 	return itemslist
 }
 
@@ -54,6 +56,10 @@ function create_work_station(_x,_y,station_id)
 {
 	var station =instance_create_depth(_x,_y,depth,obj_work_station)
 	station.station_id=station_id
+	with(station)
+	{
+		assign()
+	}
 
 }
 

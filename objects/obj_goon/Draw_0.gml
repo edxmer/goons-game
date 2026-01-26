@@ -1,6 +1,8 @@
 depth=-bbox_bottom
 draw_shadow()
 
+
+
 if gooning{
 	depth-=100
 	gpu_set_fog(true,c_white,0,0)
