@@ -12,4 +12,4 @@ camera_speed=3
 
 	camera_set_view_size(cam,width_base*camera_size,height_base*camera_size)
 
-mouse_go_percent=0.25
+mouse_go_percent=0.2
