@@ -7,7 +7,7 @@ if selected{
 	draw_sprite_ext(sprite_index,image_index,x,y+1,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 	draw_sprite_ext(sprite_index,image_index,x,y-1,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 	gpu_set_fog(false,c_white,0,0)
-	
+/*	
 	if crafting{
 		if spawning{
 			draw_both_information(bbox_left-30,y-40,crafting_input_ids,crafting_reward_pool,spawn_item_pool)
@@ -21,7 +21,7 @@ if selected{
 			draw_summon_information (bbox_left-30,y-40,spawn_item_pool)
 		
 	}
-
+*/
 
 }
 
