@@ -22,7 +22,7 @@ function workstation_get_all_possible_items()
 		}
 		for(var i=0;i<array_length(crafting_reward_pool);i++)
 		{
-			if crafting_reward_pool[i]!="goon_show" && crafting_reward_pool[i]!="reward"{
+			if crafting_reward_pool[i]!="goon_show" && crafting_reward_pool[i]!="reward"&& crafting_reward_pool[i]!="goon_blue"{
 				array_push(itemslist,crafting_reward_pool[i])
 				array_push(itemslist,crafting_reward_pool[i])
 				if onemore_chance{
@@ -85,6 +85,15 @@ function work_station_data_get(station_id){
 		work_station_data.craft_reward_pool=["plank"]
 	}
 	else if station_id=="nightstand"
+	{
+		work_station_data.texture=spr_workstation_nightstand
+		work_station_data.crafting=true
+		work_station_data.craft_sound="woodwork"
+		work_station_data.craft_input_pool_tags=["logs","rock","sock"]
+		work_station_data.craft_reward_pool=["lamp"]
+		work_station_data.third=true
+	}
+	else if station_id=="cauldron"
 	{
 		work_station_data.texture=spr_workstation_nightstand
 		work_station_data.crafting=true
