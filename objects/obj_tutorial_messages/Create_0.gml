@@ -10,9 +10,8 @@ txtg("Double click on goon to drop item", "Tutorial"),
 txtg("If no goon is selected, the closest free goon will follow your command", "Tutorial"),
 txtg("Beware, the goons are bad at following commands, and they also like to yap a lot.§§§§§§§§§ Like a lot lot.§§§§§", "Tutorial"),
 txtg("Complete as many objectives as possible", "Tutorial"),
+txtg("Many objectives will ask for items that need to be crafted, use the work stations for this (you can hover over them for recipes)", "Tutorial"),
 txtg("And appease the Primordial Goon by any means necessary", "Tutorial"),
-txtg("Good luck, you miserable soul", "Tutorial", function(){
-	// timer_start()
-}),
+txtg("Good luck, you miserable soul", "Tutorial"),
 
 ])
