@@ -47,6 +47,7 @@
     {"id":{"name":"obj_cursor","path":"objects/obj_cursor/obj_cursor.yy",},},
     {"id":{"name":"obj_goon","path":"objects/obj_goon/obj_goon.yy",},},
     {"id":{"name":"obj_item","path":"objects/obj_item/obj_item.yy",},},
+    {"id":{"name":"obj_main_menu_text","path":"objects/obj_main_menu_text/obj_main_menu_text.yy",},},
     {"id":{"name":"obj_objective","path":"objects/obj_objective/obj_objective.yy",},},
     {"id":{"name":"obj_random_goon_speech","path":"objects/obj_random_goon_speech/obj_random_goon_speech.yy",},},
     {"id":{"name":"obj_reward_base","path":"objects/obj_reward_base/obj_reward_base.yy",},},
