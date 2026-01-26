@@ -20,6 +20,7 @@ function workstation_get_all_possible_items()
 		{
 			if crafting_reward_pool[i]!="goon_show" && crafting_reward_pool[i]!="reward"{
 				array_push(itemslist,crafting_reward_pool[i])
+				array_push(itemslist,crafting_reward_pool[i])
 			}
 		}
 	
