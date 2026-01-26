@@ -1,9 +1,9 @@
 {
   "$GMSprite":"v2",
   "%Name":"spr_primordial_goo",
-  "bboxMode":0,
-  "bbox_bottom":59,
-  "bbox_left":12,
+  "bboxMode":2,
+  "bbox_bottom":52,
+  "bbox_left":13,
   "bbox_right":58,
   "bbox_top":8,
   "collisionKind":1,
