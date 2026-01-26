@@ -16,6 +16,20 @@ if item_id="goon_show" && size>=0.95
 	instance_destroy()
 }
 
+if item_id="goon_blue" && size>=0.95
+{
+	var changed=false
+	with(obj_goon){
+		if !changed{
+			sound_play_category_at("murr",x,y)
+			goon_speed*=3
+			changed=true
+		}
+		
+	}
+	instance_destroy()
+}
+
 if item_id="reward" && size>=0.95
 {
 	instance_create_depth(x,y,depth,obj_reward_base)

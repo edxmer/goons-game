@@ -77,7 +77,15 @@ function work_station_data_get(station_id){
 		work_station_data.crafting=true
 		work_station_data.craft_sound="woodwork"
 		work_station_data.craft_input_pool_tags=["logs","rock","sock"]
-		work_station_data.craft_reward_pool=["plank"]
+		work_station_data.craft_reward_pool=["lamp"]
+	}
+	else if station_id=="cigs"
+	{
+		work_station_data.texture=spr_workstation_cigs
+		work_station_data.crafting=true
+		work_station_data.craft_sound="woodwork"
+		work_station_data.craft_input_pool_tags=["plank","banana","banana"]
+		work_station_data.craft_reward_pool=["cigarette"]
 	}
 		else if station_id=="tree"
 	{
