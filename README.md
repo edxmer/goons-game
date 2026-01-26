@@ -1,5 +1,5 @@
 # **GOONS**
-**A game made for Micro Jam 52**
+**A game made for Micro Jam 52**<br>
 *by Roland & Edömér*
 
 
@@ -14,10 +14,13 @@ Well, tough luck, this is your life now.<br>
 <br>
 Itch.io page: https://edomer.itch.io/goons
 
-This was made entirely in GameMaker.
+**PLAYABLE IN BROWSER ON ITCH PAGE**
+
+*This was made entirely in GameMaker.*
 
 
 <br>
+
 ### Screenshots
 <img src="https://github.com/edxmer/goons-game/blob/b18c31fe39999cac7d723f81ef9a6f69c9a92db7/itch_images/screenshots/1.png" alt="screenshot" width="500"/>
 <img src="https://github.com/edxmer/goons-game/blob/b18c31fe39999cac7d723f81ef9a6f69c9a92db7/itch_images/screenshots/2.png" alt="screenshot" width="500"/>
