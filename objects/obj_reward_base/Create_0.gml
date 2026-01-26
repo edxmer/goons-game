@@ -2,13 +2,24 @@ global.reward_mode=true
 global.reward_level+=1
 lootpool=[["workstation","sign"],["workstation","tree"],["item","goo"],["item","goon_show"],["workstation","trashcan"],["workstation","woodcutter"]]
 
-if global.reward_level==10
+
+if global.reward_level>4
 {
-	lootpool=[["workstation","nightstand"]]
+	array_push(lootpool,["workstation","nightstand"])
 }
 if global.reward_level>10
 {
-	array_push(lootpool,["workstation","nightstand"])
+	array_push(lootpool,["workstation","cigs"])
+	array_push(lootpool,["workstation","goon_show"])
+}
+if global.reward_level==4
+{
+	lootpool=[["workstation","nightstand"]]
+}
+
+if global.reward_level==10
+{
+	lootpool=[["workstation","cigs"]]
 }
 
 for(var i=0;i<3;i++)
