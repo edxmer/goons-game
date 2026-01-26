@@ -109,6 +109,20 @@ function work_station_data_get(station_id){
 		work_station_data.summon_sound="groundsoft"
 		work_station_data.spawn_item_pool=["logs"]
 		work_station_data.spawn_timer_sec=[20,40]
+		
+	}
+	else if station_id=="frogs"
+	{
+		work_station_data.texture=spr_workstation_frogs
+		work_station_data.spawning=true
+		work_station_data.summon_sound="groundsoft"
+		work_station_data.spawn_item_pool=["frog","banana"]
+		work_station_data.spawn_timer_sec=[20,30]		
+		work_station_data.crafting=true
+		work_station_data.craft_sound="woodwork"
+		work_station_data.craft_input_pool_tags=["frog","lamp"]
+		work_station_data.craft_reward_pool=["froglamp"]
+		work_station_data.third=true
 	}
 		else if station_id=="sign"
 	{

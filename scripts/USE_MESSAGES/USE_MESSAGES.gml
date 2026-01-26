@@ -65,7 +65,7 @@ function draw_both_information(_x,_y,craft_input_list,craft_output_list,summon_l
 {
 	var start_y=clamp(_y,30,room_height-3*30)
 	draw_craft_information(_x,start_y,craft_input_list,craft_output_list)
-	start_y+=3*30
+	start_y+=3*40
 	draw_summon_information(_x,start_y,summon_list)
 
 }

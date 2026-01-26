@@ -12,9 +12,13 @@ if global.reward_level>7
 {
 	array_push(lootpool,["workstation","cigs"])
 	array_push(lootpool,["item","goon_blue"])
+	array_push(lootpool,["item","goo"])
+	array_push(lootpool,["item","goo"])
+}
+if global.reward_level>10
+{
+	array_push(lootpool,["workstation","frogs"])
 	array_push(lootpool,["item","goon_blue"])
-	array_push(lootpool,["item","goo"])
-	array_push(lootpool,["item","goo"])
 }
 if global.reward_level==4
 {
@@ -24,6 +28,11 @@ if global.reward_level==4
 if global.reward_level==7
 {
 	lootpool=[["workstation","cigs"]]
+}
+
+if global.reward_level==10
+{
+	lootpool=[["workstation","frogs"]]
 }
 
 for(var i=0;i<3;i++)

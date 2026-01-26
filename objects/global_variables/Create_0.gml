@@ -5,7 +5,7 @@ global.goo_count = 0
 
 global.text_box_gui_active = false
 
-global.objective_list = []
+global.objective_list = ["banana"]
 
 global.reward_level=1
 

@@ -19,7 +19,14 @@ function assign_item(item_id){
 	if item_id=="logs"{
 		item_data.texture=spr_logs
 	array_push(item_data.tags,"wood")
-	}if item_id=="plank"{
+	}
+	if item_id=="frog"{
+		item_data.texture=spr_frog
+	}
+	if item_id=="froglamp"{
+		item_data.texture=spr_froglamp
+	}
+	if item_id=="plank"{
 		item_data.texture=spr_plank
 	array_push(item_data.tags,"wood")
 	}

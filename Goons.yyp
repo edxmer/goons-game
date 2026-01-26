@@ -87,6 +87,8 @@
     {"id":{"name":"spr_button","path":"sprites/spr_button/spr_button.yy",},},
     {"id":{"name":"spr_cigarette","path":"sprites/spr_cigarette/spr_cigarette.yy",},},
     {"id":{"name":"spr_empty","path":"sprites/spr_empty/spr_empty.yy",},},
+    {"id":{"name":"spr_frog","path":"sprites/spr_frog/spr_frog.yy",},},
+    {"id":{"name":"spr_froglamp","path":"sprites/spr_froglamp/spr_froglamp.yy",},},
     {"id":{"name":"spr_goo_yellow","path":"sprites/spr_goo_yellow/spr_goo_yellow.yy",},},
     {"id":{"name":"spr_goo","path":"sprites/spr_goo/spr_goo.yy",},},
     {"id":{"name":"spr_goon_blue","path":"sprites/spr_goon_blue/spr_goon_blue.yy",},},
