@@ -179,11 +179,49 @@ txtg("yeah, go back to gooning, little goon." , "The Primordial Goo"),
 ]) 
 break;
 
-
 case 20: 
 add_text_box_gui([
 
-txtg("Wow, level 20? Impressive", "The Primordial Goo"),
+txtg("i once tried noog", "The Primordial Goo"),
+txtg("ordered it from shein", "The Primordial Goo"),
+txtg("i almost died while consuming it", "The Primordial Goo"),
+txtg("never again", "The Primordial Goo"),
+txtg("i'll stay with my trusty goon", "The Primordial Goo"),
+]) 
+break;
+
+
+case 22: 
+add_text_box_gui([
+
+txtg("When the mass of a goon gets big enough", "The Primordial Goo"),
+txtg("It can bend the space-time with its goontivity", "The Primordial Goo"),
+txtg("But if it reaches a goonmass so large that even goonlight can't escape", "The Primordial Goo"),
+txtg("We call it a goonhole", "The Primordial Goo"),
+txtg("And this point is its goongularity", "The Primordial Goo"),
+
+]) 
+break;
+
+case 25: 
+add_text_box_gui([
+
+txtg("Yo", "Lil Primordial Goo"),
+txtg("When the goon gets tasty everyday", "Lil Primordial Goo"),
+txtg("I eat them up without disarray", "Lil Primordial Goo"),
+txtg("In my stomach they can never decay", "Lil Primordial Goo"),
+txtg("And thus I am here to stay", "Lil Primordial Goo"),
+txtg("Lil primordial goo§§§§§§- §§§§§§§- §§§out", "The Primordial Goo"),
+
+]) 
+break;
+
+
+
+case 30: 
+add_text_box_gui([
+
+txtg("Wow, level 30? Impressive", "The Primordial Goo"),
 txtg("very goony", "goon"),
 txtg("Reach level 100 to get a last secret message", "The Primordial Goo"),
 
