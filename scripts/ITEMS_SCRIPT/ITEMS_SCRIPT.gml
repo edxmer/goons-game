@@ -23,6 +23,9 @@ function assign_item(item_id){
 	if item_id=="frog"{
 		item_data.texture=spr_frog
 	}
+	if item_id=="candy"{
+		item_data.texture=spr_candy
+	}
 	if item_id=="froglamp"{
 		item_data.texture=spr_froglamp
 	}

@@ -20,6 +20,20 @@ if global.reward_level>10
 	array_push(lootpool,["workstation","frogs"])
 	array_push(lootpool,["item","goon_blue"])
 }
+if global.reward_level>15
+{
+	array_push(lootpool,["workstation","gumball_machine"])
+	array_push(lootpool,["item","goon_blue"])
+	array_push(lootpool,["item","goon_blue"])
+	array_push(lootpool,["item","goo"])
+}
+if global.reward_level>20
+{
+	array_push(lootpool,["workstation","gooball_machine"])
+	array_push(lootpool,["workstation","gooball_machine"])
+	array_push(lootpool,["item","goon_blue"])
+	array_push(lootpool,["item","candy"])
+}
 if global.reward_level==4
 {
 	lootpool=[["workstation","nightstand"]]
@@ -35,6 +49,15 @@ if global.reward_level==10
 	lootpool=[["workstation","frogs"]]
 }
 
+if global.reward_level==15
+{
+	lootpool=[["workstation","gumball_machine"]]
+}
+
+if global.reward_level==20
+{
+	lootpool=[["workstation","gooball_machine"]]
+}
 for(var i=0;i<3;i++)
 {
 	var reward=instance_create_depth(x,y,-room_height*2,obj_reward_one)
