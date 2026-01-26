@@ -1,7 +1,15 @@
 global.reward_mode=true
 global.reward_level+=1
-lootpool=[["item","goo"],["item","goon_show"],["workstation","trashcan"],["workstation","woodcutter"]]
+lootpool=[["workstation","sign"],["workstation","tree"],["item","goo"],["item","goon_show"],["workstation","trashcan"],["workstation","woodcutter"]]
 
+if global.reward_level==10
+{
+	lootpool=[["workstation","nightstand"]]
+}
+if global.reward_level>10
+{
+	array_push(lootpool,["workstation","nightstand"])
+}
 
 for(var i=0;i<3;i++)
 {
