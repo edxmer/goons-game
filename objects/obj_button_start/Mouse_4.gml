@@ -1,1 +1,1 @@
-room_goto(Room1)
+room_goto(Act_1_cutscene)
