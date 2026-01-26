@@ -2,7 +2,7 @@
   "$GMSprite":"v2",
   "%Name":"tileset_extras",
   "bboxMode":0,
-  "bbox_bottom":60,
+  "bbox_bottom":77,
   "bbox_left":2,
   "bbox_right":59,
   "bbox_top":0,
