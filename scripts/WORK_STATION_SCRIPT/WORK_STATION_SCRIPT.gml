@@ -102,6 +102,24 @@ function work_station_data_get(station_id){
 		work_station_data.craft_reward_pool=["cigarette"]
 		work_station_data.third=true
 	}
+	else if station_id=="gumball_machine"
+	{
+		work_station_data.texture=spr_workstation_gumball_machine
+		work_station_data.crafting=true
+		work_station_data.craft_sound="eat"
+		work_station_data.craft_input_pool_tags=["rock","rock","rock","banana"]
+		work_station_data.craft_reward_pool=["candy"]
+		work_station_data.third=true
+	}
+	else if station_id=="gooball_machine"
+	{
+		work_station_data.texture=spr_workstation_gooball_machine_1
+		work_station_data.crafting=true
+		work_station_data.craft_sound="murr"
+		work_station_data.craft_input_pool_tags=["frog","candy","cigarette","banana"]
+		work_station_data.craft_reward_pool=["goo"]
+		work_station_data.third=true
+	}
 		else if station_id=="tree"
 	{
 		work_station_data.texture=spr_workstation_tree
