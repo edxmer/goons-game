@@ -95,11 +95,11 @@ function work_station_data_get(station_id){
 	}
 	else if station_id=="cauldron"
 	{
-		work_station_data.texture=spr_workstation_nightstand
+		work_station_data.texture=spr_workstation_cauldron
 		work_station_data.crafting=true
-		work_station_data.craft_sound="woodwork"
-		work_station_data.craft_input_pool_tags=["logs","rock","sock"]
-		work_station_data.craft_reward_pool=["lamp"]
+		work_station_data.craft_sound="murr"
+		work_station_data.craft_input_pool_tags=["frog","frog","candy","sock"]
+		work_station_data.craft_reward_pool=["goon_blue"]
 		work_station_data.third=true
 	}
 	else if station_id=="cigs"
