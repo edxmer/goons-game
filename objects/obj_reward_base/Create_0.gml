@@ -1,4 +1,5 @@
 global.reward_mode=true
+global.reward_level+=1
 lootpool=[["item","goo"],["item","goon_show"],["workstation","trashcan"],["workstation","woodcutter"]]
 
 

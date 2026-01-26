@@ -1,5 +1,5 @@
 
-level = 67
+level = global.reward_level
 
 currently_held_items = []
 
@@ -17,7 +17,7 @@ dist_between_items = width-outline
 
 
 num_of_items_to_get = function(){
-	return floor(log2(level+1))
+	return floor(log2(level+1))+1
 }
 
 generate_objective_items = function() {
