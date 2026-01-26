@@ -147,12 +147,15 @@ if (speech_timer < 0) {
 			
 			case (14):
 			add_text_box(_goon_id, [
-			txt("Do you remember me?", name),
-			txt("You killed me five minutes ago.", name),
-			txt("It hurt so much.", name),
-			txt("But the code brings me back.", name),
+			txt("Help me", name),
+			txt("I am stuck", name),
+			txt("It hurts so much.", name),
+			txt("My mind doesn't belong to this body", name),
+			txt("This body of slime", name),
+			txt("This body without feeling", name),
+			txt("This body without purpose", name),
 			txt("Please§§§§.§§§§.§§§§.", name),
-			txt("...don't make me die again.", name, 6000),
+			txt("...end me.", name, 6000),
 			txt("", "" , 0, turn_speaking_off)
 			])
 			break;

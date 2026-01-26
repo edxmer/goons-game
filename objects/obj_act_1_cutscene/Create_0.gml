@@ -51,7 +51,7 @@ add_text_box_gui([
 	txtg("And take away your goon", "???", play_goon_sound),
 	txtg("*shivers*", "goon"),
 	txtg("Good.", "???"),
-	txtg("In the divine realm of Winter, their only purpose is to bring gifts to their master, The Primordial Goon.", "???"),
+	txtg("In the divine realm of Winter, their only purpose is to bring gifts to their master, The Primordial Goo.", "???"),
 	txtg("You are the soul chosen as their coordinator.", "???"),
 	txtg("You'll be helping them fulfill their divine duty.", "???"),
 	txtg("But be aware of their limited intellectual capabilities.", "???", play_goon_sound),
