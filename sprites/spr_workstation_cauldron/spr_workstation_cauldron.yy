@@ -1,6 +1,6 @@
 {
   "$GMSprite":"v2",
-  "%Name":"spr_workstation_magic_ball",
+  "%Name":"spr_workstation_cauldron",
   "bboxMode":2,
   "bbox_bottom":24,
   "bbox_left":5,
@@ -23,7 +23,7 @@
     {"$GMImageLayer":"","%Name":"334e5bbe-fde1-44ca-90b7-cd94a49b43da","blendMode":0,"displayName":"default","isLocked":false,"name":"334e5bbe-fde1-44ca-90b7-cd94a49b43da","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"68f455dc-03c5-49ec-a040-7358bd1e44c1","blendMode":0,"displayName":"Layer 2","isLocked":false,"name":"68f455dc-03c5-49ec-a040-7358bd1e44c1","opacity":19.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name":"spr_workstation_magic_ball",
+  "name":"spr_workstation_cauldron",
   "nineSlice":null,
   "origin":9,
   "parent":{
@@ -35,7 +35,7 @@
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"v1",
-    "%Name":"spr_workstation_magic_ball",
+    "%Name":"spr_workstation_cauldron",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -59,7 +59,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"spr_workstation_magic_ball",
+    "name":"spr_workstation_cauldron",
     "playback":1,
     "playbackSpeed":10.0,
     "playbackSpeedType":0,
@@ -71,7 +71,7 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"e4cf1a78-abd8-4d83-be77-93566da56c6c","path":"sprites/spr_workstation_magic_ball/spr_workstation_magic_ball.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"e4cf1a78-abd8-4d83-be77-93566da56c6c","path":"sprites/spr_workstation_cauldron/spr_workstation_cauldron.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"eef47e3b-0c8b-438b-ac1e-86bfc92eb4df","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
