@@ -10,9 +10,15 @@ function special_objectives_init()
 }
 
 
-function transform_objective_list()
+function transform_objective_list(objective_list)
 {
-
+	var objt_undone=objective_list
+	var spec=get_special_objective(global.reward_level)
+	if !(spec==false)
+	{
+		objt_undone=spec
+	}
+	return generate_special_objectives(objt_undone)
 }
 
 function get_special_objective(current_level){
@@ -24,7 +30,7 @@ function get_special_objective(current_level){
 	return false
 }
 
-function generate_special_objective(objective_list)
+function generate_special_objectives(objective_list)
 {
 	var outputlist=[]
 	for (var i=0;i<array_length(objective_list);i++)
