@@ -21,7 +21,7 @@ var gui_w = display_get_gui_width()
 var gui_h = display_get_gui_height()
 
 add_text_box_gui([
-	txtg("At first, there was nothing.\n\n\n\n\n(Left click to continue)", "???"),
+	txtg("At first, there was nothing.\n\n\n\n(Left click to continue)", "???"),
 	
 	txtg("Then, there was something-", "???", method(self, function(){
 		show_primordial_goo = true

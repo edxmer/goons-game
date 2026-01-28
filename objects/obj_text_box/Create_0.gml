@@ -5,6 +5,8 @@ follow_id = self
 offset_x = 0
 offset_y = 0
 
+font_speaker = fnt_header_3
+font_body = fnt_body
 
 data_id = 0
 text_current = ""
@@ -20,11 +22,11 @@ color_light =#E0D6BC //make_colour_rgb(189, 221, 244)
 
 
 
-scale_speaker = 0.14
-scale_text = 0.25
-box_width = 90
-box_height = 50
-padding = 6
+scale_speaker = 0.13
+scale_text = 0.2
+box_width = 60
+box_height = 35
+padding = 4
 border_size = 1
 
 x = follow_id.x + offset_x

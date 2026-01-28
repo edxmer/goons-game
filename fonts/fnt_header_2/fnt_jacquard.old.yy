@@ -1,6 +1,6 @@
 {
   "$GMFont":"",
-  "%Name":"fnt_fancy",
+  "%Name":"fnt_jacquard",
   "AntiAlias":0,
   "applyKerning":0,
   "ascender":14,
@@ -106,7 +106,7 @@
   "last":0,
   "lineHeight":25,
   "maintainGms1Font":false,
-  "name":"fnt_fancy",
+  "name":"fnt_jacquard",
   "parent":{
     "name":"FONTS",
     "path":"folders/FONTS.yy",

@@ -9,7 +9,8 @@ speaker_current = ""
 text_at = 0
 text_speed = 15
 
-
+font_body = fnt_body
+font_speaker = fnt_header_2
 
 box_width = 500
 box_height = 200
