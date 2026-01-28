@@ -33,15 +33,15 @@ for (var i=0; i<_arr_len; i++) {
 // Draw "objectives" text
 // DRAW SPEAKER NAME
 
-draw_set_font(fnt_times_italic_bold)
+draw_set_font(font)
 draw_set_color(c_black)
 draw_text_transformed(x+text_offset_x+shadow_offset, y+text_offset_y+shadow_offset, "Objectives", text_scale, text_scale, text_rotation)
 draw_set_color(c_white)
 draw_text_transformed(x+text_offset_x, y+text_offset_y, "Objectives", text_scale, text_scale, text_rotation)
 
 // DRAW LEVEL
-level_str = "LEVEL " + string(level)
-draw_set_font(fnt_fancy_2)
+level_str = "level " + string(level)
+draw_set_font(fnt_header_1)
 draw_set_color(c_black)
 draw_text_transformed(x+level_text_offset_x+level_shadow_offset, y+level_text_offset_y-level_shadow_offset, level_str, level_text_scale, level_text_scale, level_text_rotation)
 draw_set_color(c_white)

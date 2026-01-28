@@ -12,10 +12,14 @@ draw_set_valign(fa_top)
 
 
 // DRAW SPEAKER NAME
-draw_set_font(fnt_fancy)
-draw_text(top_left_x + padding*0.3, top_left_y + padding*0.3, speaker_current)
+draw_set_font(font_speaker)
+
+var _padding_multiplier_head = 0.3
+draw_text(top_left_x + padding*_padding_multiplier_head, top_left_y + padding*_padding_multiplier_head, speaker_current)
 
 // DRAW BODY TEXT
-draw_set_font(fnt_body)
-draw_text_ext(top_left_x + padding*1.5, top_left_y + padding, text_current, 20, box_width - padding*2)
+draw_set_font(font_body)
+
+var _padding_multiplier_body = 1.5
+draw_text_ext(top_left_x + padding*_padding_multiplier_body, top_left_y + padding, text_current, 30, box_width - padding*_padding_multiplier_body*2)
 

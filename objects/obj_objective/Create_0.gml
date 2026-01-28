@@ -11,6 +11,7 @@ possible_items = []
 first_end_step = false
 
 
+font = fnt_header_1
 x = 50
 y = 40
 height = 110
