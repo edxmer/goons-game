@@ -56,7 +56,8 @@ if crafting
 				closest.inventory_sprite=assign_item(item).texture
 			}
 			else{
-				summon_item_from_pool(item)
+				
+				summon_item_from_pool([item])
 			}
 			
 		
