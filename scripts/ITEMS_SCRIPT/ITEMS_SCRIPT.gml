@@ -87,7 +87,7 @@ function item_unpickupable(item_id)
 
 function item_get_tags(item_id)
 {
-	return item_data=assign_item(item_id).tags
+	return assign_item(item_id).tags
 	
 }
 
