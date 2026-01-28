@@ -101,6 +101,7 @@
     {"id":{"name":"spr_goon_frozen","path":"sprites/spr_goon_frozen/spr_goon_frozen.yy",},},
     {"id":{"name":"spr_goon_sexy_2","path":"sprites/spr_goon_sexy_2/spr_goon_sexy_2.yy",},},
     {"id":{"name":"spr_goon_sexy","path":"sprites/spr_goon_sexy/spr_goon_sexy.yy",},},
+    {"id":{"name":"spr_goon_speech_box","path":"sprites/spr_goon_speech_box/spr_goon_speech_box.yy",},},
     {"id":{"name":"spr_goon_walk_blue","path":"sprites/spr_goon_walk_blue/spr_goon_walk_blue.yy",},},
     {"id":{"name":"spr_goon_walk_dumb","path":"sprites/spr_goon_walk_dumb/spr_goon_walk_dumb.yy",},},
     {"id":{"name":"spr_goon_walk","path":"sprites/spr_goon_walk/spr_goon_walk.yy",},},

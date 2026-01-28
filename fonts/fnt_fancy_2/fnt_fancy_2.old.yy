@@ -1,6 +1,6 @@
 {
   "$GMFont":"",
-  "%Name":"fnt_fancy_bold",
+  "%Name":"fnt_fancy_2",
   "AntiAlias":0,
   "applyKerning":0,
   "ascender":48,
@@ -1518,7 +1518,7 @@
   "last":0,
   "lineHeight":77,
   "maintainGms1Font":false,
-  "name":"fnt_fancy_bold",
+  "name":"fnt_fancy_2",
   "parent":{
     "name":"FONTS",
     "path":"folders/FONTS.yy",
