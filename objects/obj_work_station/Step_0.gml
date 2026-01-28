@@ -86,7 +86,7 @@ else if selected && !point_in_rectangle(mouse_x,mouse_y,bbox_left-5,bbox_top-10,
 }
 
 
-if destroy_after>=0 destroy_after<=used_amount
+if destroy_after>=0 && destroy_after<=used_amount
 {
 	instance_destroy()
 }
