@@ -20,17 +20,12 @@ color_light = make_colour_rgb(189, 221, 244)
 
 
 
-scale_speaker = 0.12
-scale_text = 0.2
-box_width = 70
-box_height = 30
+scale_speaker = 0.14
+scale_text = 0.25
+box_width = 90
+box_height = 50
 padding = 6
 border_size = 1
 
 x = follow_id.x + offset_x
 y = follow_id.y + offset_y
-
-top_left_x = x-box_width/2
-top_left_y = y-box_height/2
-bot_right_x = x+box_width/2
-bot_right_y = y+box_height/2
