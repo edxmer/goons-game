@@ -28,10 +28,12 @@ generate_objective_items = function() {
 	possible_items = workstation_get_all_possible_items()
 	var _arr_len = num_of_items_to_get()
 	var _p_arr_len = array_length(possible_items)
-	
+	array_push(global.objective_list,"craft")
 	global.objective_list = []
-	repeat(_arr_len) {
-		array_push(global.objective_list, possible_items[irandom(_p_arr_len-1)])
+	array_push(global.objective_list,"craft")
+	repeat(_arr_len-1) {
+		//array_push(global.objective_list, possible_items[irandom(_p_arr_len-1)])
+		array_push(global.objective_list,"any")
 	}
 	global.objective_list=transform_objective_list(global.objective_list)
 }

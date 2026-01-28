@@ -2,7 +2,7 @@ function get_sound_all()
 {
 	var sound_lib=
 	{
-		footstep:[sound_footstep_snow_1,sound_footstep_snow_2],
+		footstep:[sound_footstep_snow_1,sound_footstep_snow_2,sound_footstep_snow_3],
 		pickup:[sound_pickup_item_1,sound_pickup_item_2],
 		murr:[sound_goon_murr_2,sound_goon_murr_1,sound_goon_murr_3],
 		woodwork:[sound_wood_work],

@@ -32,6 +32,7 @@ function assign_item(item_id){
 		item_data.special_data.freezing_pixel_amount=200
 		array_push(item_data.tags,"freezing")
 		array_push(item_data.tags,"has_effects")
+		array_push(item_data.tags,"danger")
 	}
 	if item_id=="froglamp"{
 		item_data.texture=spr_froglamp
@@ -116,13 +117,17 @@ function pickup_item(px,py,pickup_distance=35)
 	var items=[]
 	with(obj_item)
 	{
-		var dist=point_distance(x,y,px,py)
-		if array_contains(tags,"crafted") && dist<=pickup_distance
-		{
-			dist-=8
-		}
-		if dist<=pickup_distance && size>=1 && !array_contains(tags,"unpickuppable"){
-			array_push(items,[id,dist,item_id])
+		if !(array_contains(tags,"danger") &&global.goon_count==1){
+		
+		
+			var dist=point_distance(x,y,px,py)
+			if array_contains(tags,"crafted") && dist<=pickup_distance
+			{
+				dist-=8
+			}
+			if dist<=pickup_distance && size>=1 && !array_contains(tags,"unpickuppable"){
+				array_push(items,[id,dist,item_id])
+			}
 		}
 	}
 	var min_distance=10000
