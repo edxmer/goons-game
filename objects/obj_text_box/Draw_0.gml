@@ -1,13 +1,13 @@
 
 
-draw_set_color(c_white)
+draw_set_color(color_dark)
 draw_rectangle(top_left_x-border_size, top_left_y-border_size, bot_right_x+border_size, bot_right_y+border_size, false)
 
-draw_set_color(c_black)
+draw_set_color(color_light)
 draw_rectangle(top_left_x, top_left_y, bot_right_x, bot_right_y, false)
 
 
-draw_set_color(c_white)
+draw_set_color(color_dark)
 
 draw_set_halign(fa_left)
 draw_set_valign(fa_top)

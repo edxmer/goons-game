@@ -4,8 +4,7 @@ data = []
 follow_id = self
 offset_x = 0
 offset_y = 0
-scale_speaker = 0.08
-scale_text = 0.12
+
 
 data_id = 0
 text_current = ""
@@ -16,10 +15,16 @@ text_speed = 15
 waiting = false
 timer_start = 0
 
+color_dark = make_colour_rgb(43, 103, 151)
+color_light = make_colour_rgb(189, 221, 244)
 
-box_width = 40
-box_height = 15
-padding = 4
+
+
+scale_speaker = 0.12
+scale_text = 0.2
+box_width = 70
+box_height = 30
+padding = 6
 border_size = 1
 
 x = follow_id.x + offset_x
