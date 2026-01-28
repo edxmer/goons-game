@@ -25,25 +25,32 @@ function assign_item(item_id){
 	}
 	if item_id=="candy"{
 		item_data.texture=spr_candy
+		array_push(item_data.tags,"crafted")
 	}
 	if item_id=="froglamp"{
 		item_data.texture=spr_froglamp
+		array_push(item_data.tags,"crafted")
 	}
 	if item_id=="plank"{
 		item_data.texture=spr_plank
 	array_push(item_data.tags,"wood")
+		array_push(item_data.tags,"crafted")
 	}
 	if item_id=="lamp"{
 		item_data.texture=spr_lamp
+		array_push(item_data.tags,"crafted")
 	}
 	if item_id=="goon_blue"{
 		item_data.texture=spr_goon_blue
+		array_push(item_data.tags,"unpickuppable")
 	}
 	if item_id=="goon_dumb"{
 		item_data.texture=spr_goon_dumb
+		array_push(item_data.tags,"unpickuppable")
 	}
 	else if item_id=="cigarette"{
 		item_data.texture=spr_cigarette
+		array_push(item_data.tags,"crafted")
 	}
 	else if item_id=="rock"{
 		item_data.texture=spr_rock
@@ -55,12 +62,15 @@ function assign_item(item_id){
 	}
 	else if item_id=="goo"{
 		item_data.texture=spr_goo_yellow
+		array_push(item_data.tags,"crafted")
 	}
 	else if item_id=="goon_show"{
 		item_data.texture=spr_goon
+		array_push(item_data.tags,"unpickuppable")
 	}
 	else if item_id=="reward"{
 		item_data.texture=spr_reward
+		array_push(item_data.tags,"unpickuppable")
 	}
 	else if item_id=="sock"{
 		item_data.texture=spr_sock
@@ -77,7 +87,11 @@ function pickup_item(px,py,pickup_distance=35)
 	with(obj_item)
 	{
 		var dist=point_distance(x,y,px,py)
-		if dist<=pickup_distance && size>=1{
+		if array_contains(tags,"crafted") && dist<=pickup_distance
+		{
+			dist-=8
+		}
+		if dist<=pickup_distance && size>=1 && !array_contains(tags,"unpickuppable"){
 			array_push(items,[id,dist,item_id])
 		}
 	}

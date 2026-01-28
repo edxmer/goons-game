@@ -13,7 +13,22 @@ if spawning{
 	{
 		set_spawning_timer()
 		sound_play_category_at(summon_sound,x,y)
-		summon_item_from_pool(spawn_item_pool)
+		var pool=spawn_item_pool
+		var nearby=get_nearby_item_ids()
+		var amount=0
+		for (var i=0;i<array_length(nearby);i++)
+		{
+			if array_contains(pool,nearby[i])
+			{
+				amount++
+			}
+		}
+		if amount<10{
+			summon_item_from_pool(spawn_item_pool)
+		}
+		else{
+			spawning_time/=2
+		}
 	}
 }
 
@@ -31,7 +46,16 @@ if crafting
 				item_destroy_nearby(cur_item)
 			}
 			sound_play_category_at(craft_sound,x,y)
-			summon_item_from_pool(crafting_reward_pool)
+			var closest=goons_get_closest_idle(x,y)
+			if closest!=noone && point_distance(closest.x,closest.y,x,y)<=40 && closest.inventory=="empty"
+			{
+				var item=get_item_from_pool(crafting_reward_pool)
+				closest.inventory=item
+				closest.inventory_sprite=assign_item(item).texture
+			}
+			else{
+				summon_item_from_pool(crafting_reward_pool)
+			}
 			
 		
 		}

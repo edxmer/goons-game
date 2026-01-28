@@ -2,6 +2,8 @@ size=0.1
 
 useful=false
 
+tags=[]
+
 sprite_index=spr_empty
 item_id="empty"
 assigned=false
@@ -13,6 +15,7 @@ assign=function(){
 	}
 	var item_data=assign_item(item_id)
 	sprite_index=item_data.texture
+	tags=item_data.tags
 	if sprite_index==spr_empty
 	{
 		instance_destroy()

@@ -59,8 +59,8 @@ function goon_if_gooning_goto_coords(_id,xx,yy){
 			goto_x=mouse_x+irandom_range(-bad_prec,bad_prec)
 			goto_y=mouse_y+irandom_range(-bad_prec,bad_prec)
 			if dumb{
-				goto_x=lengthdir_x(-distance,look)
-				goto_x=lengthdir_y(-distance,look)
+				goto_x=x+lengthdir_x(-distance,look)
+				goto_y=y+lengthdir_y(-distance,look)
 			}
 				
 			goto_x=clamp(goto_x,8,room_width-8)
