@@ -16,11 +16,19 @@ if item_id="goon_show" && size>=0.95
 	instance_destroy()
 }
 
+if item_id="goon_dumb" && size>=0.95
+{
+	var dumb=instance_create_depth(x,y,depth,obj_goon)
+	dumb.dumb=true
+	instance_destroy()
+}
+
 if item_id="goon_blue" && size>=0.95
 {
 	var changed=false
 	with(obj_goon){
-		if !changed{
+		if !changed && !blue && !dumb{
+			blue=true
 			sound_play_category_at("murr",x,y)
 			goon_speed*=3
 			sprite_index=spr_goon_blue

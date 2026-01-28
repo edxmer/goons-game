@@ -68,6 +68,11 @@ if global.reward_level==25
 {
 	lootpool=[["item","candy"]]
 }
+
+if global.reward_level==1 || global.reward_level==2
+{
+	lootpool=[["item","goon_dumb"]]
+}
 for(var i=0;i<3;i++)
 {
 	var reward=instance_create_depth(x,y,-room_height*2,obj_reward_one)

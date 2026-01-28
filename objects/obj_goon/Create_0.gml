@@ -4,6 +4,9 @@ goon_speed=irandom_range(160,300) /3
 goto_x=x
 goto_y=y
 
+blue=false
+dumb=false
+
 all_distance=0
 
 

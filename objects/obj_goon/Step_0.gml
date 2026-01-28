@@ -1,7 +1,17 @@
+if dumb && goon_speed>=(160/3)
+{
+	sprite_index=spr_goon_dumb
+	goon_speed=irandom_range(120,140)/3
+}
+
 
 if goto_x!=x && goto_y!=y{
 	sprite_index=spr_goon_walk
-	if goon_speed>100{
+	if dumb{
+			sprite_index=spr_goon_walk_dumb
+	
+	}
+	else if blue{
 			sprite_index=spr_goon_walk_blue
 	}
 	var look=point_direction(x,y,goto_x,goto_y)
@@ -17,7 +27,10 @@ if goto_x!=x && goto_y!=y{
 
 	if point_distance(x,y,goto_x,goto_y)<speed_real{
 		sprite_index=spr_goon
-		if goon_speed>100{
+		if dumb{
+			sprite_index=spr_goon_dumb
+		}
+		else if blue{
 			sprite_index=spr_goon_blue
 		}
 		if distance_went>=step_distance*0.5{

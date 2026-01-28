@@ -49,16 +49,22 @@ function goon_if_gooning_goto_coords(_id,xx,yy){
 	with(_id){
 		if gooning{
 			var distance=point_distance(x,y,mouse_x,mouse_y)
-			
+			var look=point_direction(x,y,mouse_x,mouse_y)
 			if distance<6
 			{
 				put_down_item()
 			}
 			
 			var bad_prec=min(distance*0.2,15)
+			goto_x=mouse_x+irandom_range(-bad_prec,bad_prec)
+			goto_y=mouse_y+irandom_range(-bad_prec,bad_prec)
+			if dumb{
+				goto_x=lengthdir_x(-distance,look)
+				goto_x=lengthdir_y(-distance,look)
+			}
 				
-			goto_x=clamp(mouse_x+irandom_range(-bad_prec,bad_prec),8,room_width-8)
-			goto_y=clamp(mouse_y+irandom_range(-bad_prec,bad_prec),8,room_height-8)
+			goto_x=clamp(goto_x,8,room_width-8)
+			goto_y=clamp(goto_y,8,room_height-8)
 			gooning=false
 		}
 	}

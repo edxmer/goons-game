@@ -39,6 +39,9 @@ function assign_item(item_id){
 	if item_id=="goon_blue"{
 		item_data.texture=spr_goon_blue
 	}
+	if item_id=="goon_dumb"{
+		item_data.texture=spr_goon_dumb
+	}
 	else if item_id=="cigarette"{
 		item_data.texture=spr_cigarette
 	}

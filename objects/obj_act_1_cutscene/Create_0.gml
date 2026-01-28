@@ -46,7 +46,7 @@ add_text_box_gui([
 	txtg("goon", "goon", play_goon_sound),
 	txtg("goon", "goon", play_goon_sound),
 	txtg("goon goon goon", "goon"),
-	txtg("Stop, or I'll tare apart your miserable soul", "???", play_goon_sound),
+	txtg("Stop, or I'll tear apart your miserable soul", "???", play_goon_sound),
 	txtg("goon?", "goon"),
 	txtg("And take away your goon", "???", play_goon_sound),
 	txtg("*shivers*", "goon"),
