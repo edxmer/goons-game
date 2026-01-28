@@ -1,4 +1,4 @@
-depth=-room_width-20
+depth=-room_height-bbox_bottom
 
 data = []
 follow_id = self
@@ -15,8 +15,8 @@ text_speed = 15
 waiting = false
 timer_start = 0
 
-color_dark = make_colour_rgb(43, 103, 151)
-color_light = make_colour_rgb(189, 221, 244)
+color_dark = #101119 //make_colour_rgb(43, 103, 151)
+color_light =#E0D6BC //make_colour_rgb(189, 221, 244)
 
 
 

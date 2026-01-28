@@ -9,7 +9,15 @@ x=(room_width>>1)-(width_base*0.5*camera_size)
 y=(room_height>>1)-(height_base*0.5)
 camera_speed=3
 
+real_x=x
+real_y=y
 
 	camera_set_view_size(cam,width_base*camera_size,height_base*camera_size)
 
-mouse_go_percent=0.2
+mouse_go_percent=0.15
+
+reset_smoothness=function()
+{
+real_x=x
+real_y=y
+}

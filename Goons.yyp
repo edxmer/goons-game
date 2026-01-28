@@ -67,6 +67,7 @@
     {"id":{"name":"ITEMS_SCRIPT","path":"scripts/ITEMS_SCRIPT/ITEMS_SCRIPT.yy",},},
     {"id":{"name":"Script7","path":"scripts/Script7/Script7.yy",},},
     {"id":{"name":"SOUND_SCRIPT","path":"scripts/SOUND_SCRIPT/SOUND_SCRIPT.yy",},},
+    {"id":{"name":"SPECIAL_OBJECTIVES","path":"scripts/SPECIAL_OBJECTIVES/SPECIAL_OBJECTIVES.yy",},},
     {"id":{"name":"TEXT_BOX_SCRIPT","path":"scripts/TEXT_BOX_SCRIPT/TEXT_BOX_SCRIPT.yy",},},
     {"id":{"name":"USE_MESSAGES","path":"scripts/USE_MESSAGES/USE_MESSAGES.yy",},},
     {"id":{"name":"WORK_STATION_SCRIPT","path":"scripts/WORK_STATION_SCRIPT/WORK_STATION_SCRIPT.yy",},},

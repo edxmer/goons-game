@@ -1,3 +1,5 @@
+depth=-room_height-bbox_bottom
+
 if !instance_exists(follow_id) {
 	instance_destroy()
 	exit

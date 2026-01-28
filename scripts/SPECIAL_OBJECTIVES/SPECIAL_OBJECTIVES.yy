@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"SPECIAL_OBJECTIVES",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"SPECIAL_OBJECTIVES",
+  "parent":{
+    "name":"SCRIPTS",
+    "path":"folders/SCRIPTS.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -17,21 +17,11 @@ function workstation_selected_id()
 
 }
 
-function workstation_get_all_possible_items()
+function workstation_get_craftable_items()
 {
 	var itemslist=[]
 	with(obj_work_station)
 	{
-		
-		for(var i=0;i<array_length(spawn_item_pool);i++)
-		{
-			if spawn_item_pool[i]!="goon_show" && spawn_item_pool[i]!="reward"{
-				array_push(itemslist,spawn_item_pool[i])
-				if onemore_chance{
-					array_push(itemslist,spawn_item_pool[i])
-				}
-			}
-		}
 		for(var i=0;i<array_length(crafting_reward_pool);i++)
 		{
 			if crafting_reward_pool[i]!="goon_show" && crafting_reward_pool[i]!="reward"&& crafting_reward_pool[i]!="goon_blue"{
@@ -42,9 +32,67 @@ function workstation_get_all_possible_items()
 				}
 			}
 		}
-	
 	}
+	return itemslist
 
+}
+
+function pick_one_item_random(list)
+{
+	if array_length(list)==0{
+		return "empty"
+	}
+	return list[irandom_range(0,array_length(list))]
+}
+
+
+function workstation_get_summoned_items()
+{
+	var itemslist=[]
+	with(obj_work_station)
+	{
+		for(var i=0;i<array_length(spawn_item_pool);i++)
+		{
+			if spawn_item_pool[i]!="goon_show" && spawn_item_pool[i]!="reward"{
+				array_push(itemslist,spawn_item_pool[i])
+				if onemore_chance{
+					array_push(itemslist,spawn_item_pool[i])
+				}
+			}
+		}
+	}
+	return itemslist
+
+}
+
+function workstation_get_all_possible_items()
+{
+	var itemslist=[]
+	
+		/*for(var i=0;i<array_length(spawn_item_pool);i++)
+		{
+			if spawn_item_pool[i]!="goon_show" && spawn_item_pool[i]!="reward"{
+				array_push(itemslist,spawn_item_pool[i])
+				if onemore_chance{
+					array_push(itemslist,spawn_item_pool[i])
+				}
+			}
+		}
+		/*for(var i=0;i<array_length(crafting_reward_pool);i++)
+		{
+			if crafting_reward_pool[i]!="goon_show" && crafting_reward_pool[i]!="reward"&& crafting_reward_pool[i]!="goon_blue"{
+				array_push(itemslist,crafting_reward_pool[i])
+				array_push(itemslist,crafting_reward_pool[i])
+				if onemore_chance{
+					array_push(itemslist,crafting_reward_pool[i])
+				}
+			}
+		}*/
+		
+	
+	var summoned=workstation_get_summoned_items()
+	var crafted= workstation_get_craftable_items()
+	itemslist=array_concat(crafted,summoned,itemslist)
 	return itemslist
 }
 
