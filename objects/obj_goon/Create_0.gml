@@ -1,3 +1,12 @@
+
+if !variable_global_exists("goon_count")
+{
+global.goon_count=1
+}
+else{
+global.goon_count++
+}
+
 gooning=false
 speaking = false
 goon_speed=irandom_range(160,300) /3
@@ -6,10 +15,11 @@ goto_y=y
 
 blue=false
 dumb=false
-
+item_type="goon_show"
 walked_pixels=0
 
 all_distance=0
+
 
 
 distance_went=0
@@ -17,9 +27,10 @@ step_distance=goon_speed*0.3
 
 inventory="empty"
 inventory_sprite=spr_empty
-effects_set_base(id)
 has_effects=false
-current_effects={freezing:{is:false},slowed:{is:false}}
+effect_init(id)
+//effect_data_stay={freezing:{freezing_pixel_taken:0}}
+
 
 pixels_taken_this_frame=0
 
@@ -66,6 +77,7 @@ interact_function=function()
 		}
 	
 	}
+	effect_update(id)
 	
 }
 

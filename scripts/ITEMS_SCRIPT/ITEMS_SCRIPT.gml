@@ -28,8 +28,8 @@ function assign_item(item_id){
 		array_push(item_data.tags,"crafted")
 	}
 	if item_id=="ice_cream"{
-		item_data.texture=spr_candy
-		item_data.special_data.freezing_pixel_amount=45
+		item_data.texture=spr_ice_cream
+		item_data.special_data.freezing_pixel_amount=200
 		array_push(item_data.tags,"freezing")
 		array_push(item_data.tags,"has_effects")
 	}

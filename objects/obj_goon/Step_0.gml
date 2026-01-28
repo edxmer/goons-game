@@ -1,5 +1,19 @@
 pixels_taken_this_frame=0
 
+if dumb && item_type!="goon_show_dumb"
+{
+	item_type="goon_show_dumb"
+}
+else if blue &&item_type!="goon_show_blue"
+{
+	item_type="goon_show_blue"
+}
+else if !blue && !dumb && item_type!="goon_show"
+{
+	item_type="goon_show"
+}
+
+
 if dumb && goon_speed>=(160/3)
 {
 	sprite_index=spr_goon_dumb
@@ -21,7 +35,7 @@ if goto_x!=x && goto_y!=y{
 			sprite_index=spr_goon_walk_blue
 	}
 	var look=point_direction(x,y,goto_x,goto_y)
-	var speed_real=goon_speed*min(delta_time/1000000,0.4)
+	var speed_real=goon_speed*min(delta_time/1000000,0.4)*slowness_modifier
 	distance_went+=speed_real
 	pixels_taken_this_frame=speed_real
 	x+=lengthdir_x(speed_real,look)
@@ -57,3 +71,4 @@ if distance_went>=step_distance
 	sound_play_category_at("footstep",x,y)
 }
 
+effect_tick(id)

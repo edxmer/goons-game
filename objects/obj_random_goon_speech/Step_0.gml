@@ -1,5 +1,10 @@
 speech_timer -= delta_time/100000
 
+if global.goon_count==0
+{
+	exit
+}
+
 if (speech_timer < 0) {
 	speech_timer = random_range(random_min, random_max)
 	

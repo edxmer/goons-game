@@ -72,6 +72,7 @@ function create_work_station(_x,_y,station_id)
 	{
 		assign()
 	}
+	return station
 
 }
 
@@ -100,7 +101,7 @@ function work_station_data_get(station_id){
 	{
 		work_station_data.texture=spr_goon_frozen
 		work_station_data.crafting=true
-		work_station_data.craft_sound="murr"
+		work_station_data.craft_sound="unfreeze"
 		work_station_data.craft_input_pool_tags=["cigarette"]
 		work_station_data.craft_reward_pool=["goon_show"]
 		work_station_data.destroy_after=1

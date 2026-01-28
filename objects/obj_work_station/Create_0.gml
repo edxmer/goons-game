@@ -5,6 +5,9 @@ primordeal_goo=false
 used_amount=0
 destroy_after=-1
 
+has_special_crafting_output=false
+special_crafting_output=["empty"]
+
 
 onemore_chance=false
 
@@ -51,6 +54,10 @@ assign=function()
 	
 
 	crafting_reward_pool=station_data.craft_reward_pool
+	if has_special_crafting_output
+	{
+		crafting_reward_pool=special_crafting_output
+	}
 	crafting_input_ids=station_data.craft_input_pool_tags
 
 	set_spawning_timer()
