@@ -96,6 +96,8 @@
     {"id":{"name":"spr_goo_yellow","path":"sprites/spr_goo_yellow/spr_goo_yellow.yy",},},
     {"id":{"name":"spr_goo","path":"sprites/spr_goo/spr_goo.yy",},},
     {"id":{"name":"spr_goon_blue","path":"sprites/spr_goon_blue/spr_goon_blue.yy",},},
+    {"id":{"name":"spr_goon_sexy_2","path":"sprites/spr_goon_sexy_2/spr_goon_sexy_2.yy",},},
+    {"id":{"name":"spr_goon_sexy","path":"sprites/spr_goon_sexy/spr_goon_sexy.yy",},},
     {"id":{"name":"spr_goon_walk_blue","path":"sprites/spr_goon_walk_blue/spr_goon_walk_blue.yy",},},
     {"id":{"name":"spr_goon_walk","path":"sprites/spr_goon_walk/spr_goon_walk.yy",},},
     {"id":{"name":"spr_goon","path":"sprites/spr_goon/spr_goon.yy",},},
