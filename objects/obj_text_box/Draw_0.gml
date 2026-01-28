@@ -13,7 +13,7 @@ draw_rectangle(top_left_x, top_left_y, bot_right_x, bot_right_y, false)
 var _x = x + offset_x
 var _y = y + offset_y
 
-draw_sprite_ext(spr_goon_speech_box, 0, _x, _y, 1.5, 1.5, 0, c_white, 1)
+draw_sprite_ext(spr_goon_speech_box_hd, 0, _x, _y, .75, .75, 0, c_white, 1)
 
 draw_set_color(color_dark)
 

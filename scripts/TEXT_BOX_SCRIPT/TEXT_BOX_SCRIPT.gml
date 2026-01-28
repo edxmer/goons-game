@@ -6,7 +6,7 @@ function add_text_box_gui(data=[txtg()]){
 	return text_box_id
 }
 
-function add_text_box(_id, data=[txt()], offset_x=-3, offset_y=-35) {
+function add_text_box(_id, data=[txt()], offset_x=-1, offset_y=-27) {
 	var text_box_id = instance_create_depth(0, 0, _id.depth, obj_text_box)
 	
 	text_box_id.follow_id = _id
