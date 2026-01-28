@@ -80,6 +80,16 @@ function assign_item(item_id){
 	return item_data
 }
 
+function item_unpickupable(item_id)
+{
+	return array_contains(item_get_tags(item_id),"unpickuppable")
+}
+
+function item_get_tags(item_id)
+{
+	return item_data=assign_item(item_id).tags
+	
+}
 
 function pickup_item(px,py,pickup_distance=35)
 {

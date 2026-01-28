@@ -107,6 +107,7 @@
     {"id":{"name":"spr_goon","path":"sprites/spr_goon/spr_goon.yy",},},
     {"id":{"name":"spr_goonificator","path":"sprites/spr_goonificator/spr_goonificator.yy",},},
     {"id":{"name":"spr_halo","path":"sprites/spr_halo/spr_halo.yy",},},
+    {"id":{"name":"spr_ice_cream","path":"sprites/spr_ice_cream/spr_ice_cream.yy",},},
     {"id":{"name":"spr_lamp","path":"sprites/spr_lamp/spr_lamp.yy",},},
     {"id":{"name":"spr_logs","path":"sprites/spr_logs/spr_logs.yy",},},
     {"id":{"name":"spr_outline","path":"sprites/spr_outline/spr_outline.yy",},},

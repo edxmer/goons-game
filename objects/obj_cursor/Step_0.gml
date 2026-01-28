@@ -45,7 +45,20 @@ if mouse_check_button(mb_left) && global.select_mode
 
 if mouse_check_button_released(mb_left) && global.select_mode && goons_selected==0 && !global.text_box_gui_active
 {
-	var closest_idle=goons_get_closest_idle(mouse_x,mouse_y)
+	var items_searched_for=["empty"]
+	var selected_ws=workstation_selected_id()
+	if selected_ws!=noone
+	{
+		if selected_ws.crafting==true
+		{
+			items_searched_for=selected_ws.crafting_input_ids
+		}
+	}
+	var closest_idle=goons_get_closest_idle(mouse_x,mouse_y,items_searched_for)
+	if closest_idle==noone
+	{
+		closest_idle=goons_get_closest_idle(mouse_x,mouse_y)
+	}
 	if closest_idle!=noone
 	{
 		closest_idle.gooning=true

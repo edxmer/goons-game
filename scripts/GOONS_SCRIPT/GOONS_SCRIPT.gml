@@ -3,11 +3,11 @@ function draw_shadow()
 	draw_sprite_ext(spr_shadow,0,x,bbox_bottom,image_xscale,image_yscale,0,c_white,image_alpha)
 }
 
-function goons_get_closest_idle(xx,yy){
+function goons_get_closest_idle(xx,yy,items=["empty"]){
 	var goonslist=[]
 	with(obj_goon)
 	{
-		if goon_is_idle(id)
+		if goon_is_idle(id,items) && id.dumb==false
 		{
 			array_push(goonslist,[id,point_distance(x,y,xx,yy)])
 		}
@@ -33,10 +33,10 @@ function goons_get_closest_idle(xx,yy){
 	
 }
 
-function goon_is_idle(_id)
+function goon_is_idle(_id,items=["empty"])
 {
 	if _id.object_index==obj_goon{
-		if _id.gooning==false && _id.inventory=="empty" && _id.goto_x==_id.x && _id.goto_y==_id.y
+		if _id.gooning==false && array_contains(items,_id.inventory) && _id.goto_x==_id.x && _id.goto_y==_id.y
 		{
 			return true
 		}

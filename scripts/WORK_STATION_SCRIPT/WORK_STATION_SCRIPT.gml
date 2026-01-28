@@ -5,6 +5,18 @@ function draw_workstation(_x,_y,station_id,scale)
 
 }
 
+function workstation_selected_id()
+{
+	with(obj_work_station)
+	{
+		if selected{
+			return id
+		}
+	}
+	return noone
+
+}
+
 function workstation_get_all_possible_items()
 {
 	var itemslist=[]

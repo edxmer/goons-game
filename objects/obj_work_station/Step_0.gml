@@ -47,14 +47,16 @@ if crafting
 			}
 			sound_play_category_at(craft_sound,x,y)
 			var closest=goons_get_closest_idle(x,y)
-			if closest!=noone && point_distance(closest.x,closest.y,x,y)<=40 && closest.inventory=="empty"
+			var item=get_item_from_pool(crafting_reward_pool)
+			
+			if !item_unpickupable(item) &&closest!=noone && point_distance(closest.x,closest.y,x,y)<=40 && closest.inventory=="empty"
 			{
-				var item=get_item_from_pool(crafting_reward_pool)
+				
 				closest.inventory=item
 				closest.inventory_sprite=assign_item(item).texture
 			}
 			else{
-				summon_item_from_pool(crafting_reward_pool)
+				summon_item_from_pool(item)
 			}
 			
 		
