@@ -71,7 +71,7 @@ if global.reward_level==25
 
 if global.reward_level==1 || global.reward_level==2
 {
-	lootpool=[["item","goon_dumb"]]
+	lootpool=[["item","goon_show_dumb"]]
 }
 for(var i=0;i<3;i++)
 {

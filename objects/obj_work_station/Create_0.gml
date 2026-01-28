@@ -2,6 +2,10 @@ crafting=false
 spawning=false
 primordeal_goo=false
 
+used_amount=0
+destroy_after=-1
+
+
 onemore_chance=false
 
 sprite_index=spr_empty
@@ -30,6 +34,8 @@ assign=function()
 	var station_data=work_station_data_get(station_id)
 
 	sprite_index=station_data.texture
+	
+	destroy_after=station_data.destroy_after
 	
 	onemore_chance=station_data.third
 	

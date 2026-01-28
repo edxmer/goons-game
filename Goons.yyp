@@ -62,6 +62,7 @@
     {"id":{"name":"Act_1_cutscene","path":"rooms/Act_1_cutscene/Act_1_cutscene.yy",},},
     {"id":{"name":"MainMenu","path":"rooms/MainMenu/MainMenu.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"id":{"name":"EFFECT_SCRIPT","path":"scripts/EFFECT_SCRIPT/EFFECT_SCRIPT.yy",},},
     {"id":{"name":"GOONS_SCRIPT","path":"scripts/GOONS_SCRIPT/GOONS_SCRIPT.yy",},},
     {"id":{"name":"ITEMS_SCRIPT","path":"scripts/ITEMS_SCRIPT/ITEMS_SCRIPT.yy",},},
     {"id":{"name":"Script7","path":"scripts/Script7/Script7.yy",},},

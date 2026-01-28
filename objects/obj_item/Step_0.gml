@@ -16,13 +16,19 @@ if item_id="goon_show" && size>=0.95
 	instance_destroy()
 }
 
-if item_id="goon_dumb" && size>=0.95
+if item_id="goon_show_dumb" && size>=0.95
 {
 	var dumb=instance_create_depth(x,y,depth,obj_goon)
 	dumb.dumb=true
 	instance_destroy()
 }
 
+if item_id="goon_show_blue" && size>=0.95
+{
+	var blue=instance_create_depth(x,y,depth,obj_goon)
+	blue.blue=true
+	instance_destroy()
+}
 if item_id="goon_blue" && size>=0.95
 {
 	var changed=false

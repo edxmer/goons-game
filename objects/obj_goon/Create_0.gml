@@ -7,6 +7,8 @@ goto_y=y
 blue=false
 dumb=false
 
+walked_pixels=0
+
 all_distance=0
 
 
@@ -15,6 +17,13 @@ step_distance=goon_speed*0.3
 
 inventory="empty"
 inventory_sprite=spr_empty
+effects_set_base(id)
+has_effects=false
+current_effects={freezing:{is:false},slowed:{is:false}}
+
+pixels_taken_this_frame=0
+
+slowness_modifier=1
 
 
 possible_names = [

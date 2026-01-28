@@ -13,7 +13,7 @@ function create_item(_x,_y,item_id)
 }
 
 function assign_item(item_id){
-	var item_data={texture:spr_empty,item_id:"empty",tags:[]}
+	var item_data={texture:spr_empty,item_id:"empty",tags:[],special_data:{}}
 	item_data.item_id=item_id
 	array_push(item_data.tags,item_id)
 	if item_id=="logs"{
@@ -26,6 +26,12 @@ function assign_item(item_id){
 	if item_id=="candy"{
 		item_data.texture=spr_candy
 		array_push(item_data.tags,"crafted")
+	}
+	if item_id=="ice_cream"{
+		item_data.texture=spr_candy
+		item_data.special_data.freezing_pixel_amount=45
+		array_push(item_data.tags,"freezing")
+		array_push(item_data.tags,"has_effects")
 	}
 	if item_id=="froglamp"{
 		item_data.texture=spr_froglamp
@@ -44,7 +50,7 @@ function assign_item(item_id){
 		item_data.texture=spr_goon_blue
 		array_push(item_data.tags,"unpickuppable")
 	}
-	if item_id=="goon_dumb"{
+	if item_id=="goon_show_dumb"{
 		item_data.texture=spr_goon_dumb
 		array_push(item_data.tags,"unpickuppable")
 	}
@@ -66,6 +72,10 @@ function assign_item(item_id){
 	}
 	else if item_id=="goon_show"{
 		item_data.texture=spr_goon
+		array_push(item_data.tags,"unpickuppable")
+	}
+	else if item_id=="goon_show_blue"{
+		item_data.texture=spr_goon_blue
 		array_push(item_data.tags,"unpickuppable")
 	}
 	else if item_id=="reward"{
@@ -90,6 +100,16 @@ function item_get_tags(item_id)
 	return assign_item(item_id).tags
 	
 }
+
+function item_special_data_contains(item_id,special_data_name)
+{
+	return variable_struct_exists(assign_item(item_id).special_data,special_data_name)
+}
+function item_special_data_get(item_id,special_data_name)
+{
+	return variable_struct_get(assign_item(item_id).special_data,special_data_name)
+}
+
 
 function pickup_item(px,py,pickup_distance=35)
 {

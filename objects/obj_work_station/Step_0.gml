@@ -25,6 +25,7 @@ if spawning{
 		}
 		if amount<10{
 			summon_item_from_pool(spawn_item_pool)
+			used_amount++
 		}
 		else{
 			spawning_time/=2
@@ -60,7 +61,8 @@ if crafting
 				summon_item_from_pool([item])
 			}
 			
-		
+			
+			used_amount++
 		}
 	
 	
@@ -81,4 +83,10 @@ else if selected && !point_in_rectangle(mouse_x,mouse_y,bbox_left-5,bbox_top-10,
 {
 	sound_play_category_at("swoosh",x,y)
 	selected=false
+}
+
+
+if destroy_after>=0 destroy_after<=used_amount
+{
+	instance_destroy()
 }

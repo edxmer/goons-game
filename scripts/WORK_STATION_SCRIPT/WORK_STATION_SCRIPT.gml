@@ -77,7 +77,7 @@ function create_work_station(_x,_y,station_id)
 
 
 function work_station_data_get(station_id){
-	var work_station_data={primordeal_goo:false,third:false,station_id:"empty",craft_sound:"empty",summon_sound:"empty",texture:spr_empty,spawning:false,crafting:false,craft_input_pool_tags:[],craft_reward_pool:[],spawn_item_pool:[],spawn_timer_sec:[0,0]}
+	var work_station_data={primordeal_goo:false,third:false,destroy_after:-1,station_id:"empty",craft_sound:"empty",summon_sound:"empty",texture:spr_empty,spawning:false,crafting:false,craft_input_pool_tags:[],craft_reward_pool:[],spawn_item_pool:[],spawn_timer_sec:[0,0]}
 	work_station_data.station_id=station_id
 	
 	if station_id=="trashcan"
@@ -95,6 +95,15 @@ function work_station_data_get(station_id){
 		work_station_data.craft_sound="woodwork"
 		work_station_data.craft_input_pool_tags=["logs"]
 		work_station_data.craft_reward_pool=["plank"]
+	}
+	else if station_id=="frozen_goon"
+	{
+		work_station_data.texture=spr_goon_frozen
+		work_station_data.crafting=true
+		work_station_data.craft_sound="murr"
+		work_station_data.craft_input_pool_tags=["cigarette"]
+		work_station_data.craft_reward_pool=["goon_show"]
+		work_station_data.destroy_after=1
 	}
 	else if station_id=="nightstand"
 	{
