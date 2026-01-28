@@ -2,7 +2,11 @@ function special_objectives_init()
 {
 	global.special_objectives=
 	{
-		level2:["sock","sock"]
+		level1:["summon","summon"],
+		level2:["plank","any"],
+		level4:["lamp"],
+		level7:["cigarette","any","summon"],
+		level9:["ice_cream"],
 	
 	
 	}

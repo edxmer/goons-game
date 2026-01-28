@@ -42,7 +42,7 @@ function pick_one_item_random(list)
 	if array_length(list)==0{
 		return "empty"
 	}
-	return list[irandom_range(0,array_length(list))]
+	return list[irandom_range(0,array_length(list)-1)]
 }
 
 
