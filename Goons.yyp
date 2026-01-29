@@ -129,6 +129,7 @@
     {"id":{"name":"spr_rock","path":"sprites/spr_rock/spr_rock.yy",},},
     {"id":{"name":"spr_shadow","path":"sprites/spr_shadow/spr_shadow.yy",},},
     {"id":{"name":"spr_sock","path":"sprites/spr_sock/spr_sock.yy",},},
+    {"id":{"name":"spr_speech_box_gui","path":"sprites/spr_speech_box_gui/spr_speech_box_gui.yy",},},
     {"id":{"name":"spr_workstation_cauldron","path":"sprites/spr_workstation_cauldron/spr_workstation_cauldron.yy",},},
     {"id":{"name":"spr_workstation_cigs","path":"sprites/spr_workstation_cigs/spr_workstation_cigs.yy",},},
     {"id":{"name":"spr_workstation_construction","path":"sprites/spr_workstation_construction/spr_workstation_construction.yy",},},

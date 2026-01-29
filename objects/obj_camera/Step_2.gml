@@ -42,7 +42,7 @@ else if mouse_wheel_up(){
 	camera_set_view_size(cam,width_base*global.camera_size,height_base*global.camera_size)
 }
 
-if (!global.is_hovering_gui) {
+
 
 var keyboard=true
 
@@ -57,7 +57,7 @@ var move_x=keyboard_check(ord("D"))-keyboard_check(ord("A"))
 var width=camera_get_view_width(cam)
 var height=camera_get_view_height(cam)
 
-if move_y==0 && move_x==0{
+if move_y==0 && move_x==0 && !global.is_hovering_gui {
 	keyboard=false
 	if abs(x-mouse_x)<width*mouse_go_percent{
 		move_x=-1
@@ -102,8 +102,4 @@ camera_set_view_pos(cam,cam_x,cam_y)
 
 if keyboard_check_pressed(vk_f11){
 window_set_fullscreen(!window_get_fullscreen());
-}
-
-
-
 }

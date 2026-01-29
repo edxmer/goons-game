@@ -14,15 +14,21 @@ var _height = sprite_get_height(button_sprite) * button_size
 
 
 hovering = point_in_rectangle(_mx, _my, _btnx, _btny, _btnx+_width, _btny+_height)
-if (hovering != _prev_hovering) {
-	global.is_hovering_gui = hovering
-}
 
+var _hoverng_arr_ind = array_get_index(global.gui_hovering, self)
 
 if (hovering) {
 	if (button_sprite_index == 0)
 		sound_play_category_at("swoosh", 0, 0)
 	button_sprite_index = 1
+	
+	if (_hoverng_arr_ind == -1) {
+		array_push(global.gui_hovering, self)
+	}
+	
 } else {
 	button_sprite_index = 0
+	if (_hoverng_arr_ind != -1) {
+		array_delete(global.gui_hovering, _hoverng_arr_ind, 1)
+	}
 }

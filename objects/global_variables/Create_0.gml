@@ -3,8 +3,6 @@ global.select_mode=false
 
 global.goo_count = 0
 
-global.text_box_gui_active = false
-
 global.objective_list = ["banana"]
 
 global.reward_level=1
@@ -12,6 +10,7 @@ global.reward_level=1
 global.reward_mode=false
 
 global.is_hovering_gui = false
+global.gui_hovering = []
 
 special_objectives_init()
 //global.goon_count=0

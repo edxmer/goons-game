@@ -1,8 +1,5 @@
-var _camera_size=1
-with(obj_camera)
-{
-	_camera_size=camera_size
-}
+var _camera_size=global.camera_size
+
 var cam=view_get_camera(0)
 var x_mid=camera_get_view_x(cam)+(camera_get_view_width(cam)/2)
 y=camera_get_view_y(cam)+(camera_get_view_height(cam)/2)
