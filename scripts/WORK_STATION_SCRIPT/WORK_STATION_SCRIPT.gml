@@ -125,6 +125,11 @@ function create_work_station(_x,_y,station_id)
 }
 
 
+function work_station_texture_get(station_id)
+{
+	
+}
+
 function work_station_data_get(station_id){
 	var work_station_data={primordeal_goo:false,third:false,destroy_after:-1,station_id:"empty",craft_sound:"empty",summon_sound:"empty",texture:spr_empty,spawning:false,crafting:false,craft_input_pool_tags:[],craft_reward_pool:[],spawn_item_pool:[],spawn_timer_sec:[0,0]}
 	work_station_data.station_id=station_id

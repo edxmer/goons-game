@@ -12,8 +12,8 @@
   "name":"obj_button_gui_parent",
   "overriddenProperties":[],
   "parent":{
-    "name":"OBJECTS",
-    "path":"folders/OBJECTS.yy",
+    "name":"GUI BUTTON",
+    "path":"folders/OBJECTS/GUI BUTTON.yy",
   },
   "parentObjectId":null,
   "persistent":false,

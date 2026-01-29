@@ -103,3 +103,4 @@ camera_set_view_pos(cam,cam_x,cam_y)
 if keyboard_check_pressed(vk_f11){
 window_set_fullscreen(!window_get_fullscreen());
 }
+
