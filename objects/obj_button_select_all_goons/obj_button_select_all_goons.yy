@@ -8,8 +8,8 @@
   "name":"obj_button_select_all_goons",
   "overriddenProperties":[],
   "parent":{
-    "name":"OBJECTS",
-    "path":"folders/OBJECTS.yy",
+    "name":"GUI BUTTON",
+    "path":"folders/OBJECTS/GUI BUTTON.yy",
   },
   "parentObjectId":{
     "name":"obj_button_gui_parent",
