@@ -1,4 +1,6 @@
-
+if (!autoskip && hovering) {
+	
+	
 var _arr_len = array_length(data)
 var _len = string_length(data[data_id].text)
 	
@@ -17,7 +19,9 @@ else {
 	text_at = 0
 	data_id++
 	if (data_id >= _arr_len) {
-		global.text_box_gui_active = false
 		instance_destroy(self)
 	}
+}
+
+
 }

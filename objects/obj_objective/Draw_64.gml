@@ -11,7 +11,8 @@ level_text_scale=0.9
 level_text_offset_x = -30
 level_text_offset_y = 80
 level_text_rotation = -6
-level_shadow_offset = 2
+level_shadow_offset_x = 2
+level_shadow_offset_y = -2
 
 // Draw boxes and items
 for (var i=0; i<_arr_len; i++) {
@@ -43,6 +44,6 @@ draw_text_transformed(x+text_offset_x, y+text_offset_y, "Objectives", text_scale
 level_str = "level " + string(level)
 draw_set_font(fnt_header_1)
 draw_set_color(c_black)
-draw_text_transformed(x+level_text_offset_x+level_shadow_offset, y+level_text_offset_y-level_shadow_offset, level_str, level_text_scale, level_text_scale, level_text_rotation)
+draw_text_transformed(x+level_text_offset_x+level_shadow_offset_x, y+level_text_offset_y-level_shadow_offset_y, level_str, level_text_scale, level_text_scale, level_text_rotation)
 draw_set_color(c_white)
 draw_text_transformed(x+level_text_offset_x, y+level_text_offset_y, level_str, level_text_scale, level_text_scale, level_text_rotation)

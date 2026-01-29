@@ -15,8 +15,32 @@ speaker_current = data[data_id].speaker
 
 if (string_length(text_prev) < string_length(text_current)) {
 	var _new_char = string_char_at(text_current, floor(text_at))
-	if (_new_char != " " && _new_char != "\n")
+	if (_new_char != " " && _new_char != "\n" && !autoskip)
 		sound_play_at(sound_typing, 0, 0)
+	
 
+
+}
+
+
+if (autoskip) {
+
+var _arr_len = array_length(data)
+_len = string_length(data[data_id].text)
+	
+if (text_at >= _len) {
+	// AT END OF SPEECH
+	// skip to next, and do the action
+	
+	data[data_id].action()
+	text_current = ""
+	speaker_current = ""
+	text_at = 0
+	data_id++
+	if (data_id >= _arr_len) {
+		audio_master_gain(original_master_gain)
+		instance_destroy(self)
+	}
+}
 
 }

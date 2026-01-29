@@ -32,5 +32,5 @@ draw_text_transformed(_x + _txt_offset + padding*0.2, _y + _txt_offset, speaker_
 // DRAW BODY TEXT
 draw_set_font(font_body)
 
-draw_text_ext_transformed(_x + _txt_offset + padding*0.5, _y + _txt_offset + padding, text_current, 20, (box_width-padding)/scale_text, scale_text, scale_text, 0)
+draw_text_ext_transformed(_x + _txt_offset + padding*0.5, _y + _txt_offset + padding, text_current, 25, (box_width-padding)/scale_text, scale_text, scale_text, 0)
 

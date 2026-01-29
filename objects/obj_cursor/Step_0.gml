@@ -1,6 +1,6 @@
 
 
-
+if (!global.is_hovering_gui) { // goon
 
 if mouse_check_button_pressed(mb_left)
 {
@@ -43,7 +43,7 @@ if mouse_check_button(mb_left) && global.select_mode
 }
 
 
-if mouse_check_button_released(mb_left) && global.select_mode && goons_selected==0 && !global.text_box_gui_active
+if mouse_check_button_released(mb_left) && global.select_mode && goons_selected==0
 {
 	var items_searched_for=["empty"]
 	var selected_ws=workstation_selected_id()
@@ -68,3 +68,4 @@ if mouse_check_button_released(mb_left) && global.select_mode && goons_selected=
 }
 
 
+}

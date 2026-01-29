@@ -1,41 +1,47 @@
 var cam=view_get_camera(0)
 
-if mouse_wheel_down(){
+
+if global.is_hovering_gui {
+	global.camera_size=clamp(global.camera_size,0.4,3)
+	camera_set_view_size(cam,width_base*global.camera_size,height_base*global.camera_size)
+}
+else if mouse_wheel_down(){
 	var width=camera_get_view_width(cam)
 	var height=camera_get_view_height(cam)
-	var old_size=camera_size
-	camera_size+=0.2
+	var old_size=global.camera_size
+	global.camera_size+=0.2
 	
 	var x_zoom=clamp((mouse_x-x)/width,0,1)
 	var y_zoom=clamp((mouse_y-y)/height,0,1)
 	
-	if camera_size<=3{
-		x+=x_zoom*width_base*old_size-x_zoom*width_base*camera_size
-		y+=y_zoom*height_base*old_size-y_zoom*height_base*camera_size
+	if global.camera_size<=3{
+		x+=x_zoom*width_base*old_size-x_zoom*width_base*global.camera_size
+		y+=y_zoom*height_base*old_size-y_zoom*height_base*global.camera_size
 		reset_smoothness()
 	}
-	camera_size=clamp(camera_size,0.4,3)
-	camera_set_view_size(cam,width_base*camera_size,height_base*camera_size)
+	global.camera_size=clamp(global.camera_size,0.4,3)
+	camera_set_view_size(cam,width_base*global.camera_size,height_base*global.camera_size)
 }
 
 else if mouse_wheel_up(){
 	var width=camera_get_view_width(cam)
 	var height=camera_get_view_height(cam)
-	var old_size=camera_size
-	camera_size-=0.2
+	var old_size=global.camera_size
+	global.camera_size-=0.2
 	
 	var x_zoom=clamp((mouse_x-x)/width,0,1)
 	var y_zoom=clamp((mouse_y-y)/height,0,1)
 	
 	//
-	if camera_size>=0.4{
-		x+=x_zoom*width_base*old_size-x_zoom*width_base*camera_size
-		y+=y_zoom*height_base*old_size-y_zoom*height_base*camera_size
+	if global.camera_size>=0.4{
+		x+=x_zoom*width_base*old_size-x_zoom*width_base*global.camera_size
+		y+=y_zoom*height_base*old_size-y_zoom*height_base*global.camera_size
 		reset_smoothness()
 	}
-	camera_size=clamp(camera_size,0.5,3)
-	camera_set_view_size(cam,width_base*camera_size,height_base*camera_size)
+	global.camera_size=clamp(global.camera_size,0.5,3)
+	camera_set_view_size(cam,width_base*global.camera_size,height_base*global.camera_size)
 }
+
 
 
 var keyboard=true
@@ -51,7 +57,7 @@ var move_x=keyboard_check(ord("D"))-keyboard_check(ord("A"))
 var width=camera_get_view_width(cam)
 var height=camera_get_view_height(cam)
 
-if move_y==0 && move_x==0{
+if move_y==0 && move_x==0 && !global.is_hovering_gui {
 	keyboard=false
 	if abs(x-mouse_x)<width*mouse_go_percent{
 		move_x=-1
@@ -67,19 +73,19 @@ if move_y==0 && move_x==0{
 		move_y=1
 	}
 }
-var x_go=move_x*camera_speed*camera_size
-var y_go=move_y*camera_speed*camera_size
+var x_go=move_x*camera_speed*global.camera_size
+var y_go=move_y*camera_speed*global.camera_size
 if !keyboard{
 	if move_x !=0 || move_y!=0
 	{
 		var look=point_direction(x+(width>>1),y+(height>>1),mouse_x,mouse_y)
-		x_go=lengthdir_x(camera_speed*camera_size,look)
-		y_go=lengthdir_y(camera_speed*camera_size,look)
+		x_go=lengthdir_x(camera_speed*global.camera_size,look)
+		y_go=lengthdir_y(camera_speed*global.camera_size,look)
 	}
 }
 
-real_x+=x_go//move_x*camera_speed*camera_size
-real_y+=y_go//move_y*camera_speed*camera_size
+real_x+=x_go//move_x*camera_speed*global.camera_size
+real_y+=y_go//move_y*camera_speed*global.camera_size
 real_x=clamp(real_x,0,room_width-cam_x_size)
 real_y=clamp(real_y,0,room_height-cam_y_size)
 x+=(real_x-x)/2
