@@ -1,5 +1,7 @@
 size=0.1
 
+grew_up=false
+
 useful=false
 
 tags=[]

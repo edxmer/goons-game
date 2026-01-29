@@ -17,8 +17,10 @@ function assign_item(item_id){
 	item_data.item_id=item_id
 	array_push(item_data.tags,item_id)
 	if string_copy(item_id,1,8)=="station-"{
-		item_data.texture=spr_logs
-	array_push(item_data.tags,"wood")
+		//station-woodcutter
+		var station_id=string_split(item_data,"-")[1]
+		item_data.texture=work_station_texture_get(station_id)
+		array_push(item_data.tags,"station")
 	}
 	if item_id=="logs"{
 		item_data.texture=spr_logs

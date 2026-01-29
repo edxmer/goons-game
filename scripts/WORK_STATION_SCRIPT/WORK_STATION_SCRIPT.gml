@@ -124,10 +124,23 @@ function create_work_station(_x,_y,station_id)
 
 }
 
+function workstation_turn_to_item(_id)
+{
+	if _id.object_index==obj_work_station
+	{
+		instance_destroy()
+		return (workstation_to_item(_id.station_id))
+	}
+}
+
+function workstation_to_item(station_id)
+{
+	return "station-"+station_id
+}
 
 function work_station_texture_get(station_id)
 {
-	
+	return work_station_data_get(station_id).texture
 }
 
 function work_station_data_get(station_id){
