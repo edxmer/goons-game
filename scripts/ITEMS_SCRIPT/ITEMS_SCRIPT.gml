@@ -1,8 +1,13 @@
 function draw_item(_x,_y,item_id,scale)
 {
-	var sprite=assign_item(item_id).texture
+	var sprite=item_get_sprite(item_id)
 	draw_sprite_ext(sprite,0,_x,_y,scale,scale,0,c_white,1)
 
+}
+
+function item_get_sprite(item_id)
+{
+	return assign_item(item_id).texture
 }
 
 
@@ -18,8 +23,9 @@ function assign_item(item_id){
 	array_push(item_data.tags,item_id)
 	if string_copy(item_id,1,8)=="station-"{
 		//station-woodcutter
-		var station_id=string_split(item_data,"-")[1]
-		item_data.texture=work_station_texture_get(station_id)
+		var _station_id=string_copy(item_id,9,string_length(item_id)-8)//(string_split(item_data,"-")[1])
+		
+		item_data.texture=work_station_texture_get(_station_id)
 		array_push(item_data.tags,"station")
 	}
 	if item_id=="logs"{
@@ -52,6 +58,12 @@ function assign_item(item_id){
 	if item_id=="lamp"{
 		item_data.texture=spr_lamp
 		array_push(item_data.tags,"crafted")
+	}
+	if item_id=="hammer"{
+		item_data.texture=spr_hammer
+		array_push(item_data.tags,"pick_up_building")
+		array_push(item_data.tags,"has_effects")
+		array_push(item_data.tags,"destroy_after_use")
 	}
 	if item_id=="goon_blue"{
 		item_data.texture=spr_goon_blue
@@ -95,6 +107,11 @@ function assign_item(item_id){
 	}
 	
 	return item_data
+}
+
+function item_tags_contains(item_id,tag)
+{
+	return array_contains(item_get_tags(item_id),tag)
 }
 
 function item_unpickupable(item_id)

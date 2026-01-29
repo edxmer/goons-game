@@ -128,9 +128,12 @@ function workstation_turn_to_item(_id)
 {
 	if _id.object_index==obj_work_station
 	{
-		instance_destroy()
-		return (workstation_to_item(_id.station_id))
+	
+		var item_name=(workstation_to_item(_id.station_id))
+		instance_destroy(_id)
+		return item_name
 	}
+	return "empty"
 }
 
 function workstation_to_item(station_id)
@@ -141,6 +144,16 @@ function workstation_to_item(station_id)
 function work_station_texture_get(station_id)
 {
 	return work_station_data_get(station_id).texture
+}
+
+function work_station_use_sound_get(station_id)
+{
+	var data= work_station_data_get(station_id)
+	if data.crafting
+	{
+		return data.craft_sound
+	}
+	return data.summon_sound
 }
 
 function work_station_data_get(station_id){

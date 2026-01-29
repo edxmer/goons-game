@@ -8,7 +8,8 @@ destroy_after=-1
 has_special_crafting_output=false
 special_crafting_output=["empty"]
 
-
+x=clamp(x,16,room_width-16)
+y=clamp(y,32,room_height-32)
 onemore_chance=false
 
 sprite_index=spr_empty
