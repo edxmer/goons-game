@@ -132,6 +132,7 @@
     {"id":{"name":"spr_workstation_gooball_machine_1","path":"sprites/spr_workstation_gooball_machine_1/spr_workstation_gooball_machine_1.yy",},},
     {"id":{"name":"spr_workstation_gumball_machine","path":"sprites/spr_workstation_gumball_machine/spr_workstation_gumball_machine.yy",},},
     {"id":{"name":"spr_workstation_nightstand","path":"sprites/spr_workstation_nightstand/spr_workstation_nightstand.yy",},},
+    {"id":{"name":"spr_workstation_task_guy","path":"sprites/spr_workstation_task_guy/spr_workstation_task_guy.yy",},},
     {"id":{"name":"spr_workstation_trashbin","path":"sprites/spr_workstation_trashbin/spr_workstation_trashbin.yy",},},
     {"id":{"name":"spr_workstation_tree","path":"sprites/spr_workstation_tree/spr_workstation_tree.yy",},},
     {"id":{"name":"spr_workstation_woodcutter","path":"sprites/spr_workstation_woodcutter/spr_workstation_woodcutter.yy",},},
