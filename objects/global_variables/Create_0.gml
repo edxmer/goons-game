@@ -11,6 +11,8 @@ global.reward_level=1
 
 global.reward_mode=false
 
+global.is_hovering_gui = false
+
 special_objectives_init()
 //global.goon_count=0
 

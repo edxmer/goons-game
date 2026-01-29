@@ -24,7 +24,7 @@ color_light =#E0D6BC //make_colour_rgb(189, 221, 244)
 
 scale_speaker = 0.13
 scale_text = 0.2
-box_width = 60
+box_width = 55
 box_height = 35
 padding = 4
 border_size = 1

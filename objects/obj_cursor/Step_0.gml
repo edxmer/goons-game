@@ -1,6 +1,6 @@
 
 
-
+if (!global.is_hovering_gui) { // goon
 
 if mouse_check_button_pressed(mb_left)
 {
@@ -68,3 +68,4 @@ if mouse_check_button_released(mb_left) && global.select_mode && goons_selected=
 }
 
 
+}

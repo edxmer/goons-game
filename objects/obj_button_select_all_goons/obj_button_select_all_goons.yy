@@ -1,18 +1,20 @@
 {
   "$GMObject":"",
-  "%Name":"obj_camera",
+  "%Name":"obj_button_select_all_goons",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":2,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_camera",
+  "name":"obj_button_select_all_goons",
   "overriddenProperties":[],
   "parent":{
     "name":"OBJECTS",
     "path":"folders/OBJECTS.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_button_gui_parent",
+    "path":"objects/obj_button_gui_parent/obj_button_gui_parent.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
