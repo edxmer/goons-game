@@ -8,6 +8,7 @@ pgoo_alpha = 0
 counter = 0
 goo_fade_back = false
 
+goon_shiver=false
 // spr_goon
 show_goon=false
 goon_alpha = 0
@@ -48,9 +49,14 @@ add_text_box_gui([
 	txtg("goon goon goon", "goon"),
 	txtg("Stop, or I'll tear apart your miserable soul", "???", play_goon_sound),
 	txtg("goon?", "goon"),
-	txtg("And take away your goon", "???", play_goon_sound),
+	txtg("And take away your goon", "???",method(self, function(){
+		goon_shiver=true
+		play_goon_sound()
+	})),
 	txtg("*shivers*", "goon"),
-	txtg("Good.", "???"),
+	txtg("Good.", "???",method(self, function(){
+		goon_shiver=false
+	})),
 	txtg("In the divine realm of Winter, their only purpose is to bring gifts to their master, The Primordial Goo.", "???"),
 	txtg("You are the soul chosen as their coordinator.", "???"),
 	txtg("You'll be helping them fulfill their divine duty.", "???"),

@@ -58,6 +58,7 @@ function item_set_effects(goon_id,item_id){
 
 function effect_tick(goon_id)
 {
+	
 	if goon_id.has_effects
 	{
 		if goon_id.effects.freezing.is{
@@ -69,10 +70,12 @@ function effect_tick(goon_id)
 				ice.has_special_crafting_output=true
 				ice.special_crafting_output=[goon_id.item_type]
 				ice.crafting_reward_pool=[goon_id.item_type]
-				instance_destroy()
+				instance_destroy(goon_id)
+				return
 				
 			}
 		}
+		
 		if goon_id.effects.pick_up_building.is{
 			if reached_destination_this_frame{
 				var wst_id=noone
