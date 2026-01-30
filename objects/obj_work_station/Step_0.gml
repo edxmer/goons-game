@@ -75,8 +75,22 @@ if crafting
 
 if !selected && point_in_rectangle(mouse_x,mouse_y,bbox_left-5,bbox_top-10,bbox_right+5,bbox_bottom+5)
 {
-	sound_play_category_at("swoosh",x,y)
-	selected=true
+	
+	var miny=y
+	with(obj_work_station)
+	{
+		if selected && y<miny
+		{
+			miny=y
+		}
+	}
+	if miny<y{
+		selected=false
+	}
+	else{
+		sound_play_category_at("swoosh",x,y)
+		selected=true
+	}
 
 }
 else if selected && !point_in_rectangle(mouse_x,mouse_y,bbox_left-5,bbox_top-10,bbox_right+5,bbox_bottom+5)

@@ -8,7 +8,22 @@ destroy_after=-1
 has_special_crafting_output=false
 special_crafting_output=["empty"]
 
+x=clamp(x,16,room_width-16)
+y=clamp(y,32,room_height-32)
+if collision_rectangle(bbox_left,bbox_top-10,bbox_bottom+10,bbox_right,obj_work_station,false,true)
+{
 
+	var max_tries=20
+	var look=point_direction(x,y,room_width>>1,room_height>>1)
+	while(max_tries>=0 && collision_rectangle(bbox_left-10,bbox_top,bbox_bottom+20,bbox_right+10,obj_work_station,false,true))
+	{
+		x+=lengthdir_x(-10,look)
+		y+=lengthdir_y(-10,look)
+		max_tries--
+	}
+}
+x=clamp(x,16,room_width-16)
+y=clamp(y,32,room_height-32)
 onemore_chance=false
 
 sprite_index=spr_empty

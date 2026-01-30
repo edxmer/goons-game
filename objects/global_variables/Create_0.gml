@@ -25,6 +25,7 @@ create_work_station((room_width>>1)+200,(room_height>>1)+irandom_range(-40,40),"
 create_item((room_width>>1)+300,(room_height>>1)+200,"goo")
 items_scatter_start_of_game(["goo"],1)
 items_scatter_start_of_game(["ice_cream"],1)
+items_scatter_start_of_game(["hammer"],1)
 items_scatter_start_of_game(["logs"],10)
 items_scatter_start_of_game(["rock"],7)
 items_scatter_start_of_game(["banana","sock","logs","logs","rock","rock","cigarette"],20)

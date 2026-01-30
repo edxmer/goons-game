@@ -1,3 +1,5 @@
+
+reached_destination_this_frame=false
 pixels_taken_this_frame=0
 
 if dumb && item_type!="goon_show_dumb"
@@ -47,7 +49,8 @@ if goto_x!=x && goto_y!=y{
 	y+=lengthdir_y(speed_real,look)
 
 	if point_distance(x,y,goto_x,goto_y)<speed_real{
-
+		reached_destination_this_frame=true
+		
 		sprite_index=spr_goon
 		if dumb{
 			sprite_index=spr_goon_dumb

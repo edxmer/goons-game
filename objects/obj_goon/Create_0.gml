@@ -33,6 +33,7 @@ effect_init(id)
 
 
 pixels_taken_this_frame=0
+reached_destination_this_frame=false
 
 slowness_modifier=1
 
@@ -82,7 +83,7 @@ interact_function=function()
 }
 
 
-workstation_nearby_accepst_my_item =function()
+workstation_nearby_accepst_my_item =function(get_id_instead=false)
 {
 	var _x=x
 	var _y=y
@@ -95,6 +96,9 @@ workstation_nearby_accepst_my_item =function()
 		var y_max=bbox_bottom+20
 		if point_in_rectangle(_x,_y,x_min,y_min,x_max,y_max)
 		{
+			if get_id_instead{
+				return id
+			}
 			if array_contains(crafting_input_ids,item)
 			{
 				return true
@@ -102,6 +106,9 @@ workstation_nearby_accepst_my_item =function()
 		
 		}
 	
+	}
+	if get_id_instead{
+		return noone
 	}
 	return false
 

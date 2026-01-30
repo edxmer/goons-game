@@ -16,7 +16,7 @@ function effect_set_base(goon_id)
 	if goon_id.object_index==obj_goon{
 		goon_id.slowness_modifier=1
 		goon_id.has_effects=false
-		goon_id.effects={freezing:{is:false,freezing_pixel_amount:0},slowed:{is:false,slow_percentage:1}}
+		goon_id.effects={freezing:{is:false,freezing_pixel_amount:0},slowed:{is:false,slow_percentage:1},pick_up_building:{is:false}}
 	}
 }
 
@@ -44,6 +44,13 @@ function item_set_effects(goon_id,item_id){
 			real_effects=true
 		}
 		
+		next_effect="pick_up_building"
+		if array_contains(item_get_tags(item_id),next_effect)
+		{
+			
+			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"is",true)
+			real_effects=true
+		}
 		goon_id.has_effects=real_effects
 	}
 }
@@ -51,6 +58,7 @@ function item_set_effects(goon_id,item_id){
 
 function effect_tick(goon_id)
 {
+	
 	if goon_id.has_effects
 	{
 		if goon_id.effects.freezing.is{
@@ -62,9 +70,31 @@ function effect_tick(goon_id)
 				ice.has_special_crafting_output=true
 				ice.special_crafting_output=[goon_id.item_type]
 				ice.crafting_reward_pool=[goon_id.item_type]
-				instance_destroy()
+				instance_destroy(goon_id)
+				return
 				
 			}
+		}
+		
+		if goon_id.effects.pick_up_building.is{
+			if reached_destination_this_frame{
+				var wst_id=noone
+				with(goon_id){wst_id=workstation_nearby_accepst_my_item(true)}
+				if wst_id!=noone{
+					if !item_tags_contains(goon_id.inventory,"destroy_after_use")
+					{
+						with(goon_id){put_down_item()}
+					}
+					var sound=work_station_use_sound_get(wst_id.station_id)
+					sound_play_category_at(sound,x,y)
+					sound_play_category_at("stonework",x,y)
+					var item_id=workstation_turn_to_item(wst_id)
+					goon_id.inventory_sprite=item_get_sprite(item_id)
+					goon_id.inventory=item_id
+				}
+				
+			}
+		
 		}
 	
 	
