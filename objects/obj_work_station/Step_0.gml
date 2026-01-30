@@ -73,7 +73,7 @@ if crafting
 
 }
 
-if !selected && point_in_rectangle(mouse_x,mouse_y,bbox_left-5,bbox_top-10,bbox_right+5,bbox_bottom+5)
+if !selected && point_in_rectangle(mouse_x,mouse_y,bbox_left-5,bbox_top-20,bbox_right+5,bbox_bottom+5)
 {
 	
 	var miny=y
@@ -93,7 +93,7 @@ if !selected && point_in_rectangle(mouse_x,mouse_y,bbox_left-5,bbox_top-10,bbox_
 	}
 
 }
-else if selected && !point_in_rectangle(mouse_x,mouse_y,bbox_left-5,bbox_top-10,bbox_right+5,bbox_bottom+5)
+else if selected && !point_in_rectangle(mouse_x,mouse_y,bbox_left-5,bbox_top-20,bbox_right+5,bbox_bottom+5)
 {
 	sound_play_category_at("swoosh",x,y)
 	selected=false

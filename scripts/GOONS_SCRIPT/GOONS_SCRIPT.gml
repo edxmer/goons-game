@@ -46,18 +46,31 @@ function goon_is_idle(_id,items=["empty"])
 
 
 function goon_if_gooning_goto_coords(_id,xx,yy){
+
 	with(_id){
 		if gooning{
-			var distance=point_distance(x,y,mouse_x,mouse_y)
-			var look=point_direction(x,y,mouse_x,mouse_y)
+			if place_meeting(xx,yy,obj_work_station)
+			{
+				var blook=point_direction(xx,yy,x,y)
+				var maxtries=100
+				while (place_meeting(xx,yy,obj_work_station) && maxtries>0)
+				{
+					xx+=lengthdir_x(1,blook)
+					yy+=lengthdir_y(1,blook)
+					maxtries--
+				}
+			}
+			yy-=bbox_bottom-y
+			var distance=point_distance(x,y,xx,yy)
+			var look=point_direction(x,y,xx,yy)
 			if distance<6
 			{
 				put_down_item()
 			}
 			
-			var bad_prec=min(distance*0.2,15)
-			goto_x=mouse_x+irandom_range(-bad_prec,bad_prec)
-			goto_y=mouse_y+irandom_range(-bad_prec,bad_prec)
+			var bad_prec=min(distance*0.12,15)
+			goto_x=xx+irandom_range(-bad_prec,bad_prec)
+			goto_y=yy+irandom_range(-bad_prec,bad_prec)
 			if dumb{
 				goto_x=x+lengthdir_x(-distance,look)
 				goto_y=y+lengthdir_y(-distance,look)

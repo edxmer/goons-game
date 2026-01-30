@@ -145,5 +145,5 @@ if collision_rectangle(x+left,top+y-10,right+x,bottom+y+10,obj_work_station,fals
 	}
 }
 x=clamp(x,16,room_width-16)
-y=clamp(y,32,room_height-32)
+y=clamp(y,70,room_height-32)
 }
