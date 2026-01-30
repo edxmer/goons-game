@@ -2,7 +2,7 @@
   "$GMSprite":"v2",
   "%Name":"spr_goonificator",
   "bboxMode":2,
-  "bbox_bottom":58,
+  "bbox_bottom":54,
   "bbox_left":14,
   "bbox_right":52,
   "bbox_top":9,
