@@ -16,7 +16,10 @@ function workstation_selected_id()
 	return noone
 
 }
-
+function workstation_id_summon_particles(work_station_id,xx,yy)
+{
+	particle_summon_from_texture_multiple(xx,yy,work_station_texture_get(work_station_id),irandom_range(12,15))
+}
 function workstation_get_craftable_items()
 {
 	var itemslist=[]

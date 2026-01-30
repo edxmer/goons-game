@@ -10,6 +10,21 @@ function item_get_sprite(item_id)
 	return assign_item(item_id).texture
 }
 
+function item_send_particles(_id_of_item)
+{
+	with(_id_of_item)
+	{
+		if object_index==obj_item{
+			item_id_summon_particles(item_id,x,y)
+		}
+	}
+}
+
+function item_id_summon_particles(item_id,xx,yy)
+{
+	particle_summon_from_texture_multiple(xx,yy,item_get_sprite(item_id),irandom_range(6,8))
+}
+
 
 function create_item(_x,_y,item_id)
 {
@@ -63,7 +78,7 @@ function assign_item(item_id){
 		item_data.texture=spr_hammer
 		array_push(item_data.tags,"pick_up_building")
 		array_push(item_data.tags,"has_effects")
-		array_push(item_data.tags,"destroy_after_use")
+		//array_push(item_data.tags,"persistent")
 	}
 	if item_id=="goon_blue"{
 		item_data.texture=spr_goon_blue

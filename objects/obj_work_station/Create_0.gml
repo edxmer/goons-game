@@ -10,20 +10,7 @@ special_crafting_output=["empty"]
 
 x=clamp(x,16,room_width-16)
 y=clamp(y,32,room_height-32)
-if collision_rectangle(bbox_left,bbox_top-10,bbox_bottom+10,bbox_right,obj_work_station,false,true)
-{
 
-	var max_tries=20
-	var look=point_direction(x,y,room_width>>1,room_height>>1)
-	while(max_tries>=0 && collision_rectangle(bbox_left-10,bbox_top,bbox_bottom+20,bbox_right+10,obj_work_station,false,true))
-	{
-		x+=lengthdir_x(-10,look)
-		y+=lengthdir_y(-10,look)
-		max_tries--
-	}
-}
-x=clamp(x,16,room_width-16)
-y=clamp(y,32,room_height-32)
 onemore_chance=false
 
 sprite_index=spr_empty
@@ -76,6 +63,7 @@ assign=function()
 	crafting_input_ids=station_data.craft_input_pool_tags
 
 	set_spawning_timer()
+	reposition()
 }
 
 set_spawning_timer=function()
@@ -126,12 +114,36 @@ item_destroy_nearby=function(item_id_delete)
 	with (obj_item){
 		if point_in_rectangle(x,y,x_min,y_min,x_max,y_max)
 		{
-			if !deleted && item_id_delete==item_id
+			if !deleted && item_id_delete==item_id && !item_tags_contains(item_id,"persistent")
 			{
+				item_send_particles(id)
 				deleted=true
 				instance_destroy()
 			}
 		}
 	}
 
+}
+
+
+reposition=function()
+{
+var left=bbox_left-x-5
+var right=bbox_right-x+5
+var top=bbox_top-y
+var bottom=bbox_bottom-y
+if collision_rectangle(x+left,top+y-10,right+x,bottom+y+10,obj_work_station,false,true)
+{
+
+	var max_tries=20
+	var look=point_direction(x,y,room_width>>1,room_height>>1)
+	while(max_tries>=0 && collision_rectangle(x+left,top+y-10,right+x,bottom+y+10,obj_work_station,false,true))
+	{
+		x+=lengthdir_x(-5,look)
+		y+=lengthdir_y(-5,look)
+		max_tries--
+	}
+}
+x=clamp(x,16,room_width-16)
+y=clamp(y,32,room_height-32)
 }

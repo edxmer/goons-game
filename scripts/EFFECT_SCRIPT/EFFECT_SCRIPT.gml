@@ -81,9 +81,13 @@ function effect_tick(goon_id)
 				var wst_id=noone
 				with(goon_id){wst_id=workstation_nearby_accepst_my_item(true)}
 				if wst_id!=noone{
-					if !item_tags_contains(goon_id.inventory,"destroy_after_use")
+					if item_tags_contains(goon_id.inventory,"persistent")
 					{
 						with(goon_id){put_down_item()}
+					}
+					else
+					{
+						item_id_summon_particles(inventory,x,y)
 					}
 					var sound=work_station_use_sound_get(wst_id.station_id)
 					sound_play_category_at(sound,x,y)

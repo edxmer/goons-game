@@ -10,8 +10,8 @@
   "name":"obj_button_start",
   "overriddenProperties":[],
   "parent":{
-    "name":"OBJECTS",
-    "path":"folders/OBJECTS.yy",
+    "name":"MAIN BUTTON",
+    "path":"folders/OBJECTS/MAIN BUTTON.yy",
   },
   "parentObjectId":{
     "name":"obj_button_parent",
