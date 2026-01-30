@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"PATHFIND_SCRIPT",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"PATHFIND_SCRIPT",
+  "parent":{
+    "name":"SCRIPTS",
+    "path":"folders/SCRIPTS.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

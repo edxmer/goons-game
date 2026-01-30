@@ -68,6 +68,7 @@
     {"id":{"name":"EFFECT_SCRIPT","path":"scripts/EFFECT_SCRIPT/EFFECT_SCRIPT.yy",},},
     {"id":{"name":"GOONS_SCRIPT","path":"scripts/GOONS_SCRIPT/GOONS_SCRIPT.yy",},},
     {"id":{"name":"ITEMS_SCRIPT","path":"scripts/ITEMS_SCRIPT/ITEMS_SCRIPT.yy",},},
+    {"id":{"name":"PATHFIND_SCRIPT","path":"scripts/PATHFIND_SCRIPT/PATHFIND_SCRIPT.yy",},},
     {"id":{"name":"Script7","path":"scripts/Script7/Script7.yy",},},
     {"id":{"name":"SOUND_SCRIPT","path":"scripts/SOUND_SCRIPT/SOUND_SCRIPT.yy",},},
     {"id":{"name":"SPECIAL_OBJECTIVES","path":"scripts/SPECIAL_OBJECTIVES/SPECIAL_OBJECTIVES.yy",},},
