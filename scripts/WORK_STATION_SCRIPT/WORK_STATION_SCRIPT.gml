@@ -160,8 +160,9 @@ function work_station_use_sound_get(station_id)
 }
 
 function work_station_data_get(station_id){
-	var work_station_data={primordeal_goo:false,third:false,destroy_after:-1,station_id:"empty",craft_sound:"empty",summon_sound:"empty",texture:spr_empty,spawning:false,crafting:false,craft_input_pool_tags:[],craft_reward_pool:[],spawn_item_pool:[],spawn_timer_sec:[0,0]}
+	var work_station_data={name:"empty",primordeal_goo:false,third:false,destroy_after:-1,station_id:"empty",craft_sound:"empty",summon_sound:"empty",texture:spr_empty,spawning:false,crafting:false,craft_input_pool_tags:[],craft_reward_pool:[],spawn_item_pool:[],spawn_timer_sec:[0,0]}
 	work_station_data.station_id=station_id
+	work_station_data.name=string_upper(string_copy(station_id,1,1))+ string_replace_all(string_copy(station_id,2,string_length(station_id)-1),"_"," ")
 	
 	if station_id=="trashcan"
 	{

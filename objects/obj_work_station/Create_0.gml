@@ -2,6 +2,8 @@ crafting=false
 spawning=false
 primordeal_goo=false
 
+name=""
+
 used_amount=0
 destroy_after=-1
 
@@ -37,7 +39,9 @@ assign=function()
 {
 	assigned=true
 	var station_data=work_station_data_get(station_id)
-
+	
+	name=station_data.name
+	
 	sprite_index=station_data.texture
 	
 	destroy_after=station_data.destroy_after

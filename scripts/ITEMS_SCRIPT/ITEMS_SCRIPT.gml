@@ -33,19 +33,21 @@ function create_item(_x,_y,item_id)
 }
 
 function assign_item(item_id){
-	var item_data={texture:spr_empty,item_id:"empty",tags:[],special_data:{}}
+	var item_data={texture:spr_empty,item_id:"empty",name:"empty",tags:[],special_data:{}}
 	item_data.item_id=item_id
+	item_data.name=string_upper(string_copy(item_id,1,1))+ string_replace_all(string_copy(item_id,2,string_length(item_id)-1),"_"," ")
 	array_push(item_data.tags,item_id)
 	if string_copy(item_id,1,8)=="station-"{
 		//station-woodcutter
 		var _station_id=string_copy(item_id,9,string_length(item_id)-8)//(string_split(item_data,"-")[1])
-		
+		item_data.name=work_station_data_get(_station_id).name
 		item_data.texture=work_station_texture_get(_station_id)
 		array_push(item_data.tags,"station")
 	}
 	if item_id=="logs"{
 		item_data.texture=spr_logs
 	array_push(item_data.tags,"wood")
+	
 	}
 	if item_id=="frog"{
 		item_data.texture=spr_frog

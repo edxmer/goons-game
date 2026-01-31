@@ -60,3 +60,28 @@ if !grew_up && size>=0.95{
 		instance_destroy()
 	}
 }
+
+if position_meeting(mouse_x,mouse_y,id)
+{
+	selected=true
+	with(obj_work_station)
+	{
+		if selected{
+			other.selected=false
+		}
+	}
+	var min_y=bbox_bottom
+	with(obj_item)
+	{
+		if selected && bbox_bottom<min_y{
+			min_y=bbox_bottom
+		}
+	}
+	if min_y<bbox_bottom{
+		selected=false
+	}
+}
+else
+{
+	selected=false
+}

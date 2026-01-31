@@ -2,6 +2,10 @@ size=0.1
 
 grew_up=false
 
+selected=false
+
+name=""
+
 useful=false
 
 tags=[]
@@ -18,6 +22,7 @@ assign=function(){
 	var item_data=assign_item(item_id)
 	sprite_index=item_data.texture
 	tags=item_data.tags
+	name=item_data.name
 	if sprite_index==spr_empty
 	{
 		instance_destroy()

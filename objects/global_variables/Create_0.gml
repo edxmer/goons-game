@@ -12,6 +12,8 @@ global.reward_mode=false
 global.is_hovering_gui = false
 global.gui_hovering = []
 
+global.camera_size=1
+
 special_objectives_init()
 //global.goon_count=0
 
