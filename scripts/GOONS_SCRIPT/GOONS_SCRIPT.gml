@@ -49,18 +49,30 @@ function goon_if_gooning_goto_coords(_id,xx,yy){
 
 	with(_id){
 		if gooning{
+			var direct_to_item=false
+			with (obj_item)
+			{
+				if selected
+				{
+					xx=x 
+					yy=y 
+					direct_to_item=true
+				}
+			}
+			
 			if place_meeting(xx,yy,obj_work_station)
 			{
+				direct_to_item=true
 				var blook=point_direction(xx,yy,x,y)
 				var maxtries=100
-				while (place_meeting(xx,yy,obj_work_station) && maxtries>0)
+				while (position_meeting(xx,yy,obj_work_station) && maxtries>0)
 				{
 					xx+=lengthdir_x(1,blook)
 					yy+=lengthdir_y(1,blook)
 					maxtries--
 				}
 			}
-			yy-=bbox_bottom-y
+			yy+=bbox_bottom-y
 			var distance=point_distance(x,y,xx,yy)
 			var look=point_direction(x,y,xx,yy)
 			if distance<6
@@ -69,15 +81,20 @@ function goon_if_gooning_goto_coords(_id,xx,yy){
 			}
 			
 			var bad_prec=min(distance*0.12,15)
-			goto_x=xx+irandom_range(-bad_prec,bad_prec)
-			goto_y=yy+irandom_range(-bad_prec,bad_prec)
+			if direct_to_item
+			{
+				bad_prec=min(distance*0.08,4)
+			}
+			var _goto_x=xx+irandom_range(-bad_prec,bad_prec)
+			var _goto_y=yy+irandom_range(-bad_prec,bad_prec)
 			if dumb{
-				goto_x=x+lengthdir_x(-distance,look)
-				goto_y=y+lengthdir_y(-distance,look)
+				_goto_x=x+lengthdir_x(-distance,look)
+				_goto_y=y+lengthdir_y(-distance,look)
 			}
 				
-			goto_x=clamp(goto_x,8,room_width-8)
-			goto_y=clamp(goto_y,8,room_height-8)
+			_goto_x=clamp(_goto_x,8,room_width-8)
+			_goto_y=clamp(_goto_y,8,room_height-8)
+			goto_list=pathfind_fix_points([x,y],[_goto_x,_goto_y])//[[_goto_x,_goto_y]]
 			gooning=false
 		}
 	}

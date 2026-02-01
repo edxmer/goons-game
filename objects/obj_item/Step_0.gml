@@ -70,6 +70,12 @@ if position_meeting(mouse_x,mouse_y,id)
 			other.selected=false
 		}
 	}
+	with(obj_goon)
+	{
+		if selected{
+			other.selected=false
+		}
+	}
 	var min_y=bbox_bottom
 	with(obj_item)
 	{

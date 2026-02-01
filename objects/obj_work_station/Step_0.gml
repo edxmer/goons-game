@@ -73,27 +73,41 @@ if crafting
 
 }
 
-if !selected && point_in_rectangle(mouse_x,mouse_y,bbox_left-5,bbox_top-20,bbox_right+5,bbox_bottom+5)
-{
-	
-	var miny=y
-	with(obj_work_station)
+var gooninstead=false
+	with (obj_goon)
 	{
-		if selected && y<miny
+		if selected
 		{
-			miny=y
+			gooninstead=true
 		}
 	}
-	if miny<y{
-		selected=false
-	}
-	else{
-		sound_play_category_at("swoosh",x,y)
-		selected=true
+
+if !selected && point_in_rectangle(mouse_x,mouse_y,bbox_left-5,bbox_top-20,bbox_right+5,bbox_bottom+5)
+{
+
+	if !gooninstead
+	{
+		var miny=y
+		with(obj_work_station)
+		{
+			if selected && y<miny
+			{
+				miny=y
+			}
+		}
+		if miny<y{
+			selected=false
+		}
+	
+
+		else {
+			sound_play_category_at("swoosh",x,y)
+			selected=true
+		}
 	}
 
 }
-else if selected && !point_in_rectangle(mouse_x,mouse_y,bbox_left-5,bbox_top-20,bbox_right+5,bbox_bottom+5)
+else if selected && (!point_in_rectangle(mouse_x,mouse_y,bbox_left-5,bbox_top-20,bbox_right+5,bbox_bottom+5) || gooninstead)
 {
 	sound_play_category_at("swoosh",x,y)
 	selected=false

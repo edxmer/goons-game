@@ -49,29 +49,59 @@ if goto_x!=x && goto_y!=y{
 	y+=lengthdir_y(speed_real,look)
 
 	if point_distance(x,y,goto_x,goto_y)<speed_real{
-		reached_destination_this_frame=true
+		if !next_goto()
+		{
+			reached_destination_this_frame=true
 		
-		sprite_index=spr_goon
-		if dumb{
-			sprite_index=spr_goon_dumb
+			sprite_index=spr_goon
+			if dumb{
+				sprite_index=spr_goon_dumb
+			}
+			else if blue{
+				sprite_index=spr_goon_blue
+			}
+			if distance_went>=step_distance*0.5{
+				sound_play_category_at("footstep",x,y)
+			}
+			distance_went=0
+			goto_x=x
+			goto_y=y
+			interact_function()
 		}
-		else if blue{
-			sprite_index=spr_goon_blue
-		}
-		if distance_went>=step_distance*0.5{
-			sound_play_category_at("footstep",x,y)
-		}
-		distance_went=0
-		goto_x=x
-		goto_y=y
-		interact_function()
+
 	}
+}
+else
+{
+	next_goto()
 }
 
 if distance_went>=step_distance
 {
 	distance_went=0
 	sound_play_category_at("footstep",x,y)
+}
+
+if position_meeting(mouse_x,mouse_y,id)
+{
+	selected=true
+	var min_y=bbox_bottom
+	with (obj_goon)
+	{
+		if selected && min_y<bbox_bottom
+		{
+			min_y=bbox_bottom
+		}
+	}
+	if min_y>bbox_bottom
+	{
+		
+		selected=false
+	}
+}
+else if selected==true
+{
+	selected=false
 }
 
 effect_tick(id)

@@ -1,4 +1,7 @@
-
+if global.reward_mode
+{
+	exit
+}
 
 if (!global.is_hovering_gui) { // goon
 

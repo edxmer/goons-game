@@ -7,6 +7,11 @@ else{
 global.goon_count++
 }
 
+goto_list=[]
+
+
+selected=false
+
 gooning=false
 speaking = false
 goon_speed=irandom_range(160,300) /3
@@ -124,5 +129,21 @@ put_down_item=function()
 		create_item(irandom_range(x-5,x+5),irandom_range(y-5,bbox_bottom+3),inventory)
 		inventory="empty"
 		inventory_sprite=spr_empty
+	}
+}
+
+next_goto=function()
+{
+	if array_length(goto_list)==0
+	{
+		return false
+	}
+	else
+	{
+		var next_go=goto_list[0]
+		array_delete(goto_list,0,1)
+		goto_x=next_go[0]
+		goto_y=next_go[1]
+		return true
 	}
 }
