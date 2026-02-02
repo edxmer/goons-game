@@ -1,4 +1,8 @@
-
+var heightmax=room_height
+if variable_global_exists("room_height")
+{
+heightmax=global.room_height
+}
 
 gpu_set_texfilter(false);
 var cam=view_get_camera(0)
@@ -7,7 +11,7 @@ height_base=camera_get_view_height(cam)
 global.default_camera_size = 1.6
 global.camera_size=global.default_camera_size
 x=(room_width>>1)-(width_base*0.5*global.camera_size)
-y=(room_height>>1)-(height_base*0.5)
+y=(heightmax>>1)-(height_base*0.5)
 camera_speed=3
 
 real_x=x

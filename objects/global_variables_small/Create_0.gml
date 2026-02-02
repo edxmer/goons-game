@@ -1,3 +1,7 @@
+global.island_unlocked=false
+global.room_height=room_height
+global.camera_room_height=room_height
+
 global.cam={}
 global.select_mode=false
 
