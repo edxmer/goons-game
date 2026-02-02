@@ -2,8 +2,8 @@
   "$GMSprite":"v2",
   "%Name":"tileset_extras",
   "bboxMode":0,
-  "bbox_bottom":77,
-  "bbox_left":2,
+  "bbox_bottom":93,
+  "bbox_left":0,
   "bbox_right":59,
   "bbox_top":0,
   "collisionKind":1,
@@ -19,6 +19,7 @@
   "height":128,
   "HTile":false,
   "layers":[
+    {"$GMImageLayer":"","%Name":"e35a0986-3ee9-4b17-83ca-22742afb1396","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"e35a0986-3ee9-4b17-83ca-22742afb1396","opacity":51.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"89acdd0a-0608-49ac-93df-b9086e5684fa","blendMode":0,"displayName":"default","isLocked":false,"name":"89acdd0a-0608-49ac-93df-b9086e5684fa","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"tileset_extras",
