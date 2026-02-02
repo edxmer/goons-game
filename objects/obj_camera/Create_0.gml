@@ -15,7 +15,7 @@ real_y=y
 
 	camera_set_view_size(cam,width_base*global.camera_size,height_base*global.camera_size)
 
-mouse_go_percent=0.15
+mouse_go_percent=0//0.15
 
 reset_smoothness=function()
 {
