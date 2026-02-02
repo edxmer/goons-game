@@ -1,13 +1,32 @@
 var cam=view_get_camera(0)
 
-if pressing_right {}
-else if global.is_hovering_gui {
-	global.camera_size=clamp(global.camera_size,0.4,3)
-	camera_set_view_size(cam,width_base*global.camera_size,height_base*global.camera_size)
+var cam_old_x=camera_get_view_x(cam)
+var cam_old_y=camera_get_view_y(cam)
+var cam_x_size=camera_get_view_width(cam)
+var cam_y_size=camera_get_view_height(cam)
+
+var width=camera_get_view_width(cam)
+var height=camera_get_view_height(cam)
+
+var move_x = 0
+var move_y = 0
+
+
+// MOVEMENT
+if (pressing_right) {
+    
+	var multiplier = 0.33 * (1/global.camera_size)
+	
+	move_x = multiplier * (prev_x - mouse_x)
+	move_y = multiplier * (prev_y - mouse_y)
 }
-else if mouse_wheel_down(){
-	var width=camera_get_view_width(cam)
-	var height=camera_get_view_height(cam)
+
+var x_go=move_x*camera_speed*global.camera_size
+var y_go=move_y*camera_speed*global.camera_size
+
+
+// RESIZING
+if mouse_wheel_down(){
 	var old_size=global.camera_size
 	global.camera_size+=0.2
 	
@@ -44,52 +63,6 @@ else if mouse_wheel_up(){
 
 
 
-var keyboard=true
-
-var cam_old_x=camera_get_view_x(cam)
-var cam_old_y=camera_get_view_y(cam)
-var cam_x_size=camera_get_view_width(cam)
-var cam_y_size=camera_get_view_height(cam)
-
-var move_y=keyboard_check(ord("S"))-keyboard_check(ord("W"))
-var move_x=keyboard_check(ord("D"))-keyboard_check(ord("A"))
-
-var width=camera_get_view_width(cam)
-var height=camera_get_view_height(cam)
-
-if (pressing_right && !global.is_hovering_gui) {
-    
-	var multiplier = 0.21
-	
-	move_x = multiplier * (prev_x - mouse_x)
-	move_y = multiplier * (prev_y - mouse_y)
-}
-else if move_y==0 && move_x==0 && !global.is_hovering_gui {
-	keyboard=false
-	if abs(x-mouse_x)<width*mouse_go_percent{
-		move_x=-1
-	}
-	else if abs(x+width-mouse_x)<width*mouse_go_percent{
-		move_x=1
-	}
-
-	if abs(y-mouse_y)<height*mouse_go_percent{
-		move_y=-1
-	}
-	else if abs(y+height-mouse_y)<height*mouse_go_percent{
-		move_y=1
-	}
-}
-var x_go=move_x*camera_speed*global.camera_size
-var y_go=move_y*camera_speed*global.camera_size
-if !keyboard{
-	if move_x !=0 || move_y!=0
-	{
-		var look=point_direction(x+(width>>1),y+(height>>1),mouse_x,mouse_y)
-		x_go=lengthdir_x(camera_speed*global.camera_size,look)
-		y_go=lengthdir_y(camera_speed*global.camera_size,look)
-	}
-}
 
 real_x+=x_go//move_x*camera_speed*global.camera_size
 real_y+=y_go//move_y*camera_speed*global.camera_size
@@ -107,9 +80,15 @@ global.cam.coords_middle=[cam_x+cam_x_size/2,cam_y+cam_y_size/2]
 global.cam.coords_bottom=[cam_x+cam_x_size,cam_y+cam_y_size]
 camera_set_view_pos(cam,cam_x,cam_y)
 
+
+
+
 if keyboard_check_pressed(vk_f11){
 window_set_fullscreen(!window_get_fullscreen());
 }
+
+
+
 
 prev_x = mouse_x
 prev_y = mouse_y
