@@ -20,6 +20,12 @@ if (pressing_right) {
 	move_x = multiplier * (prev_x - mouse_x)
 	move_y = multiplier * (prev_y - mouse_y)
 }
+else
+{
+	move_x=keyboard_check(ord("D"))-keyboard_check(ord("A"))
+	move_y=keyboard_check(ord("S"))-keyboard_check(ord("W"))
+}
+
 
 var x_go=move_x*camera_speed*global.camera_size
 var y_go=move_y*camera_speed*global.camera_size
