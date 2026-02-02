@@ -62,6 +62,7 @@ if goto_x!=x && goto_y!=y{
 			}
 			if distance_went>=step_distance*0.5{
 				sound_play_category_at("footstep",x,y)
+				
 			}
 			distance_went=0
 			goto_x=x
@@ -80,6 +81,7 @@ if distance_went>=step_distance
 {
 	distance_went=0
 	sound_play_category_at("footstep",x,y)
+	particle_footstep(x,bbox_bottom)
 }
 
 if position_meeting(mouse_x,mouse_y,id)
