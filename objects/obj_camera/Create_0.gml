@@ -24,3 +24,8 @@ real_y=y
 }
 
 global.is_hovering_gui = false // valamiért nem működnik ha csak a global_variables-ben van
+
+
+prev_x = x
+prev_y = y
+pressing_right = false

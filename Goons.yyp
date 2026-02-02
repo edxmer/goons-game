@@ -11,10 +11,10 @@
   "defaultScriptType":1,
   "Folders":[
     {"$GMFolder":"","%Name":"FONTS","folderPath":"folders/FONTS.yy","name":"FONTS","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"PARTICLES","folderPath":"folders/PARTICLES.yy","name":"PARTICLES","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"OBJECTS","folderPath":"folders/OBJECTS.yy","name":"OBJECTS","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"GUI BUTTON","folderPath":"folders/OBJECTS/GUI BUTTON.yy","name":"GUI BUTTON","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"MAIN BUTTON","folderPath":"folders/OBJECTS/MAIN BUTTON.yy","name":"MAIN BUTTON","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"PARTICLES","folderPath":"folders/PARTICLES.yy","name":"PARTICLES","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"SCRIPTS","folderPath":"folders/SCRIPTS.yy","name":"SCRIPTS","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"SOUNDS","folderPath":"folders/SOUNDS.yy","name":"SOUNDS","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"SPRITES","folderPath":"folders/SPRITES.yy","name":"SPRITES","resourceType":"GMFolder","resourceVersion":"2.0",},
