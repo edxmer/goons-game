@@ -320,7 +320,7 @@ function list_contains_sublist(bigArray, subArray)
 function workstation_scatter(station_id)
 {
 
-	create_work_station(irandom_range(32,room_width-32),irandom_range(140,room_height-32),station_id)
+	create_work_station(irandom_range(32,room_width-32),irandom_range(140,global.room_height-32),station_id)
 
 
 }

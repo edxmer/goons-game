@@ -11,7 +11,7 @@ has_special_crafting_output=false
 special_crafting_output=["empty"]
 
 x=clamp(x,16,room_width-16)
-y=clamp(y,32,room_height-32)
+y=clamp(y,32,global.room_height-32)
 
 onemore_chance=false
 
@@ -140,7 +140,7 @@ if collision_rectangle(x+left,top+y-10,right+x,bottom+y+10,obj_work_station,fals
 {
 
 	var max_tries=20
-	var look=point_direction(x,y,room_width>>1,room_height>>1)
+	var look=point_direction(x,y,room_width>>1,global.room_height>>1)
 	while(max_tries>=0 && collision_rectangle(x+left,top+y-10,right+x,bottom+y+10,obj_work_station,false,true))
 	{
 		x+=lengthdir_x(-5,look)
@@ -149,5 +149,5 @@ if collision_rectangle(x+left,top+y-10,right+x,bottom+y+10,obj_work_station,fals
 	}
 }
 x=clamp(x,16,room_width-16)
-y=clamp(y,70,room_height-32)
+y=clamp(y,70,global.room_height-32)
 }

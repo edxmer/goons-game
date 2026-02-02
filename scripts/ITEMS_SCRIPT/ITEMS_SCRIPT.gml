@@ -207,7 +207,7 @@ function items_scatter_start_of_game(item_pool,item_amount)
 	for(var i=0;i<item_amount;i++)
 	{
 		var item_curr=item_pool[irandom_range(0,array_length(item_pool)-1)]
-		create_item(irandom_range(16,room_width-16),irandom_range(100,room_height-16),item_curr)
+		create_item(irandom_range(16,room_width-16),irandom_range(100,global.room_height-16),item_curr)
 	}
 
 }

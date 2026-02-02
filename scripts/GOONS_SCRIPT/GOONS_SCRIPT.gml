@@ -93,7 +93,7 @@ function goon_if_gooning_goto_coords(_id,xx,yy){
 			}
 				
 			_goto_x=clamp(_goto_x,8,room_width-8)
-			_goto_y=clamp(_goto_y,8,room_height-8)
+			_goto_y=clamp(_goto_y,8,global.camera_room_height-8)
 			goto_list=pathfind_fix_points([x,y],[_goto_x,_goto_y])//[[_goto_x,_goto_y]]
 			gooning=false
 		}

@@ -61,7 +61,7 @@ function draw_craft_information(_x,_y,craft_input_list,craft_output_list)
 	var space_output=space_input=(array_length(craft_output_list)-1)*1.5*30
 	var space_max=max(space_input,space_output)
 	var startx=clamp(_x-(space_max /2),space_max,room_width-space_max)
-	var start_y=clamp(_y,30,room_height-1.5*30)
+	var start_y=clamp(_y,30,global.camera_room_height-1.5*30)
 	
 	var firstrow_x=_x-(space_input div 2)
 	for (var i=0;i<array_length(craft_input_list);i++)
@@ -88,7 +88,7 @@ function draw_summon_information(_x,_y,summon_list)
 	var space_input=(array_length(summon_list)-1)*1.5*30
 
 	var startx=clamp(_x,space_input,room_width-space_input)
-	var start_y=clamp(_y,30,room_height-30)
+	var start_y=clamp(_y,30,global.camera_room_height-30)
 	
 	var firstrow_x=_x-(space_input div 2)
 	for (var i=0;i<array_length(summon_list);i++)
@@ -104,7 +104,7 @@ function draw_summon_information(_x,_y,summon_list)
 function draw_both_information(_x,_y,craft_input_list,craft_output_list,summon_list)
 
 {
-	var start_y=clamp(_y,30,room_height-3*30)
+	var start_y=clamp(_y,30,global.camera_room_height-3*30)
 	draw_craft_information(_x,start_y,craft_input_list,craft_output_list)
 	start_y+=3*40
 	draw_summon_information(_x,start_y,summon_list)

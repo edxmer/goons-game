@@ -3,9 +3,10 @@
   "%Name":"Tileset_extras_ts",
   "autoTileSets":[],
   "macroPageTiles":{
-    "SerialiseHeight":0,
-    "SerialiseWidth":0,
-    "TileSerialiseData":[],
+    "SerialiseHeight":8,
+    "SerialiseWidth":13,
+    "TileCompressedData":[-95,0,-9,25,],
+    "TileDataFormat":1,
   },
   "name":"Tileset_extras_ts",
   "out_columns":6,
