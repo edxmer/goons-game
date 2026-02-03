@@ -1,4 +1,4 @@
-if global.reward_mode
+if global.special_mode
 {
 	exit
 }

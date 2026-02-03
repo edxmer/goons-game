@@ -11,3 +11,4 @@ global.text_box_gui_active = false
 
 global.objective_list = []
 
+global.special_mode=false

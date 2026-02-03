@@ -106,4 +106,9 @@ else if selected==true
 	selected=false
 }
 
+if selected && mouse_check_button_pressed(mb_right)
+{
+	edit_goon(id)
+}
+
 effect_tick(id)

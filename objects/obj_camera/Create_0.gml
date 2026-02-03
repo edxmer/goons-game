@@ -17,6 +17,12 @@ camera_speed=3
 real_x=x
 real_y=y
 
+zoom_to_back=global.camera_size
+
+was_special_mode=false
+bef_special_x=x
+bef_special_y=x
+
 	camera_set_view_size(cam,width_base*global.camera_size,height_base*global.camera_size)
 
 mouse_go_percent=0//0.15
@@ -33,3 +39,29 @@ global.is_hovering_gui = false // valamiért nem működnik ha csak a global_var
 prev_x = x
 prev_y = y
 pressing_right = false
+
+was_zoom=global.default_camera_size
+
+zoom_from=function(from_x,from_y,old_size)
+{
+	var cam=view_get_camera(0)
+	var width=camera_get_view_width(cam)
+	var height=camera_get_view_height(cam)
+	var x_zoom=clamp((from_x-x)/width,0,1)
+	var y_zoom=clamp((from_y-y)/height,0,1)
+	
+	//
+	if global.camera_size>=0.5 &&global.camera_size<=3{
+		global.camera_size=clamp(global.camera_size,0.5,3)
+		x+=x_zoom*width_base*old_size-x_zoom*width_base*global.camera_size
+		y+=y_zoom*height_base*old_size-y_zoom*height_base*global.camera_size
+		if (! global.special_mode) && zoom_to_back==global.camera_size
+		{
+			reset_smoothness()
+		}
+	}
+	global.camera_size=clamp(global.camera_size,0.5,3)
+	camera_set_view_size(cam,width_base*global.camera_size,height_base*global.camera_size)
+
+
+}

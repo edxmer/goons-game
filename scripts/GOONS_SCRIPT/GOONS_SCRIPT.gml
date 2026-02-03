@@ -44,6 +44,17 @@ function goon_is_idle(_id,items=["empty"])
 	return false
 }
 
+function edit_goon(id)
+{
+	if !global.special_mode
+	{
+		
+		global.goon_edit_id=id
+		instance_create_depth(x,y,depth,obj_edit_goon)
+	}
+
+}
+
 
 function goon_if_gooning_goto_coords(_id,xx,yy){
 
@@ -94,7 +105,8 @@ function goon_if_gooning_goto_coords(_id,xx,yy){
 				
 			_goto_x=clamp(_goto_x,8,room_width-8)
 			_goto_y=clamp(_goto_y,8,global.camera_room_height-8)
-			goto_list=pathfind_fix_points([x,y],[_goto_x,_goto_y])//[[_goto_x,_goto_y]]
+			goto_list=array_concat(goto_list,pathfind_fix_points([x,y],[_goto_x,_goto_y]))//[[_goto_x,_goto_y]]
+			array_push(goto_list,"interact")
 			gooning=false
 		}
 	}

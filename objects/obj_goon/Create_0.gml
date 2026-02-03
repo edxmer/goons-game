@@ -140,10 +140,20 @@ next_goto=function()
 	}
 	else
 	{
+		
 		var next_go=goto_list[0]
-		array_delete(goto_list,0,1)
-		goto_x=next_go[0]
-		goto_y=next_go[1]
+		if next_go=="interact"
+		{
+			array_delete(goto_list,0,1)
+			interact_function()
+			
+		}
+		else
+		{
+			array_delete(goto_list,0,1)
+			goto_x=next_go[0]
+			goto_y=next_go[1]
+		}
 		return true
 	}
 }

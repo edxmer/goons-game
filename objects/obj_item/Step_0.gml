@@ -61,7 +61,7 @@ if !grew_up && size>=0.95{
 	}
 }
 
-if position_meeting(mouse_x,mouse_y,id)
+if position_meeting(mouse_x,mouse_y,id) && !global.special_mode
 {
 	selected=true
 	with(obj_work_station)

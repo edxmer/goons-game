@@ -11,60 +11,94 @@ var height=camera_get_view_height(cam)
 var move_x = 0
 var move_y = 0
 
+var x_go=0
+var y_go=0
 
 // MOVEMENT
-if (pressing_right) {
-    
-	var multiplier = 0.33 * (1/global.camera_size)
+if global.special_mode
+{
+	if global.goon_edit_mode
+	{
+		real_x=global.special_coords[0]-(global.cam.coords_middle[0]-global.cam.coords[0])/global.camera_size
+		real_y=global.special_coords[1]-(global.cam.coords_middle[1]-global.cam.coords[1])/global.camera_size
+	}
+	if !was_special_mode
+	{
+		bef_special_x=real_x
+		bef_special_y=real_y
+		if global.reward_mode{
+			real_x=global.special_coords[0]-(global.cam.coords_middle[0]-global.cam.coords[0])/global.camera_size
+			real_y=global.special_coords[1]+20-(global.cam.coords_middle[1]-global.cam.coords[1])/global.camera_size
+		}
+	}
+	if global.camera_size>1
+	{
+		var old_size=global.camera_size
+		global.camera_size-=0.2
 	
-	move_x = multiplier * (prev_x - mouse_x)
-	move_y = multiplier * (prev_y - mouse_y)
+
+	
+		zoom_from(global.cam.coords_middle[0],global.cam.coords_middle[1],old_size)
+	}
 }
 else
 {
-	move_x=keyboard_check(ord("D"))-keyboard_check(ord("A"))
-	move_y=keyboard_check(ord("S"))-keyboard_check(ord("W"))
-}
+	if (pressing_right) {
+    
+		var multiplier = 0.33 * (1/global.camera_size)
+	
+		move_x = multiplier * (prev_x - mouse_x)
+		move_y = multiplier * (prev_y - mouse_y)
+	}
+	else
+	{
+		move_x=keyboard_check(ord("D"))-keyboard_check(ord("A"))
+		move_y=keyboard_check(ord("S"))-keyboard_check(ord("W"))
+	}
+	if was_special_mode
+	{
+		real_x=bef_special_x
+		real_y=bef_special_y
+	}
 
-
-var x_go=move_x*camera_speed*global.camera_size
-var y_go=move_y*camera_speed*global.camera_size
+	x_go=move_x*camera_speed*global.camera_size
+	y_go=move_y*camera_speed*global.camera_size
 
 
 // RESIZING
-if mouse_wheel_down(){
-	var old_size=global.camera_size
-	global.camera_size+=0.2
-	
-	var x_zoom=clamp((mouse_x-x)/width,0,1)
-	var y_zoom=clamp((mouse_y-y)/height,0,1)
-	
-	if global.camera_size<=3{
-		x+=x_zoom*width_base*old_size-x_zoom*width_base*global.camera_size
-		y+=y_zoom*height_base*old_size-y_zoom*height_base*global.camera_size
-		reset_smoothness()
-	}
-	global.camera_size=clamp(global.camera_size,0.4,3)
-	camera_set_view_size(cam,width_base*global.camera_size,height_base*global.camera_size)
-}
 
-else if mouse_wheel_up(){
-	var width=camera_get_view_width(cam)
-	var height=camera_get_view_height(cam)
-	var old_size=global.camera_size
-	global.camera_size-=0.2
+
+	if mouse_wheel_down(){
+		var old_size=global.camera_size
+		global.camera_size+=0.2
 	
-	var x_zoom=clamp((mouse_x-x)/width,0,1)
-	var y_zoom=clamp((mouse_y-y)/height,0,1)
+
+		zoom_to_back=global.camera_size
 	
-	//
-	if global.camera_size>=0.4{
-		x+=x_zoom*width_base*old_size-x_zoom*width_base*global.camera_size
-		y+=y_zoom*height_base*old_size-y_zoom*height_base*global.camera_size
-		reset_smoothness()
+		zoom_from(mouse_x,mouse_y,old_size)
 	}
-	global.camera_size=clamp(global.camera_size,0.5,3)
-	camera_set_view_size(cam,width_base*global.camera_size,height_base*global.camera_size)
+
+	else if mouse_wheel_up(){
+
+		var old_size=global.camera_size
+		global.camera_size-=0.2
+	
+		zoom_to_back=global.camera_size
+		zoom_from(mouse_x,mouse_y,old_size)
+	}
+	else if !global.special_mode && zoom_to_back!=global.camera_size
+	{
+		var old_size=global.camera_size
+		var difference= zoom_to_back-global.camera_size
+
+		global.camera_size+=clamp(difference,-0.2,0.2)
+		if abs(difference)<0.2
+		{
+			zoom_to_back=global.camera_size
+		}
+		zoom_from(global.cam.coords_middle[0],global.cam.coords_middle[1],old_size)
+
+	}
 }
 
 
@@ -98,3 +132,5 @@ window_set_fullscreen(!window_get_fullscreen());
 
 prev_x = mouse_x
 prev_y = mouse_y
+
+was_special_mode=global.special_mode
