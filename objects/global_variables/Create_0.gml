@@ -15,8 +15,9 @@ global.reward_level=1
 global.reward_mode=false
 global.goon_edit_mode=false
 global.special_mode=false
-
+global.goon_edit_id=noone
 global.special_coords=[0,0]
+global.special_zoom_done=false
 
 global.is_hovering_gui = false
 global.gui_hovering = []

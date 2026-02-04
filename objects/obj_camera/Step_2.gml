@@ -17,11 +17,7 @@ var y_go=0
 // MOVEMENT
 if global.special_mode
 {
-	if global.goon_edit_mode
-	{
-		real_x=global.special_coords[0]-(global.cam.coords_middle[0]-global.cam.coords[0])/global.camera_size
-		real_y=global.special_coords[1]-(global.cam.coords_middle[1]-global.cam.coords[1])/global.camera_size
-	}
+
 	if !was_special_mode
 	{
 		bef_special_x=real_x
@@ -31,14 +27,31 @@ if global.special_mode
 			real_y=global.special_coords[1]+20-(global.cam.coords_middle[1]-global.cam.coords[1])/global.camera_size
 		}
 	}
-	if global.camera_size>1
+	if global.goon_edit_mode
 	{
+		real_x=global.special_coords[0]-(global.cam.coords_middle[0]-global.cam.coords[0])/global.camera_size
+		real_y=global.special_coords[1]-(global.cam.coords_middle[1]-global.cam.coords[1])/global.camera_size
+	}
+	if global.camera_size!=1
+	{
+		global.special_zoom_done=false
 		var old_size=global.camera_size
-		global.camera_size-=0.2
+		var difference=1-global.camera_size
+		if abs(difference)<0.2
+		{
+			global.camera_size=1
+		}
+		else{
+		
+			global.camera_size+=sign(difference)*0.2
+		}
 	
 
 	
-		zoom_from(global.cam.coords_middle[0],global.cam.coords_middle[1],old_size)
+		zoom_from(global.special_coords[0],global.special_coords[1],old_size)
+	}
+	else{
+		global.special_zoom_done=true
 	}
 }
 else
@@ -96,7 +109,7 @@ else
 		{
 			zoom_to_back=global.camera_size
 		}
-		zoom_from(global.cam.coords_middle[0],global.cam.coords_middle[1],old_size)
+		zoom_from(bef_special_x,bef_special_y,old_size)
 
 	}
 }
@@ -108,6 +121,11 @@ real_x+=x_go//move_x*camera_speed*global.camera_size
 real_y+=y_go//move_y*camera_speed*global.camera_size
 real_x=clamp(real_x,0,room_width-cam_x_size)
 real_y=clamp(real_y,0,global.camera_room_height-cam_y_size)
+if !global.special_mode
+{
+bef_special_x=real_x
+bef_special_y=real_y
+}
 x+=(real_x-x)/2
 y+=(real_y-y)/2
 x=clamp(x,0,room_width-cam_x_size)

@@ -52,3 +52,13 @@ if (text_at < _len) {
 	}
 	
 }
+
+
+if global.special_mode
+{
+	alpha=0.25
+}
+else
+{
+	alpha=1
+}

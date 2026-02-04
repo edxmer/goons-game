@@ -91,3 +91,5 @@ else
 {
 	selected=false
 }
+
+item_move_from_collisions(id)

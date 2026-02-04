@@ -1,5 +1,5 @@
 depth=-room_height-bbox_bottom
-
+alpha=1
 data = []
 follow_id = self
 offset_x = 0

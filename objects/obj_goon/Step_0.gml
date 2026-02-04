@@ -61,7 +61,13 @@ if goto_x!=x && goto_y!=y{
 				sprite_index=spr_goon_blue
 			}
 			if distance_went>=step_distance*0.5{
-				sound_play_category_at("footstep",x,y)
+				if is_on_snow(x,y){
+					sound_play_category_at("footstep_snow",x,y)
+				}
+				else{
+					
+					sound_play_category_at("footstep_stone",x,y)
+				}
 				
 			}
 			distance_went=0
@@ -80,11 +86,18 @@ else
 if distance_went>=step_distance
 {
 	distance_went=0
-	sound_play_category_at("footstep",x,y)
+	if is_on_snow(x,y)
+	{
+		sound_play_category_at("footstep_snow",x,y)
+	}
+	else
+	{
+		sound_play_category_at("footstep_stone",x,y)
+	}
 	particle_footstep(x,bbox_bottom)
 }
 
-if position_meeting(mouse_x,mouse_y,id)
+if position_meeting(mouse_x,mouse_y,id) && global.goon_edit_id!=id
 {
 	selected=true
 	var min_y=bbox_bottom

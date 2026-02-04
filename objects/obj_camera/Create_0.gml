@@ -27,10 +27,10 @@ bef_special_y=x
 
 mouse_go_percent=0//0.15
 
-reset_smoothness=function()
+reset_smoothness=function(_x=x,_y=y)
 {
-real_x=x
-real_y=y
+real_x=_x
+real_y=_y
 }
 
 global.is_hovering_gui = false // valamiért nem működnik ha csak a global_variables-ben van
@@ -55,10 +55,12 @@ zoom_from=function(from_x,from_y,old_size)
 		global.camera_size=clamp(global.camera_size,0.5,3)
 		x+=x_zoom*width_base*old_size-x_zoom*width_base*global.camera_size
 		y+=y_zoom*height_base*old_size-y_zoom*height_base*global.camera_size
-		if (! global.special_mode) && zoom_to_back==global.camera_size
+		if (! global.special_mode) && zoom_to_back==global.camera_size &&bef_special_x==real_x &&bef_special_y=real_y
 		{
-			reset_smoothness()
+			reset_smoothness(x,y)
 		}
+		
+		
 	}
 	global.camera_size=clamp(global.camera_size,0.5,3)
 	camera_set_view_size(cam,width_base*global.camera_size,height_base*global.camera_size)

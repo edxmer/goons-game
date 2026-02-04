@@ -32,6 +32,62 @@ function create_item(_x,_y,item_id)
 	item.item_id=item_id
 }
 
+
+function item_get_collisions(_id)
+{
+	var idlist=ds_list_create()
+	var amount=0
+	with (_id)
+	{
+		amount=collision_rectangle_list(x-4,y-4,x+4,y+4,obj_item,false,true,idlist,true)
+	}
+	var reallist=[]
+	for (var i=0;i<amount;i++)
+	{
+		array_push(reallist,ds_list_find_value(idlist,i))
+		
+	}
+	with (_id)
+	{
+		amount=collision_point_list(x,y,obj_work_station,false,true,idlist,true)
+	}
+	for (var i=0;i<amount;i++)
+	{
+		array_push(reallist,ds_list_find_value(idlist,i))
+		
+	}
+	ds_list_destroy(idlist)
+	return reallist
+
+}
+
+function item_move_from_collisions(_id)
+{
+	var idlist=item_get_collisions(_id)
+	for(var i=0;i<array_length(idlist);i++)
+	{
+		var otheritem=idlist[i]
+		if otheritem.x>_id.x
+		{
+			_id.x-=1
+		}
+		else
+		{
+			_id.x+=1
+		}
+		
+		if otheritem.y>_id.y
+		{
+			_id.y-=1
+		}
+		else
+		{
+			_id.y+=1
+		}
+	}
+
+}
+
 function assign_item(item_id){
 	var item_data={texture:spr_empty,item_id:"empty",name:"empty",tags:[],special_data:{}}
 	item_data.item_id=item_id

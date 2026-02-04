@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"EDIT_GOON_SCRIPT",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"EDIT_GOON_SCRIPT",
+  "parent":{
+    "name":"SCRIPTS",
+    "path":"folders/SCRIPTS.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

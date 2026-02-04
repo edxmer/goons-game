@@ -44,7 +44,7 @@ slowness_modifier=1
 
 
 possible_names = [
-  "Goon", "The Goon", "Gooner", "Goonie", "Goonster", 
+  "Goon","Spoon", "The Goon", "Gooner", "Goonie", "Goonster", 
   "Goonling", "Goonlet", "Goon Jr.", "Goon Sr.", "Lil Goon", 
   "Big Goon", "Goon Squad", "Goon Platoon", "Goon Lagoon", "Dragoon", 
   "Rangoon", "Raccoon Goon", "Tycoon Goon", "Buffoon Goon", "Balloon Goon", 

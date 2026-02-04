@@ -52,6 +52,10 @@ function edit_goon(id)
 		global.goon_edit_id=id
 		instance_create_depth(x,y,depth,obj_edit_goon)
 	}
+	else if global.goon_edit_id
+	{
+		global.goon_edit_id=id
+	}
 
 }
 
