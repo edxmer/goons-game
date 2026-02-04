@@ -132,10 +132,25 @@ put_down_item=function()
 	}
 }
 
+stop_goon=function()
+{
+	goto_x=x
+	goto_y=y
+	goto_list=[]
+}
+
+
 next_goto=function()
 {
 	if array_length(goto_list)==0
 	{
+		sprite_index=spr_goon
+		if dumb{
+			sprite_index=spr_goon_dumb
+		}
+		else if blue{
+			sprite_index=spr_goon_blue
+		}
 		return false
 	}
 	else

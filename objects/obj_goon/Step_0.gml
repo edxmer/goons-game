@@ -27,7 +27,7 @@ if blue && goon_speed<=(300/3)
 	goon_speed*=3
 }
 
-if goto_x!=x && goto_y!=y{
+if goto_x!=x || goto_y!=y{
 	sprite_index=spr_goon_walk
 	if dumb{
 			sprite_index=spr_goon_walk_dumb
@@ -53,13 +53,7 @@ if goto_x!=x && goto_y!=y{
 		{
 			reached_destination_this_frame=true
 		
-			sprite_index=spr_goon
-			if dumb{
-				sprite_index=spr_goon_dumb
-			}
-			else if blue{
-				sprite_index=spr_goon_blue
-			}
+			
 			if distance_went>=step_distance*0.5{
 				if is_on_snow(x,y){
 					sound_play_category_at("footstep_snow",x,y)

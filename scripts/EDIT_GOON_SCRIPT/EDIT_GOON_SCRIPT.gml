@@ -1,3 +1,36 @@
+function exit_goon_edit_mode()
+{
+	if global.goon_edit_mode
+	{
+		with (obj_edit_goon)
+		{
+			global.goon_edit_mode=false
+			global.goon_edit_id=noone
+			instance_destroy()
+		}
+	}
+
+}
+
+function edit_goon(_id)
+{
+	if !global.special_mode
+	{
+		global.last_selected_goon=_id
+		global.goon_edit_id=_id
+		instance_create_depth(x,y,depth,obj_edit_goon)
+	}
+	else if global.goon_edit_id!=_id
+	{
+		global.last_selected_goon=_id
+		global.goon_edit_id=_id
+	}
+
+}
+
+
+
+
 function goon_get_buttons(_id){
 	var buttons=[]
 	array_push(buttons,"pickup")
@@ -12,12 +45,21 @@ function goon_get_buttons(_id){
 	else{
 		array_push(buttons,"select")
 	}
-	if !goon_is_idle(_id,[_id.inventory])
+	if _id.goto_x!=_id.x || _id.goto_y!=_id.y || array_length(_id.goto_list)!=0
 	{
 		array_push(buttons,"stop")
 	}
 	return buttons
 }
+
+function edit_button_pressed(pressed_id)
+{
+	var pressed_function =function(_id){}
+	pressed_function=get_edit_button_data(pressed_id).act
+	pressed_function(global.goon_edit_id)
+
+}
+
 
 function get_edit_button_data(button_name)
 {
@@ -26,18 +68,56 @@ function get_edit_button_data(button_name)
 	{
 		case "pickup":
 			data.realname="Switch Items"
+			data.act=function(_id)
+			{
+				with(_id)
+				{
+					put_down_item()
+					interact_function()
+				}
+			}
 			break
 		case "put_down":
 			data.realname="Drop Item"
+			data.act=function(_id)
+			{
+				with(_id)
+				{
+					put_down_item()
+				}
+			}
 			break
 		case "select":
 			data.realname="Select Goon"
+			data.act=function(_id)
+			{
+				with(_id)
+				{
+					sound_play_category_at("murr",x,y)
+					gooning=true
+				}
+			}
 			break
 		case "unselect":
 			data.realname="Unselect Goon"
+			data.act=function(_id)
+			{
+				with(_id)
+				{
+					gooning=false
+				}
+			}
 			break
+			
 		case "stop":
 			data.realname="Stop"
+			data.act=function(_id)
+			{
+				with(_id)
+				{
+					stop_goon()
+				}
+			}
 			break
 
 	}

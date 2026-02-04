@@ -19,6 +19,8 @@ global.goon_edit_id=noone
 global.special_coords=[0,0]
 global.special_zoom_done=false
 
+global.last_selected_goon=noone
+
 global.is_hovering_gui = false
 global.gui_hovering = []
 

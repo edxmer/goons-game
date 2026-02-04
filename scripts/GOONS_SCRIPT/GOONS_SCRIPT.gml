@@ -44,19 +44,17 @@ function goon_is_idle(_id,items=["empty"])
 	return false
 }
 
-function edit_goon(id)
-{
-	if !global.special_mode
-	{
-		
-		global.goon_edit_id=id
-		instance_create_depth(x,y,depth,obj_edit_goon)
-	}
-	else if global.goon_edit_id
-	{
-		global.goon_edit_id=id
-	}
 
+function gooning_goons_count()
+{
+	var count=0
+	with (obj_goon)
+	{
+		if gooning{
+			count++
+		}
+	}
+	return count
 }
 
 
