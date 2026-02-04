@@ -11,8 +11,15 @@ else
 		with(global.goon_edit_id)
 		{
 			//stop_goon()
-			goto_x=x+(keyboard_check(ord("D"))-keyboard_check(ord("A")))*delta_time/1000000*goon_speed*3
-			goto_y=y+(keyboard_check(ord("S"))-keyboard_check(ord("W")))*delta_time/1000000*goon_speed*3
+			var movex=(keyboard_check(ord("D"))-keyboard_check(ord("A")))*delta_time/1000000*goon_speed*3
+			var movey=(keyboard_check(ord("S"))-keyboard_check(ord("W")))*delta_time/1000000*goon_speed*3
+			if dumb
+			{
+				movex*=-1
+				movey*=-1
+			}
+			goto_x=x+movex
+			goto_y=y+movey
 			
 		}
 	}
