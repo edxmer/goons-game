@@ -49,6 +49,14 @@ function goon_get_buttons(_id){
 	{
 		array_push(buttons,"stop")
 	}
+	if _id.equipment!="empty"
+	{
+		array_push(buttons,"unequip")
+	}
+	else if item_tags_contains(_id.inventory,"equippable")
+	{
+		array_push(buttons,"equip")
+	}
 	return buttons
 }
 
@@ -116,6 +124,26 @@ function get_edit_button_data(button_name)
 				with(_id)
 				{
 					stop_goon()
+				}
+			}
+			break
+		case "equip":
+			data.realname="Equip"
+			data.act=function(_id)
+			{
+				with(_id)
+				{
+					equip_item_from_hand()
+				}
+			}
+			break
+		case "unequip":
+			data.realname="Unequip"
+			data.act=function(_id)
+			{
+				with(_id)
+				{
+					unequip_item()
 				}
 			}
 			break

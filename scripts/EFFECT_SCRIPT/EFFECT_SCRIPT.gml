@@ -1,7 +1,11 @@
 function effect_update(goon_id)
 {
 	effect_set_base(goon_id)
-	item_set_effects(goon_id,goon_id.inventory)
+	item_set_effects(goon_id,goon_id.inventory,"")
+	if item_tags_contains(goon_id.equipment,"eq_has_effects")
+	{
+		item_set_effects(goon_id,goon_id.equipment,"eq_")
+	}
 }
 
 function effect_init(goon_id)
@@ -21,12 +25,12 @@ function effect_set_base(goon_id)
 }
 
 
-function item_set_effects(goon_id,item_id){
-	if array_contains(item_get_tags(item_id),"has_effects")
+function item_set_effects(goon_id,item_id,prefix){
+	if array_contains(item_get_tags(item_id),prefix+"has_effects")
 	{
 		var real_effects=false
 		var next_effect="freezing"
-		if array_contains(item_get_tags(item_id),next_effect) && item_special_data_contains(item_id,"freezing_pixel_amount")
+		if array_contains(item_get_tags(item_id),prefix+next_effect) && item_special_data_contains(item_id,prefix+"freezing_pixel_amount")
 		{
 			
 			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"is",true)
@@ -35,7 +39,7 @@ function item_set_effects(goon_id,item_id){
 		}
 		
 		next_effect="slowed"
-		if array_contains(item_get_tags(item_id),next_effect) && item_special_data_contains(item_id,"slow_percentage")
+		if array_contains(item_get_tags(item_id),prefix+next_effect) && item_special_data_contains(item_id,prefix+"slow_percentage")
 		{
 			
 			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"is",true)
@@ -45,7 +49,7 @@ function item_set_effects(goon_id,item_id){
 		}
 		
 		next_effect="pick_up_building"
-		if array_contains(item_get_tags(item_id),next_effect)
+		if array_contains(item_get_tags(item_id),prefix+next_effect)
 		{
 			
 			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"is",true)

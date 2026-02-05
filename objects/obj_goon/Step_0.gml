@@ -28,6 +28,7 @@ if blue && goon_speed<=(300/3)
 }
 
 if goto_x!=x || goto_y!=y{
+	equipment_sprite_draw=equipment_sprite_walk
 	sprite_index=spr_goon_walk
 	if dumb{
 			sprite_index=spr_goon_walk_dumb

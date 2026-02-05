@@ -9,6 +9,9 @@ else if global.goon_edit_id==id
 	image_alpha=1
 
 }
+
+draw_sprite_ext(equipment_sprite_draw,image_index,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 draw_self()
 draw_sprite_ext(inventory_sprite,0,x,y-12,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+draw_sprite_ext(equipment_sprite_draw,image_index,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha*1.2)
 image_alpha=1

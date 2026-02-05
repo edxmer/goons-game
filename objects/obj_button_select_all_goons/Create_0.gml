@@ -17,12 +17,24 @@ y = 125
 
 on_press = function() {
 	var _gooned = 0
-	
+	var already_gooned=0
 	
 	with (obj_goon) {
-		sound_play_category_at("murr",id.x,id.y)
-		gooning=true
-		_gooned++
+		if gooning{
+			already_gooned++
+		}
+		else{
+			sound_play_category_at("murr",id.x,id.y)
+			gooning=true
+			_gooned++
+		}
+	}
+	if already_gooned==global.goon_count
+	{
+		with (obj_goon)
+		{
+			gooning=false
+		}
 	}
 	
 	with obj_cursor {

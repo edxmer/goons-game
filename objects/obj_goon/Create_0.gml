@@ -18,6 +18,11 @@ goon_speed=irandom_range(160,300) /3
 goto_x=x
 goto_y=y
 
+equipment="empty"
+equipment_sprite_draw=spr_empty
+equipment_sprite_idle=spr_empty
+equipment_sprite_walk=spr_empty
+
 blue=false
 dumb=false
 item_type="goon_show"
@@ -67,14 +72,28 @@ possible_names = [
 ]
 name = possible_names[irandom(array_length(possible_names)-1)]
 
-interact_function=function()
+goon_pickup_item=function(item)
 {
 	if inventory=="empty"{
-		inventory=pickup_item(x,y)
+		inventory=item
 		if inventory!="empty"{
 			inventory_sprite=assign_item(inventory).texture
 			sound_play_category_at("pickup",x,y)
+			return true
 		}
+	}
+	return false
+}
+
+interact_function=function()
+{
+	if inventory=="empty"{
+		goon_pickup_item(pickup_item(x,y))
+		/*inventory=pickup_item(x,y)
+		if inventory!="empty"{
+			inventory_sprite=assign_item(inventory).texture
+			sound_play_category_at("pickup",x,y)
+		}*/
 	}
 	else {
 		if workstation_nearby_accepst_my_item()
@@ -121,14 +140,27 @@ workstation_nearby_accepst_my_item =function(get_id_instead=false)
 
 }
 
+inventory_set_empty=function()
+{
+inventory="empty"
+inventory_sprite=spr_empty
+}
+
+goon_summon_item=function(item_id)
+{
+	sound_play_category_at("groundsoft",x,bbox_bottom)
+	create_item(irandom_range(x-5,x+5),irandom_range(y-5,bbox_bottom+3),item_id)
+}
 
 put_down_item=function()
 {
 	if inventory!="empty"{
+		goon_summon_item(inventory)
+		/*
 		sound_play_category_at("groundsoft",x,bbox_bottom)
 		create_item(irandom_range(x-5,x+5),irandom_range(y-5,bbox_bottom+3),inventory)
-		inventory="empty"
-		inventory_sprite=spr_empty
+		*/
+		inventory_set_empty()
 	}
 }
 
@@ -144,6 +176,7 @@ next_goto=function()
 {
 	if array_length(goto_list)==0
 	{
+		equipment_sprite_draw=equipment_sprite_idle
 		sprite_index=spr_goon
 		if dumb{
 			sprite_index=spr_goon_dumb
@@ -171,4 +204,43 @@ next_goto=function()
 		}
 		return true
 	}
+}
+
+
+equip_item_from_hand=function()
+{
+	if item_tags_contains(inventory,"equippable")
+	{
+		var was_equip=equipment
+		sound_play_category_at("equip",x,y)
+		var both_sprites=item_id_get_equip_sprites(inventory)
+		equipment=inventory
+		equipment_sprite_idle=both_sprites[0]
+		equipment_sprite_walk=both_sprites[1]
+		equipment_sprite_draw=equipment_sprite_idle
+		inventory_set_empty()
+		goon_pickup_item(was_equip)
+	}
+}
+
+equipment_set_empty=function()
+{
+	equipment="empty"
+	equipment_sprite_idle=spr_empty
+	equipment_sprite_walk=spr_empty
+	equipment_sprite_draw=equipment_sprite_idle
+
+
+}
+
+unequip_item=function()
+{
+	if equipment!="empty"
+	{
+		if !goon_pickup_item(equipment)
+		{
+			goon_summon_item(equipment)
+		}
+	}
+	equipment_set_empty()
 }

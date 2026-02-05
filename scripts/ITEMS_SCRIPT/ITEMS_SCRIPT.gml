@@ -112,6 +112,19 @@ function assign_item(item_id){
 		item_data.texture=spr_candy
 		array_push(item_data.tags,"crafted")
 	}
+	if item_id=="antlers"{
+		item_data.texture=spr_noog_antlers
+		array_push(item_data.tags,"equippable")
+		item_data.special_data.equipped_sprites=[spr_wear_antlers_idle,spr_wear_antlers_walk]
+	}
+	if item_id=="constructors_belt"{
+		item_data.name="Constructor's Belt"
+		item_data.texture=spr_constructors_belt
+		array_push(item_data.tags,"eq_pick_up_building")
+		array_push(item_data.tags,"eq_has_effects")
+		array_push(item_data.tags,"equippable")
+		item_data.special_data.equipped_sprites=[spr_wear_constructors_belt_idle,spr_wear_constructors_belt_walk]
+	}
 	if item_id=="ice_cream"{
 		item_data.texture=spr_ice_cream
 		item_data.special_data.freezing_pixel_amount=200
@@ -180,6 +193,20 @@ function assign_item(item_id){
 	}
 	
 	return item_data
+}
+
+function item_id_get_equip_sprites(item_id)
+{
+	var item_data=assign_item(item_id)
+	if variable_struct_exists(item_data.special_data,"equipped_sprites")
+	{
+		return item_data.special_data.equipped_sprites
+	}
+	else
+	{
+		return [spr_empty,spr_empty]
+	}
+
 }
 
 function item_tags_contains(item_id,tag)
