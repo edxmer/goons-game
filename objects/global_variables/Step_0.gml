@@ -23,6 +23,6 @@ else
 
 if mouse_check_button_pressed(mb_middle)
 {
-	set_tilemap_snow(mouse_x>>4,mouse_y>>4)
+	set_tilemap_farmland(mouse_x>>4,mouse_y>>4)
 
 }

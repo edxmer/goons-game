@@ -92,7 +92,7 @@ function effect_tick(goon_id)
 				var wst_id=noone
 				with(goon_id){wst_id=workstation_nearby_accepst_my_item(true)}
 				if wst_id!=noone{
-					if item_tags_contains(goon_id.inventory,"persistent")
+					if item_tags_contains(goon_id.inventory,"persistent") || item_tags_contains(goon_id.equipment,"eq_pick_up_building")
 					{
 						with(goon_id){put_down_item()}
 					}

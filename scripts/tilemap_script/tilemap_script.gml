@@ -11,6 +11,12 @@ function set_tilemap_ground(tx,ty){
 		update_nearby_tiles(tx,ty)
 	}
 }
+function set_tilemap_farmland(tx,ty){
+	if is_tile_snowy(tx,ty) ||get_tile_index(tx,ty)==9{
+		set_tile_index(tx,ty,18)
+		update_nearby_tiles(tx,ty)
+	}
+}
 
 function get_tile_index(tx,ty)
 {
