@@ -144,6 +144,7 @@ inventory_set_empty=function()
 {
 inventory="empty"
 inventory_sprite=spr_empty
+effect_update(id)
 }
 
 goon_summon_item=function(item_id)
@@ -220,6 +221,7 @@ equip_item_from_hand=function()
 		equipment_sprite_draw=equipment_sprite_idle
 		inventory_set_empty()
 		goon_pickup_item(was_equip)
+		effect_update(id)
 	}
 }
 
@@ -229,7 +231,7 @@ equipment_set_empty=function()
 	equipment_sprite_idle=spr_empty
 	equipment_sprite_walk=spr_empty
 	equipment_sprite_draw=equipment_sprite_idle
-
+	effect_update(id)
 
 }
 
@@ -243,4 +245,5 @@ unequip_item=function()
 		}
 	}
 	equipment_set_empty()
+	
 }

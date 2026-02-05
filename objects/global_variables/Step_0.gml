@@ -20,3 +20,9 @@ else
 {
 	layer_set_visible("vignette_special_mode",false)
 }
+
+if mouse_check_button_pressed(mb_middle)
+{
+	set_tilemap_snow(mouse_x>>4,mouse_y>>4)
+
+}

@@ -125,6 +125,14 @@ function assign_item(item_id){
 		array_push(item_data.tags,"equippable")
 		item_data.special_data.equipped_sprites=[spr_wear_constructors_belt_idle,spr_wear_constructors_belt_walk]
 	}
+	if item_id=="snow_globe"{
+		item_data.name="Snow Globe"
+		item_data.texture=spr_snow_globe
+		array_push(item_data.tags,"eq_place_snow")
+		array_push(item_data.tags,"eq_has_effects")
+		array_push(item_data.tags,"equippable")
+		item_data.special_data.equipped_sprites=[spr_wear_snow_globe_idle,spr_wear_snow_globe_walk]
+	}
 	if item_id=="ice_cream"{
 		item_data.texture=spr_ice_cream
 		item_data.special_data.freezing_pixel_amount=200
