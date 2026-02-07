@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"tilemap_script",
+  "%Name":"TILEMAP_SCRIPT",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"tilemap_script",
+  "name":"TILEMAP_SCRIPT",
   "parent":{
     "name":"SCRIPTS",
     "path":"folders/SCRIPTS.yy",
