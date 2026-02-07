@@ -121,6 +121,7 @@
     {"id":{"name":"spr_ball_and_chain","path":"sprites/spr_ball_and_chain/spr_ball_and_chain.yy",},},
     {"id":{"name":"spr_banana","path":"sprites/spr_banana/spr_banana.yy",},},
     {"id":{"name":"spr_button_2","path":"sprites/spr_button_2/spr_button_2.yy",},},
+    {"id":{"name":"spr_button_paper","path":"sprites/spr_button_paper/spr_button_paper.yy",},},
     {"id":{"name":"spr_button","path":"sprites/spr_button/spr_button.yy",},},
     {"id":{"name":"spr_candy","path":"sprites/spr_candy/spr_candy.yy",},},
     {"id":{"name":"spr_cigarette","path":"sprites/spr_cigarette/spr_cigarette.yy",},},

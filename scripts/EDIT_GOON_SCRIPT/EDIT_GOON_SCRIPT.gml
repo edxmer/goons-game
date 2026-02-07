@@ -194,28 +194,33 @@ function goon_show_buttons(buttons_cur,buttons_last,name,lastselectedindex)
 		var button_cur=buttons_cur[i]
 		var size=size_global
 		var plusx=0
-		if !array_contains(buttons_last,button_cur)
+		var ind=0
+		if selected{ind=1}
+		if !array_contains(buttons_last,button_cur) || i>=array_length(buttons_last) || buttons_last [i]!=button_cur
 		{
 			size*=0.5
 		}
 		
 		else if selected{
 			cur_selected=i
-			plusx=7*size_global
+			plusx=9*size_global
 			if lastselectedindex==i
 			{
+				ind=2
 				draw_sprite_ext(spr_nametag_arrow,0,startx,starty,size,size,0,c_white,1)
 				plusx*=1.25
+				
 			}
 			
 		}
-		draw_sprite_ext(spr_nametag,0,startx+plusx,starty,size,size,0,c_white,1)
+		
+		draw_sprite_ext(spr_button_paper,ind,startx/*+plusx*/,starty,size,size,0,c_white,1)
 		if array_contains(buttons_last,button_cur)
 		{
 			var bname=get_edit_button_data(button_cur).realname
-			draw_text_ext_transformed(startx+plusx,starty-size_global*3.5,bname,1.2,1000*size_global,size_global*0.2,size_global*0.2,0)
+			draw_text_ext_transformed(startx+plusx-4*size,starty-size_global*3.5,bname,1.2,1000*size_global,size_global*0.2,size_global*0.2,0)
 		}
-		starty+=15*size_global
+		starty+=14*size_global
 	
 	}
 	draw_set_halign(textalign_left)

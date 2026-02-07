@@ -35,7 +35,7 @@ special_objectives_init()
 if does_save_exist("save") && open_save("save")
 {
 	global.loaded_from_save=true
-	show_message(global.objective_list)
+
 }
 else
 {

@@ -1,3 +1,49 @@
+function get_saves()
+{	
+	var saves=[]
+	if file_exists("savefiles/existing_savefiles.txt")
+	{
+		var fileid=file_text_open_read("savefiles/existing_savefiles.txt")
+		while(!file_text_eof(fileid))
+		{
+			var save=file_text_readln(fileid)
+			var savemod=string_split(save,"-")
+			if savemod[0]=="savefile"
+			{
+				var savename=savemod[1]
+				array_push(saves,savename)
+			}
+		}
+	}
+	else
+	{
+		var fileid=file_text_open_write("savefiles/existing_savefiles.txt")
+		file_text_close(fileid)
+	}
+	return saves
+}
+
+function add_saves_existing(savename)
+{	
+	var saves=get_saves()
+	if !array_contains(saves,savename)
+	{
+		array_push(saves,savename)
+		var fileid=file_text_open_write("savefiles/existing_savefiles.txt")
+		if fileid==-1
+		{
+			return false
+		}
+		for (var i=0;i<array_length(saves);i++)
+		{
+			file_text_write_string(fileid,"savefile-"+saves[i]+"-")
+		}
+		file_text_close(fileid)
+	}
+	return true
+}
+
+
 function value_to_savestring(value,_layer=0)
 {
 	var return_text=""
@@ -154,6 +200,9 @@ function create_save(fname){
 	{
 		return false
 	}
+	
+	add_saves_existing(fname)
+	
 	file_text_write_string(fileid,"$globals\n")
 	file_text_write_string(fileid,create_savestring_globals("objective_list"))
 	file_text_write_string(fileid,create_savestring_globals("reward_level"))
