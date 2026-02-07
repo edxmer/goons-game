@@ -5,7 +5,7 @@ if global.reward_mode || (!instance_exists(global.goon_edit_id)) ||(was_right_pr
 }
 else
 {
-	global.special_coords=[global.goon_edit_id.x+15*global.camera_size,global.goon_edit_id.y+10*global.camera_size]
+	global.special_coords=[global.goon_edit_id.x+15*global.camera_size,global.goon_edit_id.y-5*global.camera_size]
 	if (keyboard_check(ord("W"))||keyboard_check(ord("S"))||keyboard_check(ord("A"))||(keyboard_check(ord("D"))))
 	{
 		with(global.goon_edit_id)

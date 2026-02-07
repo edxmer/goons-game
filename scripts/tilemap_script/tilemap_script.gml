@@ -2,20 +2,26 @@ function set_tilemap_snow(tx,ty){
 	if get_tile_index(tx,ty)==9{
 		set_tile_index(tx,ty,3)
 		update_nearby_tiles(tx,ty)
+		return true
 	}
+	return false
 
 }
 function set_tilemap_ground(tx,ty){
 	if is_tile_snowy(tx,ty){
 		set_tile_index(tx,ty,9)
 		update_nearby_tiles(tx,ty)
+		return true
 	}
+	return false
 }
 function set_tilemap_farmland(tx,ty){
 	if is_tile_snowy(tx,ty) ||get_tile_index(tx,ty)==9{
 		set_tile_index(tx,ty,18)
 		update_nearby_tiles(tx,ty)
+		return true
 	}
+	return false
 }
 
 function get_tile_index(tx,ty)

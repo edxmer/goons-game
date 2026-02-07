@@ -1,7 +1,7 @@
 
 global.is_hovering_gui = 0 < array_length(global.gui_hovering)
 
-global.special_mode=global.goon_edit_mode || global.reward_mode
+global.special_mode=global.goon_edit_mode || global.reward_mode || global.pause_menu
 layer_depth("vignette",-room_height)
 if global.special_mode
 {
@@ -23,6 +23,7 @@ else
 
 if mouse_check_button_pressed(mb_middle)
 {
-	set_tilemap_farmland(mouse_x>>4,mouse_y>>4)
+	create_save("save")
 
 }
+

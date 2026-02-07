@@ -206,7 +206,20 @@ next_goto=function()
 		return true
 	}
 }
-
+equip_item_base=function(item)
+{
+	if item_tags_contains(item,"equippable")
+	{
+		var was_equip=equipment
+		sound_play_category_at("equip",x,y)
+		var both_sprites=item_id_get_equip_sprites(item)
+		equipment=item
+		equipment_sprite_idle=both_sprites[0]
+		equipment_sprite_walk=both_sprites[1]
+		equipment_sprite_draw=equipment_sprite_idle
+		effect_update(id)
+	}
+}
 
 equip_item_from_hand=function()
 {

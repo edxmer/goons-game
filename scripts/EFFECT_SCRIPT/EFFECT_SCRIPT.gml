@@ -20,7 +20,7 @@ function effect_set_base(goon_id)
 	if goon_id.object_index==obj_goon{
 		goon_id.slowness_modifier=1
 		goon_id.has_effects=false
-		goon_id.effects={freezing:{is:false,freezing_pixel_amount:0},slowed:{is:false,slow_percentage:1},pick_up_building:{is:false},place_snow:{is:false}}
+		goon_id.effects={freezing:{is:false,freezing_pixel_amount:0},slowed:{is:false,slow_percentage:1},pick_up_building:{is:false},place_snow:{is:false},tilt_ground:{is:false}}
 	}
 }
 
@@ -56,6 +56,13 @@ function item_set_effects(goon_id,item_id,prefix){
 			real_effects=true
 		}
 		next_effect="place_snow"
+		if array_contains(item_get_tags(item_id),prefix+next_effect)
+		{
+			
+			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"is",true)
+			real_effects=true
+		}
+		next_effect="tilt_ground"
 		if array_contains(item_get_tags(item_id),prefix+next_effect)
 		{
 			
@@ -98,7 +105,7 @@ function effect_tick(goon_id)
 					}
 					else
 					{
-						item_id_summon_particles(inventory,x,y)
+						item_id_summon_particles(goon_id.inventory,goon_id.x,goon_id.y)
 					}
 					var sound=work_station_use_sound_get(wst_id.station_id)
 					sound_play_category_at(sound,x,y)
@@ -119,6 +126,20 @@ function effect_tick(goon_id)
 			set_tilemap_snow((goon_id.x-diff)>>4,(goon_id.bbox_bottom-diff)>>4)
 			set_tilemap_snow((goon_id.x+diff)>>4,(goon_id.bbox_bottom-diff)>>4)
 			set_tilemap_snow(goon_id.x>>4,goon_id.bbox_bottom>>4)
+		}
+		if goon_id.effects.tilt_ground.is
+		{
+			if goon_id.reached_destination_this_frame
+			{
+				if set_tilemap_farmland(goon_id.x>>4,goon_id.bbox_bottom>>4)
+				{
+					if !item_tags_contains(goon_id.inventory,"persistent") && !item_tags_contains(goon_id.equipment,"eq_tilt_ground")
+					{
+						item_id_summon_particles(goon_id.inventory,x,y)
+						with(goon_id){inventory_set_empty()}
+					}
+				}
+			}
 		}
 	
 	

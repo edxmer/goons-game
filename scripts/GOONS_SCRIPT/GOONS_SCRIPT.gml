@@ -1,3 +1,9 @@
+function create_goon(_x,_y)
+{
+	return instance_create_depth(_x,_y,0,obj_goon)
+}
+
+
 function draw_shadow()
 {
 	draw_sprite_ext(spr_shadow,0,x,bbox_bottom,image_xscale,image_yscale,0,c_white,image_alpha)

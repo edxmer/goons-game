@@ -13,7 +13,7 @@ var _guiw = display_get_gui_width()
 var _guih = display_get_gui_height()
 
 x = _guiw - 110
-y = 45
+y = 285
 
 on_press = function() {
 	with(obj_camera)

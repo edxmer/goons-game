@@ -159,6 +159,12 @@ function assign_item(item_id){
 		array_push(item_data.tags,"has_effects")
 		//array_push(item_data.tags,"persistent")
 	}
+	if item_id=="hoe"{
+		item_data.texture=spr_hoe
+		array_push(item_data.tags,"tilt_ground")
+		array_push(item_data.tags,"has_effects")
+		array_push(item_data.tags,"persistent")
+	}
 	if item_id=="goon_blue"{
 		item_data.texture=spr_goon_blue
 		array_push(item_data.tags,"unpickuppable")

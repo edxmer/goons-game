@@ -33,7 +33,18 @@ function edit_goon(_id)
 
 function goon_get_buttons(_id){
 	var buttons=[]
+	if item_tags_contains(_id.inventory,"equippable")
+	{
+		array_push(buttons,"equip")
+	}
+	if _id.inventory=="empty"
+	{
 	array_push(buttons,"pickup")
+	}
+	else
+	{
+	array_push(buttons,"switch")
+	}
 	if _id.inventory!="empty"
 	{
 		array_push(buttons,"put_down")
@@ -53,10 +64,7 @@ function goon_get_buttons(_id){
 	{
 		array_push(buttons,"unequip")
 	}
-	else if item_tags_contains(_id.inventory,"equippable")
-	{
-		array_push(buttons,"equip")
-	}
+
 	return buttons
 }
 
@@ -74,8 +82,19 @@ function get_edit_button_data(button_name)
 	var data={realname:"Button",act:function(_id){}}
 	switch button_name
 	{
-		case "pickup":
+		case "switch":
 			data.realname="Switch Items"
+			data.act=function(_id)
+			{
+				with(_id)
+				{
+					put_down_item()
+					interact_function()
+				}
+			}
+			break
+		case "pickup":
+			data.realname="Pickup Item"
 			data.act=function(_id)
 			{
 				with(_id)
@@ -162,11 +181,11 @@ function goon_show_buttons(buttons_cur,buttons_last,name,lastselectedindex)
 	draw_set_halign(textalign_center)
 	draw_set_valign(textalign_middle )
 	draw_set_colour(#101119)
-	draw_sprite_ext(spr_nametag,0,global.cam.coords_middle[0],global.cam.coords_middle[1]-size_global*40,size_global*2,size_global*2,0,c_white,1)
+	draw_sprite_ext(spr_nametag,0,global.cam.coords_middle[0],global.cam.coords_middle[1]-size_global*25,size_global*2,size_global*2,0,c_white,1)
 	
-	draw_text_ext_transformed(global.cam.coords_middle[0],global.cam.coords_middle[1]-size_global*48,name,1.2,1000*size_global,size_global*0.4,size_global*0.4,0)
+	draw_text_ext_transformed(global.cam.coords_middle[0],global.cam.coords_middle[1]-size_global*33,name,1.2,1000*size_global,size_global*0.4,size_global*0.4,0)
 	var startx=global.cam.coords_middle[0]+size_global*30
-	var starty=global.cam.coords_middle[1]-size_global*15
+	var starty=global.cam.coords_middle[1]
 	var half_sprite_width=(sprite_get_bbox_right(spr_nametag)-sprite_get_bbox_left(spr_nametag))*0.5
 	var half_sprite_height=(sprite_get_bbox_bottom(spr_nametag)-sprite_get_bbox_top(spr_nametag))*0.5
 	for (var i=0;i<array_length(buttons_cur);i++)

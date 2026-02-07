@@ -1,0 +1,1 @@
+global.special_coords=global.cam.coords_middle

@@ -15,7 +15,7 @@ font = fnt_header_1
 x = 50
 y = 40
 height = 110
-width = 100
+width = 120
 outline = 5
 dist_between_items = width-outline
 
