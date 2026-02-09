@@ -13,8 +13,8 @@
   "name":"obj_text_box_gui",
   "overriddenProperties":[],
   "parent":{
-    "name":"OBJECTS",
-    "path":"folders/OBJECTS.yy",
+    "name":"UI",
+    "path":"folders/OBJECTS/UI.yy",
   },
   "parentObjectId":null,
   "persistent":false,

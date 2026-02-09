@@ -8,8 +8,8 @@
   "name":"obj_tutorial_messages",
   "overriddenProperties":[],
   "parent":{
-    "name":"OBJECTS",
-    "path":"folders/OBJECTS.yy",
+    "name":"UI",
+    "path":"folders/OBJECTS/UI.yy",
   },
   "parentObjectId":null,
   "persistent":false,

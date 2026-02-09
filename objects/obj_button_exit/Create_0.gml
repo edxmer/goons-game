@@ -1,3 +1,3 @@
-image_speed = 0
+event_inherited();
 
 button_text = "Exit"

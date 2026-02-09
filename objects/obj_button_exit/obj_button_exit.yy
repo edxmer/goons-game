@@ -9,8 +9,8 @@
   "name":"obj_button_exit",
   "overriddenProperties":[],
   "parent":{
-    "name":"MAIN BUTTON",
-    "path":"folders/OBJECTS/MAIN BUTTON.yy",
+    "name":"MAIN MENU",
+    "path":"folders/OBJECTS/MAIN MENU.yy",
   },
   "parentObjectId":{
     "name":"obj_button_parent",

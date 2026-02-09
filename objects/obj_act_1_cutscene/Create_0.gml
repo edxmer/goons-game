@@ -63,6 +63,6 @@ add_text_box_gui([
 	txtg("But be aware of their limited intellectual capabilities.", "???", play_goon_sound),
 	txtg("gooon????", "goon"),
 	txtg("Good luck", "???", method(self, function(){
-		room_goto(Room1)
+		room_goto(room_game)
 	})),
 ])

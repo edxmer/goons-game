@@ -10,8 +10,8 @@
   "name":"obj_particle",
   "overriddenProperties":[],
   "parent":{
-    "name":"OBJECTS",
-    "path":"folders/OBJECTS.yy",
+    "name":"ENTITIES",
+    "path":"folders/OBJECTS/ENTITIES.yy",
   },
   "parentObjectId":null,
   "persistent":false,

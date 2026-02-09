@@ -6,12 +6,12 @@ if mouse_check_button_pressed(mb_left)
 		if play_id==newgame
 		{
 			global.open_save_name="Gootopia "+string(array_length(saves))
-			room_goto(Act_1_cutscene)
+			room_goto(room_first_cutscene)
 		}
 		else
 		{
 			global.open_save_name=play_id
-			room_goto(Room1)
+			room_goto(room_game)
 		}
 		
 	}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"script_grid_mode",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"script_grid_mode",
+  "parent":{
+    "name":"SCRIPTS",
+    "path":"folders/SCRIPTS.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"script_edit_goons",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"script_edit_goons",
+  "parent":{
+    "name":"SCRIPTS",
+    "path":"folders/SCRIPTS.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

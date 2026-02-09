@@ -10,8 +10,8 @@
   "name":"obj_text_box",
   "overriddenProperties":[],
   "parent":{
-    "name":"OBJECTS",
-    "path":"folders/OBJECTS.yy",
+    "name":"UI",
+    "path":"folders/OBJECTS/UI.yy",
   },
   "parentObjectId":null,
   "persistent":false,
