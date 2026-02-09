@@ -74,9 +74,9 @@ possible_names = [
 ]
 name = possible_names[irandom(array_length(possible_names)-1)]
 
-goon_pickup_item=function(item)
+goon_pickup_item=function(item,replace=false)
 {
-	if inventory=="empty"{
+	if inventory=="empty" || replace{
 		inventory=item
 		if inventory!="empty"{
 			inventory_sprite=assign_item(inventory).texture

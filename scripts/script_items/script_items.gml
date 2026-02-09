@@ -33,23 +33,28 @@ function create_item(_x,_y,item_id)
 }
 
 
-function item_get_collisions(_id)
+function item_get_collisions(_id,fromworkstations=true,fromitems=true)
 {
 	var idlist=ds_list_create()
 	var amount=0
-	with (_id)
-	{
-		amount=collision_rectangle_list(x-4,y-4,x+4,y+4,obj_item,false,true,idlist,true)
+	if fromitems{
+		with (_id)
+		{
+			amount=collision_rectangle_list(x-4,y-4,x+4,y+4,obj_item,false,true,idlist,true)
+		}
 	}
 	var reallist=[]
+	
 	for (var i=0;i<amount;i++)
 	{
 		array_push(reallist,ds_list_find_value(idlist,i))
 		
 	}
-	with (_id)
-	{
-		amount=collision_point_list(x,y,obj_work_station,false,true,idlist,true)
+	if fromworkstations{
+		with (_id)
+		{
+			amount=collision_rectangle_list(x-4,y-4,x+4,y+4,obj_work_station,false,true,idlist,true)
+		}
 	}
 	for (var i=0;i<amount;i++)
 	{
@@ -61,28 +66,72 @@ function item_get_collisions(_id)
 
 }
 
-function item_move_from_collisions(_id)
+function item_move_from_collisions(_id,loop=1,collisions=[],donotdisturb=[])
 {
-	var idlist=item_get_collisions(_id)
+	var baseamount=irandom_range(1,3)
+	if array_length(item_get_collisions(_id,true,false))>0
+	{
+		baseamount=0
+	}
+	var goto_still=[]
+	if loop>2
+	{
+		return
+	}
+	var idlist=collisions
+	if array_length(collisions)==0
+	{
+	idlist=item_get_collisions(_id)
+	}
 	for(var i=0;i<array_length(idlist);i++)
 	{
+		var amount=baseamount
+		
 		var otheritem=idlist[i]
+		if otheritem.object_index==obj_work_station
+		{
+			amount=5
+		}
+		else if baseamount==0
+		{
+			item_move_from_collisions(otheritem,loop+1,_id,[_id])
+		}
+		
 		if otheritem.x>_id.x
 		{
-			_id.x-=1
+			_id.x-=amount
+
 		}
 		else
 		{
-			_id.x+=1
+			_id.x+=amount
+
 		}
 		
 		if otheritem.y>_id.y
 		{
-			_id.y-=1
+			_id.y-=amount
+
 		}
 		else
 		{
-			_id.y+=1
+			_id.y+=amount
+
+
+		}
+
+		if otheritem.object_index==obj_item
+		{
+			array_push(goto_still,otheritem)
+		}
+
+	}
+	
+	for (var i=0;i<array_length(goto_still);i++)
+	{
+		var otheritem=goto_still[i]
+		if !array_contains(donotdisturb,otheritem){
+			item_move_from_collisions(otheritem,loop+1,_id,[_id])
 		}
 	}
 

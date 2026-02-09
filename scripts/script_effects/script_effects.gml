@@ -161,7 +161,7 @@ function effect_tick(goon_id)
 					sound_play_category_at(sound,x,y)
 					sound_play_category_at("stonework",x,y)
 					var item_id=workstation_turn_to_item(wst_id)
-					goon_pickup_item(item_id)
+					goon_pickup_item(item_id,true)
 				}
 				
 			}
