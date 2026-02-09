@@ -11,7 +11,7 @@ function effect_update(goon_id)
 function effect_init(goon_id)
 {
 	effect_set_base(goon_id)
-	goon_id.effect_data_stay={freezing:{freezing_pixel_taken:0}}
+	goon_id.effect_data_stay={freezing:{freezing_pixel_taken:0},use_item:{started_with_effect:false}}
 }
 
 
@@ -20,7 +20,8 @@ function effect_set_base(goon_id)
 	if goon_id.object_index==obj_goon{
 		goon_id.slowness_modifier=1
 		goon_id.has_effects=false
-		goon_id.effects={freezing:{is:false,freezing_pixel_amount:0},slowed:{is:false,slow_percentage:1},pick_up_building:{is:false},place_snow:{is:false},tilt_ground:{is:false}}
+		goon_id.effects={freezing:{is:false,freezing_pixel_amount:0},slowed:{is:false,slow_percentage:1},pick_up_building:{is:false},use_item:{is:false},place_snow:{is:false},tilt_ground:{is:false},grid_mode:{is:false,ui_sprite:spr_empty}}
+		
 	}
 }
 
@@ -69,6 +70,25 @@ function item_set_effects(goon_id,item_id,prefix){
 			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"is",true)
 			real_effects=true
 		}
+		next_effect="use_item"
+		if array_contains(item_get_tags(item_id),prefix+next_effect)
+		{
+			
+			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"is",true)
+			real_effects=true
+		}
+
+		next_effect="grid_mode"
+		if array_contains(item_get_tags(item_id),prefix+next_effect)
+		{
+			
+			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"is",true)
+			if item_special_data_get(item_id,"grid_mode_sprite")!="empty"
+			{
+				variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"ui_sprite",item_special_data_get(item_id,"grid_mode_sprite"))
+			}
+			real_effects=true
+		}
 		goon_id.has_effects=real_effects
 	}
 }
@@ -79,6 +99,35 @@ function effect_tick(goon_id)
 	
 	if goon_id.has_effects
 	{
+		if goon_id.effects.use_item.is{
+			if goon_id.got_new_directions
+			{
+				
+				goon_id.effect_data_stay.use_item.started_with_effect=true
+			}
+			if goon_id.reached_destination_this_frame && goon_id.effect_data_stay.use_item.started_with_effect
+			{
+				
+				use_item=true
+			}
+		}
+		else if goon_id.effect_data_stay.use_item.started_with_effect
+		{
+			goon_id.effect_data_stay.use_item.started_with_effect=false
+		}
+		
+		if goon_id.effects.grid_mode.is
+		{
+
+			if goon_id.only_this_goon_gooning()
+			{
+				global.should_be_gridmode=true
+				global.grid_mode_sprite=goon_id.effects.grid_mode.ui_sprite
+			}
+		
+		
+		}
+
 		if goon_id.effects.freezing.is{
 			goon_id.effect_data_stay.freezing.freezing_pixel_taken+=goon_id.pixels_taken_this_frame
 			if goon_id.effect_data_stay.freezing.freezing_pixel_taken>=goon_id.effects.freezing.freezing_pixel_amount
@@ -93,6 +142,7 @@ function effect_tick(goon_id)
 				
 			}
 		}
+
 		
 		if goon_id.effects.pick_up_building.is{
 			if reached_destination_this_frame{
@@ -111,8 +161,7 @@ function effect_tick(goon_id)
 					sound_play_category_at(sound,x,y)
 					sound_play_category_at("stonework",x,y)
 					var item_id=workstation_turn_to_item(wst_id)
-					goon_id.inventory_sprite=item_get_sprite(item_id)
-					goon_id.inventory=item_id
+					goon_pickup_item(item_id)
 				}
 				
 			}
@@ -129,7 +178,7 @@ function effect_tick(goon_id)
 		}
 		if goon_id.effects.tilt_ground.is
 		{
-			if goon_id.reached_destination_this_frame
+			if goon_id.use_item
 			{
 				if set_tilemap_farmland(goon_id.x>>4,goon_id.bbox_bottom>>4)
 				{
@@ -141,7 +190,7 @@ function effect_tick(goon_id)
 				}
 			}
 		}
-	
+
 	
 	}
 

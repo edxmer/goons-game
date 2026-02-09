@@ -68,6 +68,8 @@ function goon_if_gooning_goto_coords(_id,xx,yy){
 
 	with(_id){
 		if gooning{
+			var feet_dist=(bbox_bottom-y)*0.6
+			yy-=feet_dist
 			var direct_to_item=false
 			with (obj_item)
 			{
@@ -91,18 +93,18 @@ function goon_if_gooning_goto_coords(_id,xx,yy){
 					maxtries--
 				}
 			}
-			yy+=bbox_bottom-y
+			yy+=feet_dist
 			var distance=point_distance(x,y,xx,yy)
 			var look=point_direction(x,y,xx,yy)
 			if distance<6
 			{
 				put_down_item()
 			}
-			
+			yy-=feet_dist
 			var bad_prec=min(distance*0.12,15)
-			if direct_to_item
+			if direct_to_item || global.grid_mode
 			{
-				bad_prec=min(distance*0.08,4)
+				bad_prec=min(distance*0.08,2)
 			}
 			var _goto_x=xx+irandom_range(-bad_prec,bad_prec)
 			var _goto_y=yy+irandom_range(-bad_prec,bad_prec)
@@ -115,6 +117,7 @@ function goon_if_gooning_goto_coords(_id,xx,yy){
 			_goto_y=clamp(_goto_y,8,global.camera_room_height-8)
 			goto_list=array_concat(goto_list,pathfind_fix_points([x,y],[_goto_x,_goto_y]))//[[_goto_x,_goto_y]]
 			array_push(goto_list,"interact")
+			got_new_directions=true
 			gooning=false
 		}
 	}

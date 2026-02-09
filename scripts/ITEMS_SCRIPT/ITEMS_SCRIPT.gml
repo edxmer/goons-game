@@ -99,6 +99,9 @@ function assign_item(item_id){
 		item_data.name=work_station_data_get(_station_id).name
 		item_data.texture=work_station_texture_get(_station_id)
 		array_push(item_data.tags,"station")
+		array_push(item_data.tags,"grid_mode")
+		array_push(item_data.tags,"has_effects")
+		item_data.special_data.grid_mode_sprite=item_data.texture
 	}
 	if item_id=="logs"{
 		item_data.texture=spr_logs
@@ -161,9 +164,12 @@ function assign_item(item_id){
 	}
 	if item_id=="hoe"{
 		item_data.texture=spr_hoe
+		array_push(item_data.tags,"use_item")
 		array_push(item_data.tags,"tilt_ground")
 		array_push(item_data.tags,"has_effects")
+		array_push(item_data.tags,"grid_mode")
 		array_push(item_data.tags,"persistent")
+		item_data.special_data.grid_mode_sprite=spr_grid_ui_tilted_ground
 	}
 	if item_id=="goon_blue"{
 		item_data.texture=spr_goon_blue
@@ -245,7 +251,14 @@ function item_special_data_contains(item_id,special_data_name)
 }
 function item_special_data_get(item_id,special_data_name)
 {
-	return variable_struct_get(assign_item(item_id).special_data,special_data_name)
+	if variable_struct_exists(assign_item(item_id).special_data,special_data_name)
+	{
+		return variable_struct_get(assign_item(item_id).special_data,special_data_name)
+	}
+	else
+	{
+		return "empty"
+	}
 }
 
 

@@ -120,3 +120,6 @@ if selected && mouse_check_button_pressed(mb_right)
 }
 
 effect_tick(id)
+
+got_new_directions=false
+use_item=false

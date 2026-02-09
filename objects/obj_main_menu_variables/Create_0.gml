@@ -1,0 +1,1 @@
+global.open_save_name="save1"

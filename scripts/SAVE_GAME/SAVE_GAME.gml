@@ -36,7 +36,7 @@ function add_saves_existing(savename)
 		}
 		for (var i=0;i<array_length(saves);i++)
 		{
-			file_text_write_string(fileid,"savefile-"+saves[i]+"-")
+			file_text_write_string(fileid,"savefile-"+saves[i]+"-\n")
 		}
 		file_text_close(fileid)
 	}

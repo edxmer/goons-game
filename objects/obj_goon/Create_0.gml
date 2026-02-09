@@ -30,7 +30,9 @@ walked_pixels=0
 
 all_distance=0
 
+use_item=false
 
+got_new_directions=false
 
 distance_went=0
 step_distance=goon_speed*0.3
@@ -79,6 +81,7 @@ goon_pickup_item=function(item)
 		if inventory!="empty"{
 			inventory_sprite=assign_item(inventory).texture
 			sound_play_category_at("pickup",x,y)
+			effect_update(id)
 			return true
 		}
 	}
@@ -102,7 +105,7 @@ interact_function=function()
 		}
 	
 	}
-	effect_update(id)
+	//effect_update(id)
 	
 }
 
@@ -163,6 +166,7 @@ put_down_item=function()
 		*/
 		inventory_set_empty()
 	}
+	effect_update(id)
 }
 
 stop_goon=function()
@@ -170,6 +174,11 @@ stop_goon=function()
 	goto_x=x
 	goto_y=y
 	goto_list=[]
+}
+
+only_this_goon_gooning=function()
+{
+	return gooning && gooning_goons_count()==1
 }
 
 

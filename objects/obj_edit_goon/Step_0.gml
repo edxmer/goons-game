@@ -18,6 +18,10 @@ else
 				movex*=-1
 				movey*=-1
 			}
+			if movex!=0 || movey !=0
+			{
+				got_new_directions=true
+			}
 			goto_x=x+movex
 			goto_y=y+movey
 			

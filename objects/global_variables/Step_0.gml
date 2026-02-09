@@ -23,7 +23,7 @@ else
 
 if mouse_check_button_pressed(mb_middle)
 {
-	create_save("save")
+	create_save(global.open_save_name)
 
 }
 

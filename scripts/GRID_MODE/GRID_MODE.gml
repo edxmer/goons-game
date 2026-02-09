@@ -1,3 +1,22 @@
+function summon_grid_ui_of_building(sprite=global.grid_mode_sprite)
+
+{
+	if (!instance_exists(obj_grid_mode_ui_building))
+	{
+		var idb=instance_create_depth(0,0,0,obj_grid_mode_ui_building)
+		idb.sprite_index=sprite
+	}
+	else{
+		with(obj_grid_mode_ui_building)
+		{
+			sprite_index=sprite
+		}
+	}
+
+}
+
+
+
 function draw_grid(){
 	
 	var gridsize=16

@@ -1,0 +1,1 @@
+global.should_be_gridmode=false

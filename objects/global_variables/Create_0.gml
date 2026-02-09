@@ -2,6 +2,8 @@ global.cam={}
 global.select_mode=false
 
 global.grid_mode=true
+global.should_be_gridmode=false
+global.grid_mode_sprite=spr_empty
 
 global.island_unlocked=false
 global.room_height=740
@@ -32,7 +34,7 @@ global.camera_size=1
 
 special_objectives_init()
 //global.goon_count=0
-if does_save_exist("save") && open_save("save")
+if does_save_exist(global.open_save_name) && open_save(global.open_save_name)
 {
 	global.loaded_from_save=true
 
