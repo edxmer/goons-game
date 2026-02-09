@@ -21,7 +21,7 @@ else
 	layer_set_visible("vignette_special_mode",false)
 }
 
-if mouse_check_button_pressed(mb_middle)
+if mouse_check_button_pressed(mb_middle) || ((keyboard_check_pressed(ord("S")) && keyboard_check(vk_control) ))
 {
 	create_save(global.open_save_name)
 
