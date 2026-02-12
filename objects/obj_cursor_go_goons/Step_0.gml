@@ -1,0 +1,116 @@
+var amount=array_length(goto_list)
+if !death_mode
+{
+	var last_step=array_last(goto_list)
+	var distance=point_distance(mouse_x,mouse_y,last_step[0],last_step[1])
+	if distance>=points_dist
+	{
+		var dir=point_direction(mouse_x,mouse_y,last_step[0],last_step[1])
+		var xx=mouse_x
+		var yy=mouse_y
+		var dir_points=[]
+		for (var i=0;i<distance;i+=points_dist)
+		{
+			array_push(dir_points,[xx,yy])
+			xx+=lengthdir_x(points_dist,dir)
+			yy+=lengthdir_y(points_dist,dir)
+		}
+		for (var i=array_length(dir_points)-1;i>=0;i--)
+		{
+			array_push(goto_list,dir_points[i])
+		}
+	}
+	
+	if amount<array_length(goto_list) && amount>15
+	{
+		for (var i=amount;i<array_length(goto_list);i++)
+		{
+			var nearby=0
+			var curr_pos=goto_list[i]
+			for (var j=0;j<i-5;j++)
+			{
+				var other_pos=goto_list[j]
+				if point_in_circle(other_pos[0],other_pos[1],curr_pos[0],curr_pos[1],point_of_interest_nearby_points)
+				{
+					nearby++
+				}
+			}
+			if nearby>=point_of_interest_nearby_points
+			{
+				var create_poi=true
+				for (var j=0;j<array_length(points_of_interest);j++)
+				{
+					var other_pos=points_of_interest[j]
+					if point_in_circle(other_pos[0],other_pos[1],curr_pos[0],curr_pos[1],point_of_interests_min_diff)
+					{
+						create_poi=false
+						break
+					}
+				}
+				if create_poi
+				{
+					
+					array_push(points_of_interest,curr_pos)
+					particle_point_of_interest(curr_pos[0],curr_pos[1])
+				
+				}
+			}
+	
+	
+		}
+	}
+}
+
+if array_length(points_of_interest)>0
+{
+	if alpha>0.3
+	{
+		alpha-=0.05
+	}
+}
+
+
+
+
+if !mouse_check_button(mb_left) && !death_mode
+{
+	death_data_push()
+	
+}
+
+if death_mode
+{
+	//frame+=frame_speed*0.8
+	frame_real=floor(frame)
+	alpha_real-=0.035
+	if alpha_real<alpha{
+		alpha=alpha_real
+	}
+	size+=0.04
+	if array_length(goto_list)==1
+	{
+		size+=0.025
+	}
+	if alpha_real<=0
+	{
+		instance_destroy()
+	}
+	
+}
+else
+{
+	frame+=frame_speed
+	frame_real=floor(frame)
+	
+	if array_length(goto_list)==1
+	{
+		
+	}
+	size+=size_change
+	
+	if size>=max_size || size<=1
+	{
+		size_change*=-1
+	}
+}
+

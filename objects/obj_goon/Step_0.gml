@@ -43,7 +43,7 @@ if goto_x!=x || goto_y!=y{
 	pixels_taken_this_frame=speed_real
 	x+=lengthdir_x(speed_real,look)
 	var lookx=sign(lengthdir_x(speed_real,look))
-	if lookx!=0{
+	if lookx!=0 && abs(lengthdir_x(speed_real,look))>=abs((lengthdir_y(speed_real,look)>>1)){
 		image_xscale=lookx
 	}
 	

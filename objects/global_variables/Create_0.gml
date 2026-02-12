@@ -42,6 +42,7 @@ if does_save_exist(global.open_save_name) && open_save(global.open_save_name)
 else
 {
 
+instance_create_depth(x,y,0,obj_tutorial_messages)
 
 create_goon((room_width>>1)+20,(global.room_height>>1)+30)
 create_goon((room_width>>1)+70,(global.room_height>>1)+10)

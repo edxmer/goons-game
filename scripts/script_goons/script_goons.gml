@@ -38,6 +38,36 @@ function goons_get_closest_idle(xx,yy,items=["empty"]){
 	}
 	
 }
+function goons_get_closest_gooning(xx,yy){
+	var goonslist=[]
+	with(obj_goon)
+	{
+		if gooning
+		{
+			array_push(goonslist,[id,point_distance(x,y,xx,yy)])
+		}
+	}
+	if array_length(goonslist)==0
+	{
+		return noone
+	}
+	else
+	{
+		var min_id=noone
+		var mindistance=1000000
+		for(var i=0;i<array_length(goonslist);i++)
+		{
+			if goonslist[i][1]<=mindistance
+			{
+				mindistance=goonslist[i][1]
+				min_id=goonslist[i][0]
+			}
+		}
+		return min_id
+	}
+	
+}
+
 
 function goon_is_idle(_id,items=["empty"])
 {
@@ -64,10 +94,103 @@ function gooning_goons_count()
 }
 
 
-function goon_if_gooning_goto_coords(_id,xx,yy){
+function goon_if_gooning_goto_coords(_id,xx,yy,list_of_interests=[],stop_at_every_point=false){
 
 	with(_id){
 		if gooning{
+			if gooning_goons_count()==1 && array_length(list_of_interests)!=0
+			{
+				
+				gooning=false
+				if !stop_at_every_point
+				{
+					goto_list=list_of_interests
+					array_push(goto_list,"interact")
+				
+				
+				}
+				else
+				{
+					goto_list=[]
+					var start=[x,y]
+					for(var i=0;i<array_length(list_of_interests);i++)
+					{
+						//show_message(list_of_interests[i])
+						var goto_mid=pathfind_fix_points(start,list_of_interests[i])
+						for (var j=0;j<array_length(goto_mid);j++)
+						{
+							array_push(goto_list,goto_mid[j])
+						}
+						array_push(goto_list,"interact")
+						start=list_of_interests[i]
+						
+					}
+					
+					
+				}
+				return
+			
+			}
+			else if array_length(list_of_interests)!=0
+			{
+				if stop_at_every_point
+				{
+					var gave_goons=[]
+					
+					while gooning_goons_count()>0
+					{
+						for (var p=0;p<array_length(list_of_interests);p++)
+						{
+							var curr_point=list_of_interests[p]
+							if gooning_goons_count()>0
+							{
+								var come_id=goons_get_closest_gooning(curr_point[0],curr_point[1])
+								goon_if_gooning_goto_coords(come_id,curr_point[0],curr_point[1])
+							}
+							else
+							{
+								return
+							}
+						
+						
+						}
+					
+					
+					
+					}
+					return
+				
+				
+				
+				
+				}
+				else
+				{
+					with(obj_goon)
+					{
+						if gooning{
+							var closest_distance=1000000000000000000000000
+							var closest_point=[x+1000000,y]
+							for (var g=0;g<array_length(list_of_interests);g++)
+							{
+								var p_curr=list_of_interests[g]
+								var curr_dist=point_distance(x,y,p_curr[0],p_curr[1])
+								if curr_dist<closest_distance
+								{
+									closest_distance=curr_dist
+									closest_point=p_curr
+								}
+							}
+							goon_if_gooning_goto_coords(id,closest_point[0],closest_point[1])
+						}
+					}
+					return
+				
+				
+				}
+			
+			
+			}
 			var feet_dist=(bbox_bottom-y)*0.6
 			yy-=feet_dist
 			var direct_to_item=false
