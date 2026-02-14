@@ -5,6 +5,7 @@ if !death_mode
 	var distance=point_distance(mouse_x,mouse_y,last_step[0],last_step[1])
 	if distance>=points_dist
 	{
+		idle_time=0
 		var dir=point_direction(mouse_x,mouse_y,last_step[0],last_step[1])
 		var xx=mouse_x
 		var yy=mouse_y
@@ -19,6 +20,31 @@ if !death_mode
 		{
 			array_push(goto_list,dir_points[i])
 		}
+	}
+	else
+	{
+		idle_time+=delta_time/1000000
+		if idle_time>=1.5
+		{
+			var curr_pos=array_last(goto_list)
+			var create_poi=true
+			for (var j=0;j<array_length(points_of_interest);j++)
+			{
+				var other_pos=points_of_interest[j]
+				if point_in_circle(other_pos[0],other_pos[1],curr_pos[0],curr_pos[1],point_of_interests_min_diff)
+				{
+					create_poi=false
+					break
+				}
+			}
+			if create_poi
+			{
+				create_point_of_interest(curr_pos)
+		
+			}
+			idle_time=0
+		}
+	
 	}
 	
 	if amount<array_length(goto_list) && amount>15
@@ -49,9 +75,9 @@ if !death_mode
 				}
 				if create_poi
 				{
-					
-					array_push(points_of_interest,curr_pos)
-					particle_point_of_interest(curr_pos[0],curr_pos[1])
+					create_point_of_interest(curr_pos)
+					/*array_push(points_of_interest,curr_pos)
+					particle_point_of_interest(curr_pos[0],curr_pos[1])*/
 				
 				}
 			}

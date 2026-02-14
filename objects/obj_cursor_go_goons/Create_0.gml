@@ -15,6 +15,8 @@ points_of_interest=[]
 
 return_positions=[]
 
+idle_time=0
+
 
 frame_real=floor(frame)
 death_mode=false
@@ -46,4 +48,10 @@ death_data_push=function()
 	
 	return [return_positions,poi]
 
+}
+
+create_point_of_interest=function(position)
+{
+	array_push(points_of_interest,position)
+	particle_point_of_interest(position[0],position[1])
 }

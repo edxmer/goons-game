@@ -72,7 +72,7 @@ function goons_get_closest_gooning(xx,yy){
 function goon_is_idle(_id,items=["empty"])
 {
 	if _id.object_index==obj_goon{
-		if _id.gooning==false && array_contains(items,_id.inventory) && _id.goto_x==_id.x && _id.goto_y==_id.y
+		if _id.gooning==false && array_contains(items,_id.inventory) && abs(_id.goto_x-_id.x)<_id.goon_speed && abs(_id.goto_y-_id.y)<_id.goon_speed
 		{
 			return true
 		}

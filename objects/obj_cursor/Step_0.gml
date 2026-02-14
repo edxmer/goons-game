@@ -59,6 +59,7 @@ if mouse_check_button(mb_left) && global.select_mode
 	{
 		if global.select_mode && gooning_goons_count()==0
 		{
+			
 			var items_searched_for=["empty"]
 			var selected_ws=workstation_selected_id()
 			if selected_ws!=noone
