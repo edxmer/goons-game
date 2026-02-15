@@ -149,8 +149,10 @@ function assign_item(item_id){
 		item_data.texture=work_station_texture_get(_station_id)
 		array_push(item_data.tags,"station")
 		array_push(item_data.tags,"grid_mode")
+		array_push(item_data.tags,"grid_mode_place_item")
 		array_push(item_data.tags,"has_effects")
 		item_data.special_data.grid_mode_sprite=item_data.texture
+		item_data.special_data.grid_mode_max_placeable=1
 	}
 	if item_id=="logs"{
 		item_data.texture=spr_logs

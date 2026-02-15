@@ -1,14 +1,22 @@
 var amount=array_length(goto_list)
+
+var x_curs=mouse_x
+var y_curs=mouse_y
+if global.grid_mode
+{
+	x_curs=clamp_to_grid_middle(x_curs)
+	y_curs=clamp_to_grid_middle(y_curs)
+}
 if !death_mode
 {
 	var last_step=array_last(goto_list)
-	var distance=point_distance(mouse_x,mouse_y,last_step[0],last_step[1])
+	var distance=point_distance(x_curs,y_curs,last_step[0],last_step[1])
 	if distance>=points_dist
 	{
 		idle_time=0
-		var dir=point_direction(mouse_x,mouse_y,last_step[0],last_step[1])
-		var xx=mouse_x
-		var yy=mouse_y
+		var dir=point_direction(x_curs,y_curs,last_step[0],last_step[1])
+		var xx=x_curs
+		var yy=y_curs
 		var dir_points=[]
 		for (var i=0;i<distance;i+=points_dist)
 		{
@@ -24,19 +32,11 @@ if !death_mode
 	else
 	{
 		idle_time+=delta_time/1000000
-		if idle_time>=1.5
+		if idle_time>=idle_time_place_poi
 		{
 			var curr_pos=array_last(goto_list)
-			var create_poi=true
-			for (var j=0;j<array_length(points_of_interest);j++)
-			{
-				var other_pos=points_of_interest[j]
-				if point_in_circle(other_pos[0],other_pos[1],curr_pos[0],curr_pos[1],point_of_interests_min_diff)
-				{
-					create_poi=false
-					break
-				}
-			}
+			var create_poi=can_create_poi(curr_pos)
+
 			if create_poi
 			{
 				create_point_of_interest(curr_pos)
@@ -63,16 +63,7 @@ if !death_mode
 			}
 			if nearby>=point_of_interest_nearby_points
 			{
-				var create_poi=true
-				for (var j=0;j<array_length(points_of_interest);j++)
-				{
-					var other_pos=points_of_interest[j]
-					if point_in_circle(other_pos[0],other_pos[1],curr_pos[0],curr_pos[1],point_of_interests_min_diff)
-					{
-						create_poi=false
-						break
-					}
-				}
+				var create_poi=can_create_poi(curr_pos)
 				if create_poi
 				{
 					create_point_of_interest(curr_pos)

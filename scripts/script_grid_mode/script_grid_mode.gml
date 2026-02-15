@@ -15,6 +15,11 @@ function summon_grid_ui_of_building(sprite=global.grid_mode_sprite)
 
 }
 
+function clamp_to_grid_middle(_coord_one)
+{
+	return (_coord_one>>4)*16+8
+
+}
 
 
 function draw_grid(){

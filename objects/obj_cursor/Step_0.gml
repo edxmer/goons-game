@@ -91,7 +91,7 @@ if mouse_check_button(mb_left) && global.select_mode
 				goon_goto=death_data_push()
 				
 						
-					goon_if_gooning_goto_coords(obj_goon,mouse_x,mouse_y,goon_goto[0],goon_goto[1])
+					goon_if_gooning_goto_coords(obj_goon,mouse_x,mouse_y,goon_goto[0],goon_goto[1],goon_goto[2])
 				
 			}
 		

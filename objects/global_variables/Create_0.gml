@@ -4,6 +4,8 @@ global.select_mode=false
 global.grid_mode=true
 global.should_be_gridmode=false
 global.grid_mode_sprite=spr_empty
+global.grid_mode_max_points_of_interests=-1
+global.grid_mode_poi_texture=spr_empty
 
 global.island_unlocked=false
 global.room_height=740

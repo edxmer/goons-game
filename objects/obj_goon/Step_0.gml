@@ -123,3 +123,12 @@ effect_tick(id)
 
 got_new_directions=false
 use_item=false
+gridmode_use_item=false
+
+
+if pickup_item_penalty>0
+{
+	pickup_item_penalty-=delta_time/1000000
+	pickup_item_penalty=max(0,pickup_item_penalty)
+
+}

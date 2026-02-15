@@ -94,8 +94,12 @@ function gooning_goons_count()
 }
 
 
-function goon_if_gooning_goto_coords(_id,xx,yy,list_of_interests=[],stop_at_every_point=false){
-
+function goon_if_gooning_goto_coords(_id,xx,yy,list_of_interests=[],stop_at_every_point=false,fromgridmode=false){
+var interact="interact"
+if fromgridmode
+{
+	interact="gridmode_useitem"
+}
 	with(_id){
 		if gooning{
 			if gooning_goons_count()==1 && array_length(list_of_interests)!=0
@@ -105,7 +109,7 @@ function goon_if_gooning_goto_coords(_id,xx,yy,list_of_interests=[],stop_at_ever
 				if !stop_at_every_point
 				{
 					goto_list=list_of_interests
-					array_push(goto_list,"interact")
+					array_push(goto_list,interact)
 				
 				
 				}
@@ -121,7 +125,7 @@ function goon_if_gooning_goto_coords(_id,xx,yy,list_of_interests=[],stop_at_ever
 						{
 							array_push(goto_list,goto_mid[j])
 						}
-						array_push(goto_list,"interact")
+						array_push(goto_list,interact)
 						start=list_of_interests[i]
 						
 					}

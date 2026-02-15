@@ -9,6 +9,9 @@ global.goon_count++
 
 goto_list=[]
 
+gridmode_use_item=false
+
+pickup_item_penalty=0
 
 selected=false
 
@@ -76,7 +79,7 @@ name = possible_names[irandom(array_length(possible_names)-1)]
 
 goon_pickup_item=function(item,replace=false)
 {
-	if inventory=="empty" || replace{
+	if (inventory=="empty" ) || replace{
 		inventory=item
 		if inventory!="empty"{
 			inventory_sprite=assign_item(inventory).texture
@@ -90,7 +93,7 @@ goon_pickup_item=function(item,replace=false)
 
 interact_function=function()
 {
-	if inventory=="empty"{
+	if inventory=="empty" && pickup_item_penalty==0{
 		goon_pickup_item(pickup_item(x,y))
 		/*inventory=pickup_item(x,y)
 		if inventory!="empty"{
@@ -159,6 +162,7 @@ goon_summon_item=function(item_id)
 put_down_item=function()
 {
 	if inventory!="empty"{
+		pickup_item_penalty=0.5
 		goon_summon_item(inventory)
 		/*
 		sound_play_category_at("groundsoft",x,bbox_bottom)
@@ -200,15 +204,21 @@ next_goto=function()
 	{
 		
 		var next_go=goto_list[0]
+		array_delete(goto_list,0,1)
 		if next_go=="interact"
 		{
-			array_delete(goto_list,0,1)
+			
 			interact_function()
 			
 		}
+		else if next_go=="gridmode_useitem"
+		{
+			gridmode_use_item=true
+			use_item=true
+		}
 		else
 		{
-			array_delete(goto_list,0,1)
+			
 			goto_x=next_go[0]
 			goto_y=next_go[1]
 		}
