@@ -26,8 +26,8 @@ if blue && goon_speed<=(300/3)
 	sprite_index=spr_goon_blue
 	goon_speed*=3
 }
-
-if goto_x!=x || goto_y!=y{
+	var speed_real=goon_speed*min(delta_time/1000000,0.4)*slowness_modifier
+if x!=goto_x || y!=goto_y{
 	equipment_sprite_draw=equipment_sprite_walk
 	sprite_index=spr_goon_walk
 	if dumb{
@@ -38,16 +38,16 @@ if goto_x!=x || goto_y!=y{
 			sprite_index=spr_goon_walk_blue
 	}
 	var look=point_direction(x,y,goto_x,goto_y)
-	var speed_real=goon_speed*min(delta_time/1000000,0.4)*slowness_modifier
+
 	distance_went+=speed_real
 	pixels_taken_this_frame=speed_real
-	x+=lengthdir_x(speed_real,look)
+	x+=clamp(lengthdir_x(speed_real,look),-point_distance(x,y,goto_x,y),point_distance(x,y,goto_x,y))
 	var lookx=sign(lengthdir_x(speed_real,look))
 	if lookx!=0 && abs(lengthdir_x(speed_real,look))>=abs((lengthdir_y(speed_real,look)>>1)){
 		image_xscale=lookx
 	}
+	y+=clamp(lengthdir_y(speed_real,look),-point_distance(x,y,x,goto_y),point_distance(x,y,x,goto_y))
 	
-	y+=lengthdir_y(speed_real,look)
 
 	if point_distance(x,y,goto_x,goto_y)<speed_real{
 		if !next_goto()
@@ -66,8 +66,8 @@ if goto_x!=x || goto_y!=y{
 				
 			}
 			distance_went=0
-			goto_x=x
-			goto_y=y
+			x=goto_x
+			y=goto_y
 			interact_function()
 		}
 

@@ -98,7 +98,14 @@ function goon_if_gooning_goto_coords(_id,xx,yy,list_of_interests=[],stop_at_ever
 var interact="interact"
 if fromgridmode
 {
-	interact="gridmode_useitem"
+	if !global.gridmode_placeable && !stop_at_every_point
+	{
+		interact="nothing"
+		
+	}
+	{
+		interact="gridmode_useitem"
+	}
 }
 	with(_id){
 		if gooning{
@@ -231,7 +238,7 @@ if fromgridmode
 			var bad_prec=min(distance*0.12,15)
 			if direct_to_item || global.grid_mode
 			{
-				bad_prec=min(distance*0.08,2)
+				bad_prec=min(distance*0.02,1)
 			}
 			var _goto_x=xx+irandom_range(-bad_prec,bad_prec)
 			var _goto_y=yy+irandom_range(-bad_prec,bad_prec)

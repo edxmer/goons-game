@@ -151,8 +151,14 @@ function assign_item(item_id){
 		array_push(item_data.tags,"grid_mode")
 		array_push(item_data.tags,"grid_mode_place_item")
 		array_push(item_data.tags,"has_effects")
+		array_push(item_data.tags,"put_down_on_grid")
+		
 		item_data.special_data.grid_mode_sprite=item_data.texture
 		item_data.special_data.grid_mode_max_placeable=1
+		item_data.special_data.grid_mode_placeable_function=function(xx,yy,sprite)
+		{
+			return gridmode_check_ground_hitboxes(xx,yy,sprite) && gridmode_check_workstation_hitboxes(xx,yy,sprite)
+		}
 	}
 	if item_id=="logs"{
 		item_data.texture=spr_logs
@@ -178,6 +184,16 @@ function assign_item(item_id){
 		array_push(item_data.tags,"eq_has_effects")
 		array_push(item_data.tags,"equippable")
 		item_data.special_data.equipped_sprites=[spr_wear_constructors_belt_idle,spr_wear_constructors_belt_walk]
+	}
+	if item_id=="ball_and_chain"{
+		item_data.name="Ball & Chain"
+		item_data.texture=spr_ball_and_chain
+		array_push(item_data.tags,"eq_robot")
+		array_push(item_data.tags,"eq_slowed")
+		array_push(item_data.tags,"eq_has_effects")
+		array_push(item_data.tags,"equippable")
+		item_data.special_data.slow_percentage=0.1
+		item_data.special_data.equipped_sprites=[spr_wear_ball_and_chain_idle,spr_wear_ball_and_chain_walk]
 	}
 	if item_id=="snow_globe"{
 		item_data.name="Snow Globe"
@@ -221,6 +237,10 @@ function assign_item(item_id){
 		array_push(item_data.tags,"grid_mode")
 		array_push(item_data.tags,"persistent")
 		item_data.special_data.grid_mode_sprite=spr_grid_ui_tilted_ground
+		item_data.special_data.grid_mode_placeable_function=function(xx,yy,sprite)
+		{
+			return gridmode_check_ground_hitboxes(xx,yy,sprite) && gridmode_check_workstation_hitboxes(xx,yy,sprite)
+		}
 	}
 	if item_id=="goon_blue"{
 		item_data.texture=spr_goon_blue
@@ -265,6 +285,23 @@ function assign_item(item_id){
 	
 	return item_data
 }
+
+function item_special_data_get_can_place_function(item_id)
+{
+	if variable_struct_exists(assign_item(item_id).special_data,"grid_mode_placeable_function")
+	{
+		return variable_struct_get(assign_item(item_id).special_data,"grid_mode_placeable_function")
+	}
+	else
+	{
+		var empty_funct=function(xx,yy,sprite)
+		{
+			return true
+		}
+		return empty_funct
+	}
+}
+
 
 function item_id_get_equip_sprites(item_id)
 {

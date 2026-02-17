@@ -20,7 +20,7 @@ function effect_set_base(goon_id)
 	if goon_id.object_index==obj_goon{
 		goon_id.slowness_modifier=1
 		goon_id.has_effects=false
-		goon_id.effects={freezing:{is:false,freezing_pixel_amount:0},slowed:{is:false,slow_percentage:1},pick_up_building:{is:false},use_item:{is:false},place_snow:{is:false},tilt_ground:{is:false},grid_mode:{is:false,ui_sprite:spr_empty,max_placeable:-1},grid_mode_place_item:{is:false}}
+		goon_id.effects={freezing:{is:false,freezing_pixel_amount:0},robot:{is:false},slowed:{is:false,slow_percentage:1},pick_up_building:{is:false},use_item:{is:false},place_snow:{is:false},tilt_ground:{is:false},grid_mode:{is:false,ui_sprite:spr_empty,max_placeable:-1},grid_mode_place_item:{is:false}}
 		
 	}
 }
@@ -50,6 +50,13 @@ function item_set_effects(goon_id,item_id,prefix){
 		}
 		
 		next_effect="pick_up_building"
+		if array_contains(item_get_tags(item_id),prefix+next_effect)
+		{
+			
+			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"is",true)
+			real_effects=true
+		}
+		next_effect="robot"
 		if array_contains(item_get_tags(item_id),prefix+next_effect)
 		{
 			
@@ -132,6 +139,7 @@ function effect_tick(goon_id)
 
 			if goon_id.only_this_goon_gooning()
 			{
+				global.grid_mode_item=goon_id.inventory
 				global.should_be_gridmode=true
 				global.grid_mode_sprite=goon_id.effects.grid_mode.ui_sprite
 				global.grid_mode_max_points_of_interests=goon_id.effects.grid_mode.max_placeable
@@ -140,15 +148,45 @@ function effect_tick(goon_id)
 		
 		
 		}
-		if goon_id.effects.grid_mode_place_item.is
+		if goon_id.effects.robot.is
 		{
-
-			if goon_id.gridmode_use_item
+			if array_length(goon_id.goto_list)>1
 			{
-				goon_id.put_down_item()
-				
+				var first=goon_id.goto_list[0]
+				var last=goon_id.goto_list[array_length(goon_id.goto_list)-1]
+				var robot=true
+				if is_array(first) && is_array(last)
+				{
+					if first[0] ==last[0] && first[1]==last[1]
+					{
+						robot=false
+					}
+			
+				}
+				else if first==last
+				{
+					robot=false
+				}
+				if robot
+				{
+					array_push(goto_list,first)
+				}
 			}
 		
+		}
+		if goon_id.effects.grid_mode_place_item.is
+		{
+			
+			if goon_id.gridmode_use_item
+			{
+				var item_id=goon_id.inventory
+				var can_be_placed=item_special_data_get_can_place_function(item_id)
+				if can_be_placed(goon_id.x,goon_id.y,item_get_sprite(item_id))
+				{
+					goon_id.put_down_item()
+				
+				}	
+			}
 		
 		}
 
@@ -169,25 +207,28 @@ function effect_tick(goon_id)
 
 		
 		if goon_id.effects.pick_up_building.is{
-			if reached_destination_this_frame{
-				var wst_id=noone
-				with(goon_id){wst_id=workstation_nearby_accepst_my_item(true)}
-				if wst_id!=noone{
-					if item_tags_contains(goon_id.inventory,"persistent") || item_tags_contains(goon_id.equipment,"eq_pick_up_building")
-					{
-						with(goon_id){put_down_item()}
+			if pickup_item_penalty==0 && !item_tags_contains(goon_id.inventory,"station")
+			{
+				if reached_destination_this_frame{
+					var wst_id=noone
+					with(goon_id){wst_id=workstation_nearby_accepst_my_item(true)}
+					if wst_id!=noone{
+						if item_tags_contains(goon_id.inventory,"persistent") || item_tags_contains(goon_id.equipment,"eq_pick_up_building")
+						{
+							with(goon_id){put_down_item()}
+						}
+						else
+						{
+							item_id_summon_particles(goon_id.inventory,goon_id.x,goon_id.y)
+						}
+						var sound=work_station_use_sound_get(wst_id.station_id)
+						sound_play_category_at(sound,x,y)
+						sound_play_category_at("stonework",x,y)
+						var item_id=workstation_turn_to_item(wst_id)
+						goon_pickup_item(item_id,true)
 					}
-					else
-					{
-						item_id_summon_particles(goon_id.inventory,goon_id.x,goon_id.y)
-					}
-					var sound=work_station_use_sound_get(wst_id.station_id)
-					sound_play_category_at(sound,x,y)
-					sound_play_category_at("stonework",x,y)
-					var item_id=workstation_turn_to_item(wst_id)
-					goon_pickup_item(item_id,true)
-				}
 				
+				}
 			}
 		
 		}
@@ -204,12 +245,17 @@ function effect_tick(goon_id)
 		{
 			if goon_id.use_item
 			{
-				if set_tilemap_farmland(goon_id.x>>4,goon_id.bbox_bottom>>4)
+				var item_id=goon_id.inventory
+				var can_be_placed=item_special_data_get_can_place_function(item_id)
+				if can_be_placed(goon_id.x,goon_id.y,item_get_sprite(item_id))
 				{
-					if !item_tags_contains(goon_id.inventory,"persistent") && !item_tags_contains(goon_id.equipment,"eq_tilt_ground")
+					if set_tilemap_farmland(goon_id.x>>4,goon_id.bbox_bottom>>4)
 					{
-						item_id_summon_particles(goon_id.inventory,x,y)
-						with(goon_id){inventory_set_empty()}
+						if !item_tags_contains(goon_id.inventory,"persistent") && !item_tags_contains(goon_id.equipment,"eq_tilt_ground")
+						{
+							item_id_summon_particles(goon_id.inventory,x,y)
+							with(goon_id){inventory_set_empty()}
+						}
 					}
 				}
 			}

@@ -185,6 +185,8 @@
     {"id":{"name":"spr_tileset_winter","path":"sprites/spr_tileset_winter/spr_tileset_winter.yy",},},
     {"id":{"name":"spr_wear_antlers_idle","path":"sprites/spr_wear_antlers_idle/spr_wear_antlers_idle.yy",},},
     {"id":{"name":"spr_wear_antlers_walk","path":"sprites/spr_wear_antlers_walk/spr_wear_antlers_walk.yy",},},
+    {"id":{"name":"spr_wear_ball_and_chain_idle","path":"sprites/spr_wear_ball_and_chain_idle/spr_wear_ball_and_chain_idle.yy",},},
+    {"id":{"name":"spr_wear_ball_and_chain_walk","path":"sprites/spr_wear_ball_and_chain_walk/spr_wear_ball_and_chain_walk.yy",},},
     {"id":{"name":"spr_wear_constructors_belt_idle","path":"sprites/spr_wear_constructors_belt_idle/spr_wear_constructors_belt_idle.yy",},},
     {"id":{"name":"spr_wear_constructors_belt_walk","path":"sprites/spr_wear_constructors_belt_walk/spr_wear_constructors_belt_walk.yy",},},
     {"id":{"name":"spr_wear_snow_globe_idle","path":"sprites/spr_wear_snow_globe_idle/spr_wear_snow_globe_idle.yy",},},

@@ -132,16 +132,15 @@ item_destroy_nearby=function(item_id_delete)
 
 reposition=function()
 {
-var left=bbox_left-x-5
-var right=bbox_right-x+5
-var top=bbox_top-y
-var bottom=bbox_bottom-y
-if collision_rectangle(x+left,top+y-10,right+x,bottom+y+10,obj_work_station,false,true)
+	x=clamp_to_grid_start(x)
+y=clamp_to_grid_start(y)
+
+if !gridmode_check_workstation_hitboxes(x,y,sprite_index)
 {
 
 	var max_tries=20
 	var look=point_direction(x,y,room_width>>1,global.room_height>>1)
-	while(max_tries>=0 && collision_rectangle(x+left,top+y-10,right+x,bottom+y+10,obj_work_station,false,true))
+	while(max_tries>=0 && !gridmode_check_workstation_hitboxes(x,y,sprite_index))
 	{
 		x+=lengthdir_x(-5,look)
 		y+=lengthdir_y(-5,look)
@@ -150,4 +149,7 @@ if collision_rectangle(x+left,top+y-10,right+x,bottom+y+10,obj_work_station,fals
 }
 x=clamp(x,16,room_width-16)
 y=clamp(y,70,global.room_height-32)
+
+x=clamp_to_grid_start(x)
+y=clamp_to_grid_start(y)
 }

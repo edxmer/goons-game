@@ -159,11 +159,25 @@ goon_summon_item=function(item_id)
 	create_item(irandom_range(x-5,x+5),irandom_range(y-5,bbox_bottom+3),item_id)
 }
 
+goon_place_item_down_grid=function(item_id)
+{
+	sound_play_category_at("groundsoft",x,bbox_bottom)
+	create_item(clamp_to_grid_start( x),clamp_to_grid_start(bbox_bottom),item_id)
+
+
+}
 put_down_item=function()
 {
 	if inventory!="empty"{
 		pickup_item_penalty=0.5
-		goon_summon_item(inventory)
+		if item_tags_contains(inventory,"put_down_on_grid")
+		{
+			goon_place_item_down_grid(inventory)
+		}
+		else
+		{
+			goon_summon_item(inventory)
+		}
 		/*
 		sound_play_category_at("groundsoft",x,bbox_bottom)
 		create_item(irandom_range(x-5,x+5),irandom_range(y-5,bbox_bottom+3),inventory)
@@ -215,6 +229,10 @@ next_goto=function()
 		{
 			gridmode_use_item=true
 			use_item=true
+		}
+		else if next_go="nothing"
+		{
+		
 		}
 		else
 		{

@@ -31,7 +31,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_workstation_cigs",
+    "path":"sprites/spr_workstation_cigs/spr_workstation_cigs.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

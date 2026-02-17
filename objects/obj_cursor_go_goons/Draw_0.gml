@@ -65,7 +65,7 @@ for (var i=0;i<array_length(goto_list);i++)
 		{
 			draw_sprite_ext(spr_goto_line_end,frame_real,goto_list[i][0],goto_list[i][1],size,size,_direction,c_white,alpha)
 		}
-		if array_length(points_of_interest)==0
+		if array_length(points_of_interest)==0 && !global.grid_mode
 		{
 			if special_poi_texture
 			{

@@ -56,7 +56,7 @@ if !grew_up && size>=0.95{
 	else if string_copy(item_id,1,8)=="station-"
 	{
 		var _station_id=string_copy(item_id,9,string_length(item_id)-8)
-		create_work_station(x,y-10,_station_id)
+		create_work_station(x,y,_station_id)
 		instance_destroy()
 	}
 }

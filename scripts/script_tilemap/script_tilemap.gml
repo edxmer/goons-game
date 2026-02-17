@@ -1,3 +1,16 @@
+function is_tile_placeable(tx,ty)
+{
+	return is_tile_ground(tx,ty) || is_tile_snowy(tx,ty)
+}
+
+
+
+function is_tile_ground(tx,ty)
+{
+	return get_tile_index(tx,ty)==9
+
+}
+
 function set_tilemap_snow(tx,ty){
 	if get_tile_index(tx,ty)==9{
 		set_tile_index(tx,ty,3)
