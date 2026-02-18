@@ -49,6 +49,10 @@ if !death_mode
 				create_point_of_interest(curr_pos)
 		
 			}
+			else if !global.grid_mode
+			{
+				set_to_next_point_of_interest_other(curr_pos)
+			}
 			idle_time=0
 		}
 	

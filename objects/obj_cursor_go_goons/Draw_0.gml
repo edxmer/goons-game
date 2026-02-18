@@ -1,11 +1,12 @@
 depth=-room_height
 var poi_size=size
 var poi_frame=frame_real
-
+var poi_alpha=alpha_real
 if special_poi_texture
 {
 	poi_frame=0
 	poi_size=1
+	poi_alpha*=0.8
 
 
 }
@@ -19,7 +20,12 @@ if array_length(goto_list)==1
 	}
 	else
 	{
-		draw_sprite_ext(point_of_interest_texture,frame_real,goto_list[0][0],goto_list[0][1],size,size,0,c_white,alpha_real)
+		var draw=goto_list[0]
+		if array_length(points_of_interest)!=0
+		{
+			draw=points_of_interest[0]
+		}
+		draw_sprite_ext(poi_instruct_sprite_get(draw),frame_real,goto_list[0][0],goto_list[0][1],size,size,0,c_white,alpha_real)
 	}
 	exit
 }
@@ -97,7 +103,7 @@ for (var i=0;i<array_length(points_of_interest);i++)
 	}
 	else
 	{
-		draw_sprite_ext(point_of_interest_texture,frame_real,points_of_interest[i][0],points_of_interest[i][1],size,size,0,c_white,alpha_real)
+		draw_sprite_ext(poi_instruct_sprite_get(list_i),frame_real,points_of_interest[i][0],points_of_interest[i][1],size,size,0,c_white,alpha_real)
 	}
 	frame_real+=1
 

@@ -151,6 +151,7 @@
     {"id":{"name":"spr_goon_walk","path":"sprites/spr_goon_walk/spr_goon_walk.yy",},},
     {"id":{"name":"spr_goon","path":"sprites/spr_goon/spr_goon.yy",},},
     {"id":{"name":"spr_goonificator","path":"sprites/spr_goonificator/spr_goonificator.yy",},},
+    {"id":{"name":"spr_goto_drop_item","path":"sprites/spr_goto_drop_item/spr_goto_drop_item.yy",},},
     {"id":{"name":"spr_goto_line_begin","path":"sprites/spr_goto_line_begin/spr_goto_line_begin.yy",},},
     {"id":{"name":"spr_goto_line_end","path":"sprites/spr_goto_line_end/spr_goto_line_end.yy",},},
     {"id":{"name":"spr_goto_line_intersection","path":"sprites/spr_goto_line_intersection/spr_goto_line_intersection.yy",},},

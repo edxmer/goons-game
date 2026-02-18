@@ -22,6 +22,7 @@ else
 			{
 				got_new_directions=true
 			}
+			goto_list=[]
 			goto_x=x+movex
 			goto_y=y+movey
 			

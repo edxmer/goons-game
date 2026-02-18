@@ -115,13 +115,18 @@ if fromgridmode
 				gooning=false
 				if !stop_at_every_point
 				{
+					goto_x=x 
+					goto_y=y
 					goto_list=list_of_interests
+					
 					array_push(goto_list,interact)
 				
 				
 				}
 				else
 				{
+					goto_x=x 
+					goto_y=y
 					goto_list=[]
 					var start=[x,y]
 					for(var i=0;i<array_length(list_of_interests);i++)
@@ -132,7 +137,14 @@ if fromgridmode
 						{
 							array_push(goto_list,goto_mid[j])
 						}
-						array_push(goto_list,interact)
+						if fromgridmode || array_length(list_of_interests[i])<3
+						{
+							array_push(goto_list,interact)
+						}
+						else
+						{
+							array_push(goto_list,list_of_interests[i][2])
+						}
 						start=list_of_interests[i]
 						
 					}
@@ -157,6 +169,17 @@ if fromgridmode
 							{
 								var come_id=goons_get_closest_gooning(curr_point[0],curr_point[1])
 								goon_if_gooning_goto_coords(come_id,curr_point[0],curr_point[1])
+								if array_length(curr_point)>2
+								{
+									if array_length(come_id.goto_list)==0 || is_array(array_last(come_id.goto_list))
+									{
+										array_push(come_id.goto_list,curr_point[2])
+									}
+									else if is_string(array_last(come_id.goto_list))
+									{
+										come_id.goto_list[array_length(come_id.goto_list)-1] =curr_point[2]
+									}
+								}
 							}
 							else
 							{
@@ -181,7 +204,9 @@ if fromgridmode
 					{
 						if gooning{
 							var closest_distance=1000000000000000000000000
+							
 							var closest_point=[x+1000000,y]
+							var closest_points=[]
 							for (var g=0;g<array_length(list_of_interests);g++)
 							{
 								var p_curr=list_of_interests[g]
@@ -190,8 +215,15 @@ if fromgridmode
 								{
 									closest_distance=curr_dist
 									closest_point=p_curr
+									
+									array_push(closest_points,closest_point)
+									if array_length(closest_points)>gooning_goons_count()*2
+									{
+										array_delete(closest_points,0,1)
+									}
 								}
 							}
+							closest_point=closest_points[irandom(array_length(closest_points)-1)]
 							goon_if_gooning_goto_coords(id,closest_point[0],closest_point[1])
 						}
 					}

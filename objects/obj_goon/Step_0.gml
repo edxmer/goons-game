@@ -26,6 +26,9 @@ if blue && goon_speed<=(300/3)
 	sprite_index=spr_goon_blue
 	goon_speed*=3
 }
+
+popped_goto_act="empty"
+
 	var speed_real=goon_speed*min(delta_time/1000000,0.4)*slowness_modifier
 if x!=goto_x || y!=goto_y{
 	equipment_sprite_draw=equipment_sprite_walk
@@ -50,6 +53,8 @@ if x!=goto_x || y!=goto_y{
 	
 
 	if point_distance(x,y,goto_x,goto_y)<speed_real{
+		x=goto_x
+		y=goto_y
 		if !next_goto()
 		{
 			reached_destination_this_frame=true
@@ -66,8 +71,8 @@ if x!=goto_x || y!=goto_y{
 				
 			}
 			distance_went=0
-			x=goto_x
-			y=goto_y
+			
+			
 			interact_function()
 		}
 

@@ -11,6 +11,8 @@ goto_list=[]
 
 gridmode_use_item=false
 
+popped_goto_act="empty"
+
 pickup_item_penalty=0
 
 selected=false
@@ -218,6 +220,7 @@ next_goto=function()
 	{
 		
 		var next_go=goto_list[0]
+		popped_goto_act=goto_list[0]
 		array_delete(goto_list,0,1)
 		if next_go=="interact"
 		{
@@ -229,6 +232,10 @@ next_goto=function()
 		{
 			gridmode_use_item=true
 			use_item=true
+		}
+		else if next_go=="put_down_item"
+		{
+			put_down_item()
 		}
 		else if next_go="nothing"
 		{

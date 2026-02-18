@@ -153,6 +153,14 @@ function effect_tick(goon_id)
 			if array_length(goon_id.goto_list)>1
 			{
 				var first=goon_id.goto_list[0]
+				if goon_id.popped_goto_act!="empty"
+				{
+					first=goon_id.popped_goto_act
+				}
+				/*if is_array(first) && (x!=goto_x || y!=goto_y)
+				{
+					first=[goto_x,goto_y]
+				}*/
 				var last=goon_id.goto_list[array_length(goon_id.goto_list)-1]
 				var robot=true
 				if is_array(first) && is_array(last)

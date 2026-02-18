@@ -49,6 +49,8 @@ return_positions=[]
 
 idle_time=0
 
+poi_interactions=["interact","put_down_item"]
+poi_textures=[spr_goto_point,spr_goto_drop_item]
 
 frame_real=floor(frame)
 death_mode=false
@@ -84,19 +86,69 @@ death_data_push=function()
 
 }
 
+poi_instruct_sprite_get=function(poi_list)
+{
+	if array_length(poi_list)<3
+	{
+		return point_of_interest_texture
+	}
+	return poi_textures[array_get_index(poi_interactions,poi_list[2])]
+		
+}
+
+
 create_point_of_interest=function(position)
 {
 	if global.grid_mode && !global.gridmode_placeable
 	{
 		return false
 	}
-	array_push(points_of_interest,position)
+	array_push(points_of_interest,[position[0],position[1],"interact"])
 	particle_point_of_interest(position[0],position[1])
 	if max_points_of_interest!=-1 && max_points_of_interest<array_length(points_of_interest)
 	{
 		array_delete(points_of_interest,0,1)
 	}
 }
+
+set_to_next_point_of_interest_other=function(curr_pos)
+{
+	var set_ind=get_nearest_poi_index(curr_pos)
+	if set_ind!=-1
+	{
+		var fix_poi=points_of_interest[set_ind]
+		particle_point_of_interest(fix_poi[0],fix_poi[1])
+		var setto=(array_get_index(poi_interactions,fix_poi[2])+1)%array_length(poi_interactions)
+		points_of_interest[set_ind][2]=poi_interactions[setto]
+	}
+
+
+}
+
+
+
+get_nearest_poi_index=function(curr_pos)
+{
+	var distlist=[]
+	for (var j=0;j<array_length(points_of_interest);j++)
+	{
+		array_push(distlist,[j,point_distance(points_of_interest[j][0],points_of_interest[j][1],curr_pos[0],curr_pos[1])])
+	}
+	var ret_ind=-1
+	var curr_min=10000000
+	for (var j=0;j<array_length(distlist);j++)
+	{
+		if distlist[j][1]<curr_min
+		{
+			curr_min=distlist[j][1]
+			ret_ind=distlist[j][0]
+		}
+	}
+	return ret_ind
+
+
+}
+
 
 can_create_poi=function(curr_pos)
 {
