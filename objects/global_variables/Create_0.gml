@@ -61,6 +61,7 @@ create_work_station((room_width>>1)+200,(global.room_height>>1)+irandom_range(-4
 
 create_item((room_width>>1)+300,(global.room_height>>1)+200,"goo")
 items_scatter_start_of_game(["goo"],1)
+items_scatter_start_of_game(["ball_and_chain"],1)
 items_scatter_start_of_game(["antlers"],1)
 items_scatter_start_of_game(["hoe"],1)
 items_scatter_start_of_game(["snow_globe"],1)
