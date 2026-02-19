@@ -1,5 +1,5 @@
 function add_text_box_gui(data=[txtg()]){
-	var text_box_id = instance_create_layer(0, 0, layer, obj_text_box_gui)
+	var text_box_id = instance_create_depth(0, 0, -1000, obj_text_box_gui)
 	
 	text_box_id.data = data
 	
