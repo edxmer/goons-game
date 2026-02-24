@@ -1,6 +1,12 @@
 global.cam={}
 global.select_mode=false
 
+global.current_calories=0
+global.needed_calories=10
+global.current_calorie_objectives=[]
+global.current_calorie_cravings=[]
+
+
 global.grid_mode=true
 global.should_be_gridmode=false
 global.grid_mode_sprite=spr_empty

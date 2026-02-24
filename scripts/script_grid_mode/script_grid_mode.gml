@@ -66,15 +66,31 @@ function gridmode_check_ground_hitboxes(xx,yy,sprite)
 	
 	return run_for_all_sprite_tile(xx,yy,sprite,is_ground_placeable_pixel)
 }
+function gridmode_check_ground_hitboxes_fromtop(xx,yy,sprite)
+{
+	
+	return run_for_all_sprite_tile(xx,yy-16,sprite,is_ground_placeable_pixel)
+}
 function gridmode_check_ground_hitboxes_farmland(xx,yy,sprite)
 {
 	
 	return run_for_all_sprite_tile(xx,yy,sprite,is_ground_farmland_pixel)
 }
+function gridmode_check_ground_hitboxes_farmland_fromtop(xx,yy,sprite)
+{
+	
+	return run_for_all_sprite_tile(xx,yy-16,sprite,is_ground_farmland_pixel)
+}
 function gridmode_check_workstation_hitboxes(xx,yy,sprite)
 {
 
 	return run_for_all_sprite_tile(xx,yy,sprite,is_pixel_not_meeting_workstation)
+
+}
+function gridmode_check_workstation_hitboxes_fromtop(xx,yy,sprite)
+{
+
+	return run_for_all_sprite_tile(xx,yy-16,sprite,is_pixel_not_meeting_workstation)
 
 }
 
