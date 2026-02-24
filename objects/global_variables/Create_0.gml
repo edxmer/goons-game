@@ -2,9 +2,14 @@ global.cam={}
 global.select_mode=false
 
 global.current_calories=0
-global.needed_calories=10
-global.current_calorie_objectives=[]
-global.current_calorie_cravings=[]
+global.needed_calories=20
+global.current_calorie_objectives=[
+	s_objective_normal("banana", 3, false),
+	s_objective_normal("plank", 2, false),
+]
+global.current_calorie_cravings=[
+	s_objective_craving("rock", 1)
+]
 
 
 global.grid_mode=true
