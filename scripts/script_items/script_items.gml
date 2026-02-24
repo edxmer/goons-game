@@ -137,8 +137,13 @@ function item_move_from_collisions(_id,loop=1,collisions=[],donotdisturb=[])
 
 }
 
+/**
+ * Creates item_structs from item_ids
+ * @param {string} item_id The id of an item
+ * @returns {struct} 
+ */
 function assign_item(item_id){
-	var item_data={texture:spr_empty,item_id:"empty",name:"empty",tags:[],special_data:{}}
+	var item_data={texture:spr_empty,item_id:"empty",name:"empty",tags:[],calories:0,special_data:{}}
 	item_data.item_id=item_id
 	item_data.name=string_upper(string_copy(item_id,1,1))+ string_replace_all(string_copy(item_id,2,string_length(item_id)-1),"_"," ")
 	array_push(item_data.tags,item_id)
@@ -180,36 +185,42 @@ function assign_item(item_id){
 		item_data.texture=spr_turnip_seeds
 		item_data.special_data.grid_mode_place_station_id="turnip_plant"
 		item_data.special_data.grid_mode_sprite=spr_grid_ui_turnip
-
+		item_data.calories=0
 	}
 	if item_id=="corn_seeds"{
 		item_data=assign_item("*_seeds")
 		item_data.texture=spr_corn_seeds
 		item_data.special_data.grid_mode_place_station_id="corn_plant"
 		item_data.special_data.grid_mode_sprite=spr_grid_ui_corn
+		item_data.calories=0
 
 	}
 	if item_id=="corn_cob"{
 		item_data.texture=spr_corn_cob
 	array_push(item_data.tags,"corn_cob")
+	item_data.calories=15
 	
 	}
 	if item_id=="turnip"{
 		item_data.texture=spr_turnip
 	array_push(item_data.tags,"turnip")
+	item_data.calories=25
 	
 	}
 	if item_id=="logs"{
 		item_data.texture=spr_logs
 	array_push(item_data.tags,"wood")
+	item_data.calories=4
 	
 	}
 	if item_id=="frog"{
 		item_data.texture=spr_frog
+		item_data.calories=30
 	}
 	if item_id=="candy"{
 		item_data.texture=spr_candy
 		array_push(item_data.tags,"crafted")
+		item_data.calories=45
 	}
 	if item_id=="antlers"{
 		item_data.texture=spr_noog_antlers
@@ -248,19 +259,23 @@ function assign_item(item_id){
 		array_push(item_data.tags,"freezing")
 		array_push(item_data.tags,"has_effects")
 		array_push(item_data.tags,"danger")
+		item_data.calories=120
 	}
 	if item_id=="froglamp"{
 		item_data.texture=spr_froglamp
 		array_push(item_data.tags,"crafted")
+		item_data.calories=60
 	}
 	if item_id=="plank"{
 		item_data.texture=spr_plank
 	array_push(item_data.tags,"wood")
 		array_push(item_data.tags,"crafted")
+		item_data.calories=1
 	}
 	if item_id=="lamp"{
 		item_data.texture=spr_lamp
 		array_push(item_data.tags,"crafted")
+		item_data.calories=20
 	}
 	if item_id=="hammer"{
 		item_data.texture=spr_hammer
@@ -292,14 +307,17 @@ function assign_item(item_id){
 	else if item_id=="cigarette"{
 		item_data.texture=spr_cigarette
 		array_push(item_data.tags,"crafted")
+		item_data.calories=10
 	}
 	else if item_id=="rock"{
 		item_data.texture=spr_rock
 		array_push(item_data.tags,"stone")
+		item_data.calories=1
 	}
 	else if item_id=="banana"{
 		item_data.texture=spr_banana
 		array_push(item_data.tags,"trash")
+		item_data.calories=3
 	}
 	else if item_id=="goo"{
 		item_data.texture=spr_goo_yellow
@@ -320,6 +338,7 @@ function assign_item(item_id){
 	else if item_id=="sock"{
 		item_data.texture=spr_sock
 		array_push(item_data.tags,"trash")
+		item_data.calories=1
 	}
 	
 	return item_data
@@ -340,6 +359,8 @@ function item_special_data_get_can_place_function(item_id)
 		return empty_funct
 	}
 }
+
+
 
 
 function item_id_get_equip_sprites(item_id)
