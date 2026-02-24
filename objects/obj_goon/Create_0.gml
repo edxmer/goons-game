@@ -95,7 +95,16 @@ goon_pickup_item=function(item,replace=false)
 
 interact_function=function()
 {
-	if inventory=="empty" && pickup_item_penalty==0{
+	if workstation_interactable_nearby(x,y,true)
+	{
+		var list=workstation_interactable_nearby(x,y,false)
+		for (var i=0;i<array_length(list);i++)
+		{
+			list[i].goon_interacted()
+		}
+	
+	}
+	else if inventory=="empty" && pickup_item_penalty==0{
 		goon_pickup_item(pickup_item(x,y))
 		/*inventory=pickup_item(x,y)
 		if inventory!="empty"{
@@ -224,7 +233,7 @@ next_goto=function()
 		array_delete(goto_list,0,1)
 		if next_go=="interact"
 		{
-			
+			reached_destination_this_frame=true
 			interact_function()
 			
 		}

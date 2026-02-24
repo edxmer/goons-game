@@ -10,6 +10,11 @@ function is_tile_ground(tx,ty)
 	return get_tile_index(tx,ty)==9
 
 }
+function is_tile_farmland(tx,ty)
+{
+	return get_tile_index(tx,ty)==18
+
+}
 
 function set_tilemap_snow(tx,ty){
 	if get_tile_index(tx,ty)==9{

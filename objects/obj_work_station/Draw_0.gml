@@ -26,3 +26,9 @@ if selected{
 }
 
 draw_self()
+
+if array_length(interact_recieve_items)>0
+{
+	draw_item_finished(array_last(interact_recieve_items),(bbox_right+bbox_left)/2,y+sprite_top_part,interact_tick/10)
+
+}

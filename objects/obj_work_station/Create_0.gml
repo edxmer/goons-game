@@ -1,5 +1,6 @@
 crafting=false
 spawning=false
+growing=false
 primordeal_goo=false
 
 name=""
@@ -29,11 +30,75 @@ spawning_timer=[0,0]
 spawning_time=0
 spawn_item_pool=[]
 
+grow_stage_timer=[0,0]
+grow_time=0
+grown_up_event=[]
+growth_index=0
+growth_index_reseted=0
+grow_stage_sprites=[]
+grow_stop=false
+
+interact_recieve_items=[]
+can_be_interacted=false
+interact_destroy=false
+interact_tick=0
+sprite_top_part=0
 
 craft_sound="empty"
 summon_sound="empty"
 	
 assigned=false
+
+interact_item_push=function(item_id)
+{
+	array_push(interact_recieve_items,item_id)
+	interact_tick=0
+}
+goon_interacted=function()
+{
+
+	if can_be_interacted
+	{
+		for (var i=0;i<array_length(interact_recieve_items);i++)
+		{
+			var item=interact_recieve_items[i]
+			closest=goons_get_closest_empty(x,y)
+			if !item_unpickupable(item) &&closest!=noone && point_distance(closest.x,closest.y,x,y)<=40 && closest.inventory=="empty"
+			{
+				
+				closest.inventory=item
+				closest.inventory_sprite=assign_item(item).texture
+			}
+			else{
+				
+				summon_item_from_pool([item])
+			}
+	
+		}
+		interact_recieve_items=[]
+
+	}
+	if interact_destroy
+	{
+		instance_destroy()
+		return
+	}
+
+
+}
+
+change_sprite=function(sprite)
+{
+	sprite_index=sprite
+	calculate_top_part()
+}
+
+calculate_top_part=function()
+{
+sprite_top_part=min(sprite_get_yoffset(sprite_index)-sprite_get_bbox_top(sprite_index), sprite_get_yoffset(sprite_index)-sprite_get_height(sprite_index))
+
+}
+
 
 assign=function()
 {
@@ -42,7 +107,7 @@ assign=function()
 	
 	name=station_data.name
 	
-	sprite_index=station_data.texture
+	change_sprite(station_data.texture)
 	
 	destroy_after=station_data.destroy_after
 	
@@ -50,6 +115,15 @@ assign=function()
 	
 	crafting=station_data.crafting
 	spawning=station_data.spawning
+	growing=station_data.growing
+	
+	grow_stage_timer=station_data.grow_stage_timer
+	grown_up_event=station_data.grown_up_event
+	growth_index=station_data.growth_index
+	grow_stage_sprites=station_data.grow_stage_sprites
+	set_growing_time()
+	
+	
 	primordeal_goo=station_data.primordeal_goo
 	
 	craft_sound=station_data.craft_sound
@@ -68,11 +142,25 @@ assign=function()
 
 	set_spawning_timer()
 	reposition()
+	
+	calculate_top_part()
+}
+
+get_timer_time=function(timer_list)
+{
+	return irandom_range(timer_list[0],timer_list[1])
+
+
+}
+
+set_growing_time=function()
+{
+	grow_time=get_timer_time(grow_stage_timer)
 }
 
 set_spawning_timer=function()
 {
-	spawning_time=irandom_range(spawning_timer[0],spawning_timer[1])
+	spawning_time=get_timer_time(spawning_timer)//irandom_range(spawning_timer[0],spawning_timer[1])
 }
 
 get_item_from_pool=function(item_pool)
@@ -89,7 +177,8 @@ summon_item_from_pool=function(item_pool)
 	if !array_length(item_pool)==0
 	{
 		var item=item_pool[irandom_range(0,array_length(item_pool)-1)]
-		create_item(irandom_range(bbox_left-10,bbox_right+10),irandom_range(bbox_bottom,bbox_bottom+10),item)}
+		create_item(irandom_range(bbox_left-10,bbox_right+10),irandom_range(bbox_bottom,bbox_bottom+10),item)
+	}
 }
 
 

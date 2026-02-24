@@ -9,6 +9,6 @@ if !global.grid_mode
 if !instance_exists(obj_cursor_go_goons)
 {
 
-	global.gridmode_placeable=is_placeable_function(x,y,global.grid_mode_sprite)
+	global.gridmode_placeable=is_placeable_function(x,y+16,global.grid_mode_sprite)
 
 }

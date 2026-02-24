@@ -8,6 +8,35 @@ function draw_shadow()
 {
 	draw_sprite_ext(spr_shadow,0,x,bbox_bottom,image_xscale,image_yscale,0,c_white,image_alpha)
 }
+function goons_get_closest_empty(xx,yy){
+	var goonslist=[]
+	with(obj_goon)
+	{
+
+		array_push(goonslist,[id,point_distance(x,y,xx,yy)])
+
+	}
+	if array_length(goonslist)==0
+	{
+		return noone
+	}
+	else
+	{
+		var min_id=noone
+		var mindistance=1000000
+		for(var i=0;i<array_length(goonslist);i++)
+		{
+			if goonslist[i][1]<=mindistance
+			{
+				mindistance=goonslist[i][1]
+				min_id=goonslist[i][0]
+			}
+		}
+		return min_id
+	}
+	
+}
+
 
 function goons_get_closest_idle(xx,yy,items=["empty"]){
 	var goonslist=[]

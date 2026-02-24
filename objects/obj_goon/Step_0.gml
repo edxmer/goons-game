@@ -28,8 +28,8 @@ if blue && goon_speed<=(300/3)
 }
 
 popped_goto_act="empty"
-
-	var speed_real=goon_speed*min(delta_time/1000000,0.4)*slowness_modifier
+//var y_coord=(y+bbox_bottom)/2
+var speed_real=goon_speed*min(delta_time/1000000,0.4)*slowness_modifier
 if x!=goto_x || y!=goto_y{
 	equipment_sprite_draw=equipment_sprite_walk
 	sprite_index=spr_goon_walk

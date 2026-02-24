@@ -5,6 +5,38 @@ function draw_workstation(_x,_y,station_id,scale)
 
 }
 
+function workstation_interactable_nearby(xx,yy,boolmode=true)
+{
+	var idlist=[]
+	with(obj_work_station)
+	{
+		var x_min=bbox_left-20
+		var x_max=bbox_right+20
+		var y_min=bbox_top-10
+		var y_max=bbox_bottom+20
+		if point_in_rectangle(xx,yy,x_min,y_min,x_max,y_max) && can_be_interacted
+		{
+			if boolmode
+			{
+				return true
+			}
+			else
+			{
+				array_push(idlist,id)
+			}
+		}
+	}
+	if boolmode
+	{
+		return false
+	}
+	else
+	{
+		return idlist
+	}
+}
+
+
 function workstation_selected_id()
 {
 	with(obj_work_station)
@@ -158,12 +190,48 @@ function work_station_use_sound_get(station_id)
 	}
 	return data.summon_sound
 }
+function workstation_tags_get(station_id)
+{
+	return work_station_data_get(station_id).tags
+
+}
+function workstation_tags_contain(station_id,tag)
+{
+	return array_contains(workstation_tags_get(station_id),tag)
+
+}
+
 
 function work_station_data_get(station_id){
-	var work_station_data={name:"empty",primordeal_goo:false,third:false,destroy_after:-1,station_id:"empty",craft_sound:"empty",summon_sound:"empty",texture:spr_empty,spawning:false,crafting:false,craft_input_pool_tags:[],craft_reward_pool:[],spawn_item_pool:[],spawn_timer_sec:[0,0]}
+	var work_station_data={tags:[],name:"empty",primordeal_goo:false,third:false,destroy_after:-1,
+		station_id:"empty",craft_sound:"empty",summon_sound:"empty",texture:spr_empty,
+		grow_stage_timer:[0,0],grown_up_event:[],growth_index:0,grow_stage_sprites:[],
+		spawning:false,crafting:false,growing:false,craft_input_pool_tags:[],craft_reward_pool:[],spawn_item_pool:[],
+		spawn_timer_sec:[0,0]}
 	work_station_data.station_id=station_id
 	work_station_data.name=string_upper(string_copy(station_id,1,1))+ string_replace_all(string_copy(station_id,2,string_length(station_id)-1),"_"," ")
-	
+	if station_id=="turnip_plant"
+	{
+		work_station_data.tags=["can_walk_through","unpickupable"]
+		work_station_data.texture=spr_workstation_turnip
+		work_station_data.growing=true
+		work_station_data.grow_stage_timer=[3,4]
+		work_station_data.grown_up_event=[["summon_item_from_pool",["turnip"]],["destroy"]]
+		work_station_data.growth_index=0
+		work_station_data.grow_stage_sprites=[spr_workstation_turnip,spr_workstation_turnip_second,spr_workstation_turnip_third]
+		
+	}
+	if station_id=="corn_plant"
+	{
+		work_station_data.tags=["can_walk_through","unpickupable"]
+		work_station_data.texture=spr_workstation_corn_plant
+		work_station_data.growing=true
+		work_station_data.grow_stage_timer=[7,8]
+		work_station_data.grown_up_event=[["summon_item_from_pool",["corn_cob"]],["reset_growth_index",1],["destroy_if_reset_reached",3]]
+		work_station_data.growth_index=0
+		work_station_data.grow_stage_sprites=[spr_workstation_corn_plant,spr_workstation_corn_plant_second,spr_workstation_corn_plant_third]
+		
+	}
 	if station_id=="trashcan"
 	{
 		work_station_data.texture=spr_workstation_trashbin
@@ -266,6 +334,7 @@ function work_station_data_get(station_id){
 	}
 	else if station_id=="primordeal_goo"
 	{
+		work_station_data.tags=["unpickupable"]
 		work_station_data.texture=spr_primordial_goo
 		work_station_data.primordeal_goo=true
 		work_station_data.crafting=true

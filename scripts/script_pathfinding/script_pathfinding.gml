@@ -24,7 +24,11 @@ function gather_collisions(p1,p2)
 	var listtrue=[]
 	for (var i=0;i<amount;i++)
 	{
-		array_push(listtrue,ds_list_find_value(idlist,i))
+		var id_to_put=ds_list_find_value(idlist,i)
+		if !workstation_tags_contain(id_to_put.station_id,"can_walk_through")
+		{
+			array_push(listtrue,id_to_put)
+		}
 	}
 	//var listtrue=ds_list_ (idlist)
 	ds_list_destroy(idlist)

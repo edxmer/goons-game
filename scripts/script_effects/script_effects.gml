@@ -20,7 +20,7 @@ function effect_set_base(goon_id)
 	if goon_id.object_index==obj_goon{
 		goon_id.slowness_modifier=1
 		goon_id.has_effects=false
-		goon_id.effects={freezing:{is:false,freezing_pixel_amount:0},robot:{is:false},slowed:{is:false,slow_percentage:1},pick_up_building:{is:false},use_item:{is:false},place_snow:{is:false},tilt_ground:{is:false},grid_mode:{is:false,ui_sprite:spr_empty,max_placeable:-1},grid_mode_place_item:{is:false}}
+		goon_id.effects={freezing:{is:false,freezing_pixel_amount:0},robot:{is:false},slowed:{is:false,slow_percentage:1},pick_up_building:{is:false},use_item:{is:false},place_snow:{is:false},tilt_ground:{is:false},grid_mode:{is:false,ui_sprite:spr_empty,max_placeable:-1},grid_mode_place_item:{is:false},grid_mode_place_station:{is:false,station_id:"empty"}}
 		
 	}
 }
@@ -75,6 +75,13 @@ function item_set_effects(goon_id,item_id,prefix){
 		{
 			
 			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"is",true)
+			real_effects=true
+		}
+		next_effect="grid_mode_place_station"
+		if array_contains(item_get_tags(item_id),prefix+next_effect)
+		{
+			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"is",true)
+			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"station_id",item_special_data_get(item_id,"grid_mode_place_station_id"))
 			real_effects=true
 		}
 		next_effect="tilt_ground"
@@ -182,6 +189,27 @@ function effect_tick(goon_id)
 			}
 		
 		}
+		if goon_id.effects.grid_mode_place_station.is
+		{
+			
+			if goon_id.gridmode_use_item
+			{
+				var item_id=goon_id.inventory
+				var station_id=goon_id.effects.grid_mode_place_station.station_id
+				var can_be_placed=item_special_data_get_can_place_function(item_id)
+				if can_be_placed(goon_id.x,goon_id.y,item_get_sprite(item_id))
+				{
+					create_work_station(goon_id.x,goon_id.y,station_id)
+					if !item_tags_contains(goon_id.inventory,"persistent") && !item_tags_contains(goon_id.equipment,"eq_grid_mode_place_station")
+					{
+						item_id_summon_particles(goon_id.inventory,x,y)
+						with(goon_id){inventory_set_empty()}
+					}
+				}	
+			}
+		
+		}
+		
 		if goon_id.effects.grid_mode_place_item.is
 		{
 			
@@ -189,7 +217,7 @@ function effect_tick(goon_id)
 			{
 				var item_id=goon_id.inventory
 				var can_be_placed=item_special_data_get_can_place_function(item_id)
-				if can_be_placed(goon_id.x,goon_id.y,item_get_sprite(item_id))
+				if can_be_placed(clamp_to_grid_start(goon_id.x) ,clamp_to_grid_start(goon_id.y+16),item_get_sprite(item_id))
 				{
 					goon_id.put_down_item()
 				
@@ -220,7 +248,7 @@ function effect_tick(goon_id)
 				if reached_destination_this_frame{
 					var wst_id=noone
 					with(goon_id){wst_id=workstation_nearby_accepst_my_item(true)}
-					if wst_id!=noone{
+					if wst_id!=noone && !wst_id.can_be_interacted && !workstation_tags_contain(wst_id.station_id,"unpickupable"){
 						if item_tags_contains(goon_id.inventory,"persistent") || item_tags_contains(goon_id.equipment,"eq_pick_up_building")
 						{
 							with(goon_id){put_down_item()}

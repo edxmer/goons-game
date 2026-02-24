@@ -23,8 +23,8 @@ if spawning{
 				amount++
 			}
 		}
-		if amount<10{
-			summon_item_from_pool(spawn_item_pool)
+		if amount+array_length(interact_recieve_items)<10{
+			interact_item_push(get_item_from_pool(spawn_item_pool))
 			used_amount++
 		}
 		else{
@@ -73,6 +73,60 @@ if crafting
 
 }
 
+
+if growing && !grow_stop{
+	grow_time-=delta_time/1000000
+	if grow_time<0
+	{
+		set_growing_time()
+		growth_index++
+	}
+	if growth_index<array_length(grow_stage_sprites) && !can_be_interacted{
+		change_sprite(grow_stage_sprites[growth_index])
+	}
+	if growth_index>=array_length(grow_stage_sprites)
+	{
+		for (var i=0;i<array_length(grown_up_event);i++)
+		{
+			var event=grown_up_event[i]
+			if event[0]=="destroy"
+			{
+				//instance_destroy()
+				interact_destroy=true
+				grow_stop=true
+			}
+			else if event[0]=="summon_item_from_pool"
+			{
+				interact_item_push(get_item_from_pool(event[1]))
+			}
+			else if event[0]=="reset_growth_index"
+			{
+				growth_index_reseted++
+				growth_index=event[1]
+				set_growing_time()
+			}
+			else if event[0]=="destroy_if_reset_reached"
+			{
+				if growth_index_reseted>=event[1]
+				{
+					//instance_destroy()
+					interact_destroy=true
+					grow_stop=true
+				}
+			}
+		}
+	
+	
+	}
+	
+	
+
+
+
+
+
+}
+
 var gooninstead=false
 	with (obj_goon)
 	{
@@ -107,12 +161,23 @@ if !selected && point_in_rectangle(mouse_x,mouse_y,bbox_left-5,bbox_top-20,bbox_
 	}
 
 }
+
+
+
 else if selected && (!point_in_rectangle(mouse_x,mouse_y,bbox_left-5,bbox_top-20,bbox_right+5,bbox_bottom+5) || gooninstead || global.special_mode)
 {
 	sound_play_category_at("swoosh",x,y)
 	selected=false
 }
-
+can_be_interacted=array_length(interact_recieve_items)>0 || interact_destroy
+if can_be_interacted
+{
+interact_tick=clamp(++interact_tick,0,10)
+}
+else
+{
+interact_tick=0
+}
 
 if destroy_after>=0 && destroy_after<=used_amount
 {

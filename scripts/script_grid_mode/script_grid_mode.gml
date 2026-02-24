@@ -66,7 +66,11 @@ function gridmode_check_ground_hitboxes(xx,yy,sprite)
 	
 	return run_for_all_sprite_tile(xx,yy,sprite,is_ground_placeable_pixel)
 }
-
+function gridmode_check_ground_hitboxes_farmland(xx,yy,sprite)
+{
+	
+	return run_for_all_sprite_tile(xx,yy,sprite,is_ground_farmland_pixel)
+}
 function gridmode_check_workstation_hitboxes(xx,yy,sprite)
 {
 
@@ -81,7 +85,10 @@ function is_pixel_not_meeting_workstation(xx,yy)
 	return collision_rectangle(rx,ry,rx+16,ry+16,obj_work_station,false,true)==noone
 
 }
-
+function is_ground_farmland_pixel(xx,yy)
+{
+	return is_tile_farmland(floor(xx/16),floor(yy/16))
+}
 function is_ground_placeable_pixel(xx,yy)
 {
 	return is_tile_placeable(floor(xx/16),floor(yy/16))

@@ -2,7 +2,11 @@ function draw_item_outlined(item_id,_x,_y,outline_id,size=1){
 	draw_sprite_ext(spr_outline,outline_id,_x,_y,1.5*size,1.5*size,0,c_white,0.8)
 	draw_item(_x,_y,item_id,1.5*size)
 }
-
+function draw_item_finished(item_id,_x,_y,size=1){
+	_y-=14*size
+	draw_sprite_ext(spr_item_done_bubble,0,_x,_y,1*size,1*size,0,c_white,0.8)
+	draw_item(_x,_y,item_id,1.2*size)
+}
 function draw_nametag(name){
 	var size=global.camera_size*0.6
 	var startx=mouse_x+30*size

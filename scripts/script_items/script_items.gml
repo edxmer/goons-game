@@ -160,6 +160,45 @@ function assign_item(item_id){
 			return gridmode_check_ground_hitboxes(xx,yy,sprite) && gridmode_check_workstation_hitboxes(xx,yy,sprite)
 		}
 	}
+	if item_id=="*_seeds"{
+		//item_data.texture=spr_turnip_seeds
+		array_push(item_data.tags,"use_item")
+		array_push(item_data.tags,"has_effects")
+		array_push(item_data.tags,"grid_mode")
+		array_push(item_data.tags,"grid_mode_place_station")
+		array_push(item_data.tags,"persistent")
+		
+		//item_data.special_data.grid_mode_place_station_id="turnip_plant"
+		//item_data.special_data.grid_mode_sprite=spr_grid_ui_turnip
+		item_data.special_data.grid_mode_placeable_function=function(xx,yy,sprite)
+		{
+			return gridmode_check_ground_hitboxes_farmland(xx,yy,sprite) && gridmode_check_workstation_hitboxes(xx,yy,sprite)
+		}
+	}
+	if item_id=="turnip_seeds"{
+		item_data=assign_item("*_seeds")
+		item_data.texture=spr_turnip_seeds
+		item_data.special_data.grid_mode_place_station_id="turnip_plant"
+		item_data.special_data.grid_mode_sprite=spr_grid_ui_turnip
+
+	}
+	if item_id=="corn_seeds"{
+		item_data=assign_item("*_seeds")
+		item_data.texture=spr_corn_seeds
+		item_data.special_data.grid_mode_place_station_id="corn_plant"
+		item_data.special_data.grid_mode_sprite=spr_grid_ui_corn
+
+	}
+	if item_id=="corn_cob"{
+		item_data.texture=spr_corn_cob
+	array_push(item_data.tags,"corn_cob")
+	
+	}
+	if item_id=="turnip"{
+		item_data.texture=spr_turnip
+	array_push(item_data.tags,"turnip")
+	
+	}
 	if item_id=="logs"{
 		item_data.texture=spr_logs
 	array_push(item_data.tags,"wood")

@@ -11,7 +11,7 @@ if global.grid_mode
 	x_curs=clamp_to_grid_middle(x_curs)
 	y_curs=clamp_to_grid_middle(y_curs)
 	
-	global.gridmode_placeable=can_poi_be_placed(clamp_to_grid_start(x_curs),clamp_to_grid_start(y_curs),point_of_interest_texture)
+	global.gridmode_placeable=can_poi_be_placed(clamp_to_grid_start(x_curs),clamp_to_grid_start(y_curs)+16,point_of_interest_texture)
 	
 }
 if !death_mode
