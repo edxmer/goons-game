@@ -99,6 +99,7 @@
     {"id":{"name":"script_tilemap","path":"scripts/script_tilemap/script_tilemap.yy",},},
     {"id":{"name":"script_use_messages","path":"scripts/script_use_messages/script_use_messages.yy",},},
     {"id":{"name":"script_workstation","path":"scripts/script_workstation/script_workstation.yy",},},
+    {"id":{"name":"STRUCTS","path":"scripts/STRUCTS/STRUCTS.yy",},},
     {"id":{"name":"sound_eat_1","path":"sounds/sound_eat_1/sound_eat_1.yy",},},
     {"id":{"name":"sound_eat_2","path":"sounds/sound_eat_2/sound_eat_2.yy",},},
     {"id":{"name":"sound_empty","path":"sounds/sound_empty/sound_empty.yy",},},

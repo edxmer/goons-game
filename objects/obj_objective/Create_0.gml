@@ -1,6 +1,14 @@
 
 level = global.reward_level
 
+
+
+
+
+
+
+global.calories
+
 previous_level = 1
 
 second_happened=false
@@ -38,5 +46,7 @@ generate_objective_items = function() {
 	}
 	global.objective_list=transform_objective_list(global.objective_list)
 }
+
+
 
 
