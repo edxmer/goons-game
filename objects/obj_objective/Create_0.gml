@@ -4,11 +4,6 @@ level = global.reward_level
 
 
 
-
-
-
-global.calories
-
 previous_level = 1
 
 second_happened=false
