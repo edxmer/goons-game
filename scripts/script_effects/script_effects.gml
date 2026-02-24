@@ -197,9 +197,9 @@ function effect_tick(goon_id)
 				var item_id=goon_id.inventory
 				var station_id=goon_id.effects.grid_mode_place_station.station_id
 				var can_be_placed=item_special_data_get_can_place_function(item_id)
-				if can_be_placed(goon_id.x,goon_id.y,item_get_sprite(item_id))
+				if can_be_placed(clamp_to_grid_start( goon_id.x+16),clamp_to_grid_start(goon_id.y+32),item_get_sprite(item_id))
 				{
-					create_work_station(goon_id.x,goon_id.y,station_id)
+					create_work_station(clamp_to_grid_start(goon_id.x),clamp_to_grid_start(goon_id.y),station_id)
 					if !item_tags_contains(goon_id.inventory,"persistent") && !item_tags_contains(goon_id.equipment,"eq_grid_mode_place_station")
 					{
 						item_id_summon_particles(goon_id.inventory,x,y)
@@ -283,7 +283,7 @@ function effect_tick(goon_id)
 			{
 				var item_id=goon_id.inventory
 				var can_be_placed=item_special_data_get_can_place_function(item_id)
-				if can_be_placed(goon_id.x,goon_id.y,item_get_sprite(item_id))
+				if can_be_placed(goon_id.x,goon_id.y+16,item_get_sprite(item_id))
 				{
 					if set_tilemap_farmland(goon_id.x>>4,goon_id.bbox_bottom>>4)
 					{

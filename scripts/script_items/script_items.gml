@@ -172,7 +172,7 @@ function assign_item(item_id){
 		//item_data.special_data.grid_mode_sprite=spr_grid_ui_turnip
 		item_data.special_data.grid_mode_placeable_function=function(xx,yy,sprite)
 		{
-			return gridmode_check_ground_hitboxes_farmland(xx,yy,sprite) && gridmode_check_workstation_hitboxes(xx,yy,sprite)
+			return gridmode_check_ground_hitboxes_farmland_fromtop(xx,yy,sprite) && gridmode_check_workstation_hitboxes_fromtop(xx,yy,sprite)
 		}
 	}
 	if item_id=="turnip_seeds"{
@@ -278,7 +278,7 @@ function assign_item(item_id){
 		item_data.special_data.grid_mode_sprite=spr_grid_ui_tilted_ground
 		item_data.special_data.grid_mode_placeable_function=function(xx,yy,sprite)
 		{
-			return gridmode_check_ground_hitboxes(xx,yy,sprite) && gridmode_check_workstation_hitboxes(xx,yy,sprite)
+			return gridmode_check_ground_hitboxes_fromtop(xx,yy,sprite) && gridmode_check_workstation_hitboxes_fromtop(xx,yy,sprite)
 		}
 	}
 	if item_id=="goon_blue"{
