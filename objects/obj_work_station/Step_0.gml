@@ -4,7 +4,35 @@ if !assigned
 }
 
 if primordeal_goo{
-	crafting_input_ids=global.objective_list
+	if eating_time==0
+	{
+		sprite_index=spr_primordial_goo
+		var items_nearby=get_nearby_items_with_calories()
+		var maxid=noone
+		var max_kcal=0
+		for (var i=0;i<array_length(items_nearby);i++)
+		{
+			if items_nearby[i][1]>max_kcal
+			{
+				max_kcal=items_nearby[i][1]
+				maxid=items_nearby[i][0]
+			}
+		}
+		if maxid!=noone
+		{
+			sprite_index=spr_primordial_goo_eating
+			sound_play_category_at("eat",x,y)
+			global.current_calories+=max_kcal
+			item_destroy_nearby(maxid)
+			
+		}
+		eating_time=eating_timer
+	}
+	else
+	{
+		eating_time-=delta_time/1000000
+		eating_time=max(0,eating_time)
+	}
 }
 
 if spawning{

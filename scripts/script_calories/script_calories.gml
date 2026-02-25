@@ -19,3 +19,11 @@ function item_get_calories(item_id){
 	}
 	return base
 }
+
+
+
+
+function add_new_calorie_objective(item_id,calories)
+{
+	s_objective_normal(item_id, calories, false)
+}
