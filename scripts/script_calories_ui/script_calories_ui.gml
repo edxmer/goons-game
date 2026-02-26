@@ -38,7 +38,7 @@ function draw_calories_objectives(startx,starty,px_length)
 {
 	var size=global.camera_size
 	var yy=starty
-	var xx=startx
+	var xx=startx+10*size
 	var current="empty"
 	var calobj_length=array_length(global.current_calorie_objectives)
 	for (var i=0;i<(calobj_length+array_length(global.current_calorie_cravings));i++)

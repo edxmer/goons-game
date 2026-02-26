@@ -26,6 +26,28 @@ function effect_set_base(goon_id)
 }
 
 
+function effect_get_sprite(effect)
+{
+	switch effect
+	{
+		case "freezing":
+		return spr_effect_freeze
+		case "robot":
+		return spr_effect_robot
+		case "tilt_ground":
+		return spr_effect_tilt_ground
+		case "building":
+		return spr_effect_building
+		case "plant":
+		return spr_effect_plant
+		case "place_snow":
+		return spr_effect_snow_globe
+		default:
+		return spr_empty
+	}
+}
+
+
 function item_set_effects(goon_id,item_id,prefix){
 	if array_contains(item_get_tags(item_id),prefix+"has_effects")
 	{

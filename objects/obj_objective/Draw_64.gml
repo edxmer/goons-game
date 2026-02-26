@@ -1,18 +1,7 @@
 exit
 var _arr_len = array_length(global.objective_list)
 
-text_scale=1
-text_offset_x = -50
-text_offset_y = -25
-text_rotation = 5
-shadow_offset = 2
 
-level_text_scale=0.9
-level_text_offset_x = -30
-level_text_offset_y = 80
-level_text_rotation = -6
-level_shadow_offset_x = 2
-level_shadow_offset_y = -2
 
 
 // Draw calorie meter
@@ -41,16 +30,4 @@ for (var i=0; i<_arr_len; i++) {
 // Draw "objectives" text
 // DRAW SPEAKER NAME
 
-draw_set_font(font)
-draw_set_color(c_black)
-draw_text_transformed(x+text_offset_x+shadow_offset, y+text_offset_y+shadow_offset, "Objectives", text_scale, text_scale, text_rotation)
-draw_set_color(c_white)
-draw_text_transformed(x+text_offset_x, y+text_offset_y, "Objectives", text_scale, text_scale, text_rotation)
 
-// DRAW LEVEL
-level_str = "level " + string(level)
-draw_set_font(fnt_header_1)
-draw_set_color(c_black)
-draw_text_transformed(x+level_text_offset_x+level_shadow_offset_x, y+level_text_offset_y-level_shadow_offset_y, level_str, level_text_scale, level_text_scale, level_text_rotation)
-draw_set_color(c_white)
-draw_text_transformed(x+level_text_offset_x, y+level_text_offset_y, level_str, level_text_scale, level_text_scale, level_text_rotation)
