@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"script_draw_box",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"script_draw_box",
+  "parent":{
+    "name":"SCRIPTS",
+    "path":"folders/SCRIPTS.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

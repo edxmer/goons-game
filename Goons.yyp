@@ -88,6 +88,7 @@
     {"id":{"name":"room_main_menu","path":"rooms/room_main_menu/room_main_menu.yy",},},
     {"id":{"name":"script_calories_ui","path":"scripts/script_calories_ui/script_calories_ui.yy",},},
     {"id":{"name":"script_calories","path":"scripts/script_calories/script_calories.yy",},},
+    {"id":{"name":"script_draw_box","path":"scripts/script_draw_box/script_draw_box.yy",},},
     {"id":{"name":"script_edit_goons","path":"scripts/script_edit_goons/script_edit_goons.yy",},},
     {"id":{"name":"script_effects","path":"scripts/script_effects/script_effects.yy",},},
     {"id":{"name":"script_goons","path":"scripts/script_goons/script_goons.yy",},},
