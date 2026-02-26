@@ -18,10 +18,102 @@ function effect_init(goon_id)
 function effect_set_base(goon_id)
 {
 	if goon_id.object_index==obj_goon{
+		goon_id.active_effect_list=[]
 		goon_id.slowness_modifier=1
 		goon_id.has_effects=false
-		goon_id.effects={freezing:{is:false,freezing_pixel_amount:0},robot:{is:false},slowed:{is:false,slow_percentage:1},pick_up_building:{is:false},use_item:{is:false},place_snow:{is:false},tilt_ground:{is:false},grid_mode:{is:false,ui_sprite:spr_empty,max_placeable:-1},grid_mode_place_item:{is:false},grid_mode_place_station:{is:false,station_id:"empty"}}
+		goon_id.effects={freezing:{is:false,freezing_pixel_amount:0},robot:{is:false},slowed:{is:false,slow_percentage:1},pick_up_building:{is:false},use_item:{is:false},place_snow:{is:false},tilt_ground:{is:false},building:{is:false},plant:{is:false},grid_mode:{is:false,ui_sprite:spr_empty,max_placeable:-1},grid_mode_place_item:{is:false},grid_mode_place_station:{is:false,station_id:"empty"}}
 		
+	}
+}
+
+
+/**
+ * Gives back all the effects that need to be displayed from a list of effect names
+ * @param {array} effect_name_list strimg list
+ * @returns {array} Description
+ */
+function effect_sprites_active_list(effect_name_list)
+{
+	var list=[]
+	for (var i=0;i<array_length(effect_name_list);i++)
+	{
+		var sprite=effect_get_sprite(effect_name_list[i])
+		if sprite!=spr_empty
+		{
+			if !array_contains(list,sprite)
+			{
+				array_push(list,sprite)
+			}
+		}
+	}
+	return list
+}
+
+
+/**
+ * Draws all icons in a list of effects
+ * @param {array} effect_name_list String list of effect names
+ * @param {any*} startx top left x
+ * @param {any*} starty top left y
+ * @param {real} spacing_px The plus px outside of sprite width
+ * @param {real} size The size multiplier of everything
+ * @param {real} [max_in_one_line]=3 The max amount of effect that should be in one line
+ */
+function effect_draw_icons(effect_name_list,startx,starty,spacing_px,size,max_in_one_line=3)
+{
+	var sprites=effect_sprites_active_list(effect_name_list)
+	var xx=startx
+	var yy=starty
+	var sprs_in_line=0
+	var spr_width=14
+	for (var i=0;i<array_length(sprites);i++)
+	{
+		draw_sprite_ext(sprites[i],0,xx,yy,size,size,0,c_white,1)
+		sprs_in_line++
+		if sprs_in_line>=max_in_one_line
+		{
+			sprs_in_line=0
+			xx=startx
+			yy+=size*(spr_width+spacing_px)
+		}
+		else
+		{
+			xx+=size*(spr_width+spacing_px)
+		}
+	}
+	
+
+}
+
+
+
+/**
+ * Gives back the displayable icon for an effect's name
+ * @param {any*} effect Effect name
+ * @returns {asset} Description
+ */
+ 
+
+function effect_get_sprite(effect)
+{
+	switch effect
+	{
+		case "freezing":
+		return spr_effect_freeze
+		case "robot":
+		return spr_effect_robot
+		case "tilt_ground":
+		return spr_effect_tilt_ground
+		case "building":
+		return spr_effect_building
+		case "plant":
+		return spr_effect_plant
+		case "place_snow":
+		return spr_effect_snow_globe
+		case "pick_up_building":
+		return spr_effect_pick_up_building
+		default:
+		return spr_empty
 	}
 }
 
@@ -33,7 +125,7 @@ function item_set_effects(goon_id,item_id,prefix){
 		var next_effect="freezing"
 		if array_contains(item_get_tags(item_id),prefix+next_effect) && item_special_data_contains(item_id,prefix+"freezing_pixel_amount")
 		{
-			
+			array_push(goon_id.active_effect_list,next_effect)
 			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"is",true)
 			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"freezing_pixel_amount",item_special_data_get(item_id,"freezing_pixel_amount"))
 			real_effects=true
@@ -42,7 +134,7 @@ function item_set_effects(goon_id,item_id,prefix){
 		next_effect="slowed"
 		if array_contains(item_get_tags(item_id),prefix+next_effect) && item_special_data_contains(item_id,prefix+"slow_percentage")
 		{
-			
+			array_push(goon_id.active_effect_list,next_effect)
 			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"is",true)
 			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"slow_percentage",item_special_data_get(item_id,"slow_percentage"))
 			slowness_modifier*=item_special_data_get(item_id,"slow_percentage")
@@ -52,34 +144,49 @@ function item_set_effects(goon_id,item_id,prefix){
 		next_effect="pick_up_building"
 		if array_contains(item_get_tags(item_id),prefix+next_effect)
 		{
-			
+			array_push(goon_id.active_effect_list,next_effect)
 			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"is",true)
 			real_effects=true
 		}
 		next_effect="robot"
 		if array_contains(item_get_tags(item_id),prefix+next_effect)
 		{
-			
+			array_push(goon_id.active_effect_list,next_effect)
+			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"is",true)
+			real_effects=true
+		}
+		next_effect="building"
+		if array_contains(item_get_tags(item_id),prefix+next_effect)
+		{
+			array_push(goon_id.active_effect_list,next_effect)
+			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"is",true)
+			real_effects=true
+		}
+		next_effect="plant"
+		if array_contains(item_get_tags(item_id),prefix+next_effect)
+		{
+			array_push(goon_id.active_effect_list,next_effect)
 			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"is",true)
 			real_effects=true
 		}
 		next_effect="place_snow"
 		if array_contains(item_get_tags(item_id),prefix+next_effect)
 		{
-			
+			array_push(goon_id.active_effect_list,next_effect)
 			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"is",true)
 			real_effects=true
 		}
 		next_effect="grid_mode_place_item"
 		if array_contains(item_get_tags(item_id),prefix+next_effect)
 		{
-			
+			array_push(goon_id.active_effect_list,next_effect)
 			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"is",true)
 			real_effects=true
 		}
 		next_effect="grid_mode_place_station"
 		if array_contains(item_get_tags(item_id),prefix+next_effect)
 		{
+			array_push(goon_id.active_effect_list,next_effect)
 			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"is",true)
 			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"station_id",item_special_data_get(item_id,"grid_mode_place_station_id"))
 			real_effects=true
@@ -87,14 +194,14 @@ function item_set_effects(goon_id,item_id,prefix){
 		next_effect="tilt_ground"
 		if array_contains(item_get_tags(item_id),prefix+next_effect)
 		{
-			
+			array_push(goon_id.active_effect_list,next_effect)
 			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"is",true)
 			real_effects=true
 		}
 		next_effect="use_item"
 		if array_contains(item_get_tags(item_id),prefix+next_effect)
 		{
-			
+			array_push(goon_id.active_effect_list,next_effect)
 			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"is",true)
 			real_effects=true
 		}
@@ -102,7 +209,7 @@ function item_set_effects(goon_id,item_id,prefix){
 		next_effect="grid_mode"
 		if array_contains(item_get_tags(item_id),prefix+next_effect)
 		{
-			
+			array_push(goon_id.active_effect_list,next_effect)
 			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"is",true)
 			if item_special_data_get(item_id,"grid_mode_sprite")!="empty"
 			{

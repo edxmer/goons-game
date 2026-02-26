@@ -45,3 +45,11 @@ generate_objective_items = function() {
 
 
 
+
+text_rotation = 2
+text_pulse_timer=0
+
+
+
+level_text_rotation = -5
+
