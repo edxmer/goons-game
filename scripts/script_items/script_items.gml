@@ -160,6 +160,7 @@ function assign_item(item_id){
 		array_push(item_data.tags,"grid_mode")
 		array_push(item_data.tags,"grid_mode_place_item")
 		array_push(item_data.tags,"has_effects")
+		array_push(item_data.tags,"building")
 		array_push(item_data.tags,"put_down_on_grid")
 		
 		item_data.special_data.grid_mode_sprite=item_data.texture
@@ -173,6 +174,7 @@ function assign_item(item_id){
 		//item_data.texture=spr_turnip_seeds
 		array_push(item_data.tags,"use_item")
 		array_push(item_data.tags,"has_effects")
+		array_push(item_data.tags,"plant")
 		array_push(item_data.tags,"grid_mode")
 		array_push(item_data.tags,"grid_mode_place_station")
 		array_push(item_data.tags,"persistent")

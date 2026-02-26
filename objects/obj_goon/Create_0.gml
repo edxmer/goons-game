@@ -45,6 +45,7 @@ step_distance=goon_speed*0.3
 inventory="empty"
 inventory_sprite=spr_empty
 has_effects=false
+active_effect_list=[]
 effect_init(id)
 //effect_data_stay={freezing:{freezing_pixel_taken:0}}
 

@@ -152,6 +152,7 @@
     {"id":{"name":"spr_effect_building","path":"sprites/spr_effect_building/spr_effect_building.yy",},},
     {"id":{"name":"spr_effect_freeze_1","path":"sprites/spr_effect_freeze_1/spr_effect_freeze_1.yy",},},
     {"id":{"name":"spr_effect_freeze","path":"sprites/spr_effect_freeze/spr_effect_freeze.yy",},},
+    {"id":{"name":"spr_effect_pick_up_building","path":"sprites/spr_effect_pick_up_building/spr_effect_pick_up_building.yy",},},
     {"id":{"name":"spr_effect_plant","path":"sprites/spr_effect_plant/spr_effect_plant.yy",},},
     {"id":{"name":"spr_effect_robot","path":"sprites/spr_effect_robot/spr_effect_robot.yy",},},
     {"id":{"name":"spr_effect_snow_globe","path":"sprites/spr_effect_snow_globe/spr_effect_snow_globe.yy",},},

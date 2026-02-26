@@ -1,6 +1,6 @@
 {
   "$GMSprite":"v2",
-  "%Name":"spr_effect_snow_globe",
+  "%Name":"spr_effect_pick_up_building",
   "bboxMode":0,
   "bbox_bottom":13,
   "bbox_left":0,
@@ -19,11 +19,13 @@
   "height":14,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"5f64e7e3-3936-4ede-a587-73ad2c48cd6e","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"5f64e7e3-3936-4ede-a587-73ad2c48cd6e","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"b2f0a0bd-9d0e-4bf6-8930-6a1d34b917c1","blendMode":0,"displayName":"Layer 2","isLocked":false,"name":"b2f0a0bd-9d0e-4bf6-8930-6a1d34b917c1","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"3f559d8e-9ae9-4976-9248-b45307d6c5a0","blendMode":0,"displayName":"Layer 1 (2)","isLocked":false,"name":"3f559d8e-9ae9-4976-9248-b45307d6c5a0","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
+    {"$GMImageLayer":"","%Name":"5f64e7e3-3936-4ede-a587-73ad2c48cd6e","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"5f64e7e3-3936-4ede-a587-73ad2c48cd6e","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
     {"$GMImageLayer":"","%Name":"19541262-a106-4d9c-ba91-f19fe85eda6f","blendMode":0,"displayName":"default","isLocked":false,"name":"19541262-a106-4d9c-ba91-f19fe85eda6f","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
-    {"$GMImageLayer":"","%Name":"4548bee7-f3c3-4808-89ee-8b7aa4432ce5","blendMode":0,"displayName":"Layer 2","isLocked":false,"name":"4548bee7-f3c3-4808-89ee-8b7aa4432ce5","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"705c1bb6-d91a-4b9e-9be6-87eaff3d04d0","blendMode":0,"displayName":"Layer 3","isLocked":false,"name":"705c1bb6-d91a-4b9e-9be6-87eaff3d04d0","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name":"spr_effect_snow_globe",
+  "name":"spr_effect_pick_up_building",
   "nineSlice":null,
   "origin":0,
   "parent":{
@@ -35,7 +37,7 @@
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"v1",
-    "%Name":"spr_effect_snow_globe",
+    "%Name":"spr_effect_pick_up_building",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -59,7 +61,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"spr_effect_snow_globe",
+    "name":"spr_effect_pick_up_building",
     "playback":1,
     "playbackSpeed":30.0,
     "playbackSpeedType":0,
@@ -71,7 +73,7 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"06e41b16-12f9-4e27-877f-2b1e97678912","path":"sprites/spr_effect_snow_globe/spr_effect_snow_globe.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"06e41b16-12f9-4e27-877f-2b1e97678912","path":"sprites/spr_effect_pick_up_building/spr_effect_pick_up_building.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"66e60740-6595-4e76-a4a1-659458d79034","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
