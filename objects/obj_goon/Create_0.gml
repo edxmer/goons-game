@@ -144,6 +144,13 @@ workstation_nearby_accepst_my_item =function(get_id_instead=false)
 			{
 				return true
 			}
+			if primordeal_goo
+			{
+				if item_get_calories(item)>0
+				{
+					return true
+				}
+			}
 		
 		}
 	

@@ -337,10 +337,10 @@ function work_station_data_get(station_id){
 		work_station_data.tags=["unpickupable"]
 		work_station_data.texture=spr_primordial_goo
 		work_station_data.primordeal_goo=true
-		work_station_data.crafting=true
+		//work_station_data.crafting=true
 		work_station_data.craft_sound="eat"
-		work_station_data.craft_input_pool_tags=global.objective_list
-		work_station_data.craft_reward_pool=["reward"]
+		//work_station_data.craft_input_pool_tags=global.objective_list
+		//work_station_data.craft_reward_pool=["reward"]
 	}
 	else if station_id=="goonificator"
 	{

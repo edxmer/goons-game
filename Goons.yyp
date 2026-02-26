@@ -183,6 +183,7 @@
     {"id":{"name":"spr_particle_footstep","path":"sprites/spr_particle_footstep/spr_particle_footstep.yy",},},
     {"id":{"name":"spr_particle_point_of_interest","path":"sprites/spr_particle_point_of_interest/spr_particle_point_of_interest.yy",},},
     {"id":{"name":"spr_plank","path":"sprites/spr_plank/spr_plank.yy",},},
+    {"id":{"name":"spr_primordial_goo_eating","path":"sprites/spr_primordial_goo_eating/spr_primordial_goo_eating.yy",},},
     {"id":{"name":"spr_primordial_goo","path":"sprites/spr_primordial_goo/spr_primordial_goo.yy",},},
     {"id":{"name":"spr_reward","path":"sprites/spr_reward/spr_reward.yy",},},
     {"id":{"name":"spr_rock","path":"sprites/spr_rock/spr_rock.yy",},},

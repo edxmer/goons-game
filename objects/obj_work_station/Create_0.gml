@@ -1,7 +1,13 @@
 crafting=false
 spawning=false
 growing=false
+
+
+
 primordeal_goo=false
+eating_time=0
+eating_timer=0.5
+
 
 name=""
 
@@ -181,6 +187,24 @@ summon_item_from_pool=function(item_pool)
 	}
 }
 
+get_nearby_items_with_calories=function(){
+	var x_min=bbox_left-40
+	var x_max=bbox_right+40
+	var y_min=bbox_top-30
+	var y_max=bbox_bottom+50
+	var nearby_items=[]
+	with (obj_item){
+		if point_in_rectangle(x,y,x_min,y_min,x_max,y_max)
+		{
+			var calories=item_get_calories(item_id)
+			if calories>0
+			{
+				array_push(nearby_items,[id,calories])
+			}
+		}
+	}
+	return nearby_items
+}
 
 get_nearby_item_ids=function(){
 	var x_min=bbox_left-40
@@ -199,6 +223,15 @@ get_nearby_item_ids=function(){
 
 item_destroy_nearby=function(item_id_delete)
 {
+	if !is_string(item_id_delete) && instance_exists(item_id_delete) && item_id_delete.object_index==obj_item
+	{
+		with (item_id_delete)
+		{
+		item_send_particles(id)
+		instance_destroy()
+		}
+		return
+	}
 	var x_min=bbox_left-40
 	var x_max=bbox_right+40
 	var y_min=bbox_top-30

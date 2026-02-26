@@ -3,6 +3,7 @@ level = global.reward_level
 
 
 
+
 previous_level = 1
 
 second_happened=false
