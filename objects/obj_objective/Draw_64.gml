@@ -14,6 +14,13 @@ level_text_rotation = -6
 level_shadow_offset_x = 2
 level_shadow_offset_y = -2
 
+
+// Draw calorie meter
+var _fullness = global.current_calories / global.needed_calories
+
+
+
+
 // Draw boxes and items
 for (var i=0; i<_arr_len; i++) {
 	var _x_offset = i*dist_between_items
