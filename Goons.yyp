@@ -202,6 +202,7 @@
     {"id":{"name":"spr_snow_globe","path":"sprites/spr_snow_globe/spr_snow_globe.yy",},},
     {"id":{"name":"spr_sock","path":"sprites/spr_sock/spr_sock.yy",},},
     {"id":{"name":"spr_speech_box_gui","path":"sprites/spr_speech_box_gui/spr_speech_box_gui.yy",},},
+    {"id":{"name":"spr_textbox","path":"sprites/spr_textbox/spr_textbox.yy",},},
     {"id":{"name":"spr_tileset_extras","path":"sprites/spr_tileset_extras/spr_tileset_extras.yy",},},
     {"id":{"name":"spr_tileset_winter","path":"sprites/spr_tileset_winter/spr_tileset_winter.yy",},},
     {"id":{"name":"spr_turnip_seeds","path":"sprites/spr_turnip_seeds/spr_turnip_seeds.yy",},},
