@@ -205,6 +205,8 @@ function create_save(fname){
 	
 	file_text_write_string(fileid,"$globals\n")
 	file_text_write_string(fileid,create_savestring_globals("objective_list"))
+	file_text_write_string(fileid,create_savestring_globals("current_calories"))
+	file_text_write_string(fileid,create_savestring_globals("needed_calories"))
 	file_text_write_string(fileid,create_savestring_globals("reward_level"))
 	file_text_write_string(fileid,create_savestring_globals("island_unlocked"))
 	file_text_write_string(fileid,create_savestring_globals("room_height"))

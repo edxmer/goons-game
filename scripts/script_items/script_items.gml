@@ -25,6 +25,10 @@ function item_id_summon_particles(item_id,xx,yy)
 	particle_summon_from_texture_multiple(xx,yy,item_get_sprite(item_id),irandom_range(6,8))
 }
 
+function item_id_summon_particles_less(item_id,xx,yy)
+{
+	particle_summon_from_texture_multiple(xx,yy,item_get_sprite(item_id),irandom_range(1,2))
+}
 
 function create_item(_x,_y,item_id)
 {

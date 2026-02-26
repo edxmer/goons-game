@@ -4,8 +4,10 @@ global.select_mode=false
 global.current_calories=0
 global.needed_calories=10
 global.current_calorie_objectives=[]
-global.current_calorie_cravings=[]
+calorie_add_new_objective("logs",10)
 
+global.current_calorie_cravings=[]
+calorie_add_new_craving("corn_cob",2)
 
 global.grid_mode=true
 global.should_be_gridmode=false

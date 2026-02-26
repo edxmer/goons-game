@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"script_calories_ui",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"script_calories_ui",
+  "parent":{
+    "name":"SCRIPTS",
+    "path":"folders/SCRIPTS.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

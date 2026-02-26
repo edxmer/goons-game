@@ -6,6 +6,7 @@ if !assigned
 if primordeal_goo{
 	if eating_time==0
 	{
+		last_eaten_item_id="empty"
 		sprite_index=spr_primordial_goo
 		var items_nearby=get_nearby_items_with_calories()
 		var maxid=noone
@@ -20,9 +21,11 @@ if primordeal_goo{
 		}
 		if maxid!=noone
 		{
+			var eating_item_id=maxid.item_id
+			last_eaten_item_id=eating_item_id
 			sprite_index=spr_primordial_goo_eating
 			sound_play_category_at("eat",x,y)
-			global.current_calories+=max_kcal
+			calorie_item_eat(eating_item_id)
 			item_destroy_nearby(maxid)
 			
 		}
@@ -32,6 +35,10 @@ if primordeal_goo{
 	{
 		eating_time-=delta_time/1000000
 		eating_time=max(0,eating_time)
+		if last_eaten_item_id!="empty"
+		{
+			item_id_summon_particles_less(last_eaten_item_id,x,y)
+		}
 	}
 }
 
