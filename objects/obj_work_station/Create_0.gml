@@ -7,6 +7,7 @@ growing=false
 primordeal_goo=false
 eating_time=0
 eating_timer=0.5
+last_eaten_item_id="empty"
 
 
 name=""

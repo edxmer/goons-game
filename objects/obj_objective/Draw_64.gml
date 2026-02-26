@@ -1,4 +1,4 @@
-
+exit
 var _arr_len = array_length(global.objective_list)
 
 text_scale=1
