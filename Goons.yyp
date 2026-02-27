@@ -151,6 +151,7 @@
     {"id":{"name":"spr_corn_cob","path":"sprites/spr_corn_cob/spr_corn_cob.yy",},},
     {"id":{"name":"spr_corn_seeds","path":"sprites/spr_corn_seeds/spr_corn_seeds.yy",},},
     {"id":{"name":"spr_effect_building","path":"sprites/spr_effect_building/spr_effect_building.yy",},},
+    {"id":{"name":"spr_effect_equippable","path":"sprites/spr_effect_equippable/spr_effect_equippable.yy",},},
     {"id":{"name":"spr_effect_freeze_1","path":"sprites/spr_effect_freeze_1/spr_effect_freeze_1.yy",},},
     {"id":{"name":"spr_effect_freeze","path":"sprites/spr_effect_freeze/spr_effect_freeze.yy",},},
     {"id":{"name":"spr_effect_pick_up_building","path":"sprites/spr_effect_pick_up_building/spr_effect_pick_up_building.yy",},},

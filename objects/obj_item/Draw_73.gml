@@ -14,4 +14,5 @@ if selected {
 
 	draw_self()
 	draw_nametag(name)
+	item_selected_draw_box_datas(item_id,global.camera_size*0.7)
 }
