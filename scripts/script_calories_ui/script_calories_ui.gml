@@ -80,21 +80,18 @@ function draw_calories_meter_text(startx, starty, size, rotation) {
 	var _shadow_offset_y = 3
 	var _text_size = 0.24
 	
+	var _colour = c_white
+
 	var _shaking = global.needed_calories < global.current_calories
-	
-	var _shaking_offset_x = 0
-	var _shaking_offset_y = 0
 	var _shaking_lower_bound = -2
 	var _shaking_upper_bound = 2
 	
 	if (_shaking) {
-		
-		_shaking_offset_x = random_range(_shaking_lower_bound, _shaking_upper_bound)
-		_shaking_offset_y = random_range(_shaking_lower_bound, _shaking_upper_bound)
+		startx += random_range(_shaking_lower_bound, _shaking_upper_bound)
+		starty += random_range(_shaking_lower_bound, _shaking_upper_bound)
+		_colour = #ff9999
 	}
 	
-	startx += _shaking_offset_x
-	starty += _shaking_offset_y
 	
 	draw_set_font(fnt_header_1)
 	draw_set_halign(fa_right)
@@ -102,7 +99,7 @@ function draw_calories_meter_text(startx, starty, size, rotation) {
 	draw_set_colour(c_black)
 	draw_text_transformed(startx+_shadow_offset_x, starty+_shadow_offset_y, _text, size*_text_size, size*_text_size, rotation)
 	
-	draw_set_colour(c_white)
+	draw_set_colour(_colour)
 	draw_text_transformed(startx, starty, _text, size*_text_size, size*_text_size, rotation)
 	
 	draw_set_halign(fa_left)
