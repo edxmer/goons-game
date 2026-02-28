@@ -1,6 +1,7 @@
 
 level = global.reward_level
 
+title_text = "Nutritional values"
 
 
 
@@ -15,12 +16,25 @@ first_end_step = false
 
 
 font = fnt_header_1
-x = 50
-y = 40
+x = 80
+y = 80
 height = 110
 width = 120
 outline = 5
 dist_between_items = width-outline
+
+size = 5
+
+text_offset_x = -50
+text_offset_y = -60
+level_text_offset_x = -40
+level_text_offset_y = 10
+text_scale=0.24
+
+level_shadow_offset_x = 3
+level_shadow_offset_y = -3
+shadow_offset = 3
+
 
 
 

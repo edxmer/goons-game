@@ -1,20 +1,11 @@
-x=global.cam.coords[0]
-y=global.cam.coords[1]
-var size = global.camera_size
-text_offset_x = +10*size
-text_offset_y =-1*size
-level_text_offset_x = +8*size
-level_text_offset_y = 18*size
-level_text_scale=0.2*size+(5.25-(text_pulse_timer%5-2.5)*(text_pulse_timer%5-2.5))*0.006*size
-text_scale=0.34*size
+
+level_text_scale=0.2+(5.25-(text_pulse_timer%5-2.5)*(text_pulse_timer%5-2.5))*0.006
 
 text_pulse_timer+=delta_time/1000000
 text_pulse_timer%=5
 
 
-level_shadow_offset_x = 0.6*size
-level_shadow_offset_y = -0.6*size
-shadow_offset = 0.6*size
+
 
 
 level=global.reward_level
