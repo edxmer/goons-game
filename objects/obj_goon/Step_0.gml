@@ -2,6 +2,21 @@
 reached_destination_this_frame=false
 pixels_taken_this_frame=0
 
+
+if global.reward_mode
+{
+	jump_timer+=delta_time/90000*random_range(0.8,1.2)
+	z=max(0,cos(jump_timer)*jump_height)
+	
+}
+else
+{
+	z=0
+	 if jump_timer>360{
+		jump_timer=irandom_range(180,359)
+	 }
+}
+
 if dumb && item_type!="goon_show_dumb"
 {
 	item_type="goon_show_dumb"
@@ -30,7 +45,7 @@ if blue && goon_speed<=(300/3)
 popped_goto_act="empty"
 //var y_coord=(y+bbox_bottom)/2
 var speed_real=goon_speed*min(delta_time/1000000,0.4)*slowness_modifier
-if x!=goto_x || y!=goto_y{
+if !(point_distance(x,y,goto_x,goto_y)<speed_real){
 	equipment_sprite_draw=equipment_sprite_walk
 	sprite_index=spr_goon_walk
 	if dumb{
@@ -74,6 +89,8 @@ if x!=goto_x || y!=goto_y{
 			
 			
 			interact_function()
+			x=goto_x
+			y=goto_y
 		}
 
 	}

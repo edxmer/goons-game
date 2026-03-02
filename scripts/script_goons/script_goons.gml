@@ -197,6 +197,7 @@ if fromgridmode
 							if gooning_goons_count()>0
 							{
 								var come_id=goons_get_closest_gooning(curr_point[0],curr_point[1])
+								come_id.goto_list=[]
 								goon_if_gooning_goto_coords(come_id,curr_point[0],curr_point[1])
 								if array_length(curr_point)>2
 								{
@@ -253,6 +254,7 @@ if fromgridmode
 								}
 							}
 							closest_point=closest_points[irandom(array_length(closest_points)-1)]
+							goto_list=[]
 							goon_if_gooning_goto_coords(id,closest_point[0],closest_point[1])
 						}
 					}

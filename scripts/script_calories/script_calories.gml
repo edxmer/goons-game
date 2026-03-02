@@ -1,3 +1,6 @@
+
+
+
 function item_get_calories(item_id){
 	var base=assign_item(item_id).calories
 
@@ -78,7 +81,7 @@ function calorie_add_new_craving(item_id,bonus_calories)
 	{
 		for (var i=0;i<array_length(global.current_calorie_cravings);i++)
 		{
-			if !global.current_calorie_cravings[i].item_id==item_id
+			if !(global.current_calorie_cravings[i].item_id==item_id)
 			{
 				global.current_calorie_cravings[i].bonus_calories+=bonus_calories
 			}
@@ -128,7 +131,7 @@ function calorie_objectives_needed_list()
 	{
 		if !global.current_calorie_objectives[i].done
 		{
-			array_push(undone_calorie_objectives,global.current_calorie_objectives[i])
+			array_push(undone_calorie_objectives,global.current_calorie_objectives[i].item_id)
 		}
 	}
 	return undone_calorie_objectives
@@ -139,7 +142,7 @@ function calorie_cravings_list()
 	var calorie_cravings=[]
 	for (var i=0;i<array_length(global.current_calorie_cravings);i++)
 	{
-		array_push(calorie_cravings,global.current_calorie_cravings[i])
+		array_push(calorie_cravings,global.current_calorie_cravings[i].item_id)
 	}
 	return calorie_cravings
 }
@@ -152,14 +155,16 @@ function calorie_cravings_list()
  */
 function calorie_objective_done(item_id)
 {
-	var i=0;
-	while (array_length(global.current_calorie_objectives)>i && global.current_calorie_objectives[i].item_id!=item_id && !(global.current_calorie_objectives[i].done))
-	{ i++}
-	if array_length(global.current_calorie_objectives)>i
+
+	for (var i=0;i<array_length(global.current_calorie_objectives);i++)
 	{
-		global.current_calorie_objectives[i].done=true
-		return true
+		if global.current_calorie_objectives[i].item_id==item_id && !(global.current_calorie_objectives[i].done)
+		{
+			global.current_calorie_objectives[i].done=true
+			return true
+		}
 	}
+
 	return false
 
 

@@ -62,8 +62,8 @@ function effect_sprites_active_list(effect_name_list)
 function effect_draw_icons_from_middle(effect_name_list,middlex,starty,spacing_px,size,max_in_one_line=3)
 {
 	var amount=min(array_length( effect_sprites_active_list( effect_name_list)),max_in_one_line)
-	var startx=middlex-(14+spacing_px)*size*0.5-(14+spacing_px)*size*0.5*(amount-1)
-	effect_draw_icons(effect_name_list,startx,starty,spacing_px,size,max_in_one_line)
+	var startx=middlex-(14+spacing_px*1.5)*size*0.5-(14+spacing_px)*size*0.5*(amount-1)
+	effect_draw_icons(effect_name_list,startx+spacing_px*size*0.75,starty,spacing_px,size,max_in_one_line)
 }
  
  
@@ -122,6 +122,10 @@ function effect_get_sprite(effect)
 		return spr_effect_pick_up_building
 		case "equippable":
 		return spr_effect_equippable
+		case "craving":
+		return spr_effect_craving
+		case "calorie_objective":
+		return spr_effect_calorie_objective
 		default:
 		return spr_empty
 	}

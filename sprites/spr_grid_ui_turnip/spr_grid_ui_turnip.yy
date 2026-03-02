@@ -19,6 +19,7 @@
   "height":28,
   "HTile":false,
   "layers":[
+    {"$GMImageLayer":"","%Name":"fab6365c-ec35-4a3f-8c35-36663f645833","blendMode":0,"displayName":"Layer 3","isLocked":false,"name":"fab6365c-ec35-4a3f-8c35-36663f645833","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"f208ef10-e9bd-496f-9797-9678c8544ef0","blendMode":0,"displayName":"Layer 2","isLocked":false,"name":"f208ef10-e9bd-496f-9797-9678c8544ef0","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
     {"$GMImageLayer":"","%Name":"25ee55f2-2528-47de-b5e5-168e7d676ce2","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"25ee55f2-2528-47de-b5e5-168e7d676ce2","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"aed051ff-1069-41dd-b40a-d3ac82cccb46","blendMode":0,"displayName":"default","isLocked":false,"name":"aed051ff-1069-41dd-b40a-d3ac82cccb46","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
@@ -27,8 +28,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"gridmode_uis",
-    "path":"folders/SPRITES/items/gridmode_uis.yy",
+    "name":"_gridmode_uis",
+    "path":"folders/SPRITES/items/_gridmode_uis.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

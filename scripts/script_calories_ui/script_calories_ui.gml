@@ -24,7 +24,7 @@ function draw_calories_meter_inside(startx,starty,px_length,percent, size){
 		draw_sprite_ext(spr_calorie_meter_inside_start,0,startx,starty,size,size,0,c_white,1)
 		for (var i=0;i<ceil(px_length/2);i++)
 		{
-			draw_sprite_ext(spr_calorie_meter_inside_middle,0,startx,starty,size,size,0,c_white,1)
+			draw_sprite_ext(spr_calorie_meter_inside_middle,0,startx,starty,size*1.1,size,0,c_white,1)
 			startx+=size*2
 		}
 		startx-=(size*3)

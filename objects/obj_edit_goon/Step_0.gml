@@ -33,3 +33,4 @@ else
 
 last_id=global.goon_edit_id
 was_right_pressed=mouse_check_button_pressed(mb_right)
+

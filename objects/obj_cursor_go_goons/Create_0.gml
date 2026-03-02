@@ -49,8 +49,8 @@ return_positions=[]
 
 idle_time=0
 
-poi_interactions=["interact","put_down_item"]
-poi_textures=[spr_goto_point,spr_goto_drop_item]
+poi_interactions=["interact","put_down_item","nothing"]
+poi_textures=[spr_goto_point,spr_goto_drop_item,spr_goto_idle]
 
 frame_real=floor(frame)
 death_mode=false

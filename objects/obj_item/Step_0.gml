@@ -34,8 +34,8 @@ if !grew_up && size>=0.95{
 	{
 		var changed=false
 		with(obj_goon){
-			if !changed && !blue && !dumb{
-				blue=true
+			if !changed && !id.blue && !id.dumb{
+				id.blue=true
 				sound_play_category_at("murr",x,y)
 				goon_speed*=3
 				sprite_index=spr_goon_blue
@@ -48,8 +48,15 @@ if !grew_up && size>=0.95{
 
 	else if item_id="reward" && size>=0.95
 	{
-		instance_create_depth(x,y,depth,obj_reward_base)
-		instance_destroy()
+		if !instance_exists(obj_reward_base) && !global.special_mode
+		{
+			instance_create_depth(x,y,depth,obj_reward_base)
+			instance_destroy()
+		}
+		else
+		{
+			grew_up=false
+		}
 	}
 
 

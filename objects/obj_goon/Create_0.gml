@@ -23,6 +23,10 @@ goon_speed=irandom_range(160,300) /3
 goto_x=x
 goto_y=y
 
+z=0
+jump_timer=irandom_range(180,360)
+jump_height=irandom_range(8,16)
+
 equipment="empty"
 equipment_sprite_draw=spr_empty
 equipment_sprite_idle=spr_empty
@@ -120,6 +124,7 @@ interact_function=function()
 		}
 	
 	}
+	
 	//effect_update(id)
 	
 }

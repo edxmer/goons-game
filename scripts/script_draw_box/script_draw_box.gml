@@ -22,6 +22,14 @@ function item_get_effect_tags(item_id)
 			array_push(ef_tags,tag)
 		}
 	}
+	if is_item_craving(item_id)
+	{
+		array_push(ef_tags,"craving")
+	}
+	if is_item_needed_calorie_objective(item_id)
+	{
+		array_push(ef_tags,"calorie_objective")
+	}
 	return ef_tags
 }
 
@@ -30,16 +38,49 @@ function item_draw_box_datas(item_id,startx,starty,size)
 {
 	var calories_text=string(item_get_calories(item_id))+" kcal"
 	var tags=item_get_effect_tags(item_id)
+	
 	draw_box_datas([calories_text],tags,startx,starty,size,3,spr_textbox)
 }
+function item_draw_box_datas_for_goon_ui_width_and_height(item_id,startx,starty,size,firstline="")
+{
+	var name_text=item_get_name(item_id)
+	var calories_text= string(item_get_calories(item_id))+" kcal"
+	var tags=item_get_effect_tags(item_id)
+	var txtbox=[name_text,calories_text]
+	if firstline!=""
+	{
+		array_insert(txtbox,0,firstline)
+	}
+	return draw_box_data_get_width_and_height(txtbox,tags,startx,starty,size,3,spr_textbox)
+}
 
-function draw_box_datas(stringbox,effect_list,startx,starty,size,max_effects_in_oneline=3,spr=spr_textbox)
+function item_draw_box_datas_for_goon_ui(item_id,startx,starty,size,firstline="",selected=false)
+{
+	var boxtexture=spr_textbox
+	if selected
+	{
+		boxtexture=spr_textbox_selected_true
+	}
+	var name_text=item_get_name(item_id)
+	var calories_text= string(item_get_calories(item_id))+" kcal"
+	var tags=item_get_effect_tags(item_id)
+	var txtbox=[name_text,calories_text]
+	if firstline!=""
+	{
+		array_insert(txtbox,0,firstline)
+	}
+	draw_box_datas(txtbox,tags,startx,starty,size,3,boxtexture)
+}
+
+
+function draw_box_data_get_width_and_height(stringbox,effect_list,startx,starty,size,max_effects_in_oneline=3,spr=spr_textbox)
 {
 	var needed_width=1
 	var needed_height=2
 	
 	var sorkoz=1
 	var kepkoz=2
+	var effect_koz=4
 	
 	var text_mult=0.14
 	
@@ -52,15 +93,53 @@ function draw_box_datas(stringbox,effect_list,startx,starty,size,max_effects_in_
 		var cwidth_needed=string_width(stringbox[i])*text_mult+10
 		var cheight_needed=string_height(stringbox[i])*text_mult
 		needed_width=max(cwidth_needed,needed_width)
-		needed_height+=cheight_needed+sorkoz*text_mult
+		needed_height+=cheight_needed+sorkoz
 	}
 	var eff_length=array_length(effect_sprites_active_list(effect_list))
 	if eff_length>0
 	{
-		needed_height+=5
+		needed_height+=effect_koz
 		needed_height+=ceil(eff_length/max_effects_in_oneline)*(14+kepkoz)*0.8
 		needed_width=max(needed_width,(min(eff_length,max_effects_in_oneline)*(14+kepkoz)+2*kepkoz)*0.8)
 	}
+	return [needed_width,needed_height]
+}
+
+function draw_box_datas(stringbox,effect_list,startx,starty,size,max_effects_in_oneline=3,spr=spr_textbox)
+{
+	var needed_width=1
+	var needed_height=2
+	
+	var sorkoz=1
+	var kepkoz=2
+	var effect_koz=4
+	
+	var text_mult=0.14
+	var eff_length=array_length(effect_sprites_active_list(effect_list))
+	/*
+	draw_set_font(fnt_nametag)
+	draw_set_halign(textalign_center)
+	draw_set_valign(textalign_top )
+	draw_set_colour(#101119)
+	for (var i=0;i<array_length(stringbox);i++)
+	{
+		var cwidth_needed=string_width(stringbox[i])*text_mult+10
+		var cheight_needed=string_height(stringbox[i])*text_mult
+		needed_width=max(cwidth_needed,needed_width)
+		needed_height+=cheight_needed+sorkoz
+	}
+	
+	if eff_length>0
+	{
+		needed_height+=effect_koz
+		needed_height+=ceil(eff_length/max_effects_in_oneline)*(14+kepkoz)*0.8
+		needed_width=max(needed_width,(min(eff_length,max_effects_in_oneline)*(14+kepkoz)+2*kepkoz)*0.8)
+	}*/
+	
+	var spaces=draw_box_data_get_width_and_height(stringbox,effect_list,startx,starty,size,max_effects_in_oneline,spr)
+	needed_width=spaces[0]
+	needed_height=spaces[1]
+	
 	var midx=draw_box_pxs(startx,starty,needed_width,needed_height,size,spr)
 	
 	
@@ -68,13 +147,32 @@ function draw_box_datas(stringbox,effect_list,startx,starty,size,max_effects_in_
 	var yy=starty+size*sorkoz*3
 	for (var i=0;i<array_length(stringbox);i++)
 	{
-		
-		draw_text_ext_transformed(midx,yy,stringbox[i],sorkoz*size,needed_width*size*100,size*text_mult,size*text_mult,0)
-		yy+=string_height(stringbox[i])*size*text_mult
+		var curr_text=stringbox[i]
+		var texttype=0
+		if string_starts_with(curr_text,"§b")
+		{
+			texttype=1
+		}
+		else if string_starts_with(curr_text,"§i")
+		{
+			texttype=2
+		}
+		if string_starts_with(curr_text,"§")
+		{
+			curr_text=string_copy(curr_text,3,string_length(curr_text)-2)
+		}
+		draw_text_ext_transformed(midx,yy,curr_text,sorkoz*size,needed_width*size*100,size*text_mult,size*text_mult,0)
+		if texttype==1
+		{
+			draw_text_ext_transformed(midx+0.2*size,yy,curr_text,sorkoz*size,needed_width*size*100,size*text_mult,size*text_mult,0)
+			draw_text_ext_transformed(midx-0.2*size,yy,curr_text,sorkoz*size,needed_width*size*100,size*text_mult,size*text_mult,0)
+		}
+		yy+=string_height(stringbox[i])*size*text_mult+sorkoz*size
 	}
 	if eff_length>0
 	{
-		yy+=5*size
+		draw_sprite_ext(spr_textbox_effect_line,0,midx,yy+0.5*size*effect_koz,size,size,0,c_white,1)
+		yy+=effect_koz*size
 		effect_draw_icons_from_middle(effect_list,midx,yy,kepkoz,size*0.8,max_effects_in_oneline)
 	}
 	

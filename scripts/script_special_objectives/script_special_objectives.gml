@@ -2,7 +2,7 @@ function special_objectives_init()
 {
 	global.special_objectives=
 	{
-		level1:["summon","summon"],
+
 		level2:["plank","any"],
 		level4:["lamp"],
 		level7:["cigarette","any","summon"],
@@ -10,7 +10,9 @@ function special_objectives_init()
 	
 	
 	}
-
+	global.special_objectives.level1=s_special_objectives([],[],10)
+	global.special_objectives.level2=s_special_objectives([["banana",10],["sock",10]],[],20)
+	global.special_objectives.level3=s_special_objectives([["banana",10],["sock",10]],[],20)
 }
 
 

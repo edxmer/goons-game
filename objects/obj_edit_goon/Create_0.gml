@@ -4,3 +4,7 @@ last_id=global.goon_edit_id
 was_right_pressed=false
 buttons_last=[]
 selected_button_last=-1
+
+selected_effects=true
+selected_equipment=false
+selected_inventory=false

@@ -10,6 +10,11 @@ function item_get_sprite(item_id)
 	return assign_item(item_id).texture
 }
 
+function item_get_name(item_id)
+{
+	return assign_item(item_id).name
+}
+
 function item_send_particles(_id_of_item)
 {
 	with(_id_of_item)
@@ -187,7 +192,9 @@ function assign_item(item_id){
 		}
 	}
 	if item_id=="turnip_seeds"{
+		
 		item_data=assign_item("*_seeds")
+		item_data.name=string_upper(string_copy(item_id,1,1))+ string_replace_all(string_copy(item_id,2,string_length(item_id)-1),"_"," ")
 		item_data.texture=spr_turnip_seeds
 		item_data.special_data.grid_mode_place_station_id="turnip_plant"
 		item_data.special_data.grid_mode_sprite=spr_grid_ui_turnip
@@ -195,6 +202,7 @@ function assign_item(item_id){
 	}
 	if item_id=="corn_seeds"{
 		item_data=assign_item("*_seeds")
+		item_data.name=string_upper(string_copy(item_id,1,1))+ string_replace_all(string_copy(item_id,2,string_length(item_id)-1),"_"," ")
 		item_data.texture=spr_corn_seeds
 		item_data.special_data.grid_mode_place_station_id="corn_plant"
 		item_data.special_data.grid_mode_sprite=spr_grid_ui_corn
@@ -216,7 +224,7 @@ function assign_item(item_id){
 	if item_id=="logs"{
 		item_data.texture=spr_logs
 	array_push(item_data.tags,"wood")
-	item_data.calories=4
+	item_data.calories=2
 	
 	}
 	if item_id=="frog"{
@@ -276,7 +284,7 @@ function assign_item(item_id){
 		item_data.texture=spr_plank
 	array_push(item_data.tags,"wood")
 		array_push(item_data.tags,"crafted")
-		item_data.calories=1
+		item_data.calories=3
 	}
 	if item_id=="lamp"{
 		item_data.texture=spr_lamp

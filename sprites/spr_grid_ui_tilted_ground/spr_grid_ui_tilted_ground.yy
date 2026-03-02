@@ -27,8 +27,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"gridmode_uis",
-    "path":"folders/SPRITES/items/gridmode_uis.yy",
+    "name":"_gridmode_uis",
+    "path":"folders/SPRITES/items/_gridmode_uis.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
