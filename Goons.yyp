@@ -162,6 +162,7 @@
     {"id":{"name":"spr_corn_seeds","path":"sprites/spr_corn_seeds/spr_corn_seeds.yy",},},
     {"id":{"name":"spr_effect_building","path":"sprites/spr_effect_building/spr_effect_building.yy",},},
     {"id":{"name":"spr_effect_calorie_objective","path":"sprites/spr_effect_calorie_objective/spr_effect_calorie_objective.yy",},},
+    {"id":{"name":"spr_effect_consumable","path":"sprites/spr_effect_consumable/spr_effect_consumable.yy",},},
     {"id":{"name":"spr_effect_craving","path":"sprites/spr_effect_craving/spr_effect_craving.yy",},},
     {"id":{"name":"spr_effect_equippable","path":"sprites/spr_effect_equippable/spr_effect_equippable.yy",},},
     {"id":{"name":"spr_effect_freeze_1","path":"sprites/spr_effect_freeze_1/spr_effect_freeze_1.yy",},},

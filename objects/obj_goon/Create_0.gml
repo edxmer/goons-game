@@ -13,6 +13,8 @@ gridmode_use_item=false
 
 popped_goto_act="empty"
 
+verboseness=1
+
 pickup_item_penalty=0
 
 selected=false

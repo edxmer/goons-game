@@ -124,6 +124,8 @@ function effect_get_sprite(effect)
 		return spr_effect_equippable
 		case "craving":
 		return spr_effect_craving
+		case "consumable":
+		return spr_effect_consumable
 		case "calorie_objective":
 		return spr_effect_calorie_objective
 		default:
