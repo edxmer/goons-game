@@ -37,6 +37,11 @@ function goon_get_buttons(_id){
 	{
 		array_push(buttons,"equip")
 	}
+	
+	if item_tags_contains(_id.inventory,"consumable")
+	{
+	array_push(buttons,"consume")
+	}
 	if _id.inventory=="empty"
 	{
 	array_push(buttons,"pickup")
@@ -101,6 +106,21 @@ function get_edit_button_data(button_name)
 				{
 					put_down_item()
 					interact_function()
+				}
+			}
+			break
+		case "consume":
+			data.realname="Consume Item"
+			data.act=function(_id)
+			{
+				with(_id)
+				{
+					var func=function(goon_id){}
+					if item_special_data_get(_id.inventory,"consume_effect")!="empty"
+					{
+						func=item_special_data_get(_id.inventory,"consume_effect")
+					}
+					func(_id)
 				}
 			}
 			break

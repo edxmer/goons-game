@@ -11,7 +11,7 @@ if (speech_timer < 0) {
 	var _goon_count = instance_number(obj_goon)
 	var _goon_id = instance_find(obj_goon, irandom(_goon_count-1))
 	
-	if (!_goon_id.speaking) {
+	if (!_goon_id.speaking) && _goon_id.verboseness>0{
 		_goon_id.speaking = true
 		var turn_speaking_off = method(_goon_id, function() {
 		    speaking = false;

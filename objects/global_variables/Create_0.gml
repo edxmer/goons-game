@@ -9,6 +9,8 @@ calorie_add_new_objective("logs",10)
 global.current_calorie_cravings=[]
 calorie_add_new_craving("corn_cob",2)
 
+global.calories_reward_timer=0
+
 global.grid_mode=true
 global.should_be_gridmode=false
 global.grid_mode_sprite=spr_empty

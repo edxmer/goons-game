@@ -211,20 +211,49 @@ function assign_item(item_id){
 	}
 	if item_id=="corn_cob"{
 		item_data.texture=spr_corn_cob
-	array_push(item_data.tags,"corn_cob")
-	item_data.calories=15
+		array_push(item_data.tags,"corn_cob")
+		item_data.calories=15
 	
 	}
 	if item_id=="turnip"{
 		item_data.texture=spr_turnip
-	array_push(item_data.tags,"turnip")
-	item_data.calories=25
+		array_push(item_data.tags,"turnip")
+		item_data.calories=25
+	
+	}
+	if item_id=="frozen_apple"{
+			item_data.texture=spr_frozen_apple
+		array_push(item_data.tags,"consumable")
+		item_data.special_data.consume_effect=function(goon_id)
+		{
+			goon_id.blue=true
+			sound_play_category_at("eat",goon_id.x,goon_id.y)
+			particle_summon_from_texture_multiple(goon_id.x,goon_id.y,goon_id.inventory_sprite,6)
+			goon_id.inventory_set_empty()
+		
+		}
+		item_data.calories=12
+	
+	}
+	if item_id=="potion_of_mute"{
+		item_data.name="Potion of Muting"
+			item_data.texture=spr_potion_of_mute
+		array_push(item_data.tags,"consumable")
+		item_data.special_data.consume_effect=function(goon_id)
+		{
+			goon_id.verboseness=0
+			sound_play_category_at("eat",goon_id.x,goon_id.y)
+			particle_summon_from_texture_multiple(goon_id.x,goon_id.y,goon_id.inventory_sprite,6)
+			goon_id.inventory_set_empty()
+		
+		}
+		item_data.calories=12
 	
 	}
 	if item_id=="logs"{
 		item_data.texture=spr_logs
-	array_push(item_data.tags,"wood")
-	item_data.calories=2
+		array_push(item_data.tags,"wood")
+		item_data.calories=2
 	
 	}
 	if item_id=="frog"{

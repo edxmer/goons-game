@@ -1,6 +1,10 @@
 function calorie_objectives_done_check()
 {
-	if !global.special_mode && global.current_calories>=global.needed_calories && array_length(calorie_objectives_needed_list())==0
+	if global.calories_reward_timer>0
+	{
+		global.calories_reward_timer=max(0,global.calories_reward_timer-delta_time/1000000)
+	}
+	if global.calories_reward_timer==0 &&!global.special_mode && global.current_calories>=global.needed_calories && array_length(calorie_objectives_needed_list())==0
 	{
 		with (obj_item)
 		{
@@ -9,6 +13,7 @@ function calorie_objectives_done_check()
 				return false
 			}
 		}
+		global.calories_reward_timer=1
 		create_item(0,0,"reward")
 		return true
 	}
@@ -23,23 +28,29 @@ function calorie_objectives_set_empty()
 	global.current_calories=max(0,global.current_calories)
 
 }
-function calorie_cravings_generate_new(chosen="empty")
+function calorie_cravings_generate_new(chosen="empty",calories=-1)
 {
 	if chosen=="empty"{
 		var allitems=get_all_possible_items()
 		chosen=allitems[irandom(array_length(allitems)-1)]
 	}
-	calorie_add_new_craving(chosen,ceil(item_get_calories(chosen)*random_range(0.8,max(3,min(9,sqrt(global.reward_level))))))
+	if calories==-1
+	{
+		calories=ceil(item_get_calories(chosen)*random_range(0.8,max(3,min(9,sqrt(global.reward_level)))))
+	}
+	calorie_add_new_craving(chosen,calories)
 }
 
-function calorie_objective_one_generate_new(objective_amount,chosen="empty")
+function calorie_objective_one_generate_new(objective_amount,chosen="empty",calories=-1)
 {
 	if chosen=="empty"{
 		var allitems=workstation_get_all_possible_items()
 		chosen=allitems[irandom(array_length(allitems)-1)]
 	}
-	var calorie=max(item_get_calories(chosen),global.needed_calories*random_range(0.4,0.75)/objective_amount)
-	calorie_add_new_objective(chosen,ceil(calorie))
+	if calories=-1{
+		calories=ceil(max(item_get_calories(chosen),global.needed_calories*random_range(0.4,0.75)/objective_amount))
+	}
+	calorie_add_new_objective(chosen,calories)
 }
 function calorie_objectives_generate_new()
 {
