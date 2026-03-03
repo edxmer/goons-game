@@ -250,6 +250,11 @@ function handle_savestring_goon(save_modules)
 	
 	var type=save_modules[3]
 	
+	if array_length(save_modules)>=9
+	{
+		goon_id.verboseness=real(save_modules[7])
+	}
+	
 	if type=="d"{
 		goon_id.dumb=true
 		
@@ -263,7 +268,7 @@ function handle_savestring_goon(save_modules)
 		goon_pickup_item(save_modules[4])
 		equip_item_base(save_modules[5])
 	}
-	
+	effect_update(goon_id)
 	return true
 }
 
@@ -287,7 +292,8 @@ function create_savestring_goon(goon_id)
 	text+=type+"-"
 	text+=goon_id.inventory+"-"
 	text+=goon_id.equipment+"-"
-	text+=string(goon_id.goon_speed)
+	text+=string(goon_id.goon_speed)+"-"
+	text+=string(goon_id.verboseness)
 	text+="-\n"
 	return text
 }
