@@ -224,12 +224,16 @@ function assign_item(item_id){
 	if item_id=="frozen_apple"{
 			item_data.texture=spr_frozen_apple
 		array_push(item_data.tags,"consumable")
+		array_push(item_data.tags,"blue")
 		item_data.special_data.consume_effect=function(goon_id)
 		{
-			goon_id.blue=true
-			sound_play_category_at("eat",goon_id.x,goon_id.y)
-			particle_summon_from_texture_multiple(goon_id.x,goon_id.y,goon_id.inventory_sprite,6)
-			goon_id.inventory_set_empty()
+			if !goon_id.dumb{
+				goon_id.blue=true
+			
+				sound_play_category_at("eat",goon_id.x,goon_id.y)
+				particle_summon_from_texture_multiple(goon_id.x,goon_id.y,goon_id.inventory_sprite,6)
+				goon_id.inventory_set_empty()
+			}
 		
 		}
 		item_data.calories=12
