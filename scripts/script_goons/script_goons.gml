@@ -138,6 +138,7 @@ if fromgridmode
 }
 	with(_id){
 		if gooning{
+			goto_list_changed=true
 			if gooning_goons_count()==1 && array_length(list_of_interests)!=0
 			{
 				
@@ -305,10 +306,7 @@ if fromgridmode
 			}
 			var _goto_x=xx+irandom_range(-bad_prec,bad_prec)
 			var _goto_y=yy+irandom_range(-bad_prec,bad_prec)
-			if dumb{
-				_goto_x=x+lengthdir_x(-distance,look)
-				_goto_y=y+lengthdir_y(-distance,look)
-			}
+
 				
 			_goto_x=clamp(_goto_x,8,room_width-8)
 			_goto_y=clamp(_goto_y,8,global.camera_room_height-8)

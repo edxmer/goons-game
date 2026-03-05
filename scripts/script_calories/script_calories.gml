@@ -7,7 +7,7 @@ function item_get_calories(item_id){
 	for (var i=0;i<array_length(global.current_calorie_objectives);i++)
 	{
 		var objective=global.current_calorie_objectives[i]
-		if objective.item_id==item_id
+		if objective.item_id==item_id && objective.done==false
 		{
 			return max( objective.calories,base)
 		}

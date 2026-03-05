@@ -1,6 +1,10 @@
 global.cam={}
 global.select_mode=false
 
+global.coins=0
+
+global.gui_nametag_called_last=false
+
 global.current_calories=0
 global.needed_calories=10
 global.current_calorie_objectives=[]

@@ -41,6 +41,8 @@ walked_pixels=0
 
 all_distance=0
 
+goto_list_changed=false
+
 use_item=false
 
 got_new_directions=false
@@ -246,6 +248,7 @@ next_goto=function()
 		var next_go=goto_list[0]
 		popped_goto_act=goto_list[0]
 		array_delete(goto_list,0,1)
+
 		if next_go=="interact"
 		{
 			reached_destination_this_frame=true
@@ -267,9 +270,11 @@ next_goto=function()
 		}
 		else
 		{
+
 			
 			goto_x=next_go[0]
 			goto_y=next_go[1]
+
 		}
 		return true
 	}

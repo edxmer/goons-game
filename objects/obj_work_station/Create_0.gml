@@ -109,6 +109,10 @@ sprite_top_part=min(sprite_get_yoffset(sprite_index)-sprite_get_bbox_top(sprite_
 
 assign=function()
 {
+	if assigned
+	{
+		return
+	}
 	assigned=true
 	var station_data=work_station_data_get(station_id)
 	

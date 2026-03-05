@@ -6,17 +6,24 @@ function calorie_objectives_done_check()
 	}
 	if global.calories_reward_timer==0 &&!global.special_mode && global.current_calories>=global.needed_calories && array_length(calorie_objectives_needed_list())==0
 	{
-		with (obj_item)
-		{
-			if item_id=="reward"
-			{
-				return false
-			}
-		}
-		global.calories_reward_timer=1
-		create_item(0,0,"reward")
-		return true
+		calorie_objectives_get_reward()
 	}
+}
+
+function calorie_objectives_get_reward()
+{
+	
+	with (obj_item)
+	{
+		if item_id=="reward"
+		{
+			return false
+		}
+	}
+	coins_get_primordeal_goon(irandom_range(3,4)+floor(global.reward_level/5))
+	global.calories_reward_timer=1
+	create_item(0,0,"reward")
+	return true
 }
 
 

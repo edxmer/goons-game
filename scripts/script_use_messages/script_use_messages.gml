@@ -8,6 +8,10 @@ function draw_item_finished(item_id,_x,_y,size=1){
 	draw_item(_x,_y,item_id,1.2*size)
 }
 function draw_nametag(name){
+	if global.gui_nametag_called_last
+	{
+		return
+	}
 	var size=global.camera_size*0.6
 	var startx=mouse_x+30*size
 	var starty=mouse_y-3*size
@@ -47,6 +51,39 @@ function draw_nametag(name){
 	draw_set_valign(textalign_top )
 }
 
+function draw_nametag_gui(name){
+	global.gui_nametag_called_last=true
+	var size=3
+	var startx= device_mouse_x_to_gui(0) +10*size
+	var starty=device_mouse_y_to_gui(0)+14*size
+	
+	draw_set_font(fnt_nametag)
+	draw_set_halign(textalign_left)
+	draw_set_valign(textalign_middle )
+	draw_set_colour(#101119)
+	var length=max(1,((string_width(name)/3.5) -22))
+	
+
+	if 0+12*size>starty
+	{
+		starty=12*size
+	}
+	
+	draw_sprite_ext(spr_nametag_begin,0,startx,starty,size,size,0,c_white,1)
+	
+	for  (var i=0;i<length;i++)
+	{
+		draw_sprite_ext(spr_nametag_middle,0,startx+i*size*1,starty,size,size,0,c_white,1)
+	}
+	draw_sprite_ext(spr_nametag_end,0,startx+(length-1)*size*1,starty,size,size,0,c_white,1)
+	
+	startx-=8*size
+
+	starty-=3.5*size
+	draw_text_ext_transformed(startx,starty,name,1.2,1000*size,size*0.2,size*0.2,0)
+	draw_set_halign(textalign_left)
+	draw_set_valign(textalign_top )
+}
 
 function draw_workstation_outlined(work_station,_x,_y,outline_id,size=1){
 

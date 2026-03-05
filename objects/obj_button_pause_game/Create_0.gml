@@ -16,7 +16,8 @@ x = _guiw - 110
 y = 45
 
 on_press = function() {
-	room_persistent = true
+	goto_extension_room_main_menu(room_pause_menu)
+	/*room_persistent = true
 	global.pause_sprite = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), false, false, 0, 0);
-	room_goto(room_pause_menu)
+	room_goto(room_pause_menu)*/
 }

@@ -2,6 +2,10 @@
 
 function item_selected_draw_box_datas(item_id,size)
 {
+	if global.gui_nametag_called_last
+	{
+		return
+	}
 	var startx=mouse_x+15*size
 	var starty=mouse_y+4*size
 	item_draw_box_datas(item_id,startx,starty,size)
@@ -105,6 +109,56 @@ function draw_box_data_get_width_and_height(stringbox,effect_list,startx,starty,
 	return [needed_width,needed_height]
 }
 
+function draw_box_data_icon_and_value_gui(string_val,icon_spr,startx,starty,size,spacing_between,txspr=spr_textbox,text_mult=0.14)
+{
+	
+	
+	var needed_width=sprite_get_bbox_right(icon_spr)-sprite_get_bbox_left(icon_spr)+ string_length(string_val)*size*2+5*spacing_between
+	var needed_height=max(string_height(string_val)*text_mult,sprite_get_bbox_bottom(icon_spr)-sprite_get_bbox_top(icon_spr))+3*spacing_between
+	var mouse_in=false
+
+	if point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),startx,starty,startx+needed_width*size,starty+needed_height*size)
+	{
+		mouse_in=true
+		txspr=spr_textbox_selected_true
+	}
+	draw_set_font(fnt_nametag)
+	draw_set_halign(textalign_center)
+	draw_set_valign(textalign_middle	 )
+	draw_set_colour(#101119)
+	var midx=draw_box_pxs(startx-spacing_between*size,starty-spacing_between*size*0.5,needed_width,needed_height,size,txspr)
+	text_mult*=size
+	/*text*/
+	var curr_text=string_val
+	var xx=startx+spacing_between*size+(sprite_get_bbox_right(icon_spr)-sprite_get_bbox_left(icon_spr))*size
+	var yy=starty+spacing_between*size+size*2
+	draw_sprite_ext(icon_spr, floor(current_time/(1000/sprite_get_speed(icon_spr))) ,xx,yy,size,size,0,c_white,1)
+	xx+=spacing_between*size+(needed_width*size-(spacing_between*size+(sprite_get_bbox_right(icon_spr)-sprite_get_bbox_left(icon_spr))*size))*0.5
+	yy=starty-spacing_between*0.5*text_mult
+		var texttype=0
+		if string_starts_with(curr_text,"§b")
+		{
+			texttype=1
+		}
+		else if string_starts_with(curr_text,"§i")
+		{
+			texttype=2
+		}
+		if string_starts_with(curr_text,"§")
+		{
+			curr_text=string_copy(curr_text,3,string_length(curr_text)-2)
+		}
+		draw_text_ext_transformed(xx,starty+needed_height/2,curr_text,1*size,needed_width*size*100,size*text_mult,size*text_mult,0)
+		if texttype==1
+		{
+			draw_text_ext_transformed(xx+0.2*size,starty+needed_height/2,curr_text,1*size,needed_width*size*100,size*text_mult,size*text_mult,0)
+			draw_text_ext_transformed(xx-0.2*size,starty+needed_height/2,curr_text,1*size,needed_width*size*100,size*text_mult,size*text_mult,0)
+		}
+	draw_set_halign(textalign_left)
+	draw_set_valign(textalign_top )
+	return mouse_in
+}
+
 function draw_box_datas(stringbox,effect_list,startx,starty,size,max_effects_in_oneline=3,spr=spr_textbox)
 {
 	var needed_width=1
@@ -116,11 +170,12 @@ function draw_box_datas(stringbox,effect_list,startx,starty,size,max_effects_in_
 	
 	var text_mult=0.14
 	var eff_length=array_length(effect_sprites_active_list(effect_list))
-	/*
+
 	draw_set_font(fnt_nametag)
 	draw_set_halign(textalign_center)
 	draw_set_valign(textalign_top )
 	draw_set_colour(#101119)
+	/*
 	for (var i=0;i<array_length(stringbox);i++)
 	{
 		var cwidth_needed=string_width(stringbox[i])*text_mult+10

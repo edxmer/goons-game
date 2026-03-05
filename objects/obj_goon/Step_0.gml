@@ -148,6 +148,23 @@ use_item=false
 gridmode_use_item=false
 
 
+if dumb && goto_list_changed
+{
+	goto_x=2*x-goto_x
+	goto_y=2*y-goto_y
+	for (var i=0;i<array_length(goto_list);i++)
+	{
+		var change_goto=goto_list[i]
+		if is_array(change_goto) && array_length(change_goto)>=2
+		{
+			change_goto[0]=2*x-change_goto[0]
+			change_goto[1]=2*y-change_goto[1]
+		}
+	}
+
+}
+goto_list_changed=false
+
 if pickup_item_penalty>0
 {
 	pickup_item_penalty-=delta_time/1000000

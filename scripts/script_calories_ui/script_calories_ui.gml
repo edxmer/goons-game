@@ -10,8 +10,15 @@ function draw_calories_meter_base(startx,starty,px_length, size){
 	draw_sprite_ext(spr_calorie_meter_outside_end,0,startx,starty,size,size,0,c_white,1)
 }
 
-function draw_calories_objective(xx,yy,item_id,outline_id, size){
+function draw_calories_objective(xx,yy,item_id,outline_id, size,whiteout=false){
 		draw_sprite_ext(spr_calorie_meter_objectives,outline_id,xx,yy,size,size,0,c_white,1)
+		if whiteout
+		{
+			gpu_set_fog(true,c_white,0,0)
+			draw_sprite_ext(spr_calorie_meter_objectives,outline_id,xx,yy,size,size,0,#FFE29B,0.16)
+			gpu_set_fog(false,c_white,0,0)
+			size*=1.05
+		}
 		draw_item(xx+0.5*size,yy+0.5*size,item_id,size*0.6)
 }
 
@@ -34,13 +41,17 @@ function draw_calories_meter_inside(startx,starty,px_length,percent, size){
 
 function draw_calories_objectives(startx,starty,px_length, size)
 {
+	var nametag_text=""
 	var yy=starty
 	var xx=startx+10*size
 	var current="empty"
 	var calobj_length=array_length(global.current_calorie_objectives)
+	var ms_x=device_mouse_x_to_gui(0)
+	var ms_y=device_mouse_y_to_gui(0)
 	for (var i=0;i<(calobj_length+array_length(global.current_calorie_cravings));i++)
 	{
 		var id_no=0
+		
 		if i<calobj_length
 		{
 			current=global.current_calorie_objectives[i].item_id
@@ -61,13 +72,28 @@ function draw_calories_objectives(startx,starty,px_length, size)
 		}
 
 
-		draw_calories_objective(xx,yy,current,id_no, size)
+		
+		var touching= point_in_rectangle(ms_x,ms_y,xx-8*size,yy-8*size,xx+8*size,yy+8*size)
+		draw_calories_objective(xx,yy,current,id_no, size,touching)
+		if touching
+		{
+			nametag_text=string(item_get_calories(current))+ " calories"
+			if id_no==1
+			{
+				nametag_text="Achieved!"
+			}
+			
+		}
 		xx+=20*size
 		if (xx-startx-20*size)/size>px_length
 		{
 			xx=startx
 			yy+=20*size
 		}
+	}
+	if nametag_text!=""
+	{
+		draw_nametag_gui(nametag_text)
 	}
 
 }

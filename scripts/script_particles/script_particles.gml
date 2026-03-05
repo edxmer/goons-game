@@ -1,3 +1,37 @@
+function particle_fly(_x,_y)
+{
+//particle_fly
+
+	var _ps = part_system_create();
+	part_system_draw_order(_ps, true);
+	part_system_depth(_ps,-3*room_height)
+	//Emitter
+	var _ptype1 = part_type_create();
+
+	part_type_sprite(_ptype1, spr_coin_small_touched, true, false, false)
+	part_type_size(_ptype1, 1, 2, 0, 0);
+	part_type_scale(_ptype1, 1,1);
+	part_type_speed(_ptype1, 1, 2, -1, 3.9);
+	part_type_direction(_ptype1, 156, 10, 1.1, 20);
+	part_type_gravity(_ptype1, 0.5, 86);
+	part_type_orientation(_ptype1, 0, 0, 0, 4, false);
+	part_type_colour3(_ptype1, $FFFFFF, $FFFFFF, $FFFFFF);
+	part_type_alpha3(_ptype1, 1, 1, 0);
+	part_type_blend(_ptype1, false);
+	part_type_life(_ptype1, 150, 260);
+
+	var _pemit1 = part_emitter_create(_ps);
+	part_emitter_region(_ps, _pemit1, -24.989109, 24.989109, -2.6122437, 2.6122437, ps_shape_rectangle, ps_distr_linear);
+	part_emitter_burst(_ps, _pemit1, _ptype1, 1);
+
+	part_system_position(_ps, _x, _y);
+
+
+
+
+}
+
+
 function particle_summon_from_texture_one(xx,yy,sprite){
 	xx-=sprite_get_xoffset(sprite)
 	yy-=sprite_get_yoffset(sprite)

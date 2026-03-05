@@ -1,0 +1,1 @@
+global.gui_nametag_called_last=false

@@ -35,8 +35,9 @@ level_shadow_offset_x = 3
 level_shadow_offset_y = -3
 shadow_offset = 3
 
-
-
+coin_offset_x=710
+coin_offset_y=52
+coin_sprite=spr_coin
 
 num_of_items_to_get = function(){
 	return floor(log2(level+1))+1
