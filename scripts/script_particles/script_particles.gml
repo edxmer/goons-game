@@ -1,4 +1,4 @@
-function particle_fly(_x,_y)
+function particle_fly(_x,_y,size=1)
 {
 //particle_fly
 
@@ -9,11 +9,11 @@ function particle_fly(_x,_y)
 	var _ptype1 = part_type_create();
 
 	part_type_sprite(_ptype1, spr_coin_small_touched, true, false, false)
-	part_type_size(_ptype1, 1, 2, 0, 0);
+	part_type_size(_ptype1, 1*size, 2*size, 0, 0);
 	part_type_scale(_ptype1, 1,1);
-	part_type_speed(_ptype1, 1, 2, -1, 3.9);
+	part_type_speed(_ptype1, 1*size, 2*size, -1*size, 3.9*size);
 	part_type_direction(_ptype1, 156, 10, 1.1, 20);
-	part_type_gravity(_ptype1, 0.5, 86);
+	part_type_gravity(_ptype1, 0.5*size, 86);
 	part_type_orientation(_ptype1, 0, 0, 0, 4, false);
 	part_type_colour3(_ptype1, $FFFFFF, $FFFFFF, $FFFFFF);
 	part_type_alpha3(_ptype1, 1, 1, 0);

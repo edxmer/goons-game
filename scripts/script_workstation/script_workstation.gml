@@ -203,10 +203,10 @@ function workstation_tags_contain(station_id,tag)
 
 
 function work_station_data_get(station_id){
-	var work_station_data={tags:[],name:"empty",primordeal_goo:false,third:false,destroy_after:-1,
+	var work_station_data={tags:[],npc_room_data:{},name:"empty",primordeal_goo:false,third:false,destroy_after:-1,
 		station_id:"empty",craft_sound:"empty",summon_sound:"empty",texture:spr_empty,
 		grow_stage_timer:[0,0],grown_up_event:[],growth_index:0,grow_stage_sprites:[],
-		spawning:false,crafting:false,growing:false,craft_input_pool_tags:[],craft_reward_pool:[],spawn_item_pool:[],
+		spawning:false,crafting:false,growing:false,npc_place:false,craft_input_pool_tags:[],craft_reward_pool:[],spawn_item_pool:[],
 		spawn_timer_sec:[0,0]}
 	work_station_data.station_id=station_id
 	work_station_data.name=string_upper(string_copy(station_id,1,1))+ string_replace_all(string_copy(station_id,2,string_length(station_id)-1),"_"," ")
@@ -239,6 +239,33 @@ function work_station_data_get(station_id){
 		work_station_data.summon_sound="groundsoft"
 		work_station_data.spawn_item_pool=["banana","sock"]
 		work_station_data.spawn_timer_sec=[10,20]
+	}
+	if station_id=="crop_seller"
+	{
+		work_station_data.texture=spr_crop_seller
+		work_station_data.npc_place=true
+		work_station_data.npc_room_data=npc_room_data_get_base()
+		var npc=work_station_data.npc_room_data
+		npc.show_money=true
+		npc.show_npc=true
+		npc.npc_to_draw.sprite=spr_crop_seller_npc_gui
+		npc.npc_to_draw.sound="gloob"
+		npc.npc_to_draw.size=7
+		npc.returning_items_show={show:true,startx:250,starty:680,spacingx:50,spacingy:2,size:5,shadow:true}
+		npc.room_tiles=
+		[
+			npc_create_room_tile_data(spr_cropseller_plank,6,30,300),
+			npc_create_room_tile_data(spr_cropseller_plank,6,30,500),
+			npc_create_room_tile_data(spr_cropseller_ground,6,684,768),
+			npc_create_room_tile_data(spr_cropseller_box,6,30,700)
+		]
+		npc.offerings=
+		[
+			npc_create_offering_data("hoe",5,120,460,3),
+			npc_create_offering_data("corn_seeds",5,100,260,1),
+			npc_create_offering_data("turnip_seeds",5,230,264,1)
+		]
+		
 	}
 	else if station_id=="woodcutter"
 	{

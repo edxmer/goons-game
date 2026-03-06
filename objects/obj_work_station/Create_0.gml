@@ -1,13 +1,17 @@
 crafting=false
 spawning=false
 growing=false
-
+npc_place=false
 
 
 primordeal_goo=false
 eating_time=0
 eating_timer=0.5
 last_eaten_item_id="empty"
+
+npc_room_goto=room_npc_dialoge
+npc_room_data=global.npc_data
+
 
 
 name=""
@@ -127,6 +131,8 @@ assign=function()
 	crafting=station_data.crafting
 	spawning=station_data.spawning
 	growing=station_data.growing
+	npc_place=station_data.npc_place
+	npc_room_data=station_data.npc_room_data
 	
 	grow_stage_timer=station_data.grow_stage_timer
 	grown_up_event=station_data.grown_up_event

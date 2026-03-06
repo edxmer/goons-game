@@ -12,6 +12,9 @@ function get_sound_all()
 		groundsoft:[sound_item_ground_1,sound_item_ground_2],
 		swoosh:[sound_whoosh],
 		eat:[sound_eat_1,sound_eat_2],
+		buy:[sound_item_ground_1,sound_item_ground_2],
+		buy_refuse:[sound_buy_refuse],
+		gloob:[sound_gloob_1,sound_gloob_2],
 		freeze:[sound_freeze],
 		unfreeze:[sound_glass_break]
 

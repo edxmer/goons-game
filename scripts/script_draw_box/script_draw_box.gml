@@ -109,6 +109,8 @@ function draw_box_data_get_width_and_height(stringbox,effect_list,startx,starty,
 	return [needed_width,needed_height]
 }
 
+
+
 function draw_box_data_icon_and_value_gui(string_val,icon_spr,startx,starty,size,spacing_between,txspr=spr_textbox,text_mult=0.14)
 {
 	

@@ -44,12 +44,20 @@ global.special_zoom_done=false
 
 global.loaded_from_save=false
 
+global.save_the_game=false
+global.exit_to_main_menu=false
 global.last_selected_goon=noone
 
 global.is_hovering_gui = false
 global.gui_hovering = []
 
 global.camera_size=1
+
+global.npc_data=npc_room_data_get_base()
+
+global.npc_room_transfer_items=[]
+global.npc_room_workstation_id=noone
+
 
 special_objectives_init()
 //global.goon_count=0

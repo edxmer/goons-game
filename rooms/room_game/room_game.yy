@@ -15,6 +15,7 @@
     {"name":"inst_3232EE54","path":"rooms/room_game/room_game.yy",},
     {"name":"inst_51F54E75","path":"rooms/room_game/room_game.yy",},
     {"name":"inst_68D3C0C9","path":"rooms/room_game/room_game.yy",},
+    {"name":"inst_427E7DD","path":"rooms/room_game/room_game.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -44,6 +45,7 @@
         {"$GMRInstance":"v4","%Name":"inst_51F54E75","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_51F54E75","objectId":{"name":"obj_button_edit_selected_goon","path":"objects/obj_button_edit_selected_goon/obj_button_edit_selected_goon.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":144.0,"y":329.0,},
         {"$GMRInstance":"v4","%Name":"inst_2E69A7A0","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_2E69A7A0","objectId":{"name":"global_variables","path":"objects/global_variables/global_variables.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":28.009125,"scaleX":1.0,"scaleY":1.0,"x":0.0,"y":0.0,},
         {"$GMRInstance":"v4","%Name":"inst_68D3C0C9","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_68D3C0C9","objectId":{"name":"obj_button_pause_game","path":"objects/obj_button_pause_game/obj_button_pause_game.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1171.0,"y":870.0,},
+        {"$GMRInstance":"v4","%Name":"inst_427E7DD","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_427E7DD","objectId":{"name":"obj_handle_ingame_room_transfers","path":"objects/obj_handle_ingame_room_transfers/obj_handle_ingame_room_transfers.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":32.0,"y":0.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRTileLayer":"","%Name":"Tiles_extras","depth":600,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Tiles_extras","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":86,"SerialiseWidth":86,"TileCompressedData":[
           -159,-2147483648,1,7,-101,-2147483648,3,4,-2147483648,11,-17,-2147483648,1,3,-43,-2147483648,1,4,-25,

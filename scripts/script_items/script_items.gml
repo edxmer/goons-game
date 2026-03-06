@@ -1,7 +1,11 @@
-function draw_item(_x,_y,item_id,scale)
+function draw_item(_x,_y,item_id,scale,alpha=1,shadow=false)
 {
 	var sprite=item_get_sprite(item_id)
-	draw_sprite_ext(sprite,0,_x,_y,scale,scale,0,c_white,1)
+	if shadow
+	{
+		draw_shadow_param(_x,_y+scale*(sprite_get_bbox_bottom(sprite)-sprite_get_yoffset(sprite)),scale)
+	}
+	draw_sprite_ext(sprite,0,_x,_y,scale,scale,0,c_white,alpha)
 
 }
 
@@ -94,6 +98,10 @@ function item_move_from_collisions(_id,loop=1,collisions=[],donotdisturb=[])
 	}
 	for(var i=0;i<array_length(idlist);i++)
 	{
+		if array_length(idlist)>10
+		{
+			break
+		}
 		var amount=baseamount
 		
 		var otheritem=idlist[i]

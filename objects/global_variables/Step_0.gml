@@ -23,7 +23,7 @@ else
 
 if mouse_check_button_pressed(mb_middle) || ((keyboard_check_pressed(ord("S")) && keyboard_check(vk_control) ))
 {
-	create_save(global.open_save_name)
+	global.save_the_game=true
 
 }
 

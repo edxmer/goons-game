@@ -94,6 +94,7 @@ function get_edit_button_data(button_name)
 				with(_id)
 				{
 					put_down_item()
+					pickup_item_penalty=0
 					interact_function()
 				}
 			}

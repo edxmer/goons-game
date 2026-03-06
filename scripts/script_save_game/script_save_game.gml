@@ -470,7 +470,12 @@ function create_savestring_workstation_special(workstation_id)
 	
 	if workstation_id.growing
 	{
-		ret_text+=create_value_variable_dictionary_to_string("spawning_time",workstation_id.grow_stop)
+		
+		ret_text+=create_value_variable_dictionary_to_string("grow_stop",workstation_id.grow_stop)
+		+"-"
+		ret_text+=create_value_variable_dictionary_to_string("interact_destroy",workstation_id.interact_destroy)
+		+"-"
+		ret_text+=create_value_variable_dictionary_to_string("growth_index_reseted",workstation_id.growth_index_reseted)
 		+"-"
 		ret_text+=create_value_variable_dictionary_to_string("grow_time",workstation_id.grow_time)
 		+"-"
