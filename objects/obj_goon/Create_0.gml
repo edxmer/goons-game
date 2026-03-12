@@ -174,6 +174,14 @@ workstation_nearby_accepst_my_item =function(get_id_instead=false)
 
 }
 
+inventory_destroy=function()
+{
+	particle_summon_from_texture_multiple(x,y,inventory_sprite,6)
+	inventory_set_empty()
+
+}
+
+
 inventory_set_empty=function()
 {
 inventory="empty"
@@ -184,13 +192,13 @@ effect_update(id)
 goon_summon_item=function(item_id)
 {
 	sound_play_category_at("groundsoft",x,bbox_bottom)
-	create_item(irandom_range(x-5,x+5),irandom_range(y-5,bbox_bottom+3),item_id)
+	create_item(irandom_range(x-5,x+5),irandom_range(y-5,bbox_bottom+3),item_id,true)
 }
 
 goon_place_item_down_grid=function(item_id)
 {
 	sound_play_category_at("groundsoft",x,bbox_bottom)
-	create_item(clamp_to_grid_start( x),clamp_to_grid_start(bbox_bottom),item_id)
+	create_item(clamp_to_grid_start( x),clamp_to_grid_start(bbox_bottom),item_id,true)
 
 
 }

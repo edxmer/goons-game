@@ -59,6 +59,25 @@ if change_modifier_npc==0
 		}
 	}
 }
+if global.npc_data.active_quests_show.show
+{
+	var startcoords=global.npc_data.active_quests_show.topleft_coord
+	var yy=startcoords[1]
+	var size=global.npc_data.active_quests_show.size
+	for (var i=0;i<array_length(global.npc_data.active_quests);i++)
+	{
+
+		var ret=npc_draw_quest(global.npc_data.active_quests[i],startcoords[0],yy,size)
+		yy+=ret[1]+10*size
+		if ret[0]
+		{
+			hovering_text=global.npc_data.active_quests[i].name
+		}
+	}
+	
+
+
+}
 if global.npc_data.show_npc
 {
 	var spr=global.npc_data.npc_to_draw.sprite
@@ -104,10 +123,15 @@ if global.npc_data.show_money
 
 }
 
-if hovering_offering_item_id!="empty"
+if hovering_offering_item_id!="empty" || hovering_text!="empty"
 {
-	draw_nametag_gui(item_get_name(hovering_offering_item_id))
-	item_draw_box_datas(hovering_offering_item_id,device_mouse_x_to_gui(0)-8,device_mouse_y_to_gui(0)+65,3)
-
+	if hovering_text!="empty"
+	{
+		draw_nametag_gui(hovering_text)
+	}
+	else{
+		draw_nametag_gui(item_get_name(hovering_offering_item_id))
+		item_draw_box_datas(hovering_offering_item_id,device_mouse_x_to_gui(0)-8,device_mouse_y_to_gui(0)+65,3)
+	}
 
 }

@@ -101,11 +101,20 @@ function goons_get_closest_gooning(xx,yy){
 	
 }
 
-
+function goon_is_idle_any_item(_id)
+{
+	if _id.object_index==obj_goon{
+		if _id.gooning==false &&  abs(_id.goto_x-_id.x)<_id.goon_speed && abs(_id.goto_y-_id.y)<_id.goon_speed
+		{
+			return true
+		}
+	}
+	return false
+}
 function goon_is_idle(_id,items=["empty"])
 {
 	if _id.object_index==obj_goon{
-		if _id.gooning==false && array_contains(items,_id.inventory) && abs(_id.goto_x-_id.x)<_id.goon_speed && abs(_id.goto_y-_id.y)<_id.goon_speed
+		if array_contains(items,_id.inventory) && goon_is_idle_any_item(_id)
 		{
 			return true
 		}

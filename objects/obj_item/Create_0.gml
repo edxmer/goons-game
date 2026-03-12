@@ -8,7 +8,7 @@ name=""
 
 useful=false
 
-
+put_down_by_goon=false
 
 tags=[]
 

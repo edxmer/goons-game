@@ -58,6 +58,10 @@ global.npc_data=npc_room_data_get_base()
 global.npc_room_transfer_items=[]
 global.npc_room_workstation_id=noone
 
+global.npc_room_nearby_items=[]
+
+global.npc_room_transfer_items_to_destroy=[]
+
 
 special_objectives_init()
 //global.goon_count=0

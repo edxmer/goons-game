@@ -13,7 +13,7 @@ if primordeal_goo{
 		var max_kcal=0
 		for (var i=0;i<array_length(items_nearby);i++)
 		{
-			if items_nearby[i][1]>max_kcal
+			if items_nearby[i][1]>max_kcal && items_nearby[i][0].put_down_by_goon
 			{
 				max_kcal=items_nearby[i][1]
 				maxid=items_nearby[i][0]
@@ -169,6 +169,8 @@ if npc_place
 	{
 		global.npc_room_workstation_id=id
 		global.npc_data=npc_room_data
+		global.npc_room_nearby_items=get_nearby_item_ids()
+		global.npc_room_transfer_items_to_destroy=[]
 		goto_extension_room_main_menu(room_npc_dialoge)
 	
 	}

@@ -267,6 +267,35 @@ function work_station_data_get(station_id){
 		]
 		
 	}
+	else if station_id=="mystery_man"
+	{
+		work_station_data.texture=spr_mystery_man
+		work_station_data.npc_place=true
+		work_station_data.npc_room_data=npc_room_data_get_base()
+		var npc=work_station_data.npc_room_data
+		npc.show_money=true
+		npc.show_npc=true
+		npc.npc_to_draw.sprite=spr_mystery_man
+		npc.npc_to_draw.sound="gloob"
+		npc.npc_to_draw.size=7
+		npc.returning_items_show={show:true,startx:250,starty:680,spacingx:50,spacingy:2,size:5,shadow:true}
+		npc.room_tiles=
+		[
+			npc_create_room_tile_data(spr_cropseller_plank,6,30,300),
+			npc_create_room_tile_data(spr_cropseller_plank,6,30,500),
+			npc_create_room_tile_data(spr_cropseller_ground,6,684,768),
+			npc_create_room_tile_data(spr_cropseller_box,6,30,700)
+		]
+		npc.offerings=
+		[
+		]
+		npc.active_quests_show={show:true,topleft_coord:[100,200],size:3}
+		npc.active_quests=[
+		npc_create_quest("Quest 1","miau",["banana","banana","banana","logs"],function(){return true},[]),
+		npc_create_quest("Quest 2","miauddddddddddda aaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaaaaaa aaaaaaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaa",["banana","turnip","banana","logs"],function(){return true},[])
+		]
+		
+	}
 	else if station_id=="woodcutter"
 	{
 		work_station_data.texture=spr_workstation_woodcutter

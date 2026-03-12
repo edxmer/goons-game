@@ -229,6 +229,12 @@ get_nearby_item_ids=function(){
 			array_push(nearby_items,item_id)
 		}
 	}
+	with (obj_goon){
+		if goon_is_idle_any_item(id) && inventory!="empty" && point_in_rectangle(x,y,x_min,y_min,x_max,y_max)
+		{
+			array_push(nearby_items,inventory)
+		}
+	}
 	return nearby_items
 }
 
@@ -236,10 +242,21 @@ item_destroy_nearby=function(item_id_delete)
 {
 	if !is_string(item_id_delete) && instance_exists(item_id_delete) && item_id_delete.object_index==obj_item
 	{
-		with (item_id_delete)
+		if item_id_delete.object_index==obj_item
 		{
-		item_send_particles(id)
-		instance_destroy()
+			with (item_id_delete)
+			{
+			
+				item_send_particles(id)
+				instance_destroy()
+			}
+		}
+		else if item_id_delete.object_index==obj_goon
+		{
+			with item_id_delete
+			{
+				inventory_destroy()
+			}
 		}
 		return
 	}
@@ -258,6 +275,21 @@ item_destroy_nearby=function(item_id_delete)
 				instance_destroy()
 			}
 		}
+	}
+	if !deleted
+	{
+		with(obj_goon)
+		{
+			if point_in_rectangle(x,y,x_min,y_min,x_max,y_max)
+			{
+				if !deleted && inventory==item_id_delete && !item_tags_contains(inventory,"persistent")
+				{
+					inventory_destroy()
+					deleted=true
+				}
+			}
+		}
+	
 	}
 
 }

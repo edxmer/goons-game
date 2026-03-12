@@ -39,10 +39,12 @@ function item_id_summon_particles_less(item_id,xx,yy)
 	particle_summon_from_texture_multiple(xx,yy,item_get_sprite(item_id),irandom_range(1,2))
 }
 
-function create_item(_x,_y,item_id)
+function create_item(_x,_y,item_id,put_down_by_goon=false)
 {
 	var item=instance_create_depth(_x,_y,depth,obj_item)
 	item.item_id=item_id
+	item.put_down_by_goon=put_down_by_goon
+	return item
 }
 
 
@@ -239,8 +241,7 @@ function assign_item(item_id){
 				goon_id.blue=true
 			
 				sound_play_category_at("eat",goon_id.x,goon_id.y)
-				particle_summon_from_texture_multiple(goon_id.x,goon_id.y,goon_id.inventory_sprite,6)
-				goon_id.inventory_set_empty()
+				goon_id.inventory_destroy()
 			}
 		
 		}
@@ -255,8 +256,7 @@ function assign_item(item_id){
 		{
 			goon_id.verboseness=0
 			sound_play_category_at("eat",goon_id.x,goon_id.y)
-			particle_summon_from_texture_multiple(goon_id.x,goon_id.y,goon_id.inventory_sprite,6)
-			goon_id.inventory_set_empty()
+			goon_id.inventory_destroy()
 		
 		}
 		item_data.calories=12
