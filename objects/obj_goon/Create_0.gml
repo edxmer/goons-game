@@ -52,6 +52,7 @@ step_distance=goon_speed*0.3
 
 inventory="empty"
 inventory_sprite=spr_empty
+inventory_subimg=0
 has_effects=false
 active_effect_list=[]
 effect_init(id)
@@ -93,7 +94,7 @@ goon_pickup_item=function(item,replace=false)
 	if (inventory=="empty" ) || replace{
 		inventory=item
 		if inventory!="empty"{
-			inventory_sprite=assign_item(inventory).texture
+			inventory_sprite=item_get_held_sprite(inventory)
 			sound_play_category_at("pickup",x,y)
 			effect_update(id)
 			return true

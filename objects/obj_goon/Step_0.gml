@@ -147,6 +147,10 @@ got_new_directions=false
 use_item=false
 gridmode_use_item=false
 
+if inventory!="empty"
+{
+	inventory_subimg=floor((current_time / 1000) * sprite_get_speed(inventory_sprite)) % sprite_get_number(inventory_sprite)
+}
 
 if dumb && goto_list_changed
 {

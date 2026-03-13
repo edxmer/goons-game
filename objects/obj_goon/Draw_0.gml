@@ -18,10 +18,10 @@ if gooning{
 		draw_sprite_ext(equipment_sprite_draw,image_index,x,real_y+1,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 	}
 	if inventory!="empty"{
-		draw_sprite_ext(inventory_sprite,image_index,x+1,real_y-12,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
-		draw_sprite_ext(inventory_sprite,image_index,x-1,real_y-12,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
-		draw_sprite_ext(inventory_sprite,image_index,x,real_y-11,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
-		draw_sprite_ext(inventory_sprite,image_index,x,real_y-13,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+		draw_sprite_ext(inventory_sprite,inventory_subimg,x+1,real_y-12,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+		draw_sprite_ext(inventory_sprite,inventory_subimg,x-1,real_y-12,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+		draw_sprite_ext(inventory_sprite,inventory_subimg,x,real_y-11,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+		draw_sprite_ext(inventory_sprite,inventory_subimg,x,real_y-13,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 		
 	}
 
@@ -35,5 +35,5 @@ if equipment!="empty"{
 
 if inventory!="empty"{
 
-	draw_sprite_ext(inventory_sprite,0,x,real_y-12,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+	draw_sprite_ext(inventory_sprite,inventory_subimg,x,real_y-12,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 }

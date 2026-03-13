@@ -4,6 +4,18 @@ if !assigned
 	useful=useful_function()
 }
 
+if turn_into_object
+{
+	turn_after-=delta_time/1000000
+	if turn_after<=0
+	{
+		instance_create_depth(x,y,0,turn_into)
+		instance_destroy()
+	}
+
+}
+
+
 if size<1
 {
 	size+=0.08

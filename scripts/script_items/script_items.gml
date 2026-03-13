@@ -14,6 +14,11 @@ function item_get_sprite(item_id)
 	return assign_item(item_id).texture
 }
 
+function item_get_held_sprite(item_id)
+{
+	return assign_item(item_id).held_texture
+}
+
 function item_get_name(item_id)
 {
 	return assign_item(item_id).name
@@ -28,15 +33,18 @@ function item_send_particles(_id_of_item)
 		}
 	}
 }
-
+function item_get_particle_sprite(item_id)
+{
+	return assign_item(item_id).particle_texture
+}
 function item_id_summon_particles(item_id,xx,yy)
 {
-	particle_summon_from_texture_multiple(xx,yy,item_get_sprite(item_id),irandom_range(6,8))
+	particle_summon_from_texture_multiple(xx,yy,item_get_particle_sprite(item_id),irandom_range(6,8))
 }
 
 function item_id_summon_particles_less(item_id,xx,yy)
 {
-	particle_summon_from_texture_multiple(xx,yy,item_get_sprite(item_id),irandom_range(1,2))
+	particle_summon_from_texture_multiple(xx,yy,item_get_particle_sprite(item_id),irandom_range(1,2))
 }
 
 function create_item(_x,_y,item_id,put_down_by_goon=false)
@@ -162,7 +170,7 @@ function item_move_from_collisions(_id,loop=1,collisions=[],donotdisturb=[])
  * @returns {struct} 
  */
 function assign_item(item_id){
-	var item_data={texture:spr_empty,item_id:"empty",name:"empty",tags:[],calories:0,special_data:{}}
+	var item_data={texture:spr_empty,item_id:"empty",name:"empty",tags:[],calories:0,particle_texture:spr_empty,held_texture:spr_empty,special_data:{}}
 	item_data.item_id=item_id
 	item_data.name=string_upper(string_copy(item_id,1,1))+ string_replace_all(string_copy(item_id,2,string_length(item_id)-1),"_"," ")
 	array_push(item_data.tags,item_id)
@@ -351,6 +359,15 @@ function assign_item(item_id){
 			return gridmode_check_ground_hitboxes_fromtop(xx,yy,sprite) && gridmode_check_workstation_hitboxes_fromtop(xx,yy,sprite)
 		}
 	}
+	else if item_id=="wloob_confused"{
+		item_data.name="Confused Wloob"
+		item_data.special_data.enemy_data={turn_back:true,turn_after:5,turn_into:obj_enemy_wloob}
+		item_data.texture=spr_wloob_confused
+		item_data.held_texture=spr_wloob_caught
+		item_data.particle_texture=spr_wloob_particle
+		array_push(item_data.tags,"enemy")
+		item_data.calories=16
+	}
 	if item_id=="goon_blue"{
 		item_data.texture=spr_goon_blue
 		array_push(item_data.tags,"unpickuppable")
@@ -396,6 +413,19 @@ function assign_item(item_id){
 		item_data.calories=1
 	}
 	
+	
+	
+	
+	
+	if item_data.held_texture==spr_empty
+	{
+		item_data.held_texture=item_data.texture
+	}
+	
+	if item_data.particle_texture==spr_empty
+	{
+		item_data.particle_texture=item_data.texture
+	}
 	return item_data
 }
 
@@ -467,7 +497,8 @@ function item_special_data_get(item_id,special_data_name)
 
 function pickup_item(px,py,pickup_distance=35)
 {
-	var items=[]
+	var items=pickuppable_enemies(px,py,pickup_distance)
+	
 	with(obj_item)
 	{
 		if !(array_contains(tags,"danger") &&global.goon_count==1){
@@ -479,7 +510,7 @@ function pickup_item(px,py,pickup_distance=35)
 				dist-=8
 			}
 			if dist<=pickup_distance && size>=1 && !array_contains(tags,"unpickuppable"){
-				array_push(items,[id,dist,item_id])
+				array_push(items,[id,dist,item_id,"item"])
 			}
 		}
 	}
@@ -499,7 +530,14 @@ function pickup_item(px,py,pickup_distance=35)
 	}
 	
 	var min_dist_item=items[current_min]
-	item_picked_up(min_dist_item[0])
+	if min_dist_item[3]=="item"
+	{
+		item_picked_up(min_dist_item[0])
+	}
+	else
+	{
+		enemy_picked_up(min_dist_item[0])
+	}
 	return min_dist_item[2]
 }
 

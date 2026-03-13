@@ -67,7 +67,7 @@ if global.npc_data.active_quests_show.show
 	for (var i=0;i<array_length(global.npc_data.active_quests);i++)
 	{
 
-		var ret=npc_draw_quest(global.npc_data.active_quests[i],startcoords[0],yy,size)
+		var ret=npc_draw_quest(global.npc_data.active_quests[i],startcoords[0],yy,size*(1-change_mod))
 		yy+=ret[1]+10*size
 		if ret[0]
 		{

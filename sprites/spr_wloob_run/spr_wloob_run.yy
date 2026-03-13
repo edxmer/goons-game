@@ -28,8 +28,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"npcs",
-    "path":"folders/SPRITES/npcs.yy",
+    "name":"wloob",
+    "path":"folders/SPRITES/enemies/wloob.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

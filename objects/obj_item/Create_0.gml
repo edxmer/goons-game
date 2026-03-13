@@ -12,6 +12,10 @@ put_down_by_goon=false
 
 tags=[]
 
+turn_into_object=false
+turn_into=obj_item
+turn_after=0
+
 sprite_index=spr_empty
 item_id="empty"
 assigned=false
@@ -24,12 +28,27 @@ assign=function(){
 	var item_data=assign_item(item_id)
 	sprite_index=item_data.texture
 	tags=item_data.tags
+	
+	if array_contains(tags,"enemy")
+	{
+		if item_special_data_contains(item_id,"enemy_data")
+		{
+			var enemy_data=item_special_data_get(item_id,"enemy_data")
+			if variable_instance_exists(enemy_data,"turn_back") && enemy_data.turn_back
+			{
+				turn_into_object=true
+				turn_after=enemy_data.turn_after 
+				turn_into=enemy_data.turn_into
+				
+			}
+		}
+	}
 	name=item_data.name
 	if sprite_index==spr_empty
 	{
 		instance_destroy()
 	}
-
+	
 }
 
 useful_function=function()

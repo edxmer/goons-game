@@ -100,6 +100,8 @@ function effect_get_sprite(effect)
 		return spr_effect_blue
 		case "dumb":
 		return spr_effect_dumb
+		case "enemy":
+		return spr_effect_enemy
 		default:
 		return spr_empty
 	}

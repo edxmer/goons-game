@@ -29,3 +29,9 @@ function draw_text_ext_transformed_bold(xx,yy,_string,sep,w,xscale,yscale,ange)
 	draw_text_ext_transformed(xx+0.1*xscale,yy,_string,sep,w,xscale,yscale,ange)
 	draw_text_ext_transformed(xx-0.1*xscale,yy,_string,sep,w,xscale,yscale,ange)
 }
+
+
+function one_or_minus_one()
+{
+	return irandom_range(0,1)*2-1
+}

@@ -175,8 +175,14 @@ function handle_value_from_savestring(savestring,_layer=0)
 	
 	else if type=="NUM"
 	{
+		if strval==""
+		{
+			value=0
+		}
+		else
+		{
 		value=real(strval)
-	
+		}
 	}
 	else if type=="SPRITE"
 	{
@@ -319,9 +325,89 @@ function create_save(fname){
 	{
 		file_text_write_string(fileid,create_savestring_item(id))
 	}
+	file_text_write_string(fileid,"$enemies\n")
+	with(all)
+	{
+		if object_is_ancestor(id.object_index,obj_enemy_parent)
+		{
+			file_text_write_string(fileid,create_savestring_enemy(id))
+		}
+	}
 	file_text_close(fileid)
 	return true
 }
+function create_savestring_enemy_special(enemy_id)
+{
+	var ret_text=""
+	ret_text+=create_value_variable_dictionary_to_string("sprite_index",enemy_id.sprite_index)
+	+"-"
+	ret_text+=create_value_variable_dictionary_to_string("goto_x",enemy_id.goto_x)
+	+"-"
+	ret_text+=create_value_variable_dictionary_to_string("goto_y",enemy_id.goto_y)
+	+"-"
+	ret_text+=create_value_variable_dictionary_to_string("inventory",enemy_id.inventory)
+	+"-"
+	ret_text+=create_value_variable_dictionary_to_string("current_ai",enemy_id.current_ai)
+	+"-"
+	ret_text+=create_value_variable_dictionary_to_string("hp",enemy_id.hp)
+	+"-"
+	ret_text+=create_value_variable_dictionary_to_string("sprite",enemy_id.sprite)
+	+"-"
+	ret_text+=create_value_variable_dictionary_to_string("movement_speed_per_second",enemy_id.movement_speed_per_second)
+	+"-"
+	ret_text+=create_value_variable_dictionary_to_string("tags",enemy_id.tags)
+	+"-"
+	
+	return ret_text
+
+}
+function create_savestring_enemy(enemy_id)
+{
+	if !instance_exists(enemy_id) || !object_is_ancestor(enemy_id.object_index,obj_enemy_parent)
+	{
+		return ""
+	}
+	var text="enemy-"
+	
+	text+=object_get_name(object_index)+"-"
+	text+=string(enemy_id.x)+"_"+string(enemy_id.y)+"-"
+
+	text+=create_savestring_enemy_special(enemy_id)
+	text+="-\n"
+	return text
+}
+function handle_savestring_enemy(save_modules)
+{
+
+	if save_modules[0]!="enemy"
+	{
+		return false
+	}
+	var coords=string_split(save_modules[2],"_")
+	var _x=real(coords[0])
+	var _y=real(coords[1])
+	var obj_id= asset_get_index(save_modules[1])
+	
+
+	var enemy_id=create_enemy(_x,_y,obj_id)
+	
+
+	if array_length(save_modules)>=4
+	{
+		for(var i=3;i<array_length(save_modules);i++)
+		{
+			var module=save_modules[i]
+			if is_value_variable_dictionary(module)
+			{
+				handle_value_dict_id(enemy_id,module)
+			}
+		}
+	}
+	
+	
+	return true
+}
+
 
 function handle_savestring_goon(save_modules)
 {
@@ -553,6 +639,10 @@ function handle_saveline(save_modules)
 	else if save_modules[0]=="item"
 	{
 		handle_savestring_item(save_modules)
+	}
+	else if save_modules[0]=="enemy"
+	{
+		handle_savestring_enemy(save_modules)
 	}
 	else if save_modules[0]=="ground"
 	{

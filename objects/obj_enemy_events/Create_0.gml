@@ -1,0 +1,1 @@
+wloob_passive_timer=60
