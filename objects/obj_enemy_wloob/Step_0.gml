@@ -1,5 +1,22 @@
 event_inherited();
-
+if current_ai=="run_middle"
+{
+	sprite=spr_wloob_run
+	movement_modificator=1.2
+	locate_object=false
+	if goto_x<3
+	{
+		goto_x=(room_width/2)+irandom_range(-(room_width/4),(room_width/4))
+		goto_y=clamp(y+irandom_range(15,40)*one_or_minus_one(),10,750)
+	}
+	else
+	{
+		if not_moving()
+		{
+			current_ai="find_food"
+		}
+	}
+}
 if current_ai=="find_food"
 {
 	locate_object=false
@@ -18,7 +35,7 @@ if current_ai=="find_food"
 	}
 	else if timer1>0 && not_moving()
 	{
-		sprite_index=spr_wloob_idle
+		sprite=spr_wloob_idle
 		goto_x=x+irandom_range(10,20)*one_or_minus_one()
 		goto_y=y+irandom_range(10,20)*one_or_minus_one()
 	}
@@ -39,7 +56,7 @@ if current_ai=="fetch"
 	else
 	{
 		locate_object=true
-		sprite_index=spr_wloob_run
+		sprite=spr_wloob_run
 		
 		if point_distance(x,y,located_object.x,located_object.y)<=movement_speed_per_second*delta_time/500000
 		{
@@ -55,6 +72,7 @@ if current_ai=="pickup"
 	{
 		array_push(inventory,located_object.item_id)
 		instance_destroy(located_object)
+		sound_play_category_at("pickup",x,y)
 		current_ai="run_away"
 	}
 	else
@@ -82,13 +100,13 @@ if current_ai=="run_away"
 	
 	if array_length(inventory)==0
 	{
-		sprite_index=spr_wloob_run
+		sprite=spr_wloob_run
 		movement_modificator=1
 	
 	}
 	else
 	{
-		sprite_index=spr_wloob_run
+		sprite=spr_wloob_run
 		movement_modificator=1
 	}
 

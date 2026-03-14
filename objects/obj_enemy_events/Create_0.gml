@@ -1,1 +1,2 @@
-wloob_passive_timer=60
+wloob_passive_timer=2//global.enemy_passive_wloob_timer
+active_summon_timer=5

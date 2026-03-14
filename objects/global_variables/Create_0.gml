@@ -3,6 +3,10 @@ global.select_mode=false
 
 global.coins=0
 
+global.enemies_to_come=[]
+global.enemy_passive_wloob_timer=31.250
+
+
 global.gui_nametag_called_last=false
 
 global.current_calories=0

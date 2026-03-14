@@ -10,11 +10,12 @@ located_object=noone
 
 movement_speed_per_second=irandom_range(30,60)
 
-current_ai="find_food"
+current_ai="run_middle"
 size=random_range(1,1.5)
 pickup_tries=irandom_range(1,3)
 
 picked_up_script=function(){
+	
 	drop_inventory()
 	instance_destroy()
 }
