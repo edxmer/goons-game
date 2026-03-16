@@ -119,8 +119,8 @@ else
 
 real_x+=x_go//move_x*camera_speed*global.camera_size
 real_y+=y_go//move_y*camera_speed*global.camera_size
-real_x=clamp(real_x,0,room_width-cam_x_size)
-real_y=clamp(real_y,0,global.camera_room_height-cam_y_size)
+real_x=clamp(real_x,global.camera_top_left_x,global.camera_bot_right_x-cam_x_size)
+real_y=clamp(real_y,global.camera_top_left_y,global.camera_bot_right_y-cam_y_size)
 if !global.special_mode
 {
 bef_special_x=real_x
@@ -128,8 +128,8 @@ bef_special_y=real_y
 }
 x+=(real_x-x)/2
 y+=(real_y-y)/2
-x=clamp(x,0,room_width-cam_x_size)
-y=clamp(y,0,global.camera_room_height-cam_y_size)
+x=clamp(x,global.camera_top_left_x,global.camera_bot_right_x-cam_x_size)
+y=clamp(y,global.camera_top_left_y,global.camera_bot_right_y-cam_y_size)
 var cam_x=x
 var cam_y=y
 //camera_set_view_pos(cam,global.player.coordinates[0],global.player.coordinates[1])

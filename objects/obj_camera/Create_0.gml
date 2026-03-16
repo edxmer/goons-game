@@ -23,6 +23,12 @@ was_special_mode=false
 bef_special_x=x
 bef_special_y=x
 
+global.camera_top_left_x = 200
+global.camera_top_left_y = 200
+global.camera_bot_right_x = 1000
+global.camera_bot_right_y = 1000
+
+
 	camera_set_view_size(cam,width_base*global.camera_size,height_base*global.camera_size)
 
 mouse_go_percent=0//0.15

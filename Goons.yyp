@@ -290,6 +290,7 @@
     {"id":{"name":"spr_tileset_winter","path":"sprites/spr_tileset_winter/spr_tileset_winter.yy",},},
     {"id":{"name":"spr_turnip_seeds","path":"sprites/spr_turnip_seeds/spr_turnip_seeds.yy",},},
     {"id":{"name":"spr_turnip","path":"sprites/spr_turnip/spr_turnip.yy",},},
+    {"id":{"name":"spr_vignette","path":"sprites/spr_vignette/spr_vignette.yy",},},
     {"id":{"name":"spr_wear_antlers_idle","path":"sprites/spr_wear_antlers_idle/spr_wear_antlers_idle.yy",},},
     {"id":{"name":"spr_wear_antlers_walk","path":"sprites/spr_wear_antlers_walk/spr_wear_antlers_walk.yy",},},
     {"id":{"name":"spr_wear_ball_and_chain_idle","path":"sprites/spr_wear_ball_and_chain_idle/spr_wear_ball_and_chain_idle.yy",},},
