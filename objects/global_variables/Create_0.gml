@@ -1,6 +1,8 @@
 global.cam={}
 global.select_mode=false
 
+
+
 global.coins=0
 
 global.enemies_to_come=[]
