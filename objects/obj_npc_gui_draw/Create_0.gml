@@ -19,7 +19,9 @@ change_modifier_npc_second=change_modifier_npc_max>>2
 hovering_offering_index=-1
 hovering_offering_item_id="empty"
 hovering_offering_textbox_sprite=-1
+hovering_text="empty"
 
+hovering_quest_index=-1
 
 npc_draw_x=1000
 npc_draw_y=420

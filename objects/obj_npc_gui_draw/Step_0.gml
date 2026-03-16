@@ -23,8 +23,18 @@ if coin_shake_meter>0
 hovering_offering_index=hovering_offering_textbox_sprite
 hovering_offering_item_id="empty"
 hovering_text="empty"
-
+if global.npc_data.active_quests_show.show && hovering_quest_index!=-1
+{
+	var quest=global.npc_data.active_quests[hovering_quest_index]
+	if  mouse_check_button_pressed(mb_left) && npc_evaluate_quest(quest)
+	{
+		npc_accept_quest(quest)
+		array_delete(global.npc_data.active_quests,hovering_quest_index,1)
+	}
+}
 hovering_quest_index=-1
+
+
 if hovering_offering_textbox_sprite!=-1
 {
 	hovering_offering_item_id=global.npc_data.offerings[hovering_offering_textbox_sprite].item_id

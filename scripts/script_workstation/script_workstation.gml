@@ -251,7 +251,7 @@ function work_station_data_get(station_id){
 		npc.npc_to_draw.sprite=spr_crop_seller_npc_gui
 		npc.npc_to_draw.sound="gloob"
 		npc.npc_to_draw.size=7
-		npc.returning_items_show={show:true,startx:250,starty:680,spacingx:50,spacingy:2,size:5,shadow:true,clampx:50*5*12,clampy:-1}
+		npc.returning_items_show={show:true,startx:250,starty:610,spacingx:50,spacingy:2,size:5,shadow:true,clampx:50*5*12,clampy:-1}
 		npc.room_tiles=
 		[
 			npc_create_room_tile_data(spr_cropseller_plank,6,30,300),
@@ -278,10 +278,12 @@ function work_station_data_get(station_id){
 		npc.npc_to_draw.sprite=spr_mystery_man
 		npc.npc_to_draw.sound="gloob"
 		npc.npc_to_draw.size=7
-		npc.nearby_items_show={show:true,startx:250,starty:680,spacingx:50,spacingy:5,size:5,shadow:true,clampx:(50)*12,clampy:-1}
+		npc.nearby_items_show={show:true,startx:800,starty:330,spacingx:50,spacingy:5,size:5,shadow:true,clampx:(50)*5,clampy:-1}
+		npc.returning_items_show={show:true,startx:250,starty:610,spacingx:50,spacingy:2,size:5,shadow:true,clampx:50*5*12,clampy:-1}
+		
 		npc.room_tiles=
 		[
-			npc_create_room_tile_data(spr_cropseller_plank,6,30,300),
+			npc_create_room_tile_data(spr_mystery_man_brougth_items,6,750,190),
 			npc_create_room_tile_data(spr_cropseller_plank,6,30,500),
 			npc_create_room_tile_data(spr_cropseller_ground,6,684,768),
 			npc_create_room_tile_data(spr_cropseller_box,6,30,700)
@@ -291,7 +293,7 @@ function work_station_data_get(station_id){
 		]
 		npc.active_quests_show={show:true,topleft_coord:[100,200],size:3}
 		npc.active_quests=[
-		npc_create_quest("Quest 1","miau",["banana","banana","banana","logs"],function(){return true},[]),
+		npc_create_quest("Quest 1","miau",["turnip"],function(){return true},["ball_and_chain"]),
 		npc_create_quest("Quest 2","miauddddddddddda aaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaaaaaa aaaaaaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaa",["banana","turnip","banana","logs"],function(){return true},[])
 		]
 		

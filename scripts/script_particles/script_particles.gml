@@ -32,6 +32,7 @@ function particle_fly(_x,_y,size=1)
 }
 
 
+
 function particle_summon_from_texture_one(xx,yy,sprite){
 	xx-=sprite_get_xoffset(sprite)
 	yy-=sprite_get_yoffset(sprite)

@@ -71,6 +71,7 @@ if global.npc_data.active_quests_show.show
 		yy+=ret[1]+10*size
 		if ret[0]
 		{
+			hovering_quest_index=i
 			hovering_text=global.npc_data.active_quests[i].name
 		}
 	}
