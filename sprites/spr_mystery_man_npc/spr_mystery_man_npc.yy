@@ -30,8 +30,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"npcs",
-    "path":"folders/SPRITES/npcs.yy",
+    "name":"room_mytery_man",
+    "path":"folders/SPRITES/npcs/room_mytery_man.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

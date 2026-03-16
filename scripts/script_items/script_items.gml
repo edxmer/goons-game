@@ -1,11 +1,17 @@
-function draw_item(_x,_y,item_id,scale,alpha=1,shadow=false)
+function draw_item(_x,_y,item_id,scale,alpha=1,shadow=false,animated=false)
 {
+	var im_index=0
 	var sprite=item_get_sprite(item_id)
+	if animated
+	{
+		im_index=floor((current_time / 1000) * sprite_get_speed(sprite)) % sprite_get_number(sprite)
+	}
+
 	if shadow
 	{
 		draw_shadow_param(_x,_y+scale*(sprite_get_bbox_bottom(sprite)-sprite_get_yoffset(sprite)),scale)
 	}
-	draw_sprite_ext(sprite,0,_x,_y,scale,scale,0,c_white,alpha)
+	draw_sprite_ext(sprite,im_index,_x,_y,scale,scale,0,c_white,alpha)
 
 }
 

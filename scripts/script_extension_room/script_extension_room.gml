@@ -129,6 +129,7 @@ function npc_create_room_tile_data(sprite_id,size,x_coord,y_coord)
 
 
 }
+
 function npc_room_data_get_base()
 {
 	var data={show_money:false,
@@ -136,12 +137,74 @@ function npc_room_data_get_base()
 		npc_to_draw:{sprite:spr_crop_seller,size:4,sound:"empty"},
 		offerings:[npc_create_offering_data_base()],
 		room_tiles:[npc_create_room_tile_data_base()],
-		returning_items_show:{show:true,startx:0,starty:0,spacingx:0,spacingy:0,size:1,shadow:true},
+		returning_items_show:npc_get_base_item_show_struct(),
+		nearby_items_show:npc_get_base_item_show_struct(),
 		active_quests_show:{show:false,topleft_coord:[0,0],size:2},
 		active_quests:[]
 		
 		
 		}
 	return data
+
+}
+
+function npc_get_base_item_show_struct()
+{
+	var array={show:true,startx:0,starty:0,spacingx:0,spacingy:0,size:1,shadow:true,clampx:-1,clampy:-1}
+	return array
+}
+
+function npc_show_item_array(how,item_datas,do_outline=false)
+{
+	var out="empty"
+	var dt=how
+	var startx=dt.startx
+	var starty=dt.starty
+	var size=dt.size
+	var spacingx=dt.spacingx
+	var spacingy=dt.spacingy
+	var shadow=dt.shadow
+	var done_outline=true
+	if do_outline
+	{
+		done_outline=false
+	}
+	for (var i=0;i<array_length(item_datas);i++)
+	{
+		if do_outline && !done_outline
+		{
+
+			if point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),startx-8*size,starty-8*size,startx+8*size,starty+8*size)
+			{
+				
+				out=item_datas[i]
+				done_outline=true
+				gpu_set_fog(true,c_white,0,0)
+				draw_item(startx+1*size,starty,item_datas[i],size,1,false,true)
+				draw_item(startx-1*size,starty,item_datas[i],size,1,false,true)
+				draw_item(startx,starty+1*size,item_datas[i],size,1,false,true)
+				draw_item(startx,starty-1*size,item_datas[i],size,1,false,true)
+				gpu_set_fog(false,c_white,0,0)
+			}
+		}
+		draw_item(startx,starty,item_datas[i],size,1,shadow,true)
+		startx+=spacingx
+		starty+=spacingy
+		if dt.clampx>=0
+		{
+			if startx>=dt.clampx
+			{
+				startx=dt.startx
+			}
+		}
+		if dt.clampy>=0
+		{
+			if startx>=dt.clampy
+			{
+				starty=dt.starty
+			}
+		}
+	}
+	return out
 
 }

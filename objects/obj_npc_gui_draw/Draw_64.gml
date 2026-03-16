@@ -90,20 +90,22 @@ if global.npc_data.show_npc
 
 
 }
+if global.npc_data.nearby_items_show.show{
+	var dt=global.npc_data.nearby_items_show
+	var output=npc_show_item_array(dt,global.npc_room_nearby_items,true)
+	if output!="empty"
+	{
+		hovering_offering_item_id=output
+	}
+}
 if global.npc_data.returning_items_show.show{
 	var dt=global.npc_data.returning_items_show
-	var startx=dt.startx
-	var starty=dt.starty
-	var size=dt.size
-	var spacingx=dt.spacingx
-	var spacingy=dt.spacingy
-	var shadow=dt.shadow
-	for (var i=0;i<array_length(returning_items);i++)
+	var output=npc_show_item_array(dt,returning_items,true)
+	if output!="empty"
 	{
-		draw_item(startx,starty,returning_items[i],size,1,shadow)
-		startx+=spacingx
-		starty+=spacingy
+		hovering_offering_item_id=output
 	}
+
 }
 
 
