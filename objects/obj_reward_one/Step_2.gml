@@ -35,6 +35,6 @@ if selected && mouse_check_button_pressed(mb_left) && global.reward_mode
 	else if type=="item"
 	{
 		create_item(room_width>>1,(global.room_height>>1)+40,reward_id)
-		sound_play_category_at("groundsoft",room_width>>1,(global.room_height>>1)+40)
+		sound_play_category_at(item_get_ground_sound(reward_id),room_width>>1,(global.room_height>>1)+40)
 	}
 }

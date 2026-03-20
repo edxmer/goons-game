@@ -275,27 +275,56 @@ function work_station_data_get(station_id){
 		var npc=work_station_data.npc_room_data
 		npc.show_money=true
 		npc.show_npc=true
-		npc.npc_to_draw.sprite=spr_mystery_man
-		npc.npc_to_draw.sound="gloob"
+		npc.npc_to_draw.sprite=spr_mystery_man_npc
+		npc.npc_to_draw.sound="bloog"
 		npc.npc_to_draw.size=7
-		npc.nearby_items_show={show:true,startx:800,starty:330,spacingx:50,spacingy:5,size:5,shadow:true,clampx:(50)*5,clampy:-1}
+		npc.nearby_items_show={show:true,startx:870,starty:250,spacingx:51,spacingy:4,size:5,shadow:true,clampx:(50)*9,clampy:-1}
 		npc.returning_items_show={show:true,startx:250,starty:610,spacingx:50,spacingy:2,size:5,shadow:true,clampx:50*5*12,clampy:-1}
 		
 		npc.room_tiles=
 		[
-			npc_create_room_tile_data(spr_mystery_man_brougth_items,6,750,190),
-			npc_create_room_tile_data(spr_cropseller_plank,6,30,500),
-			npc_create_room_tile_data(spr_cropseller_ground,6,684,768),
+			npc_create_room_tile_data(spr_cropseller_ground,6,684,748),
+			npc_create_room_tile_data(spr_mystery_man_brougth_items,6,750,170),
+			npc_create_room_tile_data(spr_mystery_man_board,6,10,140),
 			npc_create_room_tile_data(spr_cropseller_box,6,30,700)
 		]
 		npc.offerings=
 		[
 		]
-		npc.active_quests_show={show:true,topleft_coord:[100,200],size:3}
+		npc.active_quests_show={show:true,topleft_coord:[120,200],size:3}
 		npc.active_quests=[
-		npc_create_quest("Quest 1","miau",["turnip"],function(){return true},["ball_and_chain"]),
-		npc_create_quest("Quest 2","miauddddddddddda aaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaaaaaa aaaaaaaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaa",["banana","turnip","banana","logs"],function(){return true},[])
+		npc_create_quest("Dinner","Satiate my drooling desire for a Turnip.",["turnip"],function(){return true},["ball_and_chain","fly_hive"]),
+		npc_create_quest("Pest Control","These nuisances are driving me insane, bring them to me.",["wloob_confused","wloob_confused","wloob_confused"],function(){return true},["candy","fly_hive"])
 		]
+		
+	}
+	else if station_id=="brewery"
+	{
+		work_station_data.texture=spr_brewery
+		work_station_data.npc_place=true
+		work_station_data.npc_room_data=npc_room_data_get_base()
+		var npc=work_station_data.npc_room_data
+		npc.show_money=false
+		npc.show_npc=true
+		npc.npc_to_draw.sprite=spr_brewery_npc
+		npc.npc_to_draw.sound="murr"
+		npc.npc_to_draw.size=7
+		//npc.nearby_items_show={show:true,startx:870,starty:250,spacingx:51,spacingy:4,size:5,shadow:true,clampx:(50)*9,clampy:-1}
+		
+		npc.room_tiles_below=
+		[
+			npc_create_room_tile_data(spr_cropseller_ground,6,684,748),
+			npc_create_room_tile_data(spr_brewery_plank,7,0,200)
+		]
+		npc.offerings=
+		[
+		]
+		npc.active_quests_show={show:true,topleft_coord:[120,200],size:3}
+		npc.active_quests=[
+		]
+		npc.summoned_objects=[npc_create_object(obj_brewery_nearby_items,0,0),npc_create_object(obj_brewery_cauldron,300,400)]
+		
+		
 		
 	}
 	else if station_id=="woodcutter"
@@ -364,7 +393,7 @@ function work_station_data_get(station_id){
 	{
 		work_station_data.texture=spr_workstation_tree
 		work_station_data.spawning=true
-		work_station_data.summon_sound="groundsoft"
+		work_station_data.summon_sound="groundmedium"
 		work_station_data.spawn_item_pool=["logs"]
 		work_station_data.spawn_timer_sec=[20,40]
 		
@@ -386,7 +415,7 @@ function work_station_data_get(station_id){
 	{
 		work_station_data.texture=spr_workstation_construction
 		work_station_data.spawning=true
-		work_station_data.summon_sound="groundsoft"
+		work_station_data.summon_sound="groundmedium"
 		work_station_data.spawn_item_pool=["rock"]
 		work_station_data.spawn_timer_sec=[20,30]
 	}

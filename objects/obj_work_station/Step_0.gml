@@ -165,7 +165,7 @@ if growing && !grow_stop{
 
 if npc_place
 {
-	if selected && mouse_check_button_pressed(mb_left)
+	if selected && gooning_goons_count()=0 && mouse_check_button_pressed(mb_left)
 	{
 		global.npc_room_workstation_id=id
 		global.npc_data=npc_room_data

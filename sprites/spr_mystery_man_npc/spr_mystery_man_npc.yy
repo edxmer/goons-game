@@ -20,10 +20,12 @@
   "height":96,
   "HTile":false,
   "layers":[
+    {"$GMImageLayer":"","%Name":"dcaccb6c-379c-4b05-b720-a794012d8140","blendMode":0,"displayName":"Layer 6","isLocked":false,"name":"dcaccb6c-379c-4b05-b720-a794012d8140","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"9051b41b-36a5-413d-986a-8a78b67e1f12","blendMode":0,"displayName":"Layer 5","isLocked":false,"name":"9051b41b-36a5-413d-986a-8a78b67e1f12","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
     {"$GMImageLayer":"","%Name":"c035998b-9cdb-4338-8422-14b9c7ecf368","blendMode":0,"displayName":"Layer 2","isLocked":false,"name":"c035998b-9cdb-4338-8422-14b9c7ecf368","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"a56f99e3-620c-4302-b501-4d691115c41b","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"a56f99e3-620c-4302-b501-4d691115c41b","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"4aad429c-f76c-4008-998a-8e563b637b3c","blendMode":0,"displayName":"Layer 3","isLocked":false,"name":"4aad429c-f76c-4008-998a-8e563b637b3c","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
-    {"$GMImageLayer":"","%Name":"e9f81db5-df71-4d86-b168-35daff89003c","blendMode":0,"displayName":"Layer 4","isLocked":false,"name":"e9f81db5-df71-4d86-b168-35daff89003c","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"e9f81db5-df71-4d86-b168-35daff89003c","blendMode":0,"displayName":"Layer 4","isLocked":false,"name":"e9f81db5-df71-4d86-b168-35daff89003c","opacity":19.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"0cd55b92-522b-46e1-8021-1d0ca26109c1","blendMode":0,"displayName":"default","isLocked":false,"name":"0cd55b92-522b-46e1-8021-1d0ca26109c1","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
   ],
   "name":"spr_mystery_man_npc",

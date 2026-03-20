@@ -22,7 +22,9 @@
   "height":16,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"3ebb140a-4f47-4df2-ae4a-f71a589c3da6","blendMode":0,"displayName":"default","isLocked":false,"name":"3ebb140a-4f47-4df2-ae4a-f71a589c3da6","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"e2402974-e0b1-4bbf-9895-1895f7e5eb2f","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"e2402974-e0b1-4bbf-9895-1895f7e5eb2f","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"1f9ed1dc-54ce-45fd-b458-dde643dac630","blendMode":0,"displayName":"Layer 2","isLocked":false,"name":"1f9ed1dc-54ce-45fd-b458-dde643dac630","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"3ebb140a-4f47-4df2-ae4a-f71a589c3da6","blendMode":0,"displayName":"default","isLocked":false,"name":"3ebb140a-4f47-4df2-ae4a-f71a589c3da6","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
   ],
   "name":"spr_vignette",
   "nineSlice":null,

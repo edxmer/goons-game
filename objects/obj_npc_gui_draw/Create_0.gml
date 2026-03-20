@@ -25,3 +25,10 @@ hovering_quest_index=-1
 
 npc_draw_x=1000
 npc_draw_y=420
+
+for (var i=0;i<array_length(global.npc_data.summoned_objects);i++)
+{
+	var obj=npc_create_object_base()
+	obj=global.npc_data.summoned_objects[i]
+	instance_create_layer(obj.x,obj.y,"Instances_in_room",obj.obj)
+}

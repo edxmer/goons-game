@@ -35,3 +35,17 @@ function one_or_minus_one()
 {
 	return irandom_range(0,1)*2-1
 }
+
+function sprite_get_current_subimg(sprite)
+{
+	return floor((current_time / 1000) * sprite_get_speed(sprite)) % sprite_get_number(sprite)
+}
+
+function is_value_between(item,mmin,mmax)
+{
+	var minr=min(mmin,mmax)
+	var maxr=max(mmin,mmax)
+	return item>=minr && item<=maxr
+
+
+}

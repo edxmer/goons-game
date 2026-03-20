@@ -192,13 +192,13 @@ effect_update(id)
 
 goon_summon_item=function(item_id)
 {
-	sound_play_category_at("groundsoft",x,bbox_bottom)
+	sound_play_category_at(item_get_ground_sound(item_id),x,bbox_bottom)
 	create_item(irandom_range(x-5,x+5),irandom_range(y-5,bbox_bottom+3),item_id,true)
 }
 
 goon_place_item_down_grid=function(item_id)
 {
-	sound_play_category_at("groundsoft",x,bbox_bottom)
+	sound_play_category_at(item_get_ground_sound(item_id),x,bbox_bottom)
 	create_item(clamp_to_grid_start( x),clamp_to_grid_start(bbox_bottom),item_id,true)
 
 

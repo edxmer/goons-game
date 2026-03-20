@@ -72,7 +72,14 @@ if global.npc_data.active_quests_show.show
 		if ret[0]
 		{
 			hovering_quest_index=i
-			hovering_text=global.npc_data.active_quests[i].name
+			if ret[2]=="empty"
+			{
+				hovering_text=global.npc_data.active_quests[i].name
+			}
+			else
+			{
+				hovering_offering_item_id=ret[2]
+			}
 		}
 	}
 	

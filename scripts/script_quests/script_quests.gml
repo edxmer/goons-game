@@ -63,11 +63,12 @@ function npc_draw_quest(quest_struct,txx,tyy,size,px_width=170)
 {
 	var xx=txx
 	var yy=tyy
+	var item_selected="empty"
 	var spacing=5
 	var text_mult=0.25
 	var text_mult_sub=0.2
 	var space1=max(0.5*(spacing+12),string_height_ext(quest_struct.name,string_height(quest_struct.name)+spacing,px_width)*text_mult)
-	var space2=string_height_ext(quest_struct.subtext,string_height(quest_struct.subtext)+spacing,px_width*0.5)*text_mult_sub
+	var space2=string_height_ext(quest_struct.subtext,string_height(quest_struct.subtext)*text_mult_sub+spacing,px_width*0.5/(text_mult_sub*size))*text_mult_sub
 	var height=3*spacing+space1+space2
 	spacing*=size
 	var txt_texture=spr_textbox
@@ -94,12 +95,17 @@ function npc_draw_quest(quest_struct,txx,tyy,size,px_width=170)
 	yy+=space1+spacing
 
 	draw_set_font(fnt_nametag_subtext)
-	draw_text_ext_transformed(xx+spacing*2.5,yy+2*spacing,quest_struct.subtext,string_height(quest_struct.subtext),(( 0.7* px_width) / (text_mult_sub * size)),text_mult_sub*size,text_mult_sub*size,0)
+	draw_text_ext_transformed(xx+spacing*2.5,yy+2*spacing,quest_struct.subtext,string_height(quest_struct.subtext),(( 0.8* px_width) / (text_mult_sub * size)),text_mult_sub*size,text_mult_sub*size,0)
 	var ixx=xx+px_width*0.5*size+12*size*0.5
 	var iyy=tyy+12*size*0.5+spacing*0.75
+	var sizesmall=0.75
 	for (var i=0;i<array_length(quest_struct.required_items );i++)
 	{
-		draw_calories_objective(ixx,iyy,quest_struct.required_items[i],0,size*0.75)
+		draw_calories_objective(ixx,iyy,quest_struct.required_items[i],0,size*sizesmall)
+		if selected && point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),ixx-12*size*sizesmall,iyy-12*size*sizesmall,ixx+12*size*sizesmall,iyy+12*size*sizesmall)
+		{
+			item_selected=quest_struct.required_items[i]
+		}
 		ixx+=16*0.75*size+2*size
 		if ixx>xx+px_width*size-spacing-12*0.5*size
 		{
@@ -109,9 +115,14 @@ function npc_draw_quest(quest_struct,txx,tyy,size,px_width=170)
 	}
 	ixx=xx+px_width*0.5*size+14*size*0.5
 	iyy=tyy+space1+14*size*0.5+spacing*2.1
+	sizesmall=0.8
 	for (var i=0;i<array_length(quest_struct.reward_items );i++)
 	{
-		draw_calories_objective(ixx,iyy,quest_struct.reward_items[i],2,size*0.8)
+		draw_calories_objective(ixx,iyy,quest_struct.reward_items[i],2,size*sizesmall)
+		if selected && point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),ixx-12*size*sizesmall,iyy-12*size*sizesmall,ixx+12*size*sizesmall,iyy+12*size*sizesmall)
+		{
+			item_selected=quest_struct.reward_items[i]
+		}
 		ixx+=16*0.75*size+2*size
 		if ixx>xx+px_width*size-spacing-14*0.5*size
 		{
@@ -119,5 +130,5 @@ function npc_draw_quest(quest_struct,txx,tyy,size,px_width=170)
 			iyy+=16*0.75*size+2*size
 		}
 	}
-	return [selected,height*size]
+	return [selected,height*size,item_selected]
 }

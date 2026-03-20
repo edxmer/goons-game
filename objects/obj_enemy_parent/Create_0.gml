@@ -55,8 +55,9 @@ drop_inventory=function()
 {
 	for (var i=0;i<array_length(inventory);i++)
 	{
-		sound_play_category_at("groundsoft",x,y)
 		var item=inventory[i]
+		sound_play_category_at(item_get_ground_sound(item),x,y)
+		
 		create_item(x,y,item)
 	}
 }

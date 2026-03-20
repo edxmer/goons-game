@@ -2,7 +2,7 @@
   "$GMSprite":"v2",
   "%Name":"spr_cropseller_ground",
   "bboxMode":0,
-  "bbox_bottom":63,
+  "bbox_bottom":95,
   "bbox_left":0,
   "bbox_right":229,
   "bbox_top":32,
@@ -16,7 +16,7 @@
   ],
   "gridX":0,
   "gridY":0,
-  "height":64,
+  "height":96,
   "HTile":false,
   "layers":[
     {"$GMImageLayer":"","%Name":"1d6fdaf5-fc11-47bf-930a-5c93be6284cc","blendMode":0,"displayName":"default","isLocked":false,"name":"1d6fdaf5-fc11-47bf-930a-5c93be6284cc","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},

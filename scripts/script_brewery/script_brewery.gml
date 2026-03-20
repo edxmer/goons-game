@@ -1,0 +1,168 @@
+
+function sprite_get_colors(sprite)
+{
+    var _surf = surface_create(sprite_get_width(sprite), sprite_get_height(sprite));
+    surface_set_target(_surf);
+    draw_clear_alpha(c_black, 0);
+    draw_sprite(sprite, 0, 0, 0);
+    surface_reset_target();
+    
+    var _colors = ds_map_create();
+    for (var _y = 0; _y < sprite_get_height(sprite); _y++) {
+        for (var _x = 0; _x < sprite_get_width(sprite); _x++) {
+            var _col_ext = surface_getpixel_ext(_surf, _x, _y);
+
+                var _col = surface_getpixel(_surf, _x, _y);
+                _colors[? _col] = true;
+
+        }
+    }
+    
+    var carray = ds_map_keys_to_array(_colors);
+    ds_map_destroy(_colors);
+    surface_free(_surf);
+    return carray;
+}
+function sprite_get_average_color(sprite)
+{
+    var _surf = surface_create(sprite_get_width(sprite), sprite_get_height(sprite));
+    surface_set_target(_surf);
+    draw_clear_alpha(c_black, 0);
+    draw_sprite(sprite, 0, 0, 0);
+    surface_reset_target();
+    
+    var _col = c_black;
+    for (var _y = 0; _y < sprite_get_height(sprite); _y++) {
+        for (var _x = 0; _x < sprite_get_width(sprite); _x++) {
+            var _ext = surface_getpixel_ext(_surf, _x, _y);
+            if ((_ext >> 24) & 255 > 0) {
+                _col = _ext & $FFFFFF;
+                break;
+            }
+        }
+        if (_col != c_black) break;
+    }
+    
+    surface_free(_surf);
+    return _col;
+}
+function colors_blend(c1,c2)
+{
+	var red=(colour_get_red(c1)+colour_get_red(c2))/2
+	var blue=(colour_get_blue(c1)+colour_get_blue(c2))/2
+	var green=(colour_get_green(c1)+colour_get_green(c2))/2
+	return make_colour_rgb(red,green,blue)
+
+
+}
+
+
+
+function sprite_get_lightest_color(sprite)
+{
+	var c_base= #00BFF3
+	var colors=sprite_get_colors(sprite)
+	for (var i=0;i<array_length(colors);i++)
+	{
+		c_base=max(c_base,colors[i])
+	}
+	return c_base
+
+}
+function potion_get_recipe_empty()
+{
+	return {brew_into:"potion_empty",color: #FFBD3A , recipe:["corn_cob","corn_cob"],value:3}
+
+}
+
+function potion_set_recipe(potion,color,recipe,value)
+{
+	var rpotion=potion_get_recipe_empty()
+	rpotion.brew_into=potion
+	rpotion.color=color
+	rpotion.recipe=recipe
+	rpotion.value=value
+	return rpotion
+
+}
+
+function potion_get_recipes(type="all")
+{
+	
+	var rlist=[]
+	var curr="corn_syrup"
+	if type=="all" || type==curr
+	{
+		var potion=potion_set_recipe(curr,#FFBD3A,["corn_cob","corn_cob"],4)
+		array_push(rlist,potion)
+	}
+	curr="potion_of_mute"
+	if type=="all" || type==curr
+	{
+		var potion=potion_set_recipe(curr,#C96EEA,["sock","rock"],2)
+		array_push(rlist,potion)
+	}
+	curr="corn_seeds"
+	if type=="all" || type==curr
+	{
+		var potion=potion_set_recipe(curr,#EDE138,["corn_cob","hoe"],3)
+		array_push(rlist,potion)
+	}
+	curr="turnip_seeds"
+	if type=="all" || type==curr
+	{
+		var potion=potion_set_recipe(curr,#EF75DD,["turnip","hoe"],3)
+		array_push(rlist,potion)
+	}
+	
+	
+	
+	
+	
+	
+	
+	return rlist
+
+}
+
+
+function current_ingredients_push(ingredients,item_id)
+{
+	var tags=item_get_tags(item_id)
+	for (var i=0;i<array_length(tags);i++)
+	{
+		array_push(ingredients,tags[i])
+	
+	}
+
+	return ingredients
+}
+
+
+function ingredients_evaluate(ingredients,current_value,current_potion,current_color,recipes=[])
+{
+	var rec_real=recipes
+	if array_length(recipes)==0
+	{
+		rec_real=potion_get_recipes("all")
+	}
+	var real_value=current_value
+	var brew_into=current_potion
+	var color=current_color
+	for (var i=0;i<array_length(rec_real);i++)
+	{
+		
+		var recipe=rec_real[i]
+		if recipe.value>current_value && is_subset(ingredients,recipe.recipe)
+		{
+			
+			brew_into=recipe.brew_into
+			real_value=recipe.value
+			color=recipe.color
+		}
+		
+		
+	}
+	
+	return potion_set_recipe(brew_into,color,[],real_value)
+}

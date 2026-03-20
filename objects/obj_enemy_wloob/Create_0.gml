@@ -15,7 +15,7 @@ size=random_range(1,1.25)
 pickup_tries=irandom_range(1,3)
 
 picked_up_script=function(){
-	
+	sound_play_category_at("whimper",x,y)
 	drop_inventory()
 	instance_destroy()
 }

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"script_extension_room",
   "parent":{
-    "name":"SCRIPTS",
-    "path":"folders/SCRIPTS.yy",
+    "name":"npc scripts",
+    "path":"folders/SCRIPTS/npc scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

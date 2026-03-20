@@ -102,6 +102,8 @@ function effect_get_sprite(effect)
 		return spr_effect_dumb
 		case "enemy":
 		return spr_effect_enemy
+		case "witch":
+		return spr_effect_witch
 		default:
 		return spr_empty
 	}
