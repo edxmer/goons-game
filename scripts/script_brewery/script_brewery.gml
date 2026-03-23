@@ -108,6 +108,12 @@ function potion_get_recipes(type="all")
 		var potion=potion_set_recipe(curr,#EDE138,["corn_cob","hoe"],3)
 		array_push(rlist,potion)
 	}
+	curr="homonculus"
+	if type=="all" || type==curr
+	{
+		var potion=potion_set_recipe(curr,#EDE138,["goo"],7)
+		array_push(rlist,potion)
+	}
 	curr="turnip_seeds"
 	if type=="all" || type==curr
 	{

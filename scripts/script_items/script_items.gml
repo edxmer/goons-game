@@ -250,6 +250,12 @@ function assign_item(item_id){
 		item_data.calories=15
 	
 	}
+	if item_id=="homonculus"{
+		item_data.texture=spr_homonculus
+		item_data.calories=40
+		array_push(item_data.tags,"enemy")
+		item_data.special_data.enemy_data={turn_back:true,turn_after:1,turn_into:obj_enemy_homonculus}
+	}
 	if item_id=="corn_syrup"{
 		item_data.ground_sound="groundglass"
 		array_push(item_data.tags,"nature")
