@@ -71,19 +71,82 @@ function sprite_get_lightest_color(sprite)
 }
 function potion_get_recipe_empty()
 {
-	return {brew_into:"potion_empty",color: #FFBD3A , recipe:["corn_cob","corn_cob"],value:3}
+	return {name:"recipe_1",brew_into:"potion_empty",color: #FFBD3A , recipe:["corn_cob","corn_cob"],value:3}
 
 }
 
-function potion_set_recipe(potion,color,recipe,value)
+function potion_set_recipe(name,potion,color,recipe,value)
 {
 	var rpotion=potion_get_recipe_empty()
+	rpotion.name=name
 	rpotion.brew_into=potion
 	rpotion.color=color
 	rpotion.recipe=recipe
 	rpotion.value=value
 	return rpotion
 
+}
+
+function potion_name_get_name(p_name)
+{
+	var ret_str=""
+	var parts=string_split(p_name,"_")
+	for(var i=0;i<array_length(parts);i++)
+	{
+		var part=parts[i]
+		if !array_contains(["of","and"],part)
+		{
+			part=string_upper(string_copy(part,1,1))+string_copy(part,2,string_length(part)-1)
+		}
+		ret_str+=part
+		if i!=array_length(parts)-1
+		{
+			ret_str+=" "
+		}
+	}
+	return ret_str
+
+}
+
+function potion_get_recipe_name(name,more=false)
+{
+	var r_name=string_copy(name,1,string_length(name))
+	if item_get_sprite(r_name)!=spr_empty
+	{
+		r_name =item_get_name(r_name)
+		if more
+		{
+			r_name+="(s)"
+		}
+		return r_name
+	}
+	else
+	{
+		r_name=string_replace(r_name,"_"," ")
+		r_name=string_replace(r_name,"*","Any")
+		r_name=string_upper(string_copy(part,1,1))+string_copy(part,2,string_length(part)-1)
+		if more
+		{
+			r_name+="(s)"
+		}
+		return r_name
+	}
+}
+
+function potion_get_recipe_text(p_needed_items)
+{
+	var itemtext=[]
+	var dist_items=array_to_distinct(p_needed_items)
+	for (var i=0;i<(array_length(dist_items));i++)
+	{
+		var itemc=dist_items[i]
+		var count=array_count(p_needed_items,itemc)
+		var r_name=potion_get_recipe_name(itemc,count>1)
+
+		array_push(itemtext,string(count)+" "+r_name)
+		
+	}
+	return itemtext
 }
 
 function potion_get_recipes(type="all")
@@ -93,31 +156,37 @@ function potion_get_recipes(type="all")
 	var curr="corn_syrup"
 	if type=="all" || type==curr
 	{
-		var potion=potion_set_recipe(curr,#FFBD3A,["corn_cob","corn_cob"],4)
+		var potion=potion_set_recipe(curr,"corn_syrup",#FFBD3A,["corn_cob","corn_cob"],4)
 		array_push(rlist,potion)
 	}
-	curr="potion_of_mute"
+	curr="muting_brew"
 	if type=="all" || type==curr
 	{
-		var potion=potion_set_recipe(curr,#C96EEA,["sock","rock"],2)
+		var potion=potion_set_recipe(curr,"potion_of_mute",#C96EEA,["sock","rock"],2)
+		array_push(rlist,potion)
+	}
+	curr="liquid_doom"
+	if type=="all" || type==curr
+	{
+		var potion=potion_set_recipe(curr,"potion_of_doom",#C96EEA,["sock","wloob_confused"],2)
 		array_push(rlist,potion)
 	}
 	curr="corn_seeds"
 	if type=="all" || type==curr
 	{
-		var potion=potion_set_recipe(curr,#EDE138,["corn_cob","hoe"],3)
+		var potion=potion_set_recipe(curr,"corn_seeds",#EDE138,["corn_cob","hoe"],3)
 		array_push(rlist,potion)
 	}
 	curr="homonculus"
 	if type=="all" || type==curr
 	{
-		var potion=potion_set_recipe(curr,#EDE138,["goo"],7)
+		var potion=potion_set_recipe(curr,"homonculus",#EDE138,["goo"],7)
 		array_push(rlist,potion)
 	}
 	curr="turnip_seeds"
 	if type=="all" || type==curr
 	{
-		var potion=potion_set_recipe(curr,#EF75DD,["turnip","hoe"],3)
+		var potion=potion_set_recipe(curr,"turnip_seeds",#EF75DD,["turnip","hoe"],3)
 		array_push(rlist,potion)
 	}
 	
@@ -170,5 +239,5 @@ function ingredients_evaluate(ingredients,current_value,current_potion,current_c
 		
 	}
 	
-	return potion_set_recipe(brew_into,color,[],real_value)
+	return potion_set_recipe("cooked",brew_into,color,[],real_value)
 }

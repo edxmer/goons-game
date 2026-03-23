@@ -322,7 +322,7 @@ function work_station_data_get(station_id){
 		npc.active_quests_show={show:true,topleft_coord:[120,200],size:3}
 		npc.active_quests=[
 		]
-		npc.summoned_objects=[npc_create_object(obj_brewery_nearby_items,0,0),npc_create_object(obj_brewery_cauldron,300,400)]
+		npc.summoned_objects=[npc_create_object(obj_brewery_nearby_items,0,0),npc_create_object(obj_brewery_cauldron,300,400),npc_create_object(obj_brewery_recipe_base,400,0)]
 		
 		
 		

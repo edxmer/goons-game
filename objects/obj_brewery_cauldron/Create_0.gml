@@ -62,6 +62,7 @@ drop_item=function(item_id)
 
 new_potion_turn_into=function(changed)
 {
+	show_message(changed)
 	current_potion=changed.brew_into
 	current_value=changed.value 
 	potion_color=changed.color 

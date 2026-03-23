@@ -49,3 +49,29 @@ function is_value_between(item,mmin,mmax)
 
 
 }
+
+function array_to_distinct(array)
+{
+	var dist_array=[]
+	for (var i=0;i<array_length(array);i++)
+	{
+		if !array_contains(dist_array,array[i])
+		{
+			array_push(dist_array,array[i])
+		}
+	}
+	return dist_array
+}
+
+function array_count(array,item)
+{
+	var count=0
+	for (var i=0;i<array_length(array);i++)
+	{
+		if array[i]==item
+		{
+			count++
+		}
+	}
+	return count
+}
