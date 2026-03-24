@@ -11,6 +11,8 @@ else
 	size_mult=1
 }
 
+y=y_real*0.8+y*0.2
+
 size=bsize*size_mult
 
 if potion_spr==spr_empty

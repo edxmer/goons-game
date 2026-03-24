@@ -23,6 +23,17 @@ function sprite_get_colors(sprite)
     surface_free(_surf);
     return carray;
 }
+function know_new_recipe(recipe_name)
+{
+	if !array_contains(global.npc_brewery.known_recipes, recipe_name)
+	{
+		global.npc_brewery.new_recipe=true
+		array_push(global.npc_brewery.known_recipes, recipe_name)
+	}
+
+}
+
+
 function sprite_get_average_color(sprite)
 {
     var _surf = surface_create(sprite_get_width(sprite), sprite_get_height(sprite));
@@ -217,6 +228,7 @@ function current_ingredients_push(ingredients,item_id)
 function ingredients_evaluate(ingredients,current_value,current_potion,current_color,recipes=[])
 {
 	var rec_real=recipes
+	var name="empty"
 	if array_length(recipes)==0
 	{
 		rec_real=potion_get_recipes("all")
@@ -230,7 +242,7 @@ function ingredients_evaluate(ingredients,current_value,current_potion,current_c
 		var recipe=rec_real[i]
 		if recipe.value>current_value && is_subset(ingredients,recipe.recipe)
 		{
-			
+			name=recipe.name
 			brew_into=recipe.brew_into
 			real_value=recipe.value
 			color=recipe.color
@@ -239,5 +251,5 @@ function ingredients_evaluate(ingredients,current_value,current_potion,current_c
 		
 	}
 	
-	return potion_set_recipe("cooked",brew_into,color,[],real_value)
+	return potion_set_recipe(name,brew_into,color,[],real_value)
 }

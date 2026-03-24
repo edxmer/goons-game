@@ -5,11 +5,17 @@ draw_self()
 var size_item=0.8
 if talk_potion&&on_mouse
 {
-	size_item=0.9
+	gpu_set_fog(true,c_white,0,0)
+	draw_item(x+1*size*size_item,y,recipe_item,size*size_item)
+	draw_item(x-1*size*size_item,y,recipe_item,size*size_item)
+	draw_item(x,y-1*size*size_item,recipe_item,size*size_item)
+	draw_item(x,y+1*size*size_item,recipe_item,size*size_item)
+	gpu_set_fog(false,c_white,0,0)
 }
 draw_item(x,y,recipe_item,size*size_item)
+
 var l=array_length(go_description)
-var starty=y+size*10
+var starty=y+size*7
 draw_set_halign(textalign_center)
 draw_set_valign(textalign_top)
 draw_set_font(fnt_nametag_subtext)
@@ -17,7 +23,7 @@ draw_set_colour(#57684E)
 var textmult=0.12
 for (var i=0;i<4;i++)
 {
-	if i<l
+	if i<l && size>4
 	{
 		var text=go_description[i]
 		if i==3
@@ -26,9 +32,9 @@ for (var i=0;i<4;i++)
 		}
 		draw_text_transformed(x,starty,go_description[i],size*textmult,size*textmult,0)
 		if i==0{
-			draw_text_ext_transformed_bold(x,starty,go_description[i],1000000,0,size*textmult,size*textmult,0)
+			draw_text_ext_transformed_bold(x,starty,go_description[i],0,100000000,size*textmult,size*textmult,0)
 		}
-		starty+=size*2
+		starty+=size*3
 	}
 }
 

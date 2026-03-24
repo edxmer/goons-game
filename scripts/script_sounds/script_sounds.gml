@@ -10,6 +10,7 @@ function get_sound_all()
 		whimper:[sound_whimper_1,sound_whimper_2],
 		bloog:[sound_bloog_1,sound_bloog_2],
 		woodwork:[sound_wood_work],
+		paper:[sound_paper_1,sound_paper_2],
 		water_splash:[sound_water_splash_item_1],
 		stonework:[sound_stone_work_1,sound_stone_work_2],
 		groundsoft:[sound_item_ground_1,sound_item_ground_2],

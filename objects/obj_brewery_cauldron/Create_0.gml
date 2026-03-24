@@ -50,6 +50,7 @@ drop_item=function(item_id)
 	var changed=ingredients_evaluate(current_contents,current_value,current_potion,potion_color)
 	if changed.brew_into!=current_potion
 	{
+		know_new_recipe(changed.name)
 		new_potion_turn_into(changed)
 	}
 	if current_potion!="empty" && !instance_exists(obj_button_brewery_brew)
