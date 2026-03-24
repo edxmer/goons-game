@@ -1,7 +1,10 @@
 recipe_down=!recipe_down
 
+
+
 if recipe_down
 {
+	sound_play_category_at("boardup",x,y)
 	var recipes=["corn_syrup","muting_brew"]
 	startx=room_width/2-32*size
 	starty=size*16
@@ -23,8 +26,6 @@ if recipe_down
 }
 else
 {
-	with(obj_brewery_recipe)
-	{
-		instance_destroy()
-	}
+	sound_play_category_at("boarddown",x,y)
+
 }

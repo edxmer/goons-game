@@ -1,10 +1,10 @@
 {
   "$GMSprite":"v2",
-  "%Name":"spr_brewery_recipe_board",
+  "%Name":"spr_brewery_recipe_board_part",
   "bboxMode":0,
-  "bbox_bottom":7,
-  "bbox_left":2,
-  "bbox_right":93,
+  "bbox_bottom":33,
+  "bbox_left":9,
+  "bbox_right":100,
   "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
@@ -16,13 +16,14 @@
   ],
   "gridX":0,
   "gridY":0,
-  "height":24,
+  "height":34,
   "HTile":false,
   "layers":[
+    {"$GMImageLayer":"","%Name":"c1b37b42-08a8-49cc-9532-b0bf368b3d6f","blendMode":0,"displayName":"Layer 2","isLocked":false,"name":"c1b37b42-08a8-49cc-9532-b0bf368b3d6f","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
     {"$GMImageLayer":"","%Name":"dc657f8b-746f-481b-b3bc-15bc3e5bae78","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"dc657f8b-746f-481b-b3bc-15bc3e5bae78","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
-    {"$GMImageLayer":"","%Name":"afdc2214-61b1-4f4c-a496-d8b09b1dce14","blendMode":0,"displayName":"default","isLocked":false,"name":"afdc2214-61b1-4f4c-a496-d8b09b1dce14","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"afdc2214-61b1-4f4c-a496-d8b09b1dce14","blendMode":0,"displayName":"default","isLocked":false,"name":"afdc2214-61b1-4f4c-a496-d8b09b1dce14","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
   ],
-  "name":"spr_brewery_recipe_board",
+  "name":"spr_brewery_recipe_board_part",
   "nineSlice":null,
   "origin":9,
   "parent":{
@@ -34,7 +35,7 @@
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"v1",
-    "%Name":"spr_brewery_recipe_board",
+    "%Name":"spr_brewery_recipe_board_part",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -58,7 +59,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"spr_brewery_recipe_board",
+    "name":"spr_brewery_recipe_board_part",
     "playback":1,
     "playbackSpeed":30.0,
     "playbackSpeedType":0,
@@ -70,13 +71,13 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"6c7f44c4-f79b-4363-bc64-190b4eb48e33","path":"sprites/spr_brewery_recipe_board/spr_brewery_recipe_board.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"6c7f44c4-f79b-4363-bc64-190b4eb48e33","path":"sprites/spr_brewery_recipe_board_part/spr_brewery_recipe_board_part.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"b5162044-2cc8-472a-b51c-4a1dbfba51d2","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":52,
+    "xorigin":59,
     "yorigin":0,
   },
   "swatchColours":null,
@@ -87,5 +88,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":96,
+  "width":136,
 }

@@ -16,6 +16,8 @@ function get_sound_all()
 		groundglass:[sound_item_ground_glass_1,sound_item_ground_glass_2],
 		groundmedium:[sound_item_ground_medium_1,sound_item_ground_medium_2],
 		swoosh:[sound_whoosh],
+		boardup:[sound_wooden_board_down],
+		boarddown:[sound_wooden_board_up],
 		eat:[sound_eat_1,sound_eat_2],
 		buy:[sound_item_ground_1,sound_item_ground_2],
 		buy_refuse:[sound_buy_refuse],

@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"sound_wood_work",
+  "%Name":"sound_wooden_board_down",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.6219728,
+  "duration":0.46573696,
   "exportDir":"",
-  "name":"sound_wood_work",
+  "name":"sound_wooden_board_down",
   "parent":{
     "name":"SOUNDS",
     "path":"folders/SOUNDS.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sound_wood_work.mp3",
+  "soundFile":"sound_wooden_board_down.mp3",
   "volume":1.0,
 }
