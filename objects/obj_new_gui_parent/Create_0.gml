@@ -1,10 +1,13 @@
 real_x=x
 real_y=y
 
-size=3
+size=5
 
 priority=0
 
+button_sprite_index=0
+
+sign_size=15
 on_mouse=false
 active=false
 
@@ -12,7 +15,7 @@ sign_sizes=0
 
 signs=[]
 
-text_mult=0.5
+text_mult=0.16
 
 sign_selected=-1
 
@@ -59,7 +62,7 @@ move_below=function(amount)
 
 calculate_sign_size=function()
 {
-	sign_sizes=array_length(signs)*size*10
+	sign_sizes=array_length(signs)*size*sign_size
 
 }
 

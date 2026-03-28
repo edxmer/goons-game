@@ -35,6 +35,8 @@ function particle_spirit(xx,yy)
 {
 var _ps = part_system_create();
 part_system_draw_order(_ps, true);
+
+part_system_depth(_ps,-2*room_height)
 //Emitter
 var _ptype1 = part_type_create();
 part_type_sprite(_ptype1, spr_goon_death, true, true, false)
@@ -53,7 +55,7 @@ var _pemit1 = part_emitter_create(_ps);
 part_emitter_region(_ps, _pemit1, -0.5, 0.5, -0.5, 0.5, ps_shape_rectangle, ps_distr_linear);
 part_emitter_burst(_ps, _pemit1, _ptype1, 1);
 
-part_system_position(_ps, xx, xx);
+part_system_position(_ps, xx, yy);
 }
 
 

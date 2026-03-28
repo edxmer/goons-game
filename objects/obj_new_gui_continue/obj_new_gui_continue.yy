@@ -1,21 +1,20 @@
 {
   "$GMObject":"",
-  "%Name":"obj_new_gui_parent",
+  "%Name":"obj_new_gui_continue",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":1,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":1,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_new_gui_parent",
+  "name":"obj_new_gui_continue",
   "overriddenProperties":[],
   "parent":{
     "name":"GUI BUTTON",
     "path":"folders/OBJECTS/GUI BUTTON.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_new_gui_parent",
+    "path":"objects/obj_new_gui_parent/obj_new_gui_parent.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -34,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_ui_icon_goon",
-    "path":"sprites/spr_ui_icon_goon/spr_ui_icon_goon.yy",
+    "name":"spr_ui_icon_continue",
+    "path":"sprites/spr_ui_icon_continue/spr_ui_icon_continue.yy",
   },
   "spriteMaskId":null,
   "visible":true,
