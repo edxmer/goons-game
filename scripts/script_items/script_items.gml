@@ -321,6 +321,23 @@ function assign_item(item_id){
 		item_data.calories=7
 	
 	}
+	
+	if item_id=="potion_of_doom"{
+		item_data.name="Potion of Doom"
+		item_data.ground_sound="groundglass"
+			item_data.texture=spr_potion_of_doom_2
+		array_push(item_data.tags,"consumable")
+		item_data.special_data.consume_effect=function(goon_id)
+		{
+			create_item(goon_id.x,goon_id.y,"goo")
+			sound_play_category_at("eat",goon_id.x,goon_id.y)
+			goon_id.inventory_destroy()
+			instance_destroy(goon_id)
+		
+		}
+		item_data.calories=7
+	
+	}
 	if item_id=="logs"{
 		item_data.ground_sound="groundmedium"
 		item_data.texture=spr_logs
