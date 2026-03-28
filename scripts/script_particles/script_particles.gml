@@ -35,7 +35,6 @@ function particle_spirit(xx,yy)
 {
 var _ps = part_system_create();
 part_system_draw_order(_ps, true);
-part_system_depth(_ps,-yy)
 //Emitter
 var _ptype1 = part_type_create();
 part_type_sprite(_ptype1, spr_goon_death, true, true, false)

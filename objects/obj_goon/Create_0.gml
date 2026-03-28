@@ -183,6 +183,14 @@ inventory_destroy=function()
 }
 
 
+goon_die=function()
+{
+	particle_spirit(x,y-4)
+	create_item(x,y,"goo")
+	instance_destroy()
+
+}
+
 inventory_set_empty=function()
 {
 inventory="empty"

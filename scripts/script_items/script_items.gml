@@ -329,10 +329,10 @@ function assign_item(item_id){
 		array_push(item_data.tags,"consumable")
 		item_data.special_data.consume_effect=function(goon_id)
 		{
-			create_item(goon_id.x,goon_id.y,"goo")
+
 			sound_play_category_at("eat",goon_id.x,goon_id.y)
 			goon_id.inventory_destroy()
-			instance_destroy(goon_id)
+			goon_id.goon_die()
 		
 		}
 		item_data.calories=7

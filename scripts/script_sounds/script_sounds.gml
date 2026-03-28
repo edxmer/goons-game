@@ -24,6 +24,7 @@ function get_sound_all()
 		buy_refuse:[sound_buy_refuse],
 		gloob:[sound_gloob_1,sound_gloob_2],
 		freeze:[sound_freeze],
+		click:[sound_click_1],
 		unfreeze:[sound_glass_break]
 
 	}
