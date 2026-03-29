@@ -89,6 +89,13 @@ possible_names = [
 ]
 name = possible_names[irandom(array_length(possible_names)-1)]
 
+goon_pickup_nearest=function()
+{
+	goon_pickup_item(pickup_item(x,y))
+
+}
+
+
 goon_pickup_item=function(item,replace=false)
 {
 	if (inventory=="empty" ) || replace{
@@ -326,6 +333,14 @@ equip_item_from_hand=function()
 		goon_pickup_item(was_equip)
 		effect_update(id)
 	}
+}
+
+
+is_goon_idle=function()
+{
+	var speed_real=goon_speed*min(delta_time/1000000,0.4)*slowness_modifier
+	return point_distance(x,y,goto_x,goto_y)<speed_real
+
 }
 
 equipment_set_empty=function()

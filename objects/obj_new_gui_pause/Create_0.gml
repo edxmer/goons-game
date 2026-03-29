@@ -15,4 +15,3 @@ open_up=function()
 	active=false
 
 }
-goto_extension_room_main_menu(room_pause_menu)

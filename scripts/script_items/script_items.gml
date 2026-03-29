@@ -585,9 +585,37 @@ function item_special_data_get(item_id,special_data_name)
 }
 
 
-function pickup_item(px,py,pickup_distance=35)
+
+
+function is_item_nearby(px,py,distance=35)
 {
-	var items=pickuppable_enemies(px,py,pickup_distance)
+	var items=pickuppable_enemies(px,py,distance)
+	if array_length(items)>0
+	{
+		return true
+	}
+	with(obj_item)
+	{
+		if !(array_contains(tags,"danger") &&global.goon_count==1){
+		
+		
+			var dist=point_distance(x,y,px,py)
+			if array_contains(tags,"crafted") && dist<=distance
+			{
+				dist-=8
+			}
+			if dist<=distance && size>=1 && !array_contains(tags,"unpickuppable"){
+				return true
+			}
+		}
+	}
+	
+	return false
+}
+
+function nearby_itemslist(px,py,distance=35)
+{
+	var items=pickuppable_enemies(px,py,distance)
 	
 	with(obj_item)
 	{
@@ -595,15 +623,24 @@ function pickup_item(px,py,pickup_distance=35)
 		
 		
 			var dist=point_distance(x,y,px,py)
-			if array_contains(tags,"crafted") && dist<=pickup_distance
+			if array_contains(tags,"crafted") && dist<=distance
 			{
 				dist-=8
 			}
-			if dist<=pickup_distance && size>=1 && !array_contains(tags,"unpickuppable"){
+			if dist<=distance && size>=1 && !array_contains(tags,"unpickuppable"){
 				array_push(items,[id,dist,item_id,"item"])
 			}
 		}
 	}
+	
+	return items
+}
+
+function pickup_item(px,py,pickup_distance=35)
+{
+	var items=nearby_itemslist(px,py,pickup_distance)
+	
+	
 	var min_distance=10000
 	var current_min=0
 	if array_length(items)==0{

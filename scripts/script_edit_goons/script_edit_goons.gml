@@ -42,13 +42,16 @@ function goon_get_buttons(_id){
 	{
 	array_push(buttons,"consume")
 	}
-	if _id.inventory=="empty"
+	if is_item_nearby(_id.x,_id.y)
 	{
-	array_push(buttons,"pickup")
-	}
-	else
-	{
-	array_push(buttons,"switch")
+		if _id.inventory=="empty"
+		{
+		array_push(buttons,"pickup")
+		}
+		else
+		{
+		array_push(buttons,"switch")
+		}
 	}
 	if _id.inventory!="empty"
 	{
@@ -61,7 +64,7 @@ function goon_get_buttons(_id){
 	else{
 		array_push(buttons,"select")
 	}
-	if _id.goto_x!=_id.x || _id.goto_y!=_id.y || array_length(_id.goto_list)!=0
+	if !_id.is_goon_idle || array_length(_id.goto_list)!=0
 	{
 		array_push(buttons,"stop")
 	}
@@ -89,13 +92,17 @@ function get_edit_button_data(button_name)
 	{
 		case "switch":
 			data.realname="Switch Items"
+			
 			data.act=function(_id)
 			{
 				with(_id)
 				{
-					put_down_item()
-					pickup_item_penalty=0
-					interact_function()
+					if is_item_nearby(x,y)
+					{
+						put_down_item()
+						pickup_item_penalty=0
+						goon_pickup_nearest()
+					}
 				}
 			}
 			break
@@ -105,8 +112,10 @@ function get_edit_button_data(button_name)
 			{
 				with(_id)
 				{
-					put_down_item()
-					interact_function()
+					if inventory=="empty"
+					{
+						goon_pickup_nearest()
+					}
 				}
 			}
 			break
