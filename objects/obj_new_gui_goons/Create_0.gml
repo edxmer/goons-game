@@ -2,11 +2,15 @@
 event_inherited();
 priority=2
 
-sprite_index=spr_ui_icon_goon
-real_x=1220
-real_y=220
+name="Goons"
 
-edit_last=new_sign("Edit Last",function(asd)
+sprite_index=spr_ui_icon_goon
+
+
+
+real_x=1320-size*10
+real_y=40+size*10+size*24
+edit_last_1=new_sign("Edit Last",function(asd)
 {
 	if global.last_selected_goon!=noone && instance_exists(global.last_selected_goon)
 	{
@@ -18,8 +22,28 @@ edit_last=new_sign("Edit Last",function(asd)
 		{
 			exit_goon_edit_mode()
 		}
-	}})
+	}},false,spr_ui_icon_icon_edit_last,{has:true,func:function(_id){return _id.id==global.last_selected_goon}})
+edit_last_no=new_sign("Escape Edit",function(asd)
+{
+	if global.last_selected_goon!=noone && instance_exists(global.last_selected_goon)
+	{
+		if global.goon_edit_id!=global.last_selected_goon
+		{
+			edit_goon(global.last_selected_goon)
+		}
+		else
+		{
+			exit_goon_edit_mode()
+		}
+	}},false,spr_ui_icon_icon_edit_last,{has:false,func:empty_func()})
+
+edit_last=edit_last_1
+
 signs=[edit_last]
+
+unselect=new_sign("Unselect",function(goon){goon.gooning=false},false,spr_ui_icon_icon_unselect,{has:true,func:function(_id){return _id.gooning==true}})
+
+
 
 button_clicked=function()
 {

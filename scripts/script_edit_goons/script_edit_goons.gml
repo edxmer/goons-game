@@ -64,7 +64,7 @@ function goon_get_buttons(_id){
 	else{
 		array_push(buttons,"select")
 	}
-	if !_id.is_goon_idle || array_length(_id.goto_list)!=0
+	if !_id.is_goon_idle() || array_length(_id.goto_list)!=0
 	{
 		array_push(buttons,"stop")
 	}
@@ -87,12 +87,13 @@ function edit_button_pressed(pressed_id)
 
 function get_edit_button_data(button_name)
 {
-	var data={realname:"Button",act:function(_id){}}
+	var data={realname:"Button",act:function(_id){},icon_gui:spr_empty,arrow:{has:false,func:function(_id){return false}}}
 	switch button_name
 	{
 		case "switch":
 			data.realname="Switch Items"
-			
+			data.icon_gui=spr_ui_icon_icon_switch
+			data.arrow={has:true,func:function(_id){return  _id.gooning && is_item_nearby(_id.x,_id.y)}}
 			data.act=function(_id)
 			{
 				with(_id)
@@ -108,6 +109,8 @@ function get_edit_button_data(button_name)
 			break
 		case "pickup":
 			data.realname="Pickup Item"
+			data.icon_gui=spr_ui_icon_icon_pickup
+			data.arrow={has:true,func:function(_id){return  _id.gooning && is_item_nearby(_id.x,_id.y)}}
 			data.act=function(_id)
 			{
 				with(_id)
@@ -121,6 +124,8 @@ function get_edit_button_data(button_name)
 			break
 		case "consume":
 			data.realname="Consume Item"
+			data.icon_gui=spr_ui_icon_icon_consume
+			data.arrow={has:true,func:function(_id){return  _id.gooning && item_special_data_get(_id.inventory,"consume_effect")!="empty"}}
 			data.act=function(_id)
 			{
 				with(_id)
@@ -136,6 +141,8 @@ function get_edit_button_data(button_name)
 			break
 		case "put_down":
 			data.realname="Drop Item"
+			data.icon_gui=spr_ui_icon_icon_drop
+			data.arrow={has:true,func:function(_id){return  _id.gooning && _id.inventory!="empty"}}
 			data.act=function(_id)
 			{
 				with(_id)
@@ -168,6 +175,8 @@ function get_edit_button_data(button_name)
 			
 		case "stop":
 			data.realname="Stop"
+			data.icon_gui=spr_ui_icon_icon_stop
+			data.arrow={has:true,func:function(_id){return  _id.gooning && _id.is_goon_idle()}}
 			data.act=function(_id)
 			{
 				with(_id)
@@ -178,6 +187,8 @@ function get_edit_button_data(button_name)
 			break
 		case "equip":
 			data.realname="Equip"
+			data.icon_gui=spr_ui_icon_icon_equip
+			data.arrow={has:true,func:function(_id){return  _id.gooning && item_tags_contains(_id.inventory,"equippable")}}
 			data.act=function(_id)
 			{
 				with(_id)
@@ -188,6 +199,8 @@ function get_edit_button_data(button_name)
 			break
 		case "unequip":
 			data.realname="Unequip"
+			data.icon_gui=spr_ui_icon_icon_unequip
+			data.arrow={has:true,func:function(_id){return _id.gooning && _id.equipment!="empty"}}
 			data.act=function(_id)
 			{
 				with(_id)

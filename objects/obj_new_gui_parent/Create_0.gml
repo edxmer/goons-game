@@ -1,7 +1,9 @@
 real_x=x
 real_y=y
 
-size=5
+size=4
+
+name="Base"
 
 priority=0
 
@@ -11,6 +13,17 @@ sign_size=12
 on_mouse=false
 active=false
 
+
+remove_ind=function()
+{
+	var _hoverng_arr_ind = array_get_index(global.gui_hovering, id)
+	array_delete(global.gui_hovering, _hoverng_arr_ind, 1)
+}
+
+add_ind=function()
+{
+	array_push(global.gui_hovering, id)
+}
 assigned_y=0
 
 sign_sizes=0
@@ -21,14 +34,25 @@ text_mult=0.12
 
 sign_selected=-1
 
+clicksound=function()
+{
+	sound_play_category_at("click",global.cam.coords_middle[0],global.cam.coords_middle[1])
+}
+
 empty_func=function()
 {
-	return (function(){return})
+	return (function(_id){return false})
 }
-new_sign=function(name,func)
+new_sign=function(name,func,small=false,icon=spr_empty,whoarrow={has:false,func:empty_func()})
 {
-	return {name:name,func:func}
+	return {name:name,func:func,small:small,icon:icon,whoarrow:whoarrow}
 
+}
+
+
+hov_gui_check=function()
+{
+	return on_mouse || sign_selected!=-1
 }
 close_up=function()
 {

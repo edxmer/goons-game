@@ -2,7 +2,21 @@
 
 if active
 {
+	
+	if global.goon_edit_mode
+	{
+		edit_last=edit_last_no
+	}
+	else
+	{
+		edit_last=edit_last_1
+	}
+	
 	signs=[edit_last]
+	if gooning_goons_count()>0
+	{
+		array_push(signs,unselect)
+	}
 	var functions=[]
 	with(obj_goon)
 	{
@@ -34,7 +48,7 @@ if active
 	for (var i=0;i<array_length(functions);i++)
 	{
 		var data=get_edit_button_data(functions[i])
-		array_push(signs,new_sign(data.realname,data.act))
+		array_push(signs,new_sign(data.realname,data.act,false,data.icon_gui,data.arrow))
 	}
 }
 

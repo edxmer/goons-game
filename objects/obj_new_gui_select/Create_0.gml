@@ -2,6 +2,24 @@
 event_inherited();
 priority=3
 
+name="Select"
+
+slider_level=0
+slider_yy=real_y
+slider_selected=false
+slider_clicked_on=false
+calc_slider_y=function()
+{
+	
+	slider_yy=real_y+20*size+27*size-(gooning_goons_count()/global.goon_count)*27*size
+	
+}
+
+hov_gui_check=function()
+{
+	return on_mouse || sign_selected!=-1 || slider_selected
+}
+
 reset_zoom=new_sign("Reset Zoom",function() 
 	{
 			with(obj_camera)
@@ -10,7 +28,7 @@ reset_zoom=new_sign("Reset Zoom",function()
 				real_x=global.cam.coords[0]+(width_base*global.camera_size-width_base*global.default_camera_size)*0.66
 				real_y=global.cam.coords[1]+(height_base*global.camera_size-height_base*global.default_camera_size)*0.66
 			}
-	}
+	},false
 	)
 
 select_all=new_sign("Select All",
@@ -21,9 +39,9 @@ select_all=new_sign("Select All",
 				sound_play_category_at("murr",x,y)
 				gooning=true
 			}
-		}
+		},true
 	)
-select_nearest=new_sign("Select Nearest",function()
+select_nearest=new_sign("+1",function()
 {
 	var options=[]
 	with(obj_goon)
@@ -39,22 +57,23 @@ select_nearest=new_sign("Select Nearest",function()
 		var least_id=options[0][0]
 		for (var i=1;i<array_length(options);i++)
 		{
-			if options[i][1]>least
+			if options[i][1]<least
 			{
-				least=options[0][1]
-				least_id=options[0][0]
+				least=options[i][1]
+				least_id=options[i][0]
 			}
 		}
 		with(least_id)
 		{
+			global.last_selected_goon=id
 			sound_play_category_at("murr",x,y)
 			gooning=true
 		}
 	}
-}
+},true
 )
 
-unselect_nearest=new_sign("Unselect Nearest",function()
+unselect_nearest=new_sign("-1",function()
 {
 	var options=[]
 	with(obj_goon)
@@ -72,8 +91,8 @@ unselect_nearest=new_sign("Unselect Nearest",function()
 		{
 			if options[i][1]>least
 			{
-				least=options[0][1]
-				least_id=options[0][0]
+				least=options[i][1]
+				least_id=options[i][0]
 			}
 		}
 		with(least_id)
@@ -81,7 +100,7 @@ unselect_nearest=new_sign("Unselect Nearest",function()
 			gooning=false
 		}
 	}
-}
+},true
 )
 unselect_all=new_sign("Unselect All",
 		function ()
@@ -90,7 +109,7 @@ unselect_all=new_sign("Unselect All",
 			{
 				gooning=false
 			}
-		}
+		},true
 	)
 
 signs=[
@@ -99,5 +118,5 @@ signs=[
 	
 ]
 sprite_index=spr_ui_icon_select
-real_x=1220
-real_y=340
+real_x=1320-size*10
+real_y=40+size*10+size*24*2

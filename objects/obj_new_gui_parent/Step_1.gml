@@ -24,12 +24,23 @@ if on_mouse && mouse_check_button_pressed(mb_left)
 if active
 {
 	update_opened()
-	var yy=real_y+20*size
+	var yy=real_y+18*size
 	sign_selected=-1
+	
+	
+	
 	for (var i=0;i<array_length(signs);i++)
 	{
-	
-		if point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),real_x-11*size,yy-5*size,real_x+11*size,yy+5*size)
+		var signd=signs[i]
+		var xx_start=real_x-29*size
+		var xx_end=real_x+11*size
+		if signd.small 
+		{
+			xx_end=real_x-8*size
+		}
+		
+		
+		if point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),xx_start,yy-5*size,xx_end,yy+5*size)
 		{
 			sign_selected=i
 			break
@@ -46,13 +57,15 @@ if sign_selected!=-1 && mouse_check_button_pressed(mb_left)
 {
 	sound_play_category_at("click",global.cam.coords_middle[0],global.cam.coords_middle[1])
 	button_clicked()
+	add_ind()
+	global.is_hovering_gui=true
 
 }
 
 
 
 var _hoverng_arr_ind = array_get_index(global.gui_hovering, id)
-if on_mouse || sign_selected!=-1
+if hov_gui_check()
 {
 
 		if (button_sprite_index == 0)
@@ -60,7 +73,7 @@ if on_mouse || sign_selected!=-1
 		button_sprite_index = 1
 	
 		if (_hoverng_arr_ind == -1) {
-			array_push(global.gui_hovering, id)
+			add_ind()
 		}
 	
 	
