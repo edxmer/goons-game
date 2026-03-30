@@ -195,6 +195,7 @@ function assign_item(item_id){
 		array_push(item_data.tags,"grid_mode")
 		array_push(item_data.tags,"grid_mode_place_item")
 		array_push(item_data.tags,"has_effects")
+		array_push(item_data.tags,"weird_tag")
 		array_push(item_data.tags,"building")
 		array_push(item_data.tags,"put_down_on_grid")
 		
@@ -210,6 +211,7 @@ function assign_item(item_id){
 		array_push(item_data.tags,"use_item")
 		array_push(item_data.tags,"has_effects")
 		array_push(item_data.tags,"plant")
+		array_push(item_data.tags,"weird_tag")
 		array_push(item_data.tags,"grid_mode")
 		array_push(item_data.tags,"grid_mode_place_station")
 		array_push(item_data.tags,"persistent")
@@ -374,6 +376,7 @@ function assign_item(item_id){
 		array_push(item_data.tags,"eq_pick_up_building")
 		array_push(item_data.tags,"eq_has_effects")
 		array_push(item_data.tags,"equippable")
+		array_push(item_data.tags,"eq_weird_tag")
 		item_data.special_data.equipped_sprites=[spr_wear_constructors_belt_idle,spr_wear_constructors_belt_walk]
 	}
 	if item_id=="ball_and_chain"{
@@ -384,6 +387,7 @@ function assign_item(item_id){
 		array_push(item_data.tags,"eq_slowed")
 		array_push(item_data.tags,"eq_has_effects")
 		array_push(item_data.tags,"equippable")
+		array_push(item_data.tags,"eq_weird_tag")
 		item_data.special_data.slow_percentage=0.1
 		item_data.special_data.equipped_sprites=[spr_wear_ball_and_chain_idle,spr_wear_ball_and_chain_walk]
 	}
@@ -428,6 +432,7 @@ function assign_item(item_id){
 		item_data.texture=spr_hammer
 		array_push(item_data.tags,"pick_up_building")
 		array_push(item_data.tags,"has_effects")
+		array_push(item_data.tags,"weird_tag")
 		//array_push(item_data.tags,"persistent")
 	}
 	if item_id=="hoe"{
@@ -439,6 +444,7 @@ function assign_item(item_id){
 		array_push(item_data.tags,"grid_mode")
 		array_push(item_data.tags,"persistent")
 		array_push(item_data.tags,"persistent_brewery")
+		array_push(item_data.tags,"weird_tag")
 		item_data.special_data.grid_mode_sprite=spr_grid_ui_tilted_ground
 		item_data.special_data.grid_mode_placeable_function=function(xx,yy,sprite)
 		{

@@ -1,7 +1,47 @@
 real_x=x
 real_y=y
 
+show_y=real_y
+
 size=4
+
+
+signs_size_mult=0.2
+
+breset=function()
+{
+	with(obj_new_gui_parent)
+	{
+		can_switch_this_turn=false
+		real_y=calc_real_y(priority)
+		assigned_y=calc_real_y(priority)
+	}
+	var actives=[]
+	with(obj_new_gui_parent)
+	{
+		if active
+		{
+			array_push(actives,id)
+			close_up(false)
+		}
+	}
+	for (var i=0;i<array_length(actives);i++)
+	{
+		with(actives[i]){open_up()}
+	}
+}
+
+
+on_arrows=false
+on_up=false
+on_down=false
+
+calc_real_y=function(priority)
+{
+
+return 40+size*10+size*24*(priority-1)
+}
+
 
 name="Base"
 
@@ -28,6 +68,8 @@ assigned_y=0
 
 sign_sizes=0
 
+can_switch_this_turn=true
+
 signs=[]
 
 text_mult=0.12
@@ -43,18 +85,29 @@ empty_func=function()
 {
 	return (function(_id){return false})
 }
-new_sign=function(name,func,small=false,icon=spr_empty,whoarrow={has:false,func:empty_func()})
+new_sign=function(name,func,small=false,icon=spr_empty,whoarrow={has:false,func:empty_func()},spr=spr_empty)
 {
-	return {name:name,func:func,small:small,icon:icon,whoarrow:whoarrow}
+	if spr==spr_empty
+	{
+		if small
+		{
+			spr=spr_ui_icon_button_small
+		}
+		else
+		{
+			spr=spr_ui_icon_button
+		}
+	}
+	return {name:name,func:func,small:small,icon:icon,whoarrow:whoarrow,spr:spr}
 
 }
 
 
 hov_gui_check=function()
 {
-	return on_mouse || sign_selected!=-1
+	return on_mouse || sign_selected!=-1 ||on_arrows
 }
-close_up=function()
+close_up=function(reset=true)
 {
 	if active
 	{
@@ -68,6 +121,10 @@ close_up=function()
 		}
 	}
 	active=false
+	if reset
+	{
+		breset()
+	}
 }
 
 sign_get_y_coord=function(sign_index)

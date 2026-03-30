@@ -1,6 +1,8 @@
-draw_sprite_ext(sprite_index,on_mouse,real_x,real_y,size,size,0,c_white,1)
+draw_sprite_ext(sprite_index,on_mouse,real_x,show_y,size,size,0,c_white,1)
+var size_real=size
+size=size*signs_size_mult
 if active{
-	var yy=real_y+18*size
+	var yy=show_y+18*size
 
 	draw_set_halign(textalign_center)
 	draw_set_valign(textalign_middle)
@@ -11,11 +13,10 @@ if active{
 	
 		var sdata=signs[i]
 	
-		var spr=spr_ui_icon_button
+		var spr=sdata.spr
 		var minusx=5*size
 		if sdata.small
 		{
-		spr=spr_ui_icon_button_small
 		minusx=15*size
 		
 		}
@@ -29,4 +30,10 @@ if active{
 
 
 
+}
+size=size_real
+if on_arrows
+{
+	draw_sprite_ext(spr_ui_icon_arrows_up,on_up,real_x,show_y,size,size,0,c_white,0.6+0.2*on_up+0.2*(!on_mouse))
+	draw_sprite_ext(spr_ui_icon_arrows_down,on_down,real_x,show_y,size,size,0,c_white,0.6+0.2*on_down+0.2*(!on_mouse))
 }

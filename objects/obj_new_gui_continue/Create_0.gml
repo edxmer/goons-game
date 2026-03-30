@@ -21,7 +21,7 @@ open_up=function()
 	active=false
 
 }
-
+show_y=real_y-2*size
 add_ind=function()
 {
 }
