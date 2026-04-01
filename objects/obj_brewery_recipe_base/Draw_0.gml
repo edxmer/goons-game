@@ -19,7 +19,7 @@ else
 	
 
 	draw_self()
-	if global.npc_brewery.new_recipe
+	if global.npc_brewery_new_recipe
 	{
 		draw_sprite_ext(spr_brewery_recipe_board_exclamation,sprite_get_current_subimg(spr_brewery_recipe_board_exclamation),x,y,size,size,0,c_white,1)
 	}

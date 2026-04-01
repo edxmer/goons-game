@@ -300,6 +300,10 @@ function create_save(fname){
 	
 	file_text_write_string(fileid,"$globals\n")
 	file_text_write_string(fileid,create_savestring_globals("objective_list"))
+	
+	file_text_write_string(fileid,create_savestring_globals("npc_brewery_unlocked_recipes"))
+	file_text_write_string(fileid,create_savestring_globals("npc_brewery_known_recipes"))
+	file_text_write_string(fileid,create_savestring_globals("npc_brewery_new_recipe"))
 	file_text_write_string(fileid,create_savestring_globals("current_calories"))
 	file_text_write_string(fileid,create_savestring_globals("coins"))
 	file_text_write_string(fileid,create_savestring_globals("needed_calories"))

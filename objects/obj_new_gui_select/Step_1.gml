@@ -109,3 +109,17 @@ if !active || !show_options
 
 
 calc_slider_y()
+
+
+if keyboard_check(vk_control) && keyboard_check_pressed(ord("A"))
+{
+	if useful_goons_count()==gooning_goons_count()
+	{
+		unselect_all.func()
+	}
+	
+	else
+	{
+		select_all.func()
+	}
+}

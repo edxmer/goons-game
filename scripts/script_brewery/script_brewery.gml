@@ -25,10 +25,10 @@ function sprite_get_colors(sprite)
 }
 function know_new_recipe(recipe_name)
 {
-	if !array_contains(global.npc_brewery.known_recipes, recipe_name)
+	if !array_contains(global.npc_brewery_known_recipes, recipe_name)
 	{
-		global.npc_brewery.new_recipe=true
-		array_push(global.npc_brewery.known_recipes, recipe_name)
+		global.npc_brewery_new_recipe=true
+		array_push(global.npc_brewery_known_recipes, recipe_name)
 	}
 
 }

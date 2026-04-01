@@ -69,9 +69,9 @@ global.npc_room_nearby_items=[]
 global.npc_room_transfer_items_to_destroy=[]
 
 global.npc_brewery={}
-global.npc_brewery.unlocked_recipes=["corn_syrup"]
-global.npc_brewery.known_recipes=["corn_syrup"]
-global.npc_brewery.new_recipe=false
+global.npc_brewery_unlocked_recipes=["corn_syrup"]
+global.npc_brewery_known_recipes=["corn_syrup"]
+global.npc_brewery_new_recipe=false
 
 special_objectives_init()
 //global.goon_count=0

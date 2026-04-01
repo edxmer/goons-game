@@ -19,10 +19,12 @@
   "height":256,
   "HTile":false,
   "layers":[
+    {"$GMImageLayer":"","%Name":"575a031c-fd92-491d-9542-5af2a7bff7b4","blendMode":0,"displayName":"Layer 4","isLocked":false,"name":"575a031c-fd92-491d-9542-5af2a7bff7b4","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
     {"$GMImageLayer":"","%Name":"ddbbf751-71e4-490e-b76d-1f4ef091d42f","blendMode":0,"displayName":"Layer 3","isLocked":false,"name":"ddbbf751-71e4-490e-b76d-1f4ef091d42f","opacity":38.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"0d37cdb9-342e-420e-851c-2d8f93ef0e2d","blendMode":0,"displayName":"Layer 2","isLocked":false,"name":"0d37cdb9-342e-420e-851c-2d8f93ef0e2d","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"651041e0-2aaa-4be2-812b-2ebc8498f6a4","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"651041e0-2aaa-4be2-812b-2ebc8498f6a4","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
-    {"$GMImageLayer":"","%Name":"9ff11072-cf10-4735-bf1d-c87eaa8befec","blendMode":0,"displayName":"default","isLocked":false,"name":"9ff11072-cf10-4735-bf1d-c87eaa8befec","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"d00b0401-2dfc-4d21-b773-12734bb37a84","blendMode":0,"displayName":"default (2)","isLocked":false,"name":"d00b0401-2dfc-4d21-b773-12734bb37a84","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"9ff11072-cf10-4735-bf1d-c87eaa8befec","blendMode":0,"displayName":"default","isLocked":false,"name":"9ff11072-cf10-4735-bf1d-c87eaa8befec","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
   ],
   "name":"spr_tileset_winter",
   "nineSlice":null,

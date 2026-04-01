@@ -28,7 +28,7 @@ board_up=function()
 
 calc_max_y=function()
 {
-	var recipes=global.npc_brewery.known_recipes
+	var recipes=global.npc_brewery_known_recipes
 	return size*34*ceil(array_length(recipes)/3)+34*size
 
 }
@@ -38,9 +38,9 @@ board_down=function()
 	board_y=0
 	recipe_down=true
 		board_y_max=17*size*4
-	global.npc_brewery.new_recipe=false
+	global.npc_brewery_new_recipe=false
 	sound_play_category_at("boardup",x,y)
-	var recipes=global.npc_brewery.known_recipes
+	var recipes=global.npc_brewery_known_recipes
 	startx=bbox_left+19*size
 	starty=size*(34+34)-calc_max_y()+min(34*size,ceil(array_length(recipes)/3)*17*size)
 	for (var i=0;i<array_length(recipes);i++)

@@ -46,6 +46,9 @@ popped_goto_act="empty"
 //var y_coord=(y+bbox_bottom)/2
 var speed_real=goon_speed*min(delta_time/1000000,0.4)*slowness_modifier
 if !(point_distance(x,y,goto_x,goto_y)<speed_real){
+	goto_x=clamp(goto_x,global.camera_top_left_x,global.camera_bot_right_x)
+	goto_y=clamp(goto_y,global.camera_top_left_y,global.camera_bot_right_y)
+	
 	equipment_sprite_draw=equipment_sprite_walk
 	sprite_index=spr_goon_walk
 	if dumb{
@@ -168,6 +171,11 @@ if dumb && goto_list_changed
 
 }
 goto_list_changed=false
+
+
+x=clamp(x,global.camera_top_left_x,global.camera_bot_right_x)
+y=clamp(y,global.camera_top_left_y,global.camera_bot_right_y)
+
 
 if pickup_item_penalty>0
 {
