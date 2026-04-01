@@ -34,6 +34,8 @@ if active{
 size=size_real
 if on_arrows
 {
-	draw_sprite_ext(spr_ui_icon_arrows_up,on_up,real_x,show_y,size,size,0,c_white,0.6+0.2*on_up+0.2*(!on_mouse))
-	draw_sprite_ext(spr_ui_icon_arrows_down,on_down,real_x,show_y,size,size,0,c_white,0.6+0.2*on_down+0.2*(!on_mouse))
+	draw_sprite_ext(spr_ui_icon_arrows_up,on_up,real_x,show_y,size,size,0,c_white,0.6+0.2*on_up+0.2*(!on_mouse)-3*(1-show_up))
+	draw_sprite_ext(spr_ui_icon_arrows_up_full,on_upup,real_x,show_y,size,size,0,c_white,0.6+0.2*on_up+0.2*(!on_mouse)-3*(1-show_up))
+	draw_sprite_ext(spr_ui_icon_arrows_down_full,on_downdown,real_x,show_y,size,size,0,c_white,0.6+0.2*on_up+0.2*(!on_mouse)-3*(1-show_down))
+	draw_sprite_ext(spr_ui_icon_arrows_down,on_down,real_x,show_y,size,size,0,c_white,0.6+0.2*on_down+0.2*(!on_mouse)-3*(1-show_down))
 }

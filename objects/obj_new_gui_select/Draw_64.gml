@@ -41,5 +41,15 @@ draw_text_ext_transformed(real_x+4*size,yy+42*size,options_text,100,100000000,si
 draw_set_halign(textalign_left)
 draw_set_valign(textalign_top)
 
+if show_options
+{
+	draw_sprite_ext(options_changes_current.sprite,option_change_hover,real_x,yy+4*sign_size*size,size,size,0,c_white,1)
+	if mark_only_id!=-1
+	{
+		draw_sprite_ext(spr_ui_icon_button_option_mark_only,mark_selected+(mark_selected&&mouse_check_button(mb_left)),real_x,mark_only_yy,size,size,0,c_white,0.6+mark_selected*0.4)
+	}
+}
+
+
 size=size_real
 }

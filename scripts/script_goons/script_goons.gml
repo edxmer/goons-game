@@ -46,7 +46,18 @@ function goons_get_closest_idle(xx,yy,items=["empty"]){
 	var goonslist=[]
 	with(obj_goon)
 	{
-		if goon_is_idle(id,items) && id.dumb==false
+		if array_length(items)==1 && items[0]=="empty"
+		{
+			with(obj_new_gui_select)
+			{
+				if is_goon_useful(other.id)
+				{
+					array_push(goonslist,[other.id,point_distance(other.x,other.y,xx,yy)])
+				}
+			}
+			
+		}
+		else if goon_is_idle(id,items) && id.dumb==false
 		{
 			array_push(goonslist,[id,point_distance(x,y,xx,yy)])
 		}

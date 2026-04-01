@@ -36,6 +36,22 @@ on_arrows=false
 on_up=false
 on_down=false
 
+on_upup=false
+on_downdown=false
+
+showdown=true
+showup=true
+
+maxpriority=function()
+{
+	var cnt=0
+	with(obj_new_gui_parent)
+	{
+		cnt++
+	}
+	return cnt
+}
+
 calc_real_y=function(priority)
 {
 
@@ -53,6 +69,33 @@ sign_size=12
 on_mouse=false
 active=false
 
+
+go_down_one=function()
+{
+	with(obj_new_gui_parent)
+	{
+		if priority-1==other.priority
+		{
+			priority--
+		}
+	}
+	priority++
+	breset()
+}
+
+go_up_one=function()
+{
+	with(obj_new_gui_parent)
+	{
+		if priority+1==other.priority
+		{
+			priority++
+		}
+	}
+	priority--
+	breset()
+
+}
 
 remove_ind=function()
 {

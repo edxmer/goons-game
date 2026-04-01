@@ -188,7 +188,7 @@ var gooninstead=false
 		}
 	}
 
-if !selected && point_in_rectangle(mouse_x,mouse_y,bbox_left-5,bbox_top-20,bbox_right+5,bbox_bottom+5) && !global.special_mode
+if !selected && point_in_rectangle(mouse_x,mouse_y,bbox_left-5,bbox_top-20,bbox_right+5,bbox_bottom+5) && !global.special_mode &&!global.is_hovering_gui
 {
 
 	if !gooninstead
@@ -216,7 +216,7 @@ if !selected && point_in_rectangle(mouse_x,mouse_y,bbox_left-5,bbox_top-20,bbox_
 
 
 
-else if selected && (!point_in_rectangle(mouse_x,mouse_y,bbox_left-5,bbox_top-20,bbox_right+5,bbox_bottom+5) || gooninstead || global.special_mode)
+else if selected && (!point_in_rectangle(mouse_x,mouse_y,bbox_left-5,bbox_top-20,bbox_right+5,bbox_bottom+5) || gooninstead || global.special_mode || global.is_hovering_gui)
 {
 	sound_play_category_at("swoosh",x,y)
 	selected=false

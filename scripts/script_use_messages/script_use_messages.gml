@@ -8,7 +8,7 @@ function draw_item_finished(item_id,_x,_y,size=1){
 	draw_item(_x,_y,item_id,1.2*size)
 }
 function draw_nametag(name){
-	if global.gui_nametag_called_last
+	if global.gui_nametag_called_last || global.is_hovering_gui
 	{
 		return
 	}

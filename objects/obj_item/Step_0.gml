@@ -80,7 +80,7 @@ if !grew_up && size>=0.95{
 	}
 }
 
-if position_meeting(mouse_x,mouse_y,id) && !global.special_mode
+if position_meeting(mouse_x,mouse_y,id) && !global.special_mode && !global.is_hovering_gui
 {
 	selected=true
 	with(obj_work_station)

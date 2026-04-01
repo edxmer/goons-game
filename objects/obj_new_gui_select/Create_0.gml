@@ -9,6 +9,26 @@ options_on=false
 options_text="Options"
 
 
+mark_only_id=-1
+mark_only_yy=0
+mark_selected=false
+
+undo_all_other=function(mark_id)
+{
+	for (var i=0;i<array_length(signs);i++)
+	{
+		if (signs[i].icon==spr_ui_icon_icon_option_tick) && (i!=mark_id)
+		{
+			signs[i].func()
+		}
+		if signs[mark_id].icon!=spr_ui_icon_icon_option_tick
+		{
+			signs[mark_id].func()
+		}
+	}
+}
+
+
 changed_option=function()
 {
 	with (obj_goon)
@@ -28,7 +48,20 @@ is_goon_useful=function(_id)
 	return (global.option_blue || !(_id.blue))
 	&& (global.option_dumb || !(_id.dumb))
 	&& (global.option_normal || (_id.dumb || _id.blue))
-	&& (!global.option_empty || _id.inventory=="empty")
+	&& (global.option_empty || !(_id.inventory=="empty"))
+	&& (global.option_consumable && item_tags_contains( _id.inventory,"consumable") 
+	|| global.option_equippable && item_tags_contains( _id.inventory,"equippable") 
+	|| global.option_has_calories && (item_get_calories( _id.inventory) >0)
+	|| global.option_empty && (_id.inventory=="empty")
+	|| global.option_no_calories && (item_get_calories( _id.inventory) ==0)
+	|| (!(global.option_no_calories || global.option_has_calories || global.option_equippable || global.option_consumable) && _id.inventory=="empty")
+	)
+	&& ((global.option_repeating && (array_contains(_id.active_effect_list,"robot")))
+	|| (global.option_destruct && (array_contains(_id.active_effect_list,"pick_up_building")))
+	|| (global.option_building && (array_contains(_id.active_effect_list,"grid_mode")))
+	|| (global.option_tilt_ground && (array_contains(_id.active_effect_list,"tilt_ground")))
+	|| (global.option_no_special && !((array_contains(_id.active_effect_list,"tilt_ground")||array_contains(_id.active_effect_list,"grid_mode")||array_contains(_id.active_effect_list,"robot")||array_contains(_id.active_effect_list,"pick_up_building"))))
+	)
 	&& (!global.option_no_equip || !(array_contains( _id.active_effect_list,"weird_tag")))
 }
 
@@ -46,7 +79,7 @@ useful_goons_count=function()
 }
 
 
-global.option_no_equip=true
+global.option_no_equip=false
 option_no_equip_sign=new_sign("No Equip",function(){
 	global.option_no_equip=!global.option_no_equip;
 	if global.option_no_equip
@@ -59,7 +92,7 @@ option_no_equip_sign=new_sign("No Equip",function(){
 	
 	}
 	changed_option()
-	},false,spr_ui_icon_icon_option_tick,{has:false,func:empty_func()},spr_ui_icon_button_option)
+	},false,spr_ui_icon_icon_option_untick,{has:false,func:empty_func()},spr_ui_icon_button_option)
 
 global.option_blue=true
 option_blue_sign=new_sign("Blue",function(){
@@ -92,7 +125,7 @@ option_dumb_sign=new_sign("Dumb",function(){
 	},false,spr_ui_icon_icon_option_tick,{has:false,func:empty_func()},spr_ui_icon_button_option)
 
 global.option_normal=true
-option_normal_sign=new_sign("Normal",function(){
+option_normal_sign=new_sign("Basic",function(){
 	global.option_normal=!global.option_normal;
 	if global.option_normal
 	{
@@ -106,7 +139,7 @@ option_normal_sign=new_sign("Normal",function(){
 	changed_option()
 	},false,spr_ui_icon_icon_option_tick,{has:false,func:empty_func()},spr_ui_icon_button_option)
 
-global.option_empty=false
+global.option_empty=true
 option_empty_sign=new_sign("No Items",function(){
 	global.option_empty=!global.option_empty;
 	if global.option_empty
@@ -119,7 +152,145 @@ option_empty_sign=new_sign("No Items",function(){
 	
 	}
 	changed_option()
-	},false,spr_ui_icon_icon_option_untick,{has:false,func:empty_func()},spr_ui_icon_button_option)
+	},false,spr_ui_icon_icon_option_tick,{has:false,func:empty_func()},spr_ui_icon_button_option)
+
+
+global.option_consumable=true
+option_consumable_sign=new_sign("Consumable",function(){
+	global.option_consumable=!global.option_consumable;
+	if global.option_consumable
+	{
+		option_consumable_sign.icon=spr_ui_icon_icon_option_tick
+	}
+	else
+	{
+		option_consumable_sign.icon=spr_ui_icon_icon_option_untick
+	
+	}
+	changed_option()
+	},false,spr_ui_icon_icon_option_tick,{has:false,func:empty_func()},spr_ui_icon_button_option)
+
+global.option_equippable=true
+option_equippable_sign=new_sign("Equippable",function(){
+	global.option_equippable=!global.option_equippable;
+	if global.option_equippable
+	{
+		option_equippable_sign.icon=spr_ui_icon_icon_option_tick
+	}
+	else
+	{
+		option_equippable_sign.icon=spr_ui_icon_icon_option_untick
+	
+	}
+	changed_option()
+	},false,spr_ui_icon_icon_option_tick,{has:false,func:empty_func()},spr_ui_icon_button_option)
+
+global.option_has_calories=true
+option_has_calories_sign=new_sign("Calories",function(){
+	global.option_has_calories=!global.option_has_calories;
+	if global.option_has_calories
+	{
+		option_has_calories_sign.icon=spr_ui_icon_icon_option_tick
+	}
+	else
+	{
+		option_has_calories_sign.icon=spr_ui_icon_icon_option_untick
+	
+	}
+	changed_option()
+	},false,spr_ui_icon_icon_option_tick,{has:false,func:empty_func()},spr_ui_icon_button_option)
+
+global.option_no_calories=true
+option_no_calories_sign=new_sign("No Calories",function(){
+	global.option_no_calories=!global.option_no_calories;
+	if global.option_no_calories
+	{
+		option_no_calories_sign.icon=spr_ui_icon_icon_option_tick
+	}
+	else
+	{
+		option_no_calories_sign.icon=spr_ui_icon_icon_option_untick
+	
+	}
+	changed_option()
+	},false,spr_ui_icon_icon_option_tick,{has:false,func:empty_func()},spr_ui_icon_button_option)
+
+global.option_building=true
+option_building_sign=new_sign("Building",function(){
+	global.option_building=!global.option_building;
+	if global.option_building
+	{
+		option_building_sign.icon=spr_ui_icon_icon_option_tick
+	}
+	else
+	{
+		option_building_sign.icon=spr_ui_icon_icon_option_untick
+	
+	}
+	changed_option()
+	},false,spr_ui_icon_icon_option_tick,{has:false,func:empty_func()},spr_ui_icon_button_option)
+
+global.option_repeating=true
+option_repeating_sign=new_sign("Repeating",function(){
+	global.option_repeating=!global.option_repeating;
+	if global.option_repeating
+	{
+		option_repeating_sign.icon=spr_ui_icon_icon_option_tick
+	}
+	else
+	{
+		option_repeating_sign.icon=spr_ui_icon_icon_option_untick
+	
+	}
+	changed_option()
+	},false,spr_ui_icon_icon_option_tick,{has:false,func:empty_func()},spr_ui_icon_button_option)
+
+global.option_destruct=true
+option_destruct_sign=new_sign("Destruct",function(){
+	global.option_destruct=!global.option_destruct;
+	if global.option_destruct
+	{
+		option_destruct_sign.icon=spr_ui_icon_icon_option_tick
+	}
+	else
+	{
+		option_destruct_sign.icon=spr_ui_icon_icon_option_untick
+	
+	}
+	changed_option()
+	},false,spr_ui_icon_icon_option_tick,{has:false,func:empty_func()},spr_ui_icon_button_option)
+
+
+global.option_tilt_ground=true
+option_tilt_ground_sign=new_sign("Tilt Ground",function(){
+	global.option_tilt_ground=!global.option_tilt_ground;
+	if global.option_tilt_ground
+	{
+		option_tilt_ground_sign.icon=spr_ui_icon_icon_option_tick
+	}
+	else
+	{
+		option_tilt_ground_sign.icon=spr_ui_icon_icon_option_untick
+	
+	}
+	changed_option()
+	},false,spr_ui_icon_icon_option_tick,{has:false,func:empty_func()},spr_ui_icon_button_option)
+
+
+global.option_no_special=true
+option_no_special_sign=new_sign("No Special",function(){
+	global.option_no_special=!global.option_no_special;
+	if global.option_no_special
+	{
+		option_no_special_sign.icon=spr_ui_icon_icon_option_tick
+	}
+	else
+	{
+		option_no_special_sign.icon=spr_ui_icon_icon_option_untick
+	
+	}
+	changed_option()
+	},false,spr_ui_icon_icon_option_tick,{has:false,func:empty_func()},spr_ui_icon_button_option)
 
 slider_level=0
 slider_yy=real_y
@@ -134,7 +305,7 @@ calc_slider_y=function()
 
 hov_gui_check=function()
 {
-	return on_mouse || sign_selected!=-1 || slider_selected || option_hover||on_arrows
+	return on_mouse || sign_selected!=-1 || slider_selected || option_hover||on_arrows || option_change_hover || mark_selected
 }
 
 reset_zoom=new_sign("Reset Zoom",function() 
@@ -240,3 +411,12 @@ signs=[
 sprite_index=spr_ui_icon_select
 real_x=1320-size*10
 real_y=40+size*10+size*24*2
+
+
+option_change_hover=false
+options_changes_index=0
+options_changes=[{uid:"goons",name:"Goons",sprite:spr_ui_icon_button_select_option_goons,signs:[option_normal_sign,option_blue_sign,option_dumb_sign]},
+{uid:"equipment",name:"Abilities",sprite:spr_ui_icon_button_select_option_equip,signs:[option_no_special_sign,option_repeating_sign,option_destruct_sign,option_building_sign,option_tilt_ground_sign]},
+{uid:"items",name:"Items",sprite:spr_ui_icon_button_select_option_inventory,signs:[option_empty_sign,option_equippable_sign,option_consumable_sign,option_has_calories_sign,option_no_calories_sign]}
+]
+options_changes_current=options_changes[0]
