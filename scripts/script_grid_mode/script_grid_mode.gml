@@ -81,6 +81,11 @@ function gridmode_check_ground_hitboxes_farmland_fromtop(xx,yy,sprite)
 	
 	return run_for_all_sprite_tile(xx,yy-16,sprite,is_ground_farmland_pixel)
 }
+function gridmode_check_ground_hitboxes_dirty_fromtop(xx,yy,sprite)
+{
+	
+	return run_for_all_sprite_tile(xx,yy-16,sprite,is_ground_dirty_pixel)
+}
 function gridmode_check_workstation_hitboxes(xx,yy,sprite)
 {
 
@@ -110,6 +115,10 @@ function is_ground_placeable_pixel(xx,yy)
 	return is_tile_placeable(floor(xx/16),floor(yy/16))
 }
 
+function is_ground_dirty_pixel(xx,yy)
+{
+	return is_tile_dirt_and_such(floor(xx/16),floor(yy/16))
+}
 
 function draw_grid(){
 	

@@ -3,7 +3,10 @@ function is_tile_placeable(tx,ty)
 	return is_tile_ground(tx,ty) || is_tile_snowy(tx,ty)
 }
 
-
+function is_tile_dirt_and_such(tx,ty)
+{
+	return is_tile_ground(tx,ty) || is_tile_farmland(tx,ty)
+}
 
 function is_tile_ground(tx,ty)
 {

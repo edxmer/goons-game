@@ -179,13 +179,19 @@ function potion_get_recipes(type="all")
 	curr="liquid_doom"
 	if type=="all" || type==curr
 	{
-		var potion=potion_set_recipe(curr,"potion_of_doom",#C96EEA,["sock","wloob_confused"],2)
+		var potion=potion_set_recipe(curr,"potion_of_doom",#42705C,["sock","wloob_confused"],2)
 		array_push(rlist,potion)
 	}
 	curr="corn_seeds"
 	if type=="all" || type==curr
 	{
 		var potion=potion_set_recipe(curr,"corn_seeds",#EDE138,["corn_cob","hoe"],3)
+		array_push(rlist,potion)
+	}
+	curr="elderberry_seeds"
+	if type=="all" || type==curr
+	{
+		var potion=potion_set_recipe(curr,"elderberry_seeds",#E2641F,["elderberry","hoe"],3)
 		array_push(rlist,potion)
 	}
 	curr="homonculus"

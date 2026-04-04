@@ -53,6 +53,8 @@ step_distance=goon_speed*0.3
 inventory="empty"
 inventory_sprite=spr_empty
 inventory_subimg=0
+inventory_staydata=[]
+
 has_effects=false
 active_effect_list=[]
 effect_init(id)
@@ -96,10 +98,12 @@ goon_pickup_nearest=function()
 }
 
 
-goon_pickup_item=function(item,replace=false)
+goon_pickup_item=function(item_struct,replace=false)
 {
+	//item_struct=[item_id,item_stay_data]
 	if (inventory=="empty" ) || replace{
-		inventory=item
+		inventory=item_struct[0]
+		inventory_staydata=item_struct[1]
 		if inventory!="empty"{
 			inventory_sprite=item_get_held_sprite(inventory)
 			sound_play_category_at("pickup",x,y)
@@ -202,19 +206,30 @@ inventory_set_empty=function()
 {
 inventory="empty"
 inventory_sprite=spr_empty
+inventory_staydata=[]
 effect_update(id)
 }
 
-goon_summon_item=function(item_id)
+goon_summon_item=function(item_id,from_eq=false)
 {
+	var staydata=inventory_staydata
+	if from_eq
+	{
+		staydata=[]
+	}
 	sound_play_category_at(item_get_ground_sound(item_id),x,bbox_bottom)
-	create_item(irandom_range(x-5,x+5),irandom_range(y-5,bbox_bottom+3),item_id,true)
+	create_item(irandom_range(x-5,x+5),irandom_range(y-5,bbox_bottom+3),item_id,true,staydata)
 }
 
-goon_place_item_down_grid=function(item_id)
+goon_place_item_down_grid=function(item_id,from_eq=false)
 {
+	var staydata=inventory_staydata
+	if from_eq
+	{
+		staydata=[]
+	}
 	sound_play_category_at(item_get_ground_sound(item_id),x,bbox_bottom)
-	create_item(clamp_to_grid_start( x),clamp_to_grid_start(bbox_bottom),item_id,true)
+	create_item(clamp_to_grid_start( x),clamp_to_grid_start(bbox_bottom),item_id,true,staydata)
 
 
 }
@@ -330,7 +345,7 @@ equip_item_from_hand=function()
 		equipment_sprite_walk=both_sprites[1]
 		equipment_sprite_draw=equipment_sprite_idle
 		inventory_set_empty()
-		goon_pickup_item(was_equip)
+		goon_pickup_item([was_equip,[]])
 		effect_update(id)
 	}
 }
@@ -357,9 +372,9 @@ unequip_item=function()
 {
 	if equipment!="empty"
 	{
-		if !goon_pickup_item(equipment)
+		if !goon_pickup_item([equipment,[]])
 		{
-			goon_summon_item(equipment)
+			goon_summon_item(equipment,true)
 		}
 	}
 	equipment_set_empty()

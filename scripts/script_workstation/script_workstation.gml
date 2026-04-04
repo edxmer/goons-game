@@ -232,6 +232,43 @@ function work_station_data_get(station_id){
 		work_station_data.grow_stage_sprites=[spr_workstation_corn_plant,spr_workstation_corn_plant_second,spr_workstation_corn_plant_third]
 		
 	}
+	if station_id=="pineapple_plant"
+	{
+		work_station_data.tags=["can_walk_through","unpickupable"]
+		work_station_data.texture=spr_workstation_pineapple
+		work_station_data.growing=true
+		work_station_data.grow_stage_timer=[10,16]
+		work_station_data.grown_up_event=[["summon_item_from_pool",["pineapple"]],["destroy"]]
+		work_station_data.growth_index=0
+		work_station_data.grow_stage_sprites=[spr_workstation_pineapple,spr_workstation_pineapple_1,spr_workstation_pineapple_2,spr_workstation_pineapple_3,spr_workstation_pineapple_3,spr_workstation_pineapple_4]
+		
+	}
+	if station_id=="purple_mushroom_plant"
+	{
+		work_station_data.tags=["can_walk_through","unpickupable"]
+		work_station_data.texture=spr_workstation_purple_mushroom
+		work_station_data.growing=true
+		work_station_data.grow_stage_timer=[10,12]
+		work_station_data.grown_up_event=[["summon_item_from_pool",["purple_mushroom"]],["create_clone_nearby",0.6,
+		function(xx,yy)
+		{
+			return gridmode_check_ground_hitboxes_dirty_fromtop(xx,yy,spr_ui_grid_purple_mushroom) && gridmode_check_workstation_hitboxes_fromtop(xx,yy,spr_ui_grid_purple_mushroom)
+		},"purple_mushroom_plant"],["destroy"]]
+		work_station_data.growth_index=0
+		work_station_data.grow_stage_sprites=[spr_workstation_purple_mushroom,spr_workstation_purple_mushroom_2,spr_workstation_purple_mushroom_full]
+		
+	}
+	if station_id=="elderberry_plant"
+	{
+		work_station_data.tags=["can_walk_through","unpickupable"]
+		work_station_data.texture=spr_workstation_elderberry_plant
+		work_station_data.growing=true
+		work_station_data.grow_stage_timer=[3,5]
+		work_station_data.grown_up_event=[["summon_item_from_pool",["elderberry"]],["reset_growth_index",3],["destroy_if_reset_reached",12]]
+		work_station_data.growth_index=0
+		work_station_data.grow_stage_sprites=[spr_workstation_elderberry_plant,spr_workstation_elderberry_plant_2,spr_workstation_elderberry_plant_3,spr_workstation_elderberry_plant_3,spr_workstation_elderberry_plant_4]
+		
+	}
 	if station_id=="trashcan"
 	{
 		work_station_data.texture=spr_workstation_trashbin
@@ -262,8 +299,11 @@ function work_station_data_get(station_id){
 		npc.offerings=
 		[
 			npc_create_offering_data("hoe",5,120,460,3),
-			npc_create_offering_data("corn_seeds",5,100,260,1),
-			npc_create_offering_data("turnip_seeds",5,230,264,1)
+			npc_create_offering_data("corn_seeds",5,100,260,3),
+			npc_create_offering_data("turnip_seeds",5,230,264,4),
+			npc_create_offering_data("elderberry_seeds",5,360,262,2),
+			npc_create_offering_data("pineapple_seeds",5,480,264,1),
+			npc_create_offering_data("purple_mushroom_spores",5,610,264,1)
 		]
 		
 	}

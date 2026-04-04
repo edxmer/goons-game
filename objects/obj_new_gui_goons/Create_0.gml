@@ -55,17 +55,24 @@ button_clicked=function()
 		}
 		else
 		{
-			var idgooning=[]
-			with(obj_goon)
+			if gooning_goons_count()>0
 			{
-				if gooning
+				var idgooning=[]
+				with(obj_goon)
 				{
-					array_push(idgooning,id)
+					if gooning
+					{
+						array_push(idgooning,id)
+					}
+				}
+				for (var i=0;i<array_length(idgooning);i++)
+				{
+					signs[sign_selected].func(idgooning[i])
 				}
 			}
-			for (var i=0;i<array_length(idgooning);i++)
+			else if instance_exists(global.last_selected_goon)
 			{
-				signs[sign_selected].func(idgooning[i])
+				signs[sign_selected].func(global.last_selected_goon)
 			}
 		}
 	}

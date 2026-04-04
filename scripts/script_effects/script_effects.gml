@@ -23,7 +23,7 @@ function effect_set_base(goon_id)
 		goon_id.active_effect_list=[]
 		goon_id.slowness_modifier=1
 		goon_id.has_effects=false
-		goon_id.effects={freezing:{is:false,freezing_pixel_amount:0},weird_tag:{is:false},robot:{is:false},slowed:{is:false,slow_percentage:1},pick_up_building:{is:false},use_item:{is:false},place_snow:{is:false},tilt_ground:{is:false},building:{is:false},plant:{is:false},grid_mode:{is:false,ui_sprite:spr_empty,max_placeable:-1},grid_mode_place_item:{is:false},grid_mode_place_station:{is:false,station_id:"empty"}}
+		goon_id.effects={freezing:{is:false,freezing_pixel_amount:0},weird_tag:{is:false},staydata_amount_lower_plant:{is:false},robot:{is:false},slowed:{is:false,slow_percentage:1},pick_up_building:{is:false},use_item:{is:false},place_snow:{is:false},tilt_ground:{is:false},building:{is:false},plant:{is:false},grid_mode:{is:false,ui_sprite:spr_empty,max_placeable:-1},grid_mode_place_item:{is:false},grid_mode_place_station:{is:false,station_id:"empty"}}
 		
 	}
 }
@@ -112,6 +112,14 @@ function item_set_effects(goon_id,item_id,prefix){
 			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"is",true)
 			real_effects=true
 		}
+		
+		next_effect="staydata_amount_lower_plant"
+		if array_contains(item_get_tags(item_id),prefix+next_effect)
+		{
+			array_push(goon_id.active_effect_list,next_effect)
+			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"is",true)
+			real_effects=true
+		}
 		next_effect="place_snow"
 		if array_contains(item_get_tags(item_id),prefix+next_effect)
 		{
@@ -191,6 +199,24 @@ function effect_tick(goon_id)
 			goon_id.effect_data_stay.use_item.started_with_effect=false
 		}
 		
+		
+		if goon_id.effects.staydata_amount_lower_plant.is
+		{
+			var amount_data=staydata_get_value(goon_id.inventory_staydata,"amount")
+			
+			if amount_data[0]
+			{
+				var real_amount=amount_data[1]
+				goon_id.effects.grid_mode.max_placeable=real_amount
+				if real_amount<=0
+				{
+					goon_id.inventory_destroy()
+				}
+			}
+		
+		
+		}
+		
 		if goon_id.effects.grid_mode.is
 		{
 
@@ -250,6 +276,10 @@ function effect_tick(goon_id)
 				if can_be_placed(clamp_to_grid_start( goon_id.x+16),clamp_to_grid_start(goon_id.y+32),item_get_sprite(item_id))
 				{
 					create_work_station(clamp_to_grid_start(goon_id.x),clamp_to_grid_start(goon_id.y),station_id)
+					if goon_id.effects.staydata_amount_lower_plant.is
+					{
+						staydata_lower_value(goon_id.inventory_staydata,"amount")
+					}
 					if !item_tags_contains(goon_id.inventory,"persistent") && !item_tags_contains(goon_id.equipment,"eq_grid_mode_place_station")
 					{
 						item_id_summon_particles(goon_id.inventory,x,y)
@@ -311,7 +341,7 @@ function effect_tick(goon_id)
 						sound_play_category_at(sound,x,y)
 						sound_play_category_at("stonework",x,y)
 						var item_id=workstation_turn_to_item(wst_id)
-						goon_pickup_item(item_id,true)
+						goon_pickup_item([item_id,[]],true)
 					}
 				
 				}

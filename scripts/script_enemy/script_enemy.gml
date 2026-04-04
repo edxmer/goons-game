@@ -42,7 +42,7 @@ function pickuppable_enemies(px,py,pickup_distance=35)
 			var dist=point_distance(x,y,px,py)
 			
 			if dist<=pickup_distance  && array_contains(tags,"pickuppable"){
-				array_push(en_items,[id,dist,item_to_be_turned_into,"enemy"])
+				array_push(en_items,[id,dist,item_to_be_turned_into,"enemy",[]])
 			}
 		}
 	}

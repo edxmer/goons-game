@@ -18,6 +18,7 @@ turn_after=0
 
 sprite_index=spr_empty
 item_id="empty"
+item_stay_data=[]
 assigned=false
 assign=function(){
 	assigned=true
@@ -25,7 +26,11 @@ assign=function(){
 	{
 		instance_destroy()
 	}
-	var item_data=assign_item(item_id)
+	var item_data=assign_item(item_id,item_stay_data)
+	if array_length(item_stay_data)==0
+	{
+		item_stay_data=item_data.staydata
+	}
 	sprite_index=item_data.texture
 	tags=item_data.tags
 	

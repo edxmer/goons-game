@@ -28,8 +28,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"plants",
-    "path":"folders/SPRITES/work_station/plants.yy",
+    "name":"turnip",
+    "path":"folders/SPRITES/work_station/plants/turnip.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

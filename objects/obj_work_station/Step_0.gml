@@ -140,6 +140,22 @@ if growing && !grow_stop{
 				growth_index=event[1]
 				set_growing_time()
 			}
+			else if event[0]=="create_clone_nearby"
+			{
+				if random_range(0,1)<=event[1]
+				{
+					var clone_y=irandom_range(-1,1)*16
+					var clone_x=irandom_range(-1,1)*16
+					if clone_y==0
+					{
+						clone_x=one_or_minus_one()*16
+					}
+					if event[2](x+clone_x,y+clone_y)
+					{
+						create_work_station(x+clone_x,y+clone_y,event[3])
+					}
+				}
+			}
 			else if event[0]=="destroy_if_reset_reached"
 			{
 				if growth_index_reseted>=event[1]

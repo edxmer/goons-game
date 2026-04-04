@@ -18,20 +18,35 @@ if active
 		array_push(signs,unselect)
 	}
 	var functions=[]
-	with(obj_goon)
+	if gooning_goons_count()>0
 	{
-		if gooning
+		with(obj_goon)
 		{
-			functions=array_concat(functions,goon_get_buttons(id))
+			if gooning
+			{
+				functions=array_concat(functions,goon_get_buttons(id))
 		
-		}
+			}
 
+		}
+	}
+	else if instance_exists(global.last_selected_goon)
+	{
+		with(global.last_selected_goon)
+		{
+			functions=goon_get_buttons(id)
+		}
 	}
 	functions=array_to_distinct(functions)
 	var idno=array_get_index(functions,"unselect")
 	if idno!=-1
 	{
 		array_delete(functions,idno,1)
+	}
+	var idno2=array_get_index(functions,"select")
+	if idno2!=-1
+	{
+		array_delete(functions,idno2,1)
 	}
 	
 	var idnoP=array_get_index(functions,"pickup")

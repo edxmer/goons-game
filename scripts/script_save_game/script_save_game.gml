@@ -445,7 +445,7 @@ function handle_savestring_goon(save_modules)
 	goon_id.goon_speed=real(save_modules[6])
 	with(goon_id)
 	{
-		goon_pickup_item(save_modules[4])
+		goon_pickup_item([save_modules[4],[]])
 		equip_item_base(save_modules[5])
 	}
 	if array_length(save_modules)>=10
@@ -472,6 +472,8 @@ function create_savestring_goon_special(goon_id)
 	ret_text+=create_value_variable_dictionary_to_string("goto_y",goon_id.goto_y)
 	+"-"
 	ret_text+=create_value_variable_dictionary_to_string("goto_list",goon_id.goto_list)
+	+"-"
+	ret_text+=create_value_variable_dictionary_to_string("inventory_staydata",goon_id.inventory_staydata)
 	+"-"
 	
 	return ret_text
@@ -586,7 +588,7 @@ function create_savestring_workstation(workstation_id)
 	var text="workstation-"
 	text+=workstation_id.station_id+"-"
 	text+=string(workstation_id.x)+"_"+string(workstation_id.y)+"-"
-	text+=create_savestring_workstation_special(workstation_id)
+	text+=create_savestring_workstation_special(workstation_id)+"-"
 	text+="-\n"
 	return text
 }
@@ -605,8 +607,20 @@ function handle_savestring_item(save_modules)
 	var _x=real(coords[0])
 	var _y=real(coords[1])
 	
-	create_item(_x,_y,item_id)
-
+	var item=create_item(_x,_y,item_id)
+	item.assign()
+	if array_length(save_modules)>3
+	{
+		for(var i=3;i<array_length(save_modules);i++)
+		{
+			var module=save_modules[i]
+			if is_value_variable_dictionary(module)
+			{
+				handle_value_dict_id(item,module)
+			}
+		}
+	}
+	
 	return true
 }
 function create_savestring_item(item_id)
@@ -617,7 +631,8 @@ function create_savestring_item(item_id)
 	}
 	var text="item-"
 	text+=item_id.item_id+"-"
-	text+=string(item_id.x)+"_"+string(item_id.y)
+	text+=string(item_id.x)+"_"+string(item_id.y)+"-"
+	text+=create_value_variable_dictionary_to_string("item_stay_data",item_id.item_stay_data)
 	text+="-\n"
 	return text
 }

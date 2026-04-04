@@ -28,8 +28,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"plants",
-    "path":"folders/SPRITES/work_station/plants.yy",
+    "name":"corn",
+    "path":"folders/SPRITES/work_station/plants/corn.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
