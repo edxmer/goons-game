@@ -12,7 +12,7 @@ last_eaten_item_id="empty"
 npc_room_goto=room_npc_dialoge
 npc_room_data=global.npc_data
 
-
+last_produced_item_sprite=spr_empty
 
 name=""
 
@@ -60,9 +60,22 @@ summon_sound="empty"
 	
 assigned=false
 
+reload_last_produced_sprite=function()
+{
+	if array_length(interact_recieve_items)>0
+	{
+		last_produced_item_sprite=item_get_sprite(array_last(interact_recieve_items))
+	}
+	else
+	{
+		last_produced_item_sprite=spr_empty
+	}
+}
+
 interact_item_push=function(item_id)
 {
 	array_push(interact_recieve_items,item_id)
+	last_produced_item_sprite=item_get_sprite(item_id)
 	interact_tick=0
 }
 goon_interacted=function()
@@ -87,6 +100,7 @@ goon_interacted=function()
 	
 		}
 		interact_recieve_items=[]
+		reload_last_produced_sprite()
 
 	}
 	if interact_destroy

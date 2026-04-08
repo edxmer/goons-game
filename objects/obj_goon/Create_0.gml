@@ -7,6 +7,13 @@ else{
 global.goon_count++
 }
 
+max_hp=irandom_range(2,3)
+if irandom(2)==2
+{
+	max_hp++
+}
+hp=max_hp
+
 goto_list=[]
 
 gridmode_use_item=false

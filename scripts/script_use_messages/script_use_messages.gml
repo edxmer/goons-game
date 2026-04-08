@@ -7,6 +7,11 @@ function draw_item_finished(item_id,_x,_y,size=1){
 	draw_sprite_ext(spr_item_done_bubble,0,_x,_y,1*size,1*size,0,c_white,0.8)
 	draw_item(_x,_y,item_id,1.2*size)
 }
+function draw_item_finished_sprite(item_sprite,_x,_y,size=1){
+	_y-=14*size
+	draw_sprite_ext(spr_item_done_bubble,0,_x,_y,1*size,1*size,0,c_white,0.8)
+	draw_item_sprite(_x,_y,item_sprite,1.2*size)
+}
 function draw_nametag(name){
 	if global.gui_nametag_called_last || global.is_hovering_gui
 	{

@@ -183,3 +183,8 @@ if pickup_item_penalty>0
 	pickup_item_penalty=max(0,pickup_item_penalty)
 
 }
+
+if hp<=0
+{
+	goon_die()
+}

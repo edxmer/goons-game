@@ -8,6 +8,22 @@ function is_tile_dirt_and_such(tx,ty)
 	return is_tile_ground(tx,ty) || is_tile_farmland(tx,ty)
 }
 
+function is_tile_water(tx,ty)
+{
+	var ind=get_tile_index(tx,ty)
+	return ind>=28 && ind<=59
+}
+
+function is_tile_near_water(tx,ty)
+{
+return (! is_tile_water(tx,ty)) &&( is_tile_water(tx,ty+1) ||is_tile_water(tx,ty+3)||is_tile_water(tx,ty-3) ||is_tile_water(tx,ty+2) || is_tile_water(tx,ty-1) || is_tile_water(tx,ty-2))
+
+}
+function is_tile_plantable_near_water(tx,ty)
+{
+return is_tile_near_water(tx,ty) && (is_tile_ground(tx,ty) || is_tile_farmland(tx,ty))
+
+}
 function is_tile_ground(tx,ty)
 {
 	return get_tile_index(tx,ty)==9

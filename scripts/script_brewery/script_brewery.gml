@@ -194,6 +194,24 @@ function potion_get_recipes(type="all")
 		var potion=potion_set_recipe(curr,"elderberry_seeds",#E2641F,["elderberry","hoe"],3)
 		array_push(rlist,potion)
 	}
+	curr="purple_spores"
+	if type=="all" || type==curr
+	{
+		var potion=potion_set_recipe(curr,"purple_mushroom_spores",#A55BFF,["purple_mushroom","hoe"],3)
+		array_push(rlist,potion)
+	}
+	curr="pineapple_seeds"
+	if type=="all" || type==curr
+	{
+		var potion=potion_set_recipe(curr,"pineapple_seeds",#FFD400,["pineapple","hoe"],3)
+		array_push(rlist,potion)
+	}
+	curr="cat_tail_seeds"
+	if type=="all" || type==curr
+	{
+		var potion=potion_set_recipe(curr,"cat_tail_seeds",#20C961,["cat_tail","hoe"],3)
+		array_push(rlist,potion)
+	}
 	curr="homonculus"
 	if type=="all" || type==curr
 	{

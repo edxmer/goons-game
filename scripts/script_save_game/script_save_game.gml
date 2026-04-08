@@ -374,7 +374,7 @@ function create_savestring_enemy(enemy_id)
 	var text="enemy-"
 	
 	text+=object_get_name(object_index)+"-"
-	text+=string(enemy_id.x)+"_"+string(enemy_id.y)+"-"
+	text+=string(max(enemy_id.x,0))+"_"+string(max(0,enemy_id.y))+"-"
 
 	text+=create_savestring_enemy_special(enemy_id)
 	text+="-\n"
@@ -471,6 +471,10 @@ function create_savestring_goon_special(goon_id)
 	+"-"
 	ret_text+=create_value_variable_dictionary_to_string("goto_y",goon_id.goto_y)
 	+"-"
+	ret_text+=create_value_variable_dictionary_to_string("max_hp",goon_id.max_hp)
+	+"-"
+	ret_text+=create_value_variable_dictionary_to_string("hp",goon_id.hp)
+	+"-"
 	ret_text+=create_value_variable_dictionary_to_string("goto_list",goon_id.goto_list)
 	+"-"
 	ret_text+=create_value_variable_dictionary_to_string("inventory_staydata",goon_id.inventory_staydata)
@@ -489,7 +493,7 @@ function create_savestring_goon(goon_id)
 	var text="goon-"
 	
 	text+=goon_id.name+"-"
-	text+=string(goon_id.x)+"_"+string(goon_id.y)+"-"
+	text+=string(max(0,goon_id.x))+"_"+string(max(0,goon_id.y))+"-"
 	var type="n"
 	if goon_id.dumb{
 		type="d"
@@ -587,7 +591,7 @@ function create_savestring_workstation(workstation_id)
 	}
 	var text="workstation-"
 	text+=workstation_id.station_id+"-"
-	text+=string(workstation_id.x)+"_"+string(workstation_id.y)+"-"
+	text+=string(max(0,workstation_id.x))+"_"+string(max(0,workstation_id.y))+"-"
 	text+=create_savestring_workstation_special(workstation_id)+"-"
 	text+="-\n"
 	return text
@@ -631,7 +635,7 @@ function create_savestring_item(item_id)
 	}
 	var text="item-"
 	text+=item_id.item_id+"-"
-	text+=string(item_id.x)+"_"+string(item_id.y)+"-"
+	text+=string(max(0,item_id.x))+"_"+string(max(item_id.y,0))+"-"
 	text+=create_value_variable_dictionary_to_string("item_stay_data",item_id.item_stay_data)
 	text+="-\n"
 	return text

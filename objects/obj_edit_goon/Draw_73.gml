@@ -12,39 +12,7 @@ if global.special_zoom_done{
 	var curr_x=0
 	var curr_y=0
 	
-	//effects
-	var eff_spaces=[0,0]
-	if array_length(global.goon_edit_id.active_effect_list)>0{
-		curr_x=global.cam.coords[0]+20*size
-		curr_y=global.cam.coords_middle[1]-20*size
-		var selected=false
-		if selected_effects{
-			
-			eff_spaces=draw_box_data_get_width_and_height(["Effects:",item_get_name(global.goon_edit_id.inventory)],[],curr_x,curr_y,size)
-			selected=point_in_rectangle(mouse_x,mouse_y,curr_x,curr_y,curr_x+(12+eff_spaces[0])*size,curr_y+eff_spaces[1]*size)
-			var texture=spr_textbox
-			if selected{texture=spr_textbox_selected_true}
-			draw_box_datas(["§bEffects:"],[],curr_x,curr_y,size,3,texture)
-			curr_y+=size*14-0.5
-			curr_x+=size*4
-			effect_draw_icons(global.goon_edit_id.active_effect_list,curr_x,curr_y,4,1.4*size,1)
-		}
-		else
-		{
-			eff_spaces=draw_box_data_get_width_and_height(["> Effects:",item_get_name(global.goon_edit_id.inventory)],[],curr_x,curr_y,size)
-			selected=point_in_rectangle(mouse_x,mouse_y,curr_x,curr_y,curr_x+(12+eff_spaces[0])*size,curr_y+eff_spaces[1]*size)
-			var texture=spr_textbox
-			if selected{texture=spr_textbox_selected_true}
-			draw_box_datas(["§b> Effects:"],[],curr_x,curr_y,size,3,texture)
-		}
-		if selected && mouse_check_button_pressed(mb_left)
-		{
-			sound_play_category_at("swoosh",mouse_x,mouse_y)
-			selected_effects=!selected_effects
-			
-		}
-	}
-	//effects_end
+	
 	
 	
 	var spaces=[0,0]
@@ -113,6 +81,39 @@ if global.special_zoom_done{
 			selected_equipment=!selected_equipment
 		}
 	}
+	//effects
+	var eff_spaces=[0,0]
+	if array_length(global.goon_edit_id.active_effect_list)>0{
+		curr_x=global.cam.coords[0]+20*size
+		curr_y=global.cam.coords_middle[1]-20*size
+		var selected=false
+		if selected_effects{
+			
+			eff_spaces=draw_box_data_get_width_and_height(["Effects:",item_get_name(global.goon_edit_id.inventory)],[],curr_x,curr_y,size)
+			selected=point_in_rectangle(mouse_x,mouse_y,curr_x,curr_y,curr_x+(12+eff_spaces[0])*size,curr_y+eff_spaces[1]*size)
+			var texture=spr_textbox
+			if selected{texture=spr_textbox_selected_true}
+			draw_box_datas(["§bEffects:"],[],curr_x,curr_y,size,3,texture)
+			curr_y+=size*14-0.5
+			curr_x+=size*4
+			effect_draw_icons(global.goon_edit_id.active_effect_list,curr_x,curr_y,4,1.4*size,1)
+		}
+		else
+		{
+			eff_spaces=draw_box_data_get_width_and_height(["> Effects:",item_get_name(global.goon_edit_id.inventory)],[],curr_x,curr_y,size)
+			selected=point_in_rectangle(mouse_x,mouse_y,curr_x,curr_y,curr_x+(12+eff_spaces[0])*size,curr_y+eff_spaces[1]*size)
+			var texture=spr_textbox
+			if selected{texture=spr_textbox_selected_true}
+			draw_box_datas(["§b> Effects:"],[],curr_x,curr_y,size,3,texture)
+		}
+		if selected && mouse_check_button_pressed(mb_left)
+		{
+			sound_play_category_at("swoosh",mouse_x,mouse_y)
+			selected_effects=!selected_effects
+			
+		}
+	}
+	//effects_end
 	var returnval= goon_edit_buttons(buttons_last,selected_button_last)
 	buttons_last=returnval[0]
 	selected_button_last=returnval[1]

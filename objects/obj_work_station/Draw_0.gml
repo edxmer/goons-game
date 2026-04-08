@@ -29,6 +29,10 @@ draw_self()
 
 if array_length(interact_recieve_items)>0
 {
-	draw_item_finished(array_last(interact_recieve_items),(bbox_right+bbox_left)/2,y+sprite_top_part,interact_tick/10)
+	if last_produced_item_sprite==spr_empty
+	{
+		reload_last_produced_sprite()
+	}
+	draw_item_finished_sprite(last_produced_item_sprite,(bbox_right+bbox_left)/2,y+sprite_top_part,interact_tick/10)
 
 }

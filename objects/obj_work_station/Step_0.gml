@@ -150,7 +150,7 @@ if growing && !grow_stop{
 					{
 						clone_x=one_or_minus_one()*16
 					}
-					if event[2](x+clone_x,y+clone_y)
+					if event[2](x+clone_x+1,y+clone_y+1)
 					{
 						create_work_station(x+clone_x,y+clone_y,event[3])
 					}

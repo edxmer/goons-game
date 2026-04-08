@@ -102,6 +102,23 @@ function assign_item(item_id,staydata=[]){
 		}
 
 	}
+	if item_id=="cat_tail_seeds"{
+		
+		item_data=assign_item("*_seeds")
+		array_push(item_data.tags,"cat_tail_seeds")
+		array_push(item_data.tags,"nature")
+		item_data.staydata=[["amount",4]]
+		item_data.name=string_upper(string_copy(item_id,1,1))+ string_replace_all(string_copy(item_id,2,string_length(item_id)-1),"_"," ")
+		item_data.texture=spr_cattail_seeds
+		item_data.special_data.grid_mode_place_station_id="cat_tail_plant"
+		item_data.special_data.grid_mode_sprite=spr_ui_grid_cattail
+		item_data.calories=0
+		item_data.special_data.grid_mode_placeable_function=function(xx,yy,sprite)
+		{
+			return gridmode_check_ground_hitboxes_near_water_fromtop(xx,yy,sprite) && gridmode_check_workstation_hitboxes_fromtop(xx,yy,sprite)
+		}
+
+	}
 	if item_id=="elderberry_seeds"{
 		
 		item_data=assign_item("*_seeds")
@@ -125,6 +142,12 @@ function assign_item(item_id,staydata=[]){
 		array_push(item_data.tags,"nature")
 		item_data.texture=spr_ananas
 		item_data.calories=190
+	
+	}
+	if item_id=="cat_tail"{
+		array_push(item_data.tags,"nature")
+		item_data.texture=spr_seadog
+		item_data.calories=20
 	
 	}
 	if item_id=="purple_mushroom"{

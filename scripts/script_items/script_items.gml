@@ -1,7 +1,13 @@
 function draw_item(_x,_y,item_id,scale,alpha=1,shadow=false,animated=false)
 {
-	var im_index=0
 	var sprite=item_get_sprite(item_id)
+	draw_item_sprite(_x,_y,sprite,scale,alpha,shadow,animated)
+	return sprite
+}
+
+function draw_item_sprite(_x,_y,sprite,scale,alpha=1,shadow=false,animated=false)
+{
+	var im_index=0
 	if animated
 	{
 		im_index=floor((current_time / 1000) * sprite_get_speed(sprite)) % sprite_get_number(sprite)
@@ -14,6 +20,7 @@ function draw_item(_x,_y,item_id,scale,alpha=1,shadow=false,animated=false)
 	draw_sprite_ext(sprite,im_index,_x,_y,scale,scale,0,c_white,alpha)
 
 }
+
 
 function item_get_sprite(item_id)
 {
@@ -119,18 +126,34 @@ function item_move_from_collisions(_id,loop=1,collisions=[],donotdisturb=[])
 	{
 	idlist=item_get_collisions(_id)
 	}
+	if array_length(collisions)==0
+	{
+		if instance_exists(_id) && _id.object_index==obj_item{
+		_id.in_movement_amount=0
+		}
+		return
+	}
+	else
+	{
+		if instance_exists(_id) && _id.object_index==obj_item{
+		_id.in_movement_amount++
+		}
+	}
 	for(var i=0;i<array_length(idlist);i++)
 	{
+		
 		if array_length(idlist)>10
 		{
 			break
 		}
+		
 		var amount=baseamount
 		
 		var otheritem=idlist[i]
 		if otheritem.object_index==obj_work_station
 		{
 			amount=5
+			item_move_from_here(_id,_id.x,_id.y)
 		}
 		else if baseamount==0
 		{
@@ -174,9 +197,58 @@ function item_move_from_collisions(_id,loop=1,collisions=[],donotdisturb=[])
 			item_move_from_collisions(otheritem,loop+1,_id,[_id])
 		}
 	}
+	if instance_exists(_id) && _id.object_index==obj_item
+	{
+		_id.check_in_water()
+	}
 
 }
 
+function item_get_close_hitbox(xx,yy,already_in=[])
+{
+	var id_list=[]
+	with(obj_item)
+	{
+		if (!array_contains(already_in,id)) &&abs(x-xx)<5 && abs(y-yy)<5
+		{
+			array_push(id_list,id)	
+		}
+	}
+	return id_list
+}
+
+function item_move_from_here(_id,xx,yy)
+{
+	var already_in=[_id]
+	var id_list=item_get_close_hitbox(xx,yy,already_in)
+	var indd=array_length(id_list)
+	var indstart=0
+	already_in=array_to_distinct(array_concat(already_in,id_list))
+	while (indd>indstart)
+	{
+		indd=array_length(id_list)
+		for(var i=indstart;i<array_length(id_list);i++)
+		{
+			with(id_list[i])
+			{
+				id_list=array_concat(item_get_close_hitbox(x,y,already_in),id_list)
+			}
+			already_in=array_to_distinct(array_concat(already_in,id_list))
+		}
+		indstart=indd
+		indd=array_length(id_list)
+	}
+	for(var i=0;i<array_length(id_list);i++)
+	{
+		with(id_list[i])
+		{
+			var dir=point_direction(xx,yy,x,y)
+			x+=lengthdir_x(16,dir)
+			y+=lengthdir_y(16,dir)
+		}
+	}
+
+}
 
 
 function item_special_data_get_can_place_function(item_id)

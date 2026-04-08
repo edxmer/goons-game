@@ -8,6 +8,8 @@ name=""
 
 useful=false
 
+in_movement_amount=0
+
 put_down_by_goon=false
 
 tags=[]
@@ -55,6 +57,34 @@ assign=function(){
 	}
 	
 }
+check_in_water=function()
+{
+if is_ground_in_water_pixel(x,y)
+	{
+		if !is_ground_in_water_pixel(x,y-20)
+		{
+			y-=20
+			item_move_from_here(id,x,y)
+		}
+		else if !is_ground_in_water_pixel(x,y+20)
+		{
+			
+			y+=20
+			item_move_from_here(id,x,y)
+		}
+		else
+		{
+			water_splash()
+		}
+	}
+}
+water_splash=function()
+{
+	particle_water_splash(x,y)
+	sound_play_category_at("water_splash",x,y)
+	instance_destroy()
+}
+
 
 useful_function=function()
 {

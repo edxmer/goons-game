@@ -232,6 +232,35 @@ function work_station_data_get(station_id){
 		work_station_data.grow_stage_sprites=[spr_workstation_corn_plant,spr_workstation_corn_plant_second,spr_workstation_corn_plant_third]
 		
 	}
+	if station_id=="cat_tail_plant"
+	{
+		work_station_data.tags=["can_walk_through","unpickupable"]
+		work_station_data.texture=spr_workstation_cattail_plant_stem
+		work_station_data.growing=true
+		work_station_data.grow_stage_timer=[20,30]
+		work_station_data.grown_up_event=[["summon_item_from_pool",["cat_tail"]],["create_clone_nearby",1,
+		function(xx,yy)
+		{
+			return gridmode_check_ground_hitboxes_near_water(xx,yy,spr_ui_grid_cattail) && gridmode_check_workstation_hitboxes_fromtop(xx,yy,spr_ui_grid_cattail)
+		},"cat_tail_plant"],["create_clone_nearby",1,
+		function(xx,yy)
+		{
+			return gridmode_check_ground_hitboxes_near_water(xx,yy,spr_ui_grid_cattail) && gridmode_check_workstation_hitboxes_fromtop(xx,yy,spr_ui_grid_cattail)
+		},"cat_tail_plant"],
+		["create_clone_nearby",1,
+		function(xx,yy)
+		{
+			return gridmode_check_ground_hitboxes_near_water(xx,yy,spr_ui_grid_cattail) && gridmode_check_workstation_hitboxes_fromtop(xx,yy,spr_ui_grid_cattail)
+		},"cat_tail_plant"],
+		["create_clone_nearby",1,
+		function(xx,yy)
+		{
+			return gridmode_check_ground_hitboxes_near_water(xx,yy,spr_ui_grid_cattail) && gridmode_check_workstation_hitboxes_fromtop(xx,yy,spr_ui_grid_cattail)
+		},"cat_tail_plant"],["destroy"]]
+		work_station_data.growth_index=0
+		work_station_data.grow_stage_sprites=[spr_workstation_cattail_plant_stem,spr_workstation_cattail_plant,spr_workstation_cattail_plant_2]
+		
+	}
 	if station_id=="pineapple_plant"
 	{
 		work_station_data.tags=["can_walk_through","unpickupable"]
@@ -303,6 +332,7 @@ function work_station_data_get(station_id){
 			npc_create_offering_data("turnip_seeds",5,230,264,4),
 			npc_create_offering_data("elderberry_seeds",5,360,262,2),
 			npc_create_offering_data("pineapple_seeds",5,480,264,1),
+			npc_create_offering_data("cat_tail_seeds",5,230,464,1),
 			npc_create_offering_data("purple_mushroom_spores",5,610,264,1)
 		]
 		

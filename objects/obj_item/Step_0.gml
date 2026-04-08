@@ -2,6 +2,7 @@ if !assigned
 {
 	assign()
 	useful=useful_function()
+	check_in_water()
 }
 
 if turn_into_object
@@ -111,4 +112,11 @@ else
 	selected=false
 }
 
+if irandom_range(0,2)>0{
 item_move_from_collisions(id)
+if in_movement_amount>10
+{
+	y-=16
+	in_movement_amount=0
+}
+}

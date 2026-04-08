@@ -13,6 +13,47 @@ mark_only_id=-1
 mark_only_yy=0
 mark_selected=false
 
+show_options=false
+
+is_goon_useful=function(_id)
+{
+	return (global.option_blue || !(_id.blue))
+	&& (global.option_dumb || !(_id.dumb))
+	&& (global.option_normal || (_id.dumb || _id.blue))
+	&& (global.option_empty || !(_id.inventory=="empty"))
+	&& (global.option_consumable && item_tags_contains( _id.inventory,"consumable") 
+	|| global.option_equippable && item_tags_contains( _id.inventory,"equippable") 
+	|| global.option_has_calories && (item_get_calories( _id.inventory) >0)
+	|| global.option_empty && (_id.inventory=="empty")
+	|| global.option_no_calories && (item_get_calories( _id.inventory) ==0)
+	|| (!(global.option_no_calories || global.option_has_calories || global.option_equippable || global.option_consumable) && _id.inventory=="empty")
+	)
+	&& ((global.option_repeating && (array_contains(_id.active_effect_list,"robot")))
+	|| (global.option_destruct && (array_contains(_id.active_effect_list,"pick_up_building")))
+	|| (global.option_building && (array_contains(_id.active_effect_list,"grid_mode")))
+	|| (global.option_tilt_ground && (array_contains(_id.active_effect_list,"tilt_ground")))
+	|| (global.option_no_special && !((array_contains(_id.active_effect_list,"tilt_ground")||array_contains(_id.active_effect_list,"grid_mode")||array_contains(_id.active_effect_list,"robot")||array_contains(_id.active_effect_list,"pick_up_building"))))
+	)
+}
+
+reload_gooning_goons_count=function()
+{
+	gooning_goons_cnt=gooning_goons_count()
+	useful_goons_count()
+}
+useful_goons_count=function()
+{
+	var cnt=0
+	with(obj_goon)
+	{
+		if other.is_goon_useful(id)
+		{
+			cnt++
+		}
+	}
+	useful_goons_cnt=cnt
+	return cnt
+}
 
 update_sign=function(opt_sign,tick_or_untick)
 {
@@ -73,41 +114,7 @@ changed_option=function()
 
 }
 
-show_options=false
 
-is_goon_useful=function(_id)
-{
-	return (global.option_blue || !(_id.blue))
-	&& (global.option_dumb || !(_id.dumb))
-	&& (global.option_normal || (_id.dumb || _id.blue))
-	&& (global.option_empty || !(_id.inventory=="empty"))
-	&& (global.option_consumable && item_tags_contains( _id.inventory,"consumable") 
-	|| global.option_equippable && item_tags_contains( _id.inventory,"equippable") 
-	|| global.option_has_calories && (item_get_calories( _id.inventory) >0)
-	|| global.option_empty && (_id.inventory=="empty")
-	|| global.option_no_calories && (item_get_calories( _id.inventory) ==0)
-	|| (!(global.option_no_calories || global.option_has_calories || global.option_equippable || global.option_consumable) && _id.inventory=="empty")
-	)
-	&& ((global.option_repeating && (array_contains(_id.active_effect_list,"robot")))
-	|| (global.option_destruct && (array_contains(_id.active_effect_list,"pick_up_building")))
-	|| (global.option_building && (array_contains(_id.active_effect_list,"grid_mode")))
-	|| (global.option_tilt_ground && (array_contains(_id.active_effect_list,"tilt_ground")))
-	|| (global.option_no_special && !((array_contains(_id.active_effect_list,"tilt_ground")||array_contains(_id.active_effect_list,"grid_mode")||array_contains(_id.active_effect_list,"robot")||array_contains(_id.active_effect_list,"pick_up_building"))))
-	)
-}
-
-useful_goons_count=function()
-{
-	var cnt=0
-	with(obj_goon)
-	{
-		if other.is_goon_useful(id)
-		{
-			cnt++
-		}
-	}
-	return cnt
-}
 
 
 
@@ -243,6 +250,7 @@ select_all=new_sign("Select All",
 					gooning=true
 				}
 			}
+			reload_gooning_goons_count()
 		},true
 	)
 select_nearest=new_sign("+1",function()
@@ -274,6 +282,7 @@ select_nearest=new_sign("+1",function()
 			gooning=true
 		}
 	}
+	reload_gooning_goons_count()
 },true
 )
 
@@ -304,6 +313,7 @@ unselect_nearest=new_sign("-1",function()
 			gooning=false
 		}
 	}
+	reload_gooning_goons_count()
 },true
 )
 unselect_all=new_sign("Unselect All",
@@ -313,6 +323,7 @@ unselect_all=new_sign("Unselect All",
 			{
 				gooning=false
 			}
+		reload_gooning_goons_count()
 		},true
 	)
 
@@ -333,3 +344,6 @@ options_changes=[{uid:"goons",name:"Goons",sprite:spr_ui_icon_button_select_opti
 {uid:"items",name:"Items",sprite:spr_ui_icon_button_select_option_inventory,signs:[option_empty_sign,option_equippable_sign,option_consumable_sign,option_has_calories_sign,option_no_calories_sign]}
 ]
 options_changes_current=options_changes[0]
+
+
+reload_gooning_goons_count()
