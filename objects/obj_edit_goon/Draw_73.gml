@@ -121,4 +121,7 @@ if global.special_zoom_done{
 	{
 		edit_button_pressed(buttons_last[selected_button_last])
 	}
+	var max_hp=global.goon_edit_id.max_hp
+	draw_health(global.cam.coords_middle[0]-(max_hp)*7*size,global.cam.coords_middle[1]-21*size,global.goon_edit_id.hp,max_hp,size,true)
+	
 }
