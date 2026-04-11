@@ -1,11 +1,12 @@
 
-level_text_scale=0.2+(5.25-(text_pulse_timer%5-2.5)*(text_pulse_timer%5-2.5))*0.006
+//level_text_scale=0.2+(5.25-(text_pulse_timer%5-2.5)*(text_pulse_timer%5-2.5))*0.006
+level_text_scale= 0.2 + smooth(text_pulse_timer)*0.018
 
-text_pulse_timer+=delta_time/1000000
-text_pulse_timer%=5
+
+text_pulse_timer+=delta_time/1000000 * 0.2
+text_pulse_timer%=2
 
 calorie_objectives_done_check()
-
 
 
 level=global.reward_level

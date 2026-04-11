@@ -27,8 +27,8 @@ size = 5
 
 text_offset_x = -50
 text_offset_y = -60
-level_text_offset_x = -40
-level_text_offset_y = 10
+level_text_offset_x = 490
+level_text_offset_y = -67
 text_scale=0.24
 
 level_shadow_offset_x = 3
@@ -67,4 +67,8 @@ text_pulse_timer=0
 
 
 level_text_rotation = -5
+
+smooth = function(t) {
+	return sin(t*pi)+1
+}
 
