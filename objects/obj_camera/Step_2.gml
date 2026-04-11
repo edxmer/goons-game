@@ -8,12 +8,14 @@ var cam_y_size=camera_get_view_height(cam)
 var width=camera_get_view_width(cam)
 var height=camera_get_view_height(cam)
 
+var world_width = global.camera_bot_right_x - global.camera_top_left_x
+var world_height = global.camera_bot_right_y - global.camera_top_left_y
+
 var move_x = 0
 var move_y = 0
 
 var x_go=0
 var y_go=0
-
 // MOVEMENT
 if global.special_mode
 {
@@ -79,9 +81,17 @@ else
 
 
 // RESIZING
-
-
-	if mouse_wheel_down(){
+	
+	if (width > world_width || height > world_height) {
+		var old_size=global.camera_size
+		global.camera_size-=0.2
+	
+		zoom_to_back=global.camera_size
+		zoom_from(mouse_x,mouse_y,old_size)
+	}
+	else if (mouse_wheel_down() 
+	&& width/global.camera_size*(global.camera_size+0.2) <= world_width 
+	&& height/global.camera_size*(global.camera_size+0.2) <= world_height){
 		var old_size=global.camera_size
 		global.camera_size+=0.2
 	
@@ -152,3 +162,5 @@ prev_x = mouse_x
 prev_y = mouse_y
 
 was_special_mode=global.special_mode
+
+//clamp_camera_zoom_size_to_world_size()
