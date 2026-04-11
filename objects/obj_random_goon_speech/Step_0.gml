@@ -19,7 +19,7 @@ if (speech_timer < 0) {
 		
 		var name = _goon_id.name
 		
-		switch (irandom(14)) {
+		switch (irandom(15)) {
 			case (0):
 			add_text_box(_goon_id, [
 			txt("I sometimes think", name),
@@ -164,7 +164,20 @@ if (speech_timer < 0) {
 			txt("", "" , 0, turn_speaking_off)
 			])
 			break;
+			
+			case (15):
+			
+			var _name = "skibidi " + name
+			add_text_box(_goon_id, [
+			txt("I think I left the lights on", _name),
+			txt("in my toilet", _name),
+			txt("guuuuuckkkk", _name, 6000),
+			txt("", "" , 0, turn_speaking_off)
+			])
+			break;
 		}
+		
+		
 		
 	}
 }
