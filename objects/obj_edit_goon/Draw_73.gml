@@ -25,19 +25,19 @@ if global.special_zoom_done{
 		var selected=false
 		var drawsize=size
 		if selected_inventory{
-			spaces=item_draw_box_datas_for_goon_ui_width_and_height(global.goon_edit_id.inventory,curr_x,curr_y,size,"Inventory:")
+			spaces=item_draw_box_datas_for_goon_ui_width_and_height(global.goon_edit_id.inventory,curr_x,curr_y,size,"- Inventory -")
 			selected=point_in_rectangle(mouse_x,mouse_y,curr_x,curr_y,curr_x+(12+spaces[0])*size,curr_y+spaces[1]*size)
 
-			item_draw_box_datas_for_goon_ui(global.goon_edit_id.inventory,curr_x,curr_y,drawsize,"§bInventory:",selected)
+			item_draw_box_datas_for_goon_ui(global.goon_edit_id.inventory,curr_x,curr_y,drawsize,"§b- Inventory -",selected)
 		}
 		else
 		{
-			spaces=draw_box_data_get_width_and_height(["> Inventory:",item_get_name(global.goon_edit_id.inventory)],[],curr_x,curr_y,size)
+			spaces=draw_box_data_get_width_and_height(["+ Inventory +",item_get_name(global.goon_edit_id.inventory)],[],curr_x,curr_y,size)
 			selected=point_in_rectangle(mouse_x,mouse_y,curr_x,curr_y,curr_x+(12+spaces[0])*size,curr_y+spaces[1]*size)
 
 			var texture=spr_textbox
 			if selected{texture=spr_textbox_selected_true}
-			draw_box_datas(["§b> Inventory:",item_get_name(global.goon_edit_id.inventory)],[],curr_x,curr_y,drawsize,3,texture)
+			draw_box_datas(["§b+ Inventory +",item_get_name(global.goon_edit_id.inventory)],[],curr_x,curr_y,drawsize,3,texture)
 
 
 		}
@@ -54,22 +54,22 @@ if global.special_zoom_done{
 		var selected=false
 		var drawsize=size
 		if selected_equipment{
-			spaces_eq=item_draw_box_datas_for_goon_ui_width_and_height(global.goon_edit_id.equipment,curr_x,curr_y,drawsize,"Equipment:")
+			spaces_eq=item_draw_box_datas_for_goon_ui_width_and_height(global.goon_edit_id.equipment,curr_x,curr_y,drawsize,"- Equipment -")
 			selected=point_in_rectangle(mouse_x,mouse_y,curr_x,curr_y,curr_x+(12+spaces_eq[0])*size,curr_y+spaces_eq[1]*size)
 
 
 
-			item_draw_box_datas_for_goon_ui(global.goon_edit_id.equipment,curr_x,curr_y,drawsize,"§bEquipment:",selected)
+			item_draw_box_datas_for_goon_ui(global.goon_edit_id.equipment,curr_x,curr_y,drawsize,"§b- Equipment -",selected)
 			
 		}
 		else
 		{
-			spaces_eq=draw_box_data_get_width_and_height(["> Equipment:",item_get_name(global.goon_edit_id.equipment)],[],curr_x,curr_y,size)
+			spaces_eq=draw_box_data_get_width_and_height(["+ Equipment +",item_get_name(global.goon_edit_id.equipment)],[],curr_x,curr_y,size)
 			selected=point_in_rectangle(mouse_x,mouse_y,curr_x,curr_y,curr_x+(12+spaces_eq[0])*size,curr_y+spaces_eq[1]*size)
 
 			var texture=spr_textbox
 			if selected{texture=spr_textbox_selected_true}
-			draw_box_datas(["§b> Equipment:",item_get_name(global.goon_edit_id.equipment)],[],curr_x,curr_y,drawsize,3,texture)
+			draw_box_datas(["§b+ Equipment +",item_get_name(global.goon_edit_id.equipment)],[],curr_x,curr_y,drawsize,3,texture)
 			
 
 			
@@ -89,22 +89,22 @@ if global.special_zoom_done{
 		var selected=false
 		if selected_effects{
 			
-			eff_spaces=draw_box_data_get_width_and_height(["Effects:",item_get_name(global.goon_edit_id.inventory)],[],curr_x,curr_y,size)
+			eff_spaces=draw_box_data_get_width_and_height(["- Effects -",item_get_name(global.goon_edit_id.inventory)],[],curr_x,curr_y,size)
 			selected=point_in_rectangle(mouse_x,mouse_y,curr_x,curr_y,curr_x+(12+eff_spaces[0])*size,curr_y+eff_spaces[1]*size)
 			var texture=spr_textbox
 			if selected{texture=spr_textbox_selected_true}
-			draw_box_datas(["§bEffects:"],[],curr_x,curr_y,size,3,texture)
+			draw_box_datas(["§b- Effects -"],[],curr_x,curr_y,size,3,texture)
 			curr_y+=size*14-0.5
 			curr_x+=size*4
 			effect_draw_icons(global.goon_edit_id.active_effect_list,curr_x,curr_y,4,1.4*size,1)
 		}
 		else
 		{
-			eff_spaces=draw_box_data_get_width_and_height(["> Effects:",item_get_name(global.goon_edit_id.inventory)],[],curr_x,curr_y,size)
+			eff_spaces=draw_box_data_get_width_and_height(["+ Effects +",item_get_name(global.goon_edit_id.inventory)],[],curr_x,curr_y,size)
 			selected=point_in_rectangle(mouse_x,mouse_y,curr_x,curr_y,curr_x+(12+eff_spaces[0])*size,curr_y+eff_spaces[1]*size)
 			var texture=spr_textbox
 			if selected{texture=spr_textbox_selected_true}
-			draw_box_datas(["§b> Effects:"],[],curr_x,curr_y,size,3,texture)
+			draw_box_datas(["§b+ Effects +"],[],curr_x,curr_y,size,3,texture)
 		}
 		if selected && mouse_check_button_pressed(mb_left)
 		{
