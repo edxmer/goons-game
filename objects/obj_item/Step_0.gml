@@ -73,12 +73,7 @@ if !grew_up && size>=0.95{
 	}
 
 
-	else if string_copy(item_id,1,8)=="station-"
-	{
-		var _station_id=string_copy(item_id,9,string_length(item_id)-8)
-		create_work_station(x,y,_station_id)
-		instance_destroy()
-	}
+
 }
 
 if !global.is_hovering_gui && position_meeting(mouse_x,mouse_y,id) && !global.special_mode && !global.is_hovering_gui

@@ -181,6 +181,12 @@ function work_station_texture_get(station_id)
 	return work_station_data_get(station_id).texture
 }
 
+function work_station_item_texture_get(station_id)
+{
+	return work_station_data_get(station_id).carry_texture
+}
+
+
 function work_station_use_sound_get(station_id)
 {
 	var data= work_station_data_get(station_id)
@@ -204,7 +210,7 @@ function workstation_tags_contain(station_id,tag)
 
 function work_station_data_get(station_id){
 	var work_station_data={tags:[],npc_room_data:{},name:"empty",primordeal_goo:false,third:false,destroy_after:-1,
-		station_id:"empty",craft_sound:"empty",summon_sound:"empty",texture:spr_empty,
+		station_id:"empty",craft_sound:"empty",summon_sound:"empty",texture:spr_empty,carry_texture:spr_empty,
 		grow_stage_timer:[0,0],grown_up_event:[],growth_index:0,grow_stage_sprites:[],
 		spawning:false,crafting:false,growing:false,npc_place:false,craft_input_pool_tags:[],craft_reward_pool:[],spawn_item_pool:[],
 		spawn_timer_sec:[0,0]}
@@ -300,6 +306,7 @@ function work_station_data_get(station_id){
 	}
 	if station_id=="trashcan"
 	{
+		work_station_data.carry_texture=spr_workstation_trashbin_carry
 		work_station_data.texture=spr_workstation_trashbin
 		work_station_data.spawning=true
 		work_station_data.summon_sound="groundsoft"
@@ -370,6 +377,7 @@ function work_station_data_get(station_id){
 	}
 	else if station_id=="brewery"
 	{
+		work_station_data.carry_texture=spr_brewery_move
 		work_station_data.texture=spr_brewery
 		work_station_data.npc_place=true
 		work_station_data.npc_room_data=npc_room_data_get_base()
@@ -399,6 +407,7 @@ function work_station_data_get(station_id){
 	}
 	else if station_id=="woodcutter"
 	{
+		work_station_data.carry_texture=spr_workstation_woodcuttercarry
 		work_station_data.texture=spr_workstation_woodcutter
 		work_station_data.crafting=true
 		work_station_data.craft_sound="woodwork"
@@ -416,6 +425,7 @@ function work_station_data_get(station_id){
 	}
 	else if station_id=="nightstand"
 	{
+		work_station_data.carry_texture=spr_workstation_nightstand_carry
 		work_station_data.texture=spr_workstation_nightstand
 		work_station_data.crafting=true
 		work_station_data.craft_sound="woodwork"
@@ -425,6 +435,7 @@ function work_station_data_get(station_id){
 	}
 	else if station_id=="cauldron"
 	{
+		work_station_data.carry_texture=spr_workstation_cauldron
 		work_station_data.texture=spr_workstation_cauldron
 		work_station_data.crafting=true
 		work_station_data.craft_sound="murr"
@@ -434,6 +445,7 @@ function work_station_data_get(station_id){
 	}
 	else if station_id=="cigs"
 	{
+		work_station_data.carry_texture=spr_workstation_cigs_carry
 		work_station_data.texture=spr_workstation_cigs
 		work_station_data.crafting=true
 		work_station_data.craft_sound="woodwork"
@@ -443,6 +455,7 @@ function work_station_data_get(station_id){
 	}
 	else if station_id=="gumball_machine"
 	{
+		work_station_data.carry_texture=spr_workstation_gumball_machinecarry
 		work_station_data.texture=spr_workstation_gumball_machine
 		work_station_data.crafting=true
 		work_station_data.craft_sound="eat"
@@ -452,6 +465,8 @@ function work_station_data_get(station_id){
 	}
 	else if station_id=="gooball_machine"
 	{
+		
+		work_station_data.carry_texture=spr_workstation_gumball_machinecarry
 		work_station_data.texture=spr_workstation_gooball_machine_1
 		work_station_data.crafting=true
 		work_station_data.craft_sound="murr"
@@ -461,6 +476,7 @@ function work_station_data_get(station_id){
 	}
 		else if station_id=="tree"
 	{
+		work_station_data.carry_texture=spr_workstation_tree
 		work_station_data.texture=spr_workstation_tree
 		work_station_data.spawning=true
 		work_station_data.summon_sound="groundmedium"
@@ -470,6 +486,7 @@ function work_station_data_get(station_id){
 	}
 	else if station_id=="frogs"
 	{
+		work_station_data.carry_texture=spr_workstation_frogs_carry
 		work_station_data.texture=spr_workstation_frogs
 		work_station_data.spawning=true
 		work_station_data.summon_sound="groundsoft"
@@ -483,6 +500,7 @@ function work_station_data_get(station_id){
 	}
 		else if station_id=="sign"
 	{
+		work_station_data.carry_texture=spr_workstation_constructioncarry
 		work_station_data.texture=spr_workstation_construction
 		work_station_data.spawning=true
 		work_station_data.summon_sound="groundmedium"
@@ -501,13 +519,15 @@ function work_station_data_get(station_id){
 	}
 	else if station_id=="goonificator"
 	{
+		work_station_data.carry_texture=spr_goonificator_carry
 		work_station_data.texture=spr_goonificator
 		work_station_data.crafting=true
 		work_station_data.craft_sound="murr"
 		work_station_data.craft_input_pool_tags=["goo"]
 		work_station_data.craft_reward_pool=["goon_show"]
 	}
-	
+	if work_station_data.carry_texture==spr_empty
+	{work_station_data.carry_texture=work_station_data.texture}
 	return work_station_data
 }
 

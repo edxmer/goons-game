@@ -6,22 +6,23 @@
 function assign_item(item_id,staydata=[]){
 	var item_data={staydata:[],texture:spr_empty,item_id:"empty",name:"empty",tags:[],ground_sound:"groundsoft",calories:0,particle_texture:spr_empty,held_texture:spr_empty,special_data:{}}
 	item_data.item_id=item_id
-	item_data.name=string_upper(string_copy(item_id,1,1))+ string_replace_all(string_copy(item_id,2,string_length(item_id)-1),"_"," ")
+	item_data.name="Unbuilt "+string_upper(string_copy(item_id,1,1))+ string_replace_all(string_copy(item_id,2,string_length(item_id)-1),"_"," ")
 	array_push(item_data.tags,item_id)
 	if string_copy(item_id,1,8)=="station-"{
 		//station-woodcutter
 		var _station_id=string_copy(item_id,9,string_length(item_id)-8)//(string_split(item_data,"-")[1])
 		item_data.name=work_station_data_get(_station_id).name
-		item_data.texture=work_station_texture_get(_station_id)
+		item_data.texture=work_station_item_texture_get(_station_id)
 		array_push(item_data.tags,"station")
 		array_push(item_data.tags,"grid_mode")
-		array_push(item_data.tags,"grid_mode_place_item")
+		array_push(item_data.tags,"grid_mode_place_station")
 		array_push(item_data.tags,"has_effects")
 		array_push(item_data.tags,"weird_tag")
 		array_push(item_data.tags,"building")
 		array_push(item_data.tags,"put_down_on_grid")
+		item_data.special_data.grid_mode_place_station_id=_station_id
 		
-		item_data.special_data.grid_mode_sprite=item_data.texture
+		item_data.special_data.grid_mode_sprite=work_station_texture_get(_station_id)
 		item_data.special_data.grid_mode_max_placeable=1
 		item_data.special_data.grid_mode_placeable_function=function(xx,yy,sprite)
 		{
