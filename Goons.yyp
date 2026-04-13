@@ -468,6 +468,7 @@
     {"id":{"name":"spr_workstation_task_guy","path":"sprites/spr_workstation_task_guy/spr_workstation_task_guy.yy",},},
     {"id":{"name":"spr_workstation_trashbin_carry","path":"sprites/spr_workstation_trashbin_carry/spr_workstation_trashbin_carry.yy",},},
     {"id":{"name":"spr_workstation_trashbin","path":"sprites/spr_workstation_trashbin/spr_workstation_trashbin.yy",},},
+    {"id":{"name":"spr_workstation_tree_carry","path":"sprites/spr_workstation_tree_carry/spr_workstation_tree_carry.yy",},},
     {"id":{"name":"spr_workstation_tree","path":"sprites/spr_workstation_tree/spr_workstation_tree.yy",},},
     {"id":{"name":"spr_workstation_turnip_second","path":"sprites/spr_workstation_turnip_second/spr_workstation_turnip_second.yy",},},
     {"id":{"name":"spr_workstation_turnip_third","path":"sprites/spr_workstation_turnip_third/spr_workstation_turnip_third.yy",},},

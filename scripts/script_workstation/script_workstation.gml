@@ -476,7 +476,7 @@ function work_station_data_get(station_id){
 	}
 		else if station_id=="tree"
 	{
-		work_station_data.carry_texture=spr_workstation_tree
+		work_station_data.carry_texture=spr_workstation_tree_carry
 		work_station_data.texture=spr_workstation_tree
 		work_station_data.spawning=true
 		work_station_data.summon_sound="groundmedium"

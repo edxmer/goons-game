@@ -7,7 +7,7 @@ selected_button_last=-1
 
 selected_effects=true
 selected_equipment=false
-selected_inventory=false
+selected_inventory=true
 
 health_size=1
 
