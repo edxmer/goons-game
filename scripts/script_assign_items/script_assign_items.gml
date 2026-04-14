@@ -8,9 +8,13 @@ function assign_item(item_id,staydata=[]){
 	item_data.item_id=item_id
 	item_data.name=string_upper(string_copy(item_id,1,1))+ string_replace_all(string_copy(item_id,2,string_length(item_id)-1),"_"," ")
 	array_push(item_data.tags,item_id)
-	if string_copy(item_id,1,8)=="station-"{
+	if string_copy(item_id,1,8)=="station_"{
 		//station-woodcutter
 		var _station_id=string_copy(item_id,9,string_length(item_id)-8)//(string_split(item_data,"-")[1])
+		if workstation_tags_contain(_station_id,"donotbecomeitem")
+		{
+			return assign_item("empty")
+		}
 		item_data.name="Unbuilt "+work_station_data_get(_station_id).name
 		item_data.texture=work_station_item_texture_get(_station_id)
 		array_push(item_data.tags,"station")
@@ -167,6 +171,7 @@ function assign_item(item_id,staydata=[]){
 		item_data.texture=spr_homonculus
 		item_data.calories=40
 		array_push(item_data.tags,"enemy")
+		array_push(item_data.tags,"goo")
 		item_data.special_data.enemy_data={turn_back:true,turn_after:1,turn_into:obj_enemy_homonculus}
 	}
 	if item_id=="corn_syrup"{
@@ -180,6 +185,19 @@ function assign_item(item_id,staydata=[]){
 		array_push(item_data.tags,"nature")
 		item_data.texture=spr_turnip
 		item_data.calories=25
+	
+	}
+	if item_id=="pina_colada"{
+			item_data.texture=spr_pina_colada
+		array_push(item_data.tags,"nature")
+		array_push(item_data.tags,"consumable")
+		array_push(item_data.tags,"health_boost")
+		item_data.special_data.consume_effect=function(goon_id)
+		{
+			goon_id.hp=max(goon_id.hp,goon_id.max_hp)
+		
+		}
+		item_data.calories=120
 	
 	}
 	if item_id=="frozen_apple"{

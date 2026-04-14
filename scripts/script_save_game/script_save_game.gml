@@ -529,8 +529,8 @@ function handle_savestring_workstation(save_modules)
 	
 	
 	var wst_id=create_work_station(_x,_y,station_id)
-	wst_id.assign()
-	if array_length(save_modules)>3
+	//wst_id.assign()
+	if instance_exists(wst_id) && array_length(save_modules)>3
 	{
 		for(var i=3;i<array_length(save_modules);i++)
 		{

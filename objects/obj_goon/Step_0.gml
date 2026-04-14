@@ -48,23 +48,55 @@ var speed_real=goon_speed*min(delta_time/1000000,0.4)*slowness_modifier
 if !(point_distance(x,y,goto_x,goto_y)<speed_real){
 	goto_x=clamp(goto_x,global.camera_top_left_x,global.camera_bot_right_x)
 	goto_y=clamp(goto_y,global.camera_top_left_y,global.camera_bot_right_y)
-	
+	var look=point_direction(x,y,goto_x,goto_y)
+	var dir_x=lengthdir_x(speed_real,look)
+	var lookx=sign(dir_x)
+	var dir_y=lengthdir_y(speed_real,look)
+	var looky=sign(dir_y)
+	if abs(dir_y)>abs(dir_x/1.5)
+	{
+		backwards=sign(looky)==-1
+	}
+	else
+	{
+		backwards=false
+	}
 	equipment_sprite_draw=equipment_sprite_walk
-	sprite_index=spr_goon_walk
+	if backwards
+	{
+		
+		sprite_index=spr_goon_walk_backwards
+	}
+	else{
+		sprite_index=spr_goon_walk
+	}
 	if dumb{
+		if backwards
+		{
+		
+			sprite_index=spr_goon_walk_dumb_backwards
+		}
+		else{
 			sprite_index=spr_goon_walk_dumb
+		}
 	
 	}
 	else if blue{
+		if backwards
+		{
+		
+			sprite_index=spr_goon_walk_blue_backwards
+		}
+		else{
 			sprite_index=spr_goon_walk_blue
+		}
+	
 	}
-	var look=point_direction(x,y,goto_x,goto_y)
 
 	distance_went+=speed_real
 	pixels_taken_this_frame=speed_real
 	x+=clamp(lengthdir_x(speed_real,look),-point_distance(x,y,goto_x,y),point_distance(x,y,goto_x,y))
-	var lookx=sign(lengthdir_x(speed_real,look))
-	if lookx!=0 && abs(lengthdir_x(speed_real,look))>=abs((lengthdir_y(speed_real,look)>>1)){
+	if lookx!=0 && abs(dir_x)>=abs((dir_y>>1)){
 		image_xscale=lookx
 	}
 	y+=clamp(lengthdir_y(speed_real,look),-point_distance(x,y,x,goto_y),point_distance(x,y,x,goto_y))
@@ -77,6 +109,7 @@ if !(point_distance(x,y,goto_x,goto_y)<speed_real){
 		{
 			reached_destination_this_frame=true
 		
+			
 			
 			if distance_went>=step_distance*0.5{
 				if is_on_snow(x,y){

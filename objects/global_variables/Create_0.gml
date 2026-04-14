@@ -1,7 +1,7 @@
 global.cam={}
 global.select_mode=false
 
-
+global._coll_list = ds_list_create();
 
 global.coins=0
 

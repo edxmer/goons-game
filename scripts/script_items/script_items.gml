@@ -78,12 +78,14 @@ function create_item(_x,_y,item_id,put_down_by_goon=false,staydata=[])
 
 function item_get_collisions(_id,fromworkstations=true,fromitems=true)
 {
+	
 	var idlist=ds_list_create()
 	var amount=0
 	if fromitems{
 		with (_id)
 		{
-			amount=collision_rectangle_list(x-4,y-4,x+4,y+4,obj_item,false,true,idlist,true)
+			
+			amount=collision_rectangle_list(x-1,y-1,x+1,y+1,obj_item,false,true,idlist,true)
 		}
 	}
 	var reallist=[]
@@ -96,7 +98,7 @@ function item_get_collisions(_id,fromworkstations=true,fromitems=true)
 	if fromworkstations{
 		with (_id)
 		{
-			amount=collision_rectangle_list(x-4,y-4,x+4,y+4,obj_work_station,false,true,idlist,true)
+			amount=collision_rectangle_list(x-2,y-2,x+2,y+2,obj_work_station,false,true,idlist,true)
 		}
 	}
 	for (var i=0;i<amount;i++)
@@ -107,6 +109,54 @@ function item_get_collisions(_id,fromworkstations=true,fromitems=true)
 	ds_list_destroy(idlist)
 	return reallist
 
+}
+
+function new_item_move_from_collisions(_id)
+{
+	if !instance_exists(_id)
+	{
+		return
+	}
+	var colliding_with=item_get_collisions(_id,true,false)
+	var move_x=0
+	var move_y=0
+	var nearby=array_length(colliding_with)
+	if nearby>0
+	{
+		for (var i=0;i<nearby;i++)
+		{
+			var dir_current=point_direction( colliding_with[i].x,colliding_with[i].y,_id.x,_id.y)+irandom_range(-30,30)
+			move_x+=lengthdir_x(10,dir_current)+irandom_range(-1,1)
+
+			//move_x+=clamp(sign((_id.x-colliding_with[i].x)*10),-10,10)
+			
+			move_y+=lengthdir_x(10,dir_current)+irandom_range(-1,1)
+			//move_y+=clamp((_id.y-colliding_with[i].y)*10,-10,10)
+
+		}
+	}
+	else
+	{
+		colliding_with=item_get_collisions(_id,false,true)
+		for (var i=0;i<array_length(colliding_with);i++)
+		{
+			var otheritem=colliding_with[i]
+			otheritem.sleeping_movement=false
+			var dir_current=point_direction( otheritem.x,otheritem.y,_id.x,_id.y)+irandom_range(-30,30)
+			move_x+=lengthdir_x(5,dir_current)+irandom_range(-1,1)
+			move_y+=lengthdir_x(5,dir_current)+irandom_range(-1,1)
+			i++
+		}
+		if array_length(colliding_with)==0
+		{
+			sleeping_movement=true
+		}
+	}
+	if collision_point(_id.x+move_x, _id.y+move_y, obj_work_station, false, true) == noone
+	{
+		_id.x+=move_x
+		_id.y+=move_y
+	}
 }
 
 function item_move_from_collisions(_id,loop=1,collisions=[],donotdisturb=[])

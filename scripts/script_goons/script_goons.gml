@@ -4,9 +4,17 @@ function create_goon(_x,_y)
 }
 
 
-function draw_shadow()
+function draw_shadow(xx=undefined,yy=undefined)
 {
-	draw_sprite_ext(spr_shadow,0,x,bbox_bottom,image_xscale,image_yscale,0,c_white,image_alpha)
+	if  is_undefined(xx)
+	{
+		xx=x
+	}
+	if  is_undefined(yy)
+	{
+		yy=bbox_bottom
+	}
+	draw_sprite_ext(spr_shadow,0,xx,yy,image_xscale,image_yscale,0,c_white,image_alpha)
 }
 function draw_shadow_param(xx,yy,scale)
 {
@@ -41,6 +49,10 @@ function goons_get_closest_empty(xx,yy){
 	
 }
 
+function heal_goon(_id,amount)
+{
+	_id.hp=max(_id.hp,min(_id.max_hp,_id.hp+amount))
+}
 
 function goons_get_closest_idle(xx,yy,items=["empty"]){
 	var goonslist=[]

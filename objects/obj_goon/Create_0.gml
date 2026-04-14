@@ -7,6 +7,8 @@ else{
 global.goon_count++
 }
 
+backwards=false
+
 max_hp=irandom_range(2,3)
 if irandom(2)==2
 {
@@ -279,12 +281,23 @@ next_goto=function()
 	if array_length(goto_list)==0
 	{
 		equipment_sprite_draw=equipment_sprite_idle
-		sprite_index=spr_goon
-		if dumb{
-			sprite_index=spr_goon_dumb
+		if backwards{
+			sprite_index=spr_goon_backwards
+			if dumb{
+				sprite_index=spr_goon_dumb_backwards
+			}
+			else if blue{
+				sprite_index=spr_goon_blue_backwards
+			}
 		}
-		else if blue{
-			sprite_index=spr_goon_blue
+		else{
+			sprite_index=spr_goon
+			if dumb{
+				sprite_index=spr_goon_dumb
+			}
+			else if blue{
+				sprite_index=spr_goon_blue
+			}
 		}
 		return false
 	}

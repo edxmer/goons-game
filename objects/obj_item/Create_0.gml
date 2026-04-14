@@ -2,13 +2,16 @@ size=0.1
 
 grew_up=false
 
+
+show_x=x
+show_y=y
 selected=false
 
 name=""
 
 useful=false
 
-in_movement_amount=0
+sleeping_movement=false
 
 put_down_by_goon=false
 

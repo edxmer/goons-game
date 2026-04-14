@@ -106,12 +106,24 @@ else
 {
 	selected=false
 }
-
-if irandom_range(0,2)>0{
-item_move_from_collisions(id)
-if in_movement_amount>10
+if irandom_range(0,10)==10
 {
-	y-=16
-	in_movement_amount=0
+	sleeping_movement=false
 }
+
+if !sleeping_movement
+{
+	new_item_move_from_collisions(id)
+
+}
+
+if abs(x-show_x)>0.5 || abs(y-show_y)>0.5
+{
+	show_x=show_x*0.4+x*0.6
+	show_y=show_y*0.4+y*0.6
+}
+else
+{
+	show_x=x
+	show_y=y
 }

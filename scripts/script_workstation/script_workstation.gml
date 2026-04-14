@@ -155,7 +155,10 @@ function create_work_station(_x,_y,station_id)
 	{
 		assign()
 	}
-	return station
+	if instance_exists(station){
+		return station
+	}
+	return noone
 
 }
 
@@ -173,7 +176,7 @@ function workstation_turn_to_item(_id)
 
 function workstation_to_item(station_id)
 {
-	return "station-"+station_id
+	return "station_"+station_id
 }
 
 function work_station_texture_get(station_id)
@@ -218,7 +221,7 @@ function work_station_data_get(station_id){
 	work_station_data.name=string_upper(string_copy(station_id,1,1))+ string_replace_all(string_copy(station_id,2,string_length(station_id)-1),"_"," ")
 	if station_id=="turnip_plant"
 	{
-		work_station_data.tags=["can_walk_through","unpickupable"]
+		work_station_data.tags=["can_walk_through","unpickupable","donotbecomeitem"]
 		work_station_data.texture=spr_workstation_turnip
 		work_station_data.growing=true
 		work_station_data.grow_stage_timer=[3,4]
@@ -229,7 +232,7 @@ function work_station_data_get(station_id){
 	}
 	if station_id=="corn_plant"
 	{
-		work_station_data.tags=["can_walk_through","unpickupable"]
+		work_station_data.tags=["can_walk_through","unpickupable","donotbecomeitem"]
 		work_station_data.texture=spr_workstation_corn_plant
 		work_station_data.growing=true
 		work_station_data.grow_stage_timer=[7,8]
@@ -240,7 +243,7 @@ function work_station_data_get(station_id){
 	}
 	if station_id=="cat_tail_plant"
 	{
-		work_station_data.tags=["can_walk_through","unpickupable"]
+		work_station_data.tags=["can_walk_through","unpickupable","donotbecomeitem"]
 		work_station_data.texture=spr_workstation_cattail_plant_stem
 		work_station_data.growing=true
 		work_station_data.grow_stage_timer=[20,30]
@@ -269,7 +272,7 @@ function work_station_data_get(station_id){
 	}
 	if station_id=="pineapple_plant"
 	{
-		work_station_data.tags=["can_walk_through","unpickupable"]
+		work_station_data.tags=["can_walk_through","unpickupable","donotbecomeitem"]
 		work_station_data.texture=spr_workstation_pineapple
 		work_station_data.growing=true
 		work_station_data.grow_stage_timer=[10,16]
@@ -280,7 +283,7 @@ function work_station_data_get(station_id){
 	}
 	if station_id=="purple_mushroom_plant"
 	{
-		work_station_data.tags=["can_walk_through","unpickupable"]
+		work_station_data.tags=["can_walk_through","unpickupable","donotbecomeitem"]
 		work_station_data.texture=spr_workstation_purple_mushroom
 		work_station_data.growing=true
 		work_station_data.grow_stage_timer=[10,12]
@@ -295,7 +298,7 @@ function work_station_data_get(station_id){
 	}
 	if station_id=="elderberry_plant"
 	{
-		work_station_data.tags=["can_walk_through","unpickupable"]
+		work_station_data.tags=["can_walk_through","unpickupable","donotbecomeitem"]
 		work_station_data.texture=spr_workstation_elderberry_plant
 		work_station_data.growing=true
 		work_station_data.grow_stage_timer=[3,5]

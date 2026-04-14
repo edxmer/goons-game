@@ -208,7 +208,7 @@ summon_item_from_pool=function(item_pool)
 	if !array_length(item_pool)==0
 	{
 		var item=item_pool[irandom_range(0,array_length(item_pool)-1)]
-		create_item(irandom_range(bbox_left-10,bbox_right+10),irandom_range(bbox_bottom,bbox_bottom+10),item)
+		create_item(irandom_range(bbox_left-20,bbox_right+20),irandom_range(bbox_bottom-5,bbox_bottom+15),item)
 	}
 }
 
@@ -312,23 +312,16 @@ item_destroy_nearby=function(item_id_delete)
 reposition=function()
 {
 	x=clamp_to_grid_start(x)
-y=clamp_to_grid_start(y)
+	y=clamp_to_grid_start(y)
 
-if !gridmode_check_workstation_hitboxes(x,y,sprite_index)
-{
-
-	var max_tries=20
-	var look=point_direction(x,y,room_width>>1,global.room_height>>1)
-	while(max_tries>=0 && !gridmode_check_workstation_hitboxes(x,y,sprite_index))
-	{
-		x+=lengthdir_x(-5,look)
-		y+=lengthdir_y(-5,look)
-		max_tries--
+	if !gridmode_check_workstation_hitboxes(x,y,sprite_index)
+	{ 
+	    create_item(x,y,workstation_turn_to_item(id),false)
+		exit
 	}
-}
-x=clamp(x,16,room_width-16)
-y=clamp(y,70,global.room_height-32)
+	x=clamp(x,16,room_width-16)
+	y=clamp(y,70,global.room_height-32)
 
-x=clamp_to_grid_start(x)
-y=clamp_to_grid_start(y)
+	x=clamp_to_grid_start(x)
+	y=clamp_to_grid_start(y)
 }

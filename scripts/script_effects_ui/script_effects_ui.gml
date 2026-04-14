@@ -133,6 +133,12 @@ function effect_get_sprite(effect,name=false)
 		case "witch":
 		if name {return "Brewery"}
 		return spr_effect_witch
+		case "health_boost":
+		if name {return "Health Boost"}
+		return spr_effect_health_boost
+		case "permanent_health_boost":
+		if name {return "Permanent Health Boost"}
+		return spr_effect_health_boost_permanent
 		default:
 		if name {return "Empty"}
 		return spr_empty
