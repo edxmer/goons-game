@@ -23,7 +23,7 @@
   "HTile":false,
   "layers":[
     {"$GMImageLayer":"","%Name":"14b6d59d-e248-4993-bfaf-c69b268e6d8d","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"14b6d59d-e248-4993-bfaf-c69b268e6d8d","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
-    {"$GMImageLayer":"","%Name":"b898dae0-5174-42e3-93a6-4d72e41b09a6","blendMode":0,"displayName":"default","isLocked":false,"name":"b898dae0-5174-42e3-93a6-4d72e41b09a6","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"b898dae0-5174-42e3-93a6-4d72e41b09a6","blendMode":0,"displayName":"default","isLocked":false,"name":"b898dae0-5174-42e3-93a6-4d72e41b09a6","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
   ],
   "name":"spr_wear_farmer_hat_walk",
   "nineSlice":null,
