@@ -1,6 +1,6 @@
 // Inherit the parent event
 event_inherited();
-
+rolling=false
 name="Homonculus"
 item_to_be_turned_into="homonculus"
 inventory_size=1

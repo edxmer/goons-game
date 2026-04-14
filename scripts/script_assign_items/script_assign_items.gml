@@ -139,30 +139,46 @@ function assign_item(item_id,staydata=[]){
 	}
 	if item_id=="corn_cob"{
 		array_push(item_data.tags,"nature")
+		array_push(item_data.tags,"vegetable")
+		array_push(item_data.tags,"plant")
 		item_data.texture=spr_corn_cob
 		item_data.calories=15
 	
 	}
 	if item_id=="pineapple"{
 		array_push(item_data.tags,"nature")
+		array_push(item_data.tags,"fruit")
+		array_push(item_data.tags,"plant")
 		item_data.texture=spr_ananas
 		item_data.calories=190
 	
 	}
 	if item_id=="cat_tail"{
 		array_push(item_data.tags,"nature")
+		array_push(item_data.tags,"plant")
 		item_data.texture=spr_seadog
 		item_data.calories=20
 	
 	}
 	if item_id=="purple_mushroom"{
 		array_push(item_data.tags,"nature")
+		array_push(item_data.tags,"plant")
 		item_data.texture=spr_titkos
 		item_data.calories=40
+		item_data.special_data.consume_effect=function(goon_id)
+		{
+			if booster_item_heal(goon_id,1)
+			{
+				sound_play_category_at("eat",goon_id.x,goon_id.y)
+				goon_id.inventory_destroy()
+			}
+		}
 	
 	}
 	if item_id=="elderberry"{
 		array_push(item_data.tags,"nature")
+		array_push(item_data.tags,"fruit")
+		array_push(item_data.tags,"plant")
 		item_data.texture=spr_elderberry
 		item_data.calories=12
 	
@@ -183,21 +199,89 @@ function assign_item(item_id,staydata=[]){
 	}
 	if item_id=="turnip"{
 		array_push(item_data.tags,"nature")
+		array_push(item_data.tags,"vegetable")
+		array_push(item_data.tags,"plant")
 		item_data.texture=spr_turnip
 		item_data.calories=25
 	
 	}
-	if item_id=="pina_colada"{
-			item_data.texture=spr_pina_colada
-		array_push(item_data.tags,"nature")
+	if item_id=="nature_juice"{
+		item_data.ground_sound="groundglass"
+			item_data.texture=spr_fruit_juice
+		array_push(item_data.tags,"plant")
 		array_push(item_data.tags,"consumable")
 		array_push(item_data.tags,"health_boost")
 		item_data.special_data.consume_effect=function(goon_id)
 		{
-			goon_id.hp=max(goon_id.hp,goon_id.max_hp)
-		
+			if booster_item_heal(goon_id,1)
+			{
+				sound_play_category_at("eat",goon_id.x,goon_id.y)
+				goon_id.inventory_destroy()
+			}
 		}
-		item_data.calories=120
+		item_data.calories=4
+	
+	}
+	if item_id=="pina_colada"{
+		item_data.ground_sound="groundglass"
+			item_data.texture=spr_pina_colada
+		array_push(item_data.tags,"consumable")
+		array_push(item_data.tags,"permanent_health_boost")
+		item_data.special_data.consume_effect=function(goon_id)
+		{
+			if booster_item_increase_health(goon_id,8,8)
+			{
+				sound_play_category_at("eat",goon_id.x,goon_id.y)
+				goon_id.inventory_destroy()
+			}
+		}
+		item_data.calories=190
+	
+	}
+	if item_id=="casserole"{
+			item_data.texture=spr_casserole
+		array_push(item_data.tags,"consumable")
+		array_push(item_data.tags,"health_boost")
+		item_data.special_data.consume_effect=function(goon_id)
+		{
+			if booster_item_heal(goon_id,3)
+			{
+				sound_play_category_at("eat",goon_id.x,goon_id.y)
+				goon_id.inventory_destroy()
+			}
+		}
+		item_data.calories=50
+	
+	}
+	if item_id=="hot_dog"{
+			item_data.texture=spr_hot_dog
+		array_push(item_data.tags,"consumable")
+		array_push(item_data.tags,"health_boost")
+		item_data.special_data.consume_effect=function(goon_id)
+		{
+			if booster_item_heal(goon_id,8)
+			{
+				sound_play_category_at("eat",goon_id.x,goon_id.y)
+				goon_id.inventory_destroy()
+			}
+		}
+		item_data.calories=40
+	
+	}
+	if item_id=="gummy_goon"{
+			item_data.texture=spr_gummy_goon
+		item_data.ground_sound="groundmedium"
+		array_push(item_data.tags,"consumable")
+		array_push(item_data.tags,"permanent_health_boost")
+		item_data.special_data.consume_effect=function(goon_id)
+		{
+			if booster_item_increase_health(goon_id,1,8)
+			{
+				sound_play_category_at("eat",goon_id.x,goon_id.y)
+				goon_id.inventory_destroy()
+			}
+		}
+		item_data.calories=40
 	
 	}
 	if item_id=="frozen_apple"{
@@ -291,12 +375,26 @@ function assign_item(item_id,staydata=[]){
 		item_data.texture=spr_candy
 		array_push(item_data.tags,"crafted")
 		item_data.calories=45
+		item_data.special_data.consume_effect=function(goon_id)
+		{
+			if booster_item_heal(goon_id,1)
+			{
+				sound_play_category_at("eat",goon_id.x,goon_id.y)
+				goon_id.inventory_destroy()
+			}
+		}
 	}
 	if item_id=="antlers"{
 		item_data.ground_sound="groundmedium"
 		item_data.texture=spr_noog_antlers
 		array_push(item_data.tags,"equippable")
 		item_data.special_data.equipped_sprites=[spr_wear_antlers_idle,spr_wear_antlers_walk]
+	}
+	if item_id=="strawhat"{
+		item_data.ground_sound="groundmedium"
+		item_data.texture=spr_farmer_hat
+		array_push(item_data.tags,"equippable")
+		item_data.special_data.equipped_sprites=[spr_wear_farmer_hat_idle,spr_wear_farmer_hat_walk]
 	}
 	if item_id=="constructors_belt"{
 		
@@ -413,6 +511,7 @@ function assign_item(item_id,staydata=[]){
 		item_data.texture=spr_banana
 		array_push(item_data.tags,"nature")
 		array_push(item_data.tags,"trash")
+		array_push(item_data.tags,"plant")
 		item_data.calories=3
 	}
 	else if item_id=="goo"{

@@ -33,30 +33,50 @@ function particle_fly(_x,_y,size=1)
 //particle_spirit
 function particle_spirit(xx,yy)
 {
-var _ps = part_system_create();
-part_system_draw_order(_ps, true);
+	particle_goon_event_base(xx,yy,spr_goon_death,0.5,40)
 
-part_system_depth(_ps,-2*room_height)
-//Emitter
-var _ptype1 = part_type_create();
-part_type_sprite(_ptype1, spr_goon_death, true, true, false)
-part_type_size(_ptype1, 1, 1, 0, 0);
-part_type_scale(_ptype1, 1, 1);
-part_type_speed(_ptype1, 0.2, 0.2, 0.01, 0);
-part_type_direction(_ptype1, 90, 90, 0, 0);
-part_type_gravity(_ptype1, 0, 270);
-part_type_orientation(_ptype1, 0, 0, 0, 0, false);
-part_type_colour3(_ptype1, $FFFFFF, $FFFFFF, $FFFFFF);
-part_type_alpha3(_ptype1, 0.788, 0.78, 0);
-part_type_blend(_ptype1, false);
-part_type_life(_ptype1, 40, 40);
-
-var _pemit1 = part_emitter_create(_ps);
-part_emitter_region(_ps, _pemit1, -0.5, 0.5, -0.5, 0.5, ps_shape_rectangle, ps_distr_linear);
-part_emitter_burst(_ps, _pemit1, _ptype1, 1);
-
-part_system_position(_ps, xx, yy);
 }
+function particle_goon_heal_one(xx,yy)
+{
+	particle_goon_event_base(xx,yy,spr_goon_heal,8,50)
+
+}
+function particle_goon_heal_permanent(xx,yy)
+{
+	particle_goon_event_base(xx,yy,spr_goon_heal_permanent,0.5,60)
+
+}
+
+
+function particle_goon_event_base(xx,yy,sprite,difference_from_base_coord,lifetime)
+{
+	var _ps = part_system_create();
+	part_system_draw_order(_ps, true);
+
+	part_system_depth(_ps,-2*room_height)
+	//Emitter
+	var _ptype1 = part_type_create();
+	part_type_sprite(_ptype1, sprite, true, true, false)
+	part_type_size(_ptype1, 1, 1, 0, 0);
+	part_type_scale(_ptype1, 1, 1);
+	part_type_speed(_ptype1, 0.2, 0.2, 0.01, 0);
+	part_type_direction(_ptype1, 90, 90, 0, 0);
+	part_type_gravity(_ptype1, 0, 270);
+	part_type_orientation(_ptype1, 0, 0, 0, 0, false);
+	part_type_colour3(_ptype1, $FFFFFF, $FFFFFF, $FFFFFF);
+	part_type_alpha3(_ptype1, 0.788, 0.78, 0);
+	part_type_blend(_ptype1, false);
+	part_type_life(_ptype1, lifetime, lifetime);
+
+	var _pemit1 = part_emitter_create(_ps);
+	part_emitter_region(_ps, _pemit1, -difference_from_base_coord, difference_from_base_coord, -difference_from_base_coord, difference_from_base_coord, ps_shape_rectangle, ps_distr_linear);
+	part_emitter_burst(_ps, _pemit1, _ptype1, 1);
+
+	part_system_position(_ps, xx, yy);
+
+
+}
+
 function particle_water_splash(xx,yy)
 {
 

@@ -104,7 +104,9 @@ function potion_name_get_name(p_name)
 	var parts=string_split(p_name,"_")
 	for(var i=0;i<array_length(parts);i++)
 	{
+		
 		var part=parts[i]
+		if part == "" continue
 		if !array_contains(["of","and"],part)
 		{
 			part=string_upper(string_copy(part,1,1))+string_copy(part,2,string_length(part)-1)
@@ -182,6 +184,36 @@ function potion_get_recipes(type="all")
 		var potion=potion_set_recipe(curr,"potion_of_doom",#42705C,["sock","wloob_confused"],2)
 		array_push(rlist,potion)
 	}
+	curr="hot_dog"
+	if type=="all" || type==curr
+	{
+		var potion=potion_set_recipe(curr,"hot_dog",#E59770,["cat_tail","wloob_confused"],4)
+		array_push(rlist,potion)
+	}
+	curr="casserole"
+	if type=="all" || type==curr
+	{
+		var potion=potion_set_recipe(curr,"casserole",#EA9E56,["vegetable","vegetable"],3)
+		array_push(rlist,potion)
+	}
+	curr="pina_colada"
+	if type=="all" || type==curr
+	{
+		var potion=potion_set_recipe(curr,"pina_colada",#F1FF7A,["pineapple"],4)
+		array_push(rlist,potion)
+	}
+	curr="gummy_goon"
+	if type=="all" || type==curr
+	{
+		var potion=potion_set_recipe(curr,"gummy_goon",#FF569F,["fruit","purple_mushroom"],4)
+		array_push(rlist,potion)
+	}
+	curr="nature_juice"
+	if type=="all" || type==curr
+	{
+		var potion=potion_set_recipe(curr,"nature_juice",#53ED62,["plant"],1)
+		array_push(rlist,potion)
+	}
 	curr="corn_seeds"
 	if type=="all" || type==curr
 	{
@@ -203,7 +235,7 @@ function potion_get_recipes(type="all")
 	curr="pineapple_seeds"
 	if type=="all" || type==curr
 	{
-		var potion=potion_set_recipe(curr,"pineapple_seeds",#FFD400,["pineapple","hoe"],3)
+		var potion=potion_set_recipe(curr,"pineapple_seeds",#FFD400,["pineapple","hoe"],5)
 		array_push(rlist,potion)
 	}
 	curr="cat_tail_seeds"
@@ -267,6 +299,7 @@ function ingredients_evaluate(ingredients,current_value,current_potion,current_c
 		if recipe.value>current_value && is_subset(ingredients,recipe.recipe)
 		{
 			name=recipe.name
+			current_value=recipe.value
 			brew_into=recipe.brew_into
 			real_value=recipe.value
 			color=recipe.color

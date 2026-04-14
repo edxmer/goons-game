@@ -48,10 +48,54 @@ function goons_get_closest_empty(xx,yy){
 	}
 	
 }
+function can_heal_goon(_id)
+{
+	return _id.hp<_id.max_hp
+}
+function can_increase_max_health(_id,roof)
+{
+	return _id.max_hp<roof
+
+}
+function booster_item_increase_health(_id,amount,roof)
+{
+	if can_increase_max_health(_id,roof) ||can_heal_goon(_id)
+	{
+		heal_goon_permanent(_id,amount,roof)
+		return true
+	
+	}
+	return false
+
+}
+function booster_item_heal(_id,amount)
+{
+	if can_heal_goon(_id)
+	{
+		heal_goon(_id,amount)
+		return true
+	
+	}
+	return false
+
+}
 
 function heal_goon(_id,amount)
 {
+	var realamount=max(1,_id.max_hp-_id.hp)
 	_id.hp=max(_id.hp,min(_id.max_hp,_id.hp+amount))
+	repeat realamount
+	{
+		particle_goon_heal_one(_id.x,_id.y)
+	}
+}
+function heal_goon_permanent(_id,amount,roof)
+{
+	var give_amount=min(roof,_id.max_hp+amount)
+	var heal_amount=max(0,give_amount-_id.max_hp)
+	_id.max_hp=max(_id.max_hp,give_amount)
+	heal_goon(_id,heal_amount)
+	particle_goon_heal_permanent(_id.x,_id.y)
 }
 
 function goons_get_closest_idle(xx,yy,items=["empty"]){

@@ -33,7 +33,7 @@
   "origin":9,
   "parent":{
     "name":"death_animation",
-    "path":"folders/SPRITES/goons/death_animation.yy",
+    "path":"folders/SPRITES/particle/death_animation.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
