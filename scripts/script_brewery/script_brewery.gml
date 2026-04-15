@@ -137,7 +137,7 @@ function potion_get_recipe_name(name,more=false)
 	{
 		r_name=string_replace(r_name,"_"," ")
 		r_name=string_replace(r_name,"*","Any")
-		r_name=string_upper(string_copy(part,1,1))+string_copy(part,2,string_length(part)-1)
+		r_name=string_upper(string_copy(name,1,1))+string_copy(name,2,string_length(name)-1)
 		if more
 		{
 			r_name+="(s)"
