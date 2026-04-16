@@ -5,6 +5,8 @@ global._coll_list = ds_list_create();
 
 global.coins=0
 
+global.fight_mode=false
+
 global.enemies_to_come=[]
 global.enemy_passive_wloob_timer=31.250
 

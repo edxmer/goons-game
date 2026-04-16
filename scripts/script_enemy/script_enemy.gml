@@ -24,7 +24,7 @@ function hurt_enemy(_id,amount,invincible_sec=undefined)
 		_id.invincibility=invincible_sec
 		repeat min(_id.hp,amount)
 		{
-			particle_hurt_one(_id.x,_id.y,round_about_size)
+			particle_hurt_one(_id.x,_id.y,_id.round_about_size)
 		}
 		_id.hp-=amount
 		if _id.hp<=0
@@ -36,6 +36,7 @@ function hurt_enemy(_id,amount,invincible_sec=undefined)
 
 function enemy_die_base(_id)
 {
+	_id.drop_inventory()
 	_id.drop_loot()
 	_id.enemy_die_particle()
 	instance_destroy(_id)

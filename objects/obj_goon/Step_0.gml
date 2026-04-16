@@ -187,7 +187,8 @@ gridmode_use_item=false
 
 if inventory!="empty"
 {
-	inventory_subimg=floor((dt) * sprite_get_speed(inventory_sprite)) % sprite_get_number(inventory_sprite)
+	inventory_subimg += (delta_time / 1000000) * sprite_get_speed(inventory_sprite);
+    inventory_subimg = inventory_subimg mod sprite_get_number(inventory_sprite);
 }
 
 if dumb && goto_list_changed

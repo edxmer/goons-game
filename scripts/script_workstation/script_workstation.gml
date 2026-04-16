@@ -286,14 +286,14 @@ function work_station_data_get(station_id){
 		work_station_data.tags=["can_walk_through","unpickupable","donotbecomeitem"]
 		work_station_data.texture=spr_workstation_purple_mushroom
 		work_station_data.growing=true
-		work_station_data.grow_stage_timer=[10,12]
+		work_station_data.grow_stage_timer=[6,10]
 		work_station_data.grown_up_event=[["summon_item_from_pool",["purple_mushroom"]],["create_clone_nearby",0.6,
 		function(xx,yy)
 		{
 			return gridmode_check_ground_hitboxes_dirty_fromtop(xx,yy,spr_ui_grid_purple_mushroom) && gridmode_check_workstation_hitboxes_fromtop(xx,yy,spr_ui_grid_purple_mushroom)
 		},"purple_mushroom_plant"],["destroy"]]
 		work_station_data.growth_index=0
-		work_station_data.grow_stage_sprites=[spr_workstation_purple_mushroom,spr_workstation_purple_mushroom_2,spr_workstation_purple_mushroom_full]
+		work_station_data.grow_stage_sprites=[spr_workstation_purple_mushroom_0,spr_workstation_purple_mushroom,spr_workstation_purple_mushroom_2,spr_workstation_purple_mushroom_full]
 		
 	}
 	if station_id=="elderberry_plant"

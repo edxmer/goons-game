@@ -80,7 +80,7 @@ drop_loot=function()
 		var item=loot[i]
 		sound_play_category_at(item_get_ground_sound(item),x,y)
 		
-		create_item(x,y,item)
+		create_item(x,y,item,false)
 	}
 }
 

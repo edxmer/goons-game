@@ -99,7 +99,7 @@ if global.special_zoom_done{
 	var eff_spaces=[0,0]
 	if array_length(global.goon_edit_id.active_effect_list)>0{
 		curr_x=global.cam.coords[0]+20*size
-		curr_y=global.cam.coords_middle[1]-20*size
+		curr_y=global.cam.coords_middle[1]-30*size
 		var selected=false
 		if selected_effects{
 			
@@ -108,9 +108,9 @@ if global.special_zoom_done{
 			var texture=spr_textbox
 			if selected{texture=spr_textbox_selected_true}
 			draw_box_datas(["§b- Effects -"],[],curr_x,curr_y,size,3,texture)
-			curr_y+=size*14-0.5
+			curr_y+=size*16-0.5
 			curr_x+=size*4
-			effect_draw_icons(global.goon_edit_id.active_effect_list,curr_x,curr_y,4,1.4*size,1)
+			effect_draw_icons(global.goon_edit_id.active_effect_list,curr_x,curr_y,2,1.4*size,1)
 		}
 		else
 		{

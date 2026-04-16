@@ -238,6 +238,7 @@ if fromgridmode
 }
 	with(_id){
 		if gooning{
+			got_new_directions=true
 			goto_list_changed=true
 			if gooning_goons_count()==1 && array_length(list_of_interests)!=0
 			{

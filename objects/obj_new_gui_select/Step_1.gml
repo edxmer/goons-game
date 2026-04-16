@@ -115,6 +115,7 @@ if active
 
 if keyboard_check(vk_control) && keyboard_check_pressed(ord("A"))
 {
+	reload_gooning_goons_count()
 	if useful_goons_cnt==gooning_goons_cnt
 	{
 		unselect_all.func()
@@ -124,4 +125,9 @@ if keyboard_check(vk_control) && keyboard_check_pressed(ord("A"))
 	{
 		select_all.func()
 	}
+}
+if keyboard_check_pressed(ord("E"))
+{
+	
+	select_nearest.func()
 }
