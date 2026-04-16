@@ -2,6 +2,7 @@
 reached_destination_this_frame=false
 pixels_taken_this_frame=0
 
+var dt=delta_time/1000000
 
 if global.reward_mode
 {
@@ -44,8 +45,9 @@ if blue && goon_speed<=(300/3)
 
 popped_goto_act="empty"
 //var y_coord=(y+bbox_bottom)/2
-var speed_real=goon_speed*min(delta_time/1000000,0.4)*slowness_modifier
+var speed_real=goon_speed*min(dt,0.4)*slowness_modifier
 if !(point_distance(x,y,goto_x,goto_y)<speed_real){
+	rotation_real=point_direction(x,y,goto_x,goto_y)
 	goto_x=clamp(goto_x,global.camera_top_left_x,global.camera_bot_right_x)
 	goto_y=clamp(goto_y,global.camera_top_left_y,global.camera_bot_right_y)
 	var look=point_direction(x,y,goto_x,goto_y)
@@ -185,7 +187,7 @@ gridmode_use_item=false
 
 if inventory!="empty"
 {
-	inventory_subimg=floor((current_time / 1000) * sprite_get_speed(inventory_sprite)) % sprite_get_number(inventory_sprite)
+	inventory_subimg=floor((dt) * sprite_get_speed(inventory_sprite)) % sprite_get_number(inventory_sprite)
 }
 
 if dumb && goto_list_changed
@@ -212,7 +214,7 @@ y=clamp(y,global.camera_top_left_y,global.camera_bot_right_y)
 
 if pickup_item_penalty>0
 {
-	pickup_item_penalty-=delta_time/1000000
+	pickup_item_penalty-=dt
 	pickup_item_penalty=max(0,pickup_item_penalty)
 
 }
@@ -220,4 +222,11 @@ if pickup_item_penalty>0
 if hp<=0
 {
 	goon_die()
+}
+else
+{
+	if invincibility>0
+	{
+		invincibility=max(invincibility-dt,0)
+	}
 }

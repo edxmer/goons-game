@@ -13,6 +13,35 @@ function enemy_locate_object(enemy_id,object_id)
 	return false
 }
 
+function hurt_enemy(_id,amount,invincible_sec=undefined)
+{
+	if _id.is_not_invincible()
+	{
+		if is_undefined(invincible_sec)
+		{
+			invincible_sec=_id.invincible_sec
+		}
+		_id.invincibility=invincible_sec
+		repeat min(_id.hp,amount)
+		{
+			particle_hurt_one(_id.x,_id.y,round_about_size)
+		}
+		_id.hp-=amount
+		if _id.hp<=0
+		{
+			_id.enemy_die()
+		}
+	}
+}
+
+function enemy_die_base(_id)
+{
+	_id.drop_loot()
+	_id.enemy_die_particle()
+	instance_destroy(_id)
+}
+
+
 function search_for_nearest_item_with_calories(xx,yy)
 {
 	var closest_curr=10000000

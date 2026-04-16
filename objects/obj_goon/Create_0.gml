@@ -18,6 +18,13 @@ hp=max_hp
 
 goto_list=[]
 
+rotation_real=0
+
+invincibility=0
+invincible_sec=1
+has_hitbox=true
+can_be_hit=true
+
 gridmode_use_item=false
 
 popped_goto_act="empty"

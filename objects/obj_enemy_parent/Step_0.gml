@@ -4,6 +4,11 @@ sprite_index=sprite
 
 var dt=(delta_time/1000000)
 
+if invincibility>0
+{
+	invincibility=max(invincibility-dt,0)
+}
+
 if timer1>0
 {
 	timer1=max(0,timer1-dt)
@@ -72,4 +77,12 @@ if point_in_rectangle(mouse_x,mouse_y,bbox_left,bbox_top,bbox_right,bbox_bottom)
 else
 {
 	selected=false
+}
+
+
+if hp<=0
+{
+	enemy_die()
+	exit
+
 }

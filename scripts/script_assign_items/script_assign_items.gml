@@ -462,6 +462,30 @@ function assign_item(item_id,staydata=[]){
 		array_push(item_data.tags,"weird_tag")
 		//array_push(item_data.tags,"persistent")
 	}
+	if item_id=="lance"{
+		item_data.ground_sound="groundmedium"
+		item_data.texture=spr_lance
+		array_push(item_data.tags,"use_item")
+		array_push(item_data.tags,"create_hurt")
+		array_push(item_data.tags,"has_effects")
+		array_push(item_data.tags,"weapon")
+		item_data.special_data.hurt_object=obj_hurtbbox_stab_1
+		item_data.special_data.hurt_damage_base=3
+		item_data.special_data.hurt_size=2
+		
+	}
+	if item_id=="sickle"{
+		item_data.ground_sound="groundmedium"
+		item_data.texture=spr_sickle
+		array_push(item_data.tags,"use_item")
+		array_push(item_data.tags,"create_hurt")
+		array_push(item_data.tags,"has_effects")
+		array_push(item_data.tags,"weapon")
+		item_data.special_data.hurt_object=obj_hurtbbox_slash_1
+		item_data.special_data.hurt_damage_base=2
+		item_data.special_data.hurt_size=1.2
+		
+	}
 	if item_id=="hoe"{
 		item_data.ground_sound="groundmedium"
 		item_data.texture=spr_hoe
@@ -517,6 +541,11 @@ function assign_item(item_id,staydata=[]){
 	else if item_id=="goo"{
 		item_data.texture=spr_goo_yellow
 		array_push(item_data.tags,"crafted")
+		array_push(item_data.tags,"*_goo")
+	}
+	else if item_id=="wloob_goo"{
+		item_data.texture=spr_goo_wloob
+		array_push(item_data.tags,"*_goo")
 	}
 	else if item_id=="goon_show"{
 		item_data.texture=spr_goon

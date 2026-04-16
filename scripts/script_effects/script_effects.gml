@@ -23,7 +23,7 @@ function effect_set_base(goon_id)
 		goon_id.active_effect_list=[]
 		goon_id.slowness_modifier=1
 		goon_id.has_effects=false
-		goon_id.effects={freezing:{is:false,freezing_pixel_amount:0},weird_tag:{is:false},staydata_amount_lower_plant:{is:false},robot:{is:false},slowed:{is:false,slow_percentage:1},pick_up_building:{is:false},use_item:{is:false},place_snow:{is:false},tilt_ground:{is:false},building:{is:false},plant:{is:false},grid_mode:{is:false,ui_sprite:spr_empty,max_placeable:-1},grid_mode_place_item:{is:false},grid_mode_place_station:{is:false,station_id:"empty"}}
+		goon_id.effects={create_hurt:{is:false,object:obj_hurtbbox_slash_1,size:1,base_damage:2},freezing:{is:false,freezing_pixel_amount:0},weird_tag:{is:false},staydata_amount_lower_plant:{is:false},robot:{is:false},slowed:{is:false,slow_percentage:1},pick_up_building:{is:false},use_item:{is:false},place_snow:{is:false},tilt_ground:{is:false},building:{is:false},plant:{is:false},grid_mode:{is:false,ui_sprite:spr_empty,max_placeable:-1},grid_mode_place_item:{is:false},grid_mode_place_station:{is:false,station_id:"empty"}}
 		
 	}
 }
@@ -89,6 +89,17 @@ function item_set_effects(goon_id,item_id,prefix){
 		{
 			array_push(goon_id.active_effect_list,next_effect)
 			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"is",true)
+			real_effects=true
+		}
+		next_effect="create_hurt"
+		if array_contains(item_get_tags(item_id),prefix+next_effect)
+		{
+			array_push(goon_id.active_effect_list,next_effect)
+			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"is",true)
+			//object:obj_hurtbbox_slash_1,size:1,base_damage:2
+			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"object",item_special_data_get(item_id,"hurt_object"))
+			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"size",item_special_data_get(item_id,"hurt_size"))
+			variable_struct_set( variable_struct_get(goon_id.effects,next_effect),"base_damage",item_special_data_get(item_id,"hurt_damage_base"))
 			real_effects=true
 		}
 		next_effect="building"
@@ -374,6 +385,16 @@ function effect_tick(goon_id)
 						}
 					}
 				}
+			}
+		}
+		if goon_id.effects.create_hurt.is
+		{
+			if goon_id.use_item
+			{
+				var item_id=goon_id.inventory
+				
+				create_hurt_object(goon_id.effects.create_hurt.object,goon_id.x,goon_id.y,rotation_real,goon_id.effects.create_hurt.base_damage,goon_id.effects.create_hurt.size)
+				
 			}
 		}
 

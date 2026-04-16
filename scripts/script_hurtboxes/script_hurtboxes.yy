@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"script_hurtboxes",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"script_hurtboxes",
+  "parent":{
+    "name":"hurt_scripts",
+    "path":"folders/SCRIPTS/hurt_scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -80,6 +80,26 @@ function booster_item_heal(_id,amount)
 
 }
 
+function hurt_goon(_id,amount,invincible_sec=undefined)
+{
+	if !_id.is_not_invincible()
+	{
+		if is_undefined(invincible_sec)
+		{
+			invincible_sec=_id.invincible_sec
+		}
+		_id.hp-=amount
+		_id.invincibility=invincible_sec
+		repeat min(_id.hp,amount)
+		{particle_hurt_one(x,y)}
+		if hp<=0
+		{
+			goon_die()
+		}
+	}
+
+}
+
 function heal_goon(_id,amount)
 {
 	var realamount=max(1,_id.max_hp-_id.hp)

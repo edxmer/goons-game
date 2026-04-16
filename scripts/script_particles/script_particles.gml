@@ -33,12 +33,17 @@ function particle_fly(_x,_y,size=1)
 //particle_spirit
 function particle_spirit(xx,yy)
 {
-	particle_goon_event_base(xx,yy,spr_goon_death,0.5,40)
+	particle_goon_event_base(xx,yy,spr_goon_death,0.5,60)
 
 }
 function particle_goon_heal_one(xx,yy)
 {
-	particle_goon_event_base(xx,yy,spr_goon_heal,8,50)
+	particle_goon_event_base(xx,yy,spr_goon_heal,8,irandom_range(40,50))
+
+}
+function particle_hurt_one(xx,yy,px_size=8)
+{
+	particle_goon_event_base(xx,yy,spr_goon_hurt,px_size,irandom_range(30,50))
 
 }
 function particle_goon_heal_permanent(xx,yy)
